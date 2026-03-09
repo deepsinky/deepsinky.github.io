@@ -11,7 +11,7 @@ chat.innerHTML+=`<div class="user">${text}</div>`
 
 input.value=""
 
-let response=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=YOUR_API_KEY",{
+let response=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAAF70PBNSCuCj87A0DUZ6DF4frUGluVXE,{
 
 method:"POST",
 
@@ -35,4 +35,4 @@ let reply=data.candidates[0].content.parts[0].text
 
 chat.innerHTML+=`<div class="bot">${reply}</div>`
 
-  }
+}
