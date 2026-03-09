@@ -1,27 +1,38 @@
 async function send(){
 
-let input = document.getElementById("userInput").value;
+let input=document.getElementById("input")
+let text=input.value
 
-let chatbox = document.getElementById("chatbox");
+if(text==="") return
 
-chatbox.innerHTML += "<p><b>You:</b> "+input+"</p>";
+let chat=document.getElementById("chat")
 
-let response = await fetch("https://api.openai.com/v1/chat/completions",{
+chat.innerHTML+=`<div class="user">${text}</div>`
+
+input.value=""
+
+let response=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=YOUR_API_KEY",{
+
 method:"POST",
+
 headers:{
-"Content-Type":"application/json",
-"Authorization":"Bearer YOUR_API_KEY"
+"Content-Type":"application/json"
 },
+
 body:JSON.stringify({
-model:"gpt-4",
-messages:[{role:"user",content:input}]
-})
-});
-
-let data = await response.json();
-
-let reply = data.choices[0].message.content;
-
-chatbox.innerHTML += "<p><b>AI:</b> "+reply+"</p>";
-
+contents:[
+{
+parts:[{text:text}]
 }
+]
+})
+
+})
+
+let data=await response.json()
+
+let reply=data.candidates[0].content.parts[0].text
+
+chat.innerHTML+=`<div class="bot">${reply}</div>`
+
+  }
