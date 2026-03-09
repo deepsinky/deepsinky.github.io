@@ -1,37 +1,130 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DeepSINKY AI</title>
+
 <style>
 body{
-background:black;
+background:#0d0d0d;
 color:white;
 font-family:Arial;
-text-align:center;
-margin-top:150px;
+margin:0;
+}
+
+.header{
+padding:15px;
+font-size:20px;
+border-bottom:1px solid #333;
+}
+
+.chat-container{
+height:80vh;
+overflow-y:auto;
+padding:20px;
+}
+
+.message{
+margin:10px 0;
+padding:10px 15px;
+border-radius:15px;
+max-width:70%;
+}
+
+.user{
+background:#2a2a2a;
+margin-left:auto;
+}
+
+.bot{
+background:#444;
+}
+
+.input-box{
+position:fixed;
+bottom:0;
+width:100%;
+display:flex;
+background:#111;
+padding:10px;
+}
+
+input{
+flex:1;
+padding:12px;
+border-radius:20px;
+border:none;
+outline:none;
 }
 
 button{
-background:#222;
-color:white;
+margin-left:10px;
+padding:12px 20px;
 border:none;
-padding:15px;
-margin:10px;
-border-radius:25px;
-font-size:16px;
+border-radius:20px;
+background:#19c37d;
+color:white;
 }
 </style>
 </head>
 
 <body>
 
-<h1>What can I help with?</h1>
+<div class="header">
+DeepSINKY AI
+</div>
 
-<button>Create image</button>
-<button>Summarize text</button>
-<button>Make a plan</button>
-<button>Surprise me</button>
+<div class="chat-container" id="chat"></div>
+
+<div class="input-box">
+<input id="input" placeholder="Ask something...">
+<button onclick="send()">Send</button>
+</div>
+
+<script>
+
+async function send(){
+
+let input = document.getElementById("input")
+let text = input.value
+
+if(text === "") return
+
+let chat = document.getElementById("chat")
+
+chat.innerHTML += `<div class="message user">${text}</div>`
+
+input.value = ""
+
+let response = await fetch("https://api.openai.com/v1/chat/completions",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json",
+"Authorization":"Bearer YOUR_API_KEY"
+},
+
+body:JSON.stringify({
+model:"gpt-4o-mini",
+messages:[
+{role:"user",content:text}
+]
+})
+
+})
+
+let data = await response.json()
+
+let reply = data.choices[0].message.content
+
+chat.innerHTML += `<div class="message bot">${reply}</div>`
+
+chat.scrollTop = chat.scrollHeight
+
+}
+
+</script>
 
 </body>
-
 </html>
