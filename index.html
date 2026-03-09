@@ -3,8 +3,7 @@
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>DeepSINKY </title>
+<title>DeepSINKY</title>
 
 <style>
 
@@ -38,10 +37,42 @@ padding:15px;
 border-bottom:1px solid #333;
 }
 
+.center{
+flex:1;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.center h1{
+font-size:30px;
+margin-bottom:30px;
+}
+
+.options{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.option{
+padding:12px 20px;
+border-radius:25px;
+border:1px solid #444;
+cursor:pointer;
+}
+
+.option:hover{
+background:#2a2b32;
+}
+
 .chat{
 flex:1;
 overflow-y:auto;
 padding:20px;
+display:none;
 }
 
 .message{
@@ -82,7 +113,6 @@ border:none;
 border-radius:25px;
 background:#19c37d;
 color:white;
-cursor:pointer;
 }
 
 </style>
@@ -92,24 +122,32 @@ cursor:pointer;
 <body>
 
 <div class="sidebar">
-
 <h2>DeepSINKY</h2>
-
 <p>+ New Chat</p>
-
 </div>
 
 <div class="main">
 
 <div class="header">
+DeepSINKY
+</div>
 
-DeepSINKY 
+<div class="center" id="welcome">
+
+<h1>What can I help with?</h1>
+
+<div class="options">
+
+<div class="option">Create image</div>
+<div class="option">Get advice</div>
+<div class="option">Summarize text</div>
+<div class="option">Make a plan</div>
 
 </div>
 
-<div class="chat" id="chat">
-
 </div>
+
+<div class="chat" id="chat"></div>
 
 <div class="input-area">
 
@@ -126,15 +164,16 @@ DeepSINKY
 function send(){
 
 let input = document.getElementById("input")
-
 let text = input.value
 
 if(text==="") return
 
+document.getElementById("welcome").style.display="none"
+document.getElementById("chat").style.display="block"
+
 let chat = document.getElementById("chat")
 
 chat.innerHTML += `<div class="message user">${text}</div>`
-
 chat.innerHTML += `<div class="message bot">Thinking...</div>`
 
 input.value=""
@@ -146,5 +185,4 @@ chat.scrollTop = chat.scrollHeight
 </script>
 
 </body>
-
 </html>
