@@ -1,62 +1,33 @@
-html,body{
-height:100%;
+*{
 margin:0;
 padding:0;
+box-sizing:border-box;
+}
+
+html,body{
+height:100%;
 overflow:hidden;
+font-family:Arial;
+background:#202123;
+color:white;
 }
 
 body{
-font-family:Arial;
-background:#202123;
-color:white;
 display:flex;
 width:100vw;
 height:100vh;
-overflow:hidden;
 }
-body{
-font-family:Arial;
-background:#202123;
-color:white;
-display:flex;
-width:100vw;
-height:100vh;
-overflow:hidden;
-position:fixed;
-}
+
 /* Sidebar */
 
 .sidebar{
 width:220px;
-min-width:220px;
-background:#171717;
-padding:15px;
-box-sizing:border-box;
-overflow:hidden;
-}
-.sidebar{
-width:220px;
-min-width:220px;
 background:#171717;
 padding:15px;
 overflow:hidden;
 }
-@media (max-width: 768px){
 
-.sidebar{
-display:none;
-}
-
-body{
-display:block;
-}
-
-.main{
-width:100%;
-}
-
-}
-/* Main */
+/* Main area */
 
 .main{
 flex:1;
@@ -65,13 +36,7 @@ flex-direction:column;
 height:100vh;
 overflow:hidden;
 }
-.main{
-flex:1;
-display:flex;
-flex-direction:column;
-height:100%;
-overflow:hidden;
-}
+
 /* Header */
 
 .header{
@@ -79,7 +44,7 @@ padding:15px;
 border-bottom:1px solid #333;
 }
 
-/* Welcome */
+/* Center screen */
 
 .center{
 flex:1;
@@ -90,7 +55,7 @@ justify-content:center;
 text-align:center;
 }
 
-/* Buttons */
+/* Options */
 
 .options{
 display:grid;
@@ -109,7 +74,7 @@ cursor:pointer;
 background:#2a2b32;
 }
 
-/* Chat */
+/* Chat area */
 
 .chat{
 flex:1;
@@ -118,13 +83,7 @@ overflow-x:hidden;
 padding:20px;
 display:none;
 }
-.chat{
-flex:1;
-overflow-y:auto;
-overflow-x:hidden;
-padding:20px;
-display:none;
-  }
+
 /* Input */
 
 .input-area{
@@ -152,3 +111,17 @@ background:#19c37d;
 color:white;
 cursor:pointer;
 }
+
+/* Mobile fix */
+
+@media (max-width:768px){
+
+.sidebar{
+display:none;
+}
+
+.main{
+width:100%;
+}
+
+  }
