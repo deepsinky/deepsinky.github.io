@@ -1,38 +1,40 @@
+const input = document.getElementById("input");
+const chat = document.getElementById("chat");
+
+input.addEventListener("keypress", function(e){
+if(e.key==="Enter"){
+send();
+}
+});
+
 async function send(){
 
-let input=document.getElementById("input")
-let text=input.value
+let text = input.value.trim();
+if(text==="") return;
 
-if(text==="") return
+document.getElementById("welcome").style.display="none";
+chat.style.display="block";
 
-let chat=document.getElementById("chat")
+chat.innerHTML += `<div class="message user">${text}</div>`;
 
-chat.innerHTML+=`<div class="user">${text}</div>`
+input.value="";
 
-input.value=""
+chat.innerHTML += `<div class="message bot">Thinking...</div>`;
 
-let response=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAAF70PBNSCuCj87A0DUZ6DF4frUGluVXE,{
-
+let response = await fetch("http://localhost:3000/chat",{
 method:"POST",
-
 headers:{
 "Content-Type":"application/json"
 },
+body:JSON.stringify({message:text})
+});
 
-body:JSON.stringify({
-contents:[
-{
-parts:[{text:text}]
-}
-]
-})
+let data = await response.json();
 
-})
+chat.lastChild.remove();
 
-let data=await response.json()
+chat.innerHTML += `<div class="message bot">${data.reply}</div>`;
 
-let reply=data.candidates[0].content.parts[0].text
-
-chat.innerHTML+=`<div class="bot">${reply}</div>`
+chat.scrollTop = chat.scrollHeight;
 
 }
