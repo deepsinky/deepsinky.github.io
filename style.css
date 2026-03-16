@@ -1,3 +1,5 @@
+/* ===== Reset ===== */
+
 *{
 margin:0;
 padding:0;
@@ -11,7 +13,7 @@ background:#202123;
 color:white;
 }
 
-/* ========Main layout======= */
+/* ======== Main layout ======= */
 
 body{
 display:flex;
@@ -20,7 +22,7 @@ height:100vh;
 width:100vw;
 }
 
-/* =========Header========== */
+/* ========= Header ========== */
 
 .header{
 padding:15px;
@@ -28,7 +30,7 @@ border-bottom:1px solid #333;
 text-align:center;
 }
 
-/* ==========Center screen ==========*/
+/* ========== Center screen ========== */
 
 .center{
 flex:1;
@@ -40,7 +42,7 @@ text-align:center;
 padding:20px;
 }
 
-/*=========== Options============= */
+/*=========== Options ============= */
 
 .options{
 display:grid;
@@ -60,7 +62,7 @@ cursor:pointer;
 background:#2a2b32;
 }
 
-/* ========= Chat======== */
+/* ========= Chat ======== */
 
 .chat{
 flex:1;
@@ -69,7 +71,7 @@ padding:20px;
 display:none;
 }
 
-/* ============ Messages ========*/
+/* ============ Messages ======== */
 
 .message{
 padding:10px 15px;
@@ -88,39 +90,7 @@ margin-left:auto;
 background:#333;
 }
 
-/* =======Input area======== */
-
-.input-area{
-display:flex;
-padding:15px;
-background:#202123;
-border-top:1px solid #333;
-}
-
-/* ==========Input============= */
-
-input{
-flex:1;
-padding:15px;
-border-radius:25px;
-border:none;
-background:#40414f;
-color:white;
-outline:none;
-}
-
-/* ==========Button==========*/
-
-button{
-margin-left:10px;
-padding:12px 18px;
-border:none;
-border-radius:25px;
-background:#19c37d;
-color:white;
-cursor:pointer;
-}
-/* =======ChatGPT style input bar======= */
+/* ======= ChatGPT style input bar ======= */
 
 .input-area{
 position:fixed;
@@ -135,6 +105,8 @@ padding:8px;
 box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
+/* ========== Input ============= */
+
 .input-area input{
 flex:1;
 background:transparent;
@@ -144,6 +116,8 @@ font-size:16px;
 padding:12px;
 outline:none;
 }
+
+/* ========== Buttons ========== */
 
 .plus{
 width:40px;
@@ -165,4 +139,14 @@ background:white;
 color:black;
 font-size:18px;
 margin-left:5px;
+}
+
+button{
+margin-left:10px;
+padding:12px 18px;
+border:none;
+border-radius:25px;
+background:#19c37d;
+color:white;
+cursor:pointer;
 }
