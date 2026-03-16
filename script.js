@@ -38,3 +38,11 @@ chat.innerHTML += `<div class="message bot">${data.reply}</div>`;
 chat.scrollTop = chat.scrollHeight;
 
 }
+
+function toggleSidebar(){
+
+let sidebar = document.getElementById("sidebar");
+
+sidebar.classList.toggle("open");
+
+}
