@@ -14,7 +14,16 @@ width:100vw;
 height:100vh;
 overflow:hidden;
 }
-
+body{
+font-family:Arial;
+background:#202123;
+color:white;
+display:flex;
+width:100vw;
+height:100vh;
+overflow:hidden;
+position:fixed;
+}
 /* Sidebar */
 
 .sidebar{
@@ -25,7 +34,13 @@ padding:15px;
 box-sizing:border-box;
 overflow:hidden;
 }
-
+.sidebar{
+width:220px;
+min-width:220px;
+background:#171717;
+padding:15px;
+overflow:hidden;
+}
 /* Main */
 
 .main{
@@ -35,7 +50,13 @@ flex-direction:column;
 height:100vh;
 overflow:hidden;
 }
-
+.main{
+flex:1;
+display:flex;
+flex-direction:column;
+height:100%;
+overflow:hidden;
+}
 /* Header */
 
 .header{
@@ -82,7 +103,13 @@ overflow-x:hidden;
 padding:20px;
 display:none;
 }
-
+.chat{
+flex:1;
+overflow-y:auto;
+overflow-x:hidden;
+padding:20px;
+display:none;
+  }
 /* Input */
 
 .input-area{
