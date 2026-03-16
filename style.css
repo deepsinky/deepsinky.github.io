@@ -7,19 +7,18 @@ box-sizing:border-box;
 html,body{
 height:100%;
 overflow:hidden;
-font-family:Arial;
+font-family:Arial, sans-serif;
 background:#202123;
 color:white;
 }
-html,body{
-overflow:hidden;
-width:100%;
-height:100%;
-}
+
+/* Main layout */
+
 body{
 display:flex;
-width:100vw;
 height:100vh;
+width:100vw;
+overflow:hidden;
 }
 
 /* Sidebar */
@@ -28,17 +27,15 @@ height:100vh;
 width:220px;
 background:#171717;
 padding:15px;
-overflow:hidden;
 }
 
-/* Main area */
+/* Main */
 
 .main{
 flex:1;
 display:flex;
 flex-direction:column;
 height:100vh;
-overflow:hidden;
 }
 
 /* Header */
@@ -74,23 +71,21 @@ border:1px solid #444;
 cursor:pointer;
 }
 
-.option:hover{
-background:#2a2b32;
-}
-
-/* Chat area */
+/* Chat */
 
 .chat{
 flex:1;
 overflow-y:auto;
-overflow-x:hidden;
 padding:20px;
-display:none;
 }
 
-/* Input */
+/* Input area fixed */
 
 .input-area{
+position:fixed;
+bottom:0;
+left:220px;
+right:0;
 display:flex;
 padding:15px;
 background:#202123;
@@ -115,17 +110,3 @@ background:#19c37d;
 color:white;
 cursor:pointer;
 }
-
-/* Mobile fix */
-
-@media (max-width:768px){
-
-.sidebar{
-display:none;
-}
-
-.main{
-width:100%;
-}
-
-  }
