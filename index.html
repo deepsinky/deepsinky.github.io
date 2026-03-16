@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DeepSINKY</title>
 
 <style>
@@ -12,28 +14,16 @@ font-family:Arial;
 background:#202123;
 color:white;
 display:flex;
-height:100vh;
-}
-
-.sidebar{
-width:220px;
-background:#171717;
-padding:15px;
-}
-
-.sidebar h2{
-font-size:18px;
-}
-
-.main{
-flex:1;
-display:flex;
 flex-direction:column;
+height:100vh;
+overflow:hidden;
 }
 
 .header{
 padding:15px;
 border-bottom:1px solid #333;
+text-align:center;
+font-size:18px;
 }
 
 .center{
@@ -46,7 +36,7 @@ text-align:center;
 }
 
 .center h1{
-font-size:30px;
+font-size:28px;
 margin-bottom:30px;
 }
 
@@ -79,6 +69,7 @@ padding:10px 15px;
 margin:10px 0;
 border-radius:10px;
 max-width:70%;
+word-wrap:break-word;
 }
 
 .user{
@@ -93,6 +84,7 @@ background:#333;
 .input-area{
 display:flex;
 padding:15px;
+border-top:1px solid #333;
 background:#202123;
 }
 
@@ -103,6 +95,7 @@ border-radius:25px;
 border:none;
 background:#40414f;
 color:white;
+outline:none;
 }
 
 button{
@@ -112,6 +105,11 @@ border:none;
 border-radius:25px;
 background:#19c37d;
 color:white;
+cursor:pointer;
+}
+
+button:hover{
+opacity:0.9;
 }
 
 </style>
@@ -119,13 +117,6 @@ color:white;
 </head>
 
 <body>
-
-<div class="sidebar">
-<h2>DeepSINKY</h2>
-<p>+ New Chat</p>
-</div>
-
-<div class="main">
 
 <div class="header">
 DeepSINKY
@@ -151,19 +142,23 @@ DeepSINKY
 <div class="input-area">
 
 <input id="input" placeholder="Ask anything">
-
 <button onclick="send()">Send</button>
-
-</div>
 
 </div>
 
 <script>
 
+let input = document.getElementById("input")
+
+input.addEventListener("keypress", function(e){
+if(e.key==="Enter"){
+send()
+}
+})
+
 function send(){
 
-let input = document.getElementById("input")
-let text = input.value
+let text = input.value.trim()
 
 if(text==="") return
 
