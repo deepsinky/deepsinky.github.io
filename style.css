@@ -41,6 +41,21 @@ background:#171717;
 padding:15px;
 overflow:hidden;
 }
+@media (max-width: 768px){
+
+.sidebar{
+display:none;
+}
+
+body{
+display:block;
+}
+
+.main{
+width:100%;
+}
+
+}
 /* Main */
 
 .main{
