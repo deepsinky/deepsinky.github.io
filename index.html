@@ -14,45 +14,29 @@ font-family:Arial;
 background:#202123;
 color:white;
 display:flex;
+flex-direction:column;
 height:100vh;
 overflow:hidden;
 }
 
-/* SIDEBAR */
-
-.sidebar{
-width:220px;
-background:#171717;
-padding:15px;
-border-right:1px solid #333;
-}
-
-.sidebar h2{
-margin-top:0;
-}
-
-.newchat{
-background:#19c37d;
-padding:10px;
-border-radius:20px;
-text-align:center;
-cursor:pointer;
-margin-bottom:20px;
-}
-
-/* MAIN AREA */
-
-.main{
-flex:1;
-display:flex;
-flex-direction:column;
-}
-
 .header{
+display:flex;
+align-items:center;
+justify-content:center;
 padding:15px;
 border-bottom:1px solid #333;
-text-align:center;
 font-size:18px;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.logo{
+width:28px;
+height:28px;
 }
 
 .center{
@@ -142,26 +126,7 @@ cursor:pointer;
 
 <body>
 
-<!-- SIDEBAR -->
-
-<div class="sidebar">
-
-<h2>DeepSINKY</h2>
-
-<div class="newchat" onclick="newChat()">
-+ New Chat
-</div>
-
-</div>
-
-<!-- MAIN -->
-
-<div class="main">
-<body>
-
 <div class="header">
-
-<div class="menu" onclick="toggleSidebar()">☰</div>
 
 <div class="brand">
 <img src="logo.png" class="logo">
@@ -169,7 +134,6 @@ cursor:pointer;
 </div>
 
 </div>
-
 
 <div class="center" id="welcome">
 
@@ -193,8 +157,6 @@ cursor:pointer;
 <input id="input" placeholder="Ask DeepSINKY">
 
 <button onclick="send()">Send</button>
-
-</div>
 
 </div>
 
@@ -229,14 +191,6 @@ chat.scrollTop = chat.scrollHeight
 input.value=""
 
 chat.scrollTop = chat.scrollHeight
-
-}
-
-function newChat(){
-
-document.getElementById("chat").innerHTML=""
-document.getElementById("chat").style.display="none"
-document.getElementById("welcome").style.display="flex"
 
 }
 
