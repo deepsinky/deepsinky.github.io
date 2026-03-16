@@ -13,7 +13,7 @@ background:#202123;
 color:white;
 }
 
-/* ======== Main layout ======= */
+/* ===== Main layout ===== */
 
 body{
 display:flex;
@@ -22,15 +22,31 @@ height:100vh;
 width:100vw;
 }
 
-/* ========= Header ========== */
+/* ===== Header ===== */
 
 .header{
+display:flex;
+align-items:center;
+justify-content:center;
 padding:15px;
 border-bottom:1px solid #333;
-text-align:center;
 }
 
-/* ========== Center screen ========== */
+/* ===== Logo ===== */
+
+.brand{
+display:flex;
+align-items:center;
+gap:8px;
+font-size:18px;
+}
+
+.logo{
+width:28px;
+height:28px;
+}
+
+/* ===== Center screen ===== */
 
 .center{
 flex:1;
@@ -42,7 +58,11 @@ text-align:center;
 padding:20px;
 }
 
-/*=========== Options ============= */
+.center h1{
+font-size:28px;
+}
+
+/* ===== Options ===== */
 
 .options{
 display:grid;
@@ -62,7 +82,7 @@ cursor:pointer;
 background:#2a2b32;
 }
 
-/* ========= Chat ======== */
+/* ===== Chat ===== */
 
 .chat{
 flex:1;
@@ -71,7 +91,7 @@ padding:20px;
 display:none;
 }
 
-/* ============ Messages ======== */
+/* ===== Messages ===== */
 
 .message{
 padding:10px 15px;
@@ -90,7 +110,7 @@ margin-left:auto;
 background:#333;
 }
 
-/* ======= ChatGPT style input bar ======= */
+/* ===== ChatGPT style input bar ===== */
 
 .input-area{
 position:fixed;
@@ -105,7 +125,7 @@ padding:8px;
 box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
-/* ========== Input ============= */
+/* ===== Input ===== */
 
 .input-area input{
 flex:1;
@@ -117,29 +137,7 @@ padding:12px;
 outline:none;
 }
 
-/* ========== Buttons ========== */
-
-.plus{
-width:40px;
-height:40px;
-border-radius:50%;
-border:none;
-background:#444;
-color:white;
-font-size:20px;
-margin-right:5px;
-}
-
-.mic{
-width:40px;
-height:40px;
-border-radius:50%;
-border:none;
-background:white;
-color:black;
-font-size:18px;
-margin-left:5px;
-}
+/* ===== Buttons ===== */
 
 button{
 margin-left:10px;
@@ -149,51 +147,4 @@ border-radius:25px;
 background:#19c37d;
 color:white;
 cursor:pointer;
-}
-/* header layout */
-
-.header{
-display:flex;
-align-items:center;
-padding:15px;
-border-bottom:1px solid #333;
-}
-
-.menu{
-font-size:22px;
-margin-right:15px;
-cursor:pointer;
-}
-
-.logo{
-font-size:18px;
-}
-
-/* sidebar */
-
-.sidebar{
-position:fixed;
-top:0;
-left:-250px;
-width:250px;
-height:100%;
-background:#171717;
-padding:20px;
-transition:0.3s;
-z-index:1000;
-}
-
-.sidebar.open{
-left:0;
-}
-
-.side-item{
-padding:12px;
-margin-top:10px;
-border-radius:10px;
-cursor:pointer;
-}
-
-.side-item:hover{
-background:#2a2b32;
-}
+  }
