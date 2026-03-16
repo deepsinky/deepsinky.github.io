@@ -14,9 +14,38 @@ font-family:Arial;
 background:#202123;
 color:white;
 display:flex;
-flex-direction:column;
 height:100vh;
 overflow:hidden;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:220px;
+background:#171717;
+padding:15px;
+border-right:1px solid #333;
+}
+
+.sidebar h2{
+margin-top:0;
+}
+
+.newchat{
+background:#19c37d;
+padding:10px;
+border-radius:20px;
+text-align:center;
+cursor:pointer;
+margin-bottom:20px;
+}
+
+/* MAIN AREA */
+
+.main{
+flex:1;
+display:flex;
+flex-direction:column;
 }
 
 .header{
@@ -69,7 +98,6 @@ padding:10px 15px;
 margin:10px 0;
 border-radius:10px;
 max-width:70%;
-word-wrap:break-word;
 }
 
 .user{
@@ -108,18 +136,30 @@ color:white;
 cursor:pointer;
 }
 
-button:hover{
-opacity:0.9;
-}
-
 </style>
 
 </head>
 
 <body>
 
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h2>DeepSINKY</h2>
+
+<div class="newchat" onclick="newChat()">
++ New Chat
+</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
 <div class="header">
-DeepSINKY
+DeepSINKY 
 </div>
 
 <div class="center" id="welcome">
@@ -141,11 +181,11 @@ DeepSINKY
 
 <div class="input-area">
 
-<button class="plus">+</button>
-
 <input id="input" placeholder="Ask DeepSINKY">
 
-<button class="mic">🎤</button>
+<button onclick="send()">Send</button>
+
+</div>
 
 </div>
 
@@ -171,11 +211,23 @@ document.getElementById("chat").style.display="block"
 let chat = document.getElementById("chat")
 
 chat.innerHTML += `<div class="message user">${text}</div>`
-chat.innerHTML += `<div class="message bot">Thinking...</div>`
+
+setTimeout(()=>{
+chat.innerHTML += `<div class="message bot">This is DeepSINKY response.</div>`
+chat.scrollTop = chat.scrollHeight
+},800)
 
 input.value=""
 
 chat.scrollTop = chat.scrollHeight
+
+}
+
+function newChat(){
+
+document.getElementById("chat").innerHTML=""
+document.getElementById("chat").style.display="none"
+document.getElementById("welcome").style.display="flex"
 
 }
 
