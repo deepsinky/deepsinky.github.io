@@ -1,12 +1,19 @@
-body{
+html, body{
+height:100%;
 margin:0;
+padding:0;
+overflow:hidden;
+}
+
+body{
 font-family:Arial;
 background:#202123;
 color:white;
 display:flex;
 height:100vh;
-overflow:hidden;
 }
+
+/* Sidebar */
 
 .sidebar{
 width:220px;
@@ -14,16 +21,24 @@ background:#171717;
 padding:15px;
 }
 
+/* Main area */
+
 .main{
 flex:1;
 display:flex;
 flex-direction:column;
+height:100vh;
+overflow:hidden;
 }
+
+/* Header */
 
 .header{
 padding:15px;
 border-bottom:1px solid #333;
 }
+
+/* Welcome screen */
 
 .center{
 flex:1;
@@ -31,7 +46,10 @@ display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
+text-align:center;
 }
+
+/* Option buttons */
 
 .options{
 display:grid;
@@ -50,17 +68,23 @@ cursor:pointer;
 background:#2a2b32;
 }
 
+/* Chat area */
+
 .chat{
 flex:1;
 overflow-y:auto;
+overflow-x:hidden;
 padding:20px;
 display:none;
 }
+
+/* Input area */
 
 .input-area{
 display:flex;
 padding:15px;
 background:#202123;
+border-top:1px solid #333;
 }
 
 input{
@@ -70,6 +94,7 @@ border-radius:25px;
 border:none;
 background:#40414f;
 color:white;
+font-size:16px;
 }
 
 button{
@@ -79,4 +104,5 @@ border:none;
 border-radius:25px;
 background:#19c37d;
 color:white;
+cursor:pointer;
 }
