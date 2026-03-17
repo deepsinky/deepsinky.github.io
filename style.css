@@ -193,3 +193,65 @@ width:18px;
 .menu-circle span:nth-child(2){
 width:12px;
 }
+
+/*======= sidebar ============*/
+
+.sidebar{
+position:fixed;
+top:0;
+left:-280px;
+width:280px;
+height:100%;
+background:#0f0f0f;
+padding:20px;
+transition:0.3s;
+z-index:1000;
+overflow-y:auto;
+}
+
+.sidebar.open{
+left:0;
+}
+
+/* overlay */
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+display:none;
+z-index:900;
+}
+
+.overlay.show{
+display:block;
+}
+
+/* sidebar items */
+
+.side-item{
+padding:12px;
+border-radius:10px;
+margin-top:8px;
+cursor:pointer;
+}
+
+.side-item:hover{
+background:#2a2b32;
+}
+
+/* search */
+
+.search{
+width:100%;
+padding:10px;
+border-radius:20px;
+border:none;
+background:#2a2b32;
+color:white;
+margin-bottom:15px;
+outline:none;
+  }
