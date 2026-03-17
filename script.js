@@ -69,3 +69,4 @@ sidebar.classList.toggle("open");
 overlay.classList.toggle("show");
 
 }
+alert("JS loaded");
