@@ -160,3 +160,47 @@ animation:dots 1s steps(3, end) infinite;
 66%{content:"..";}
 100%{content:"...";}
 }
+
+.header{
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:15px;
+border-bottom:1px solid #333;
+}
+
+/* circle button */
+
+.menu-circle{
+position:absolute;
+left:15px;
+width:42px;
+height:42px;
+border-radius:50%;
+background:#2a2b32;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:6px;
+}
+
+/* lines */
+
+.menu-circle span{
+display:block;
+height:3px;
+background:#fff;
+border-radius:3px;
+}
+
+/* top line (long) */
+.menu-circle span:nth-child(1){
+width:18px;
+}
+
+/* bottom line (short) */
+.menu-circle span:nth-child(2){
+width:12px;
+}
