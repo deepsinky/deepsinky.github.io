@@ -15,7 +15,10 @@ if(text==="") return;
 document.getElementById("welcome").style.display="none";
 chat.style.display="block";
 
-chat.innerHTML += `<div class="message user">${text}</div>`;
+let thinking = document.createElement("div");
+thinking.className = "message bot";
+thinking.innerHTML = "Thinking<span class='dots'></span>";
+chat.appendChild(thinking);
 
 input.value="";
 
@@ -36,5 +39,24 @@ chat.lastChild.remove();
 chat.innerHTML += `<div class="message bot">${data.reply}</div>`;
 
 chat.scrollTop = chat.scrollHeight;
+
+}
+function typeText(element, text){
+
+let i = 0;
+
+function typing(){
+
+if(i < text.length){
+element.innerHTML += text.charAt(i);
+i++;
+setTimeout(typing, 15); // speed (कम = fast, ज्यादा = slow)
+}
+
+chat.scrollTop = chat.scrollHeight;
+
+}
+
+typing();
 
 }
