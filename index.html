@@ -174,40 +174,6 @@ cursor:pointer;
 </div>
 
 <script>
-
-let input = document.getElementById("input")
-
-input.addEventListener("keypress", function(e){
-if(e.key==="Enter"){
-send()
-}
-})
-
-function send(){
-
-let text = input.value.trim()
-
-if(text==="") return
-
-document.getElementById("welcome").style.display="none"
-document.getElementById("chat").style.display="block"
-
-let chat = document.getElementById("chat")
-
-chat.innerHTML += `<div class="message user">${text}</div>`
-
-setTimeout(()=>{
-chat.innerHTML += `<div class="message bot">This is DeepSINKY response.</div>`
-chat.scrollTop = chat.scrollHeight
-},800)
-
-input.value=""
-
-chat.scrollTop = chat.scrollHeight
-
-}
-
-</script>
 <script src="script.js"></script>
 </body>
 </html>
