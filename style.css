@@ -22,16 +22,6 @@ height:100vh;
 width:100vw;
 }
 
-/* ===== Header ===== */
-
-.header{
-display:flex;
-align-items:center;
-justify-content:center;
-padding:15px;
-border-bottom:1px solid #333;
-}
-
 /* ===== Logo ===== */
 
 .brand{
@@ -160,7 +150,7 @@ animation:dots 1s steps(3, end) infinite;
 66%{content:"..";}
 100%{content:"...";}
 }
-
+/* ===== Header ===== */
 .header{
 position:relative;
 display:flex;
