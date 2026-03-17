@@ -60,3 +60,12 @@ chat.scrollTop = chat.scrollHeight;
 typing();
 
 }
+function toggleSidebar(){
+
+let sidebar = document.getElementById("sidebar");
+let overlay = document.getElementById("overlay");
+
+sidebar.classList.toggle("open");
+overlay.classList.toggle("show");
+
+}
