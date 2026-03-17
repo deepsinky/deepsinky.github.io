@@ -160,8 +160,7 @@ padding:15px;
 border-bottom:1px solid #333;
 }
 
-/* circle button */
-
+/* FIXED position left */
 .menu-circle{
 position:absolute;
 left:15px;
@@ -174,23 +173,23 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 gap:6px;
+z-index:10; /* VERY IMPORTANT */
 }
 
-/* lines */
-
+/* lines visible fix */
 .menu-circle span{
 display:block;
 height:3px;
-background:#fff;
+background:white;
 border-radius:3px;
 }
 
-/* top line (long) */
+/* top line */
 .menu-circle span:nth-child(1){
 width:18px;
 }
 
-/* bottom line (short) */
+/* bottom line */
 .menu-circle span:nth-child(2){
 width:12px;
 }
