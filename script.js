@@ -28,7 +28,8 @@ chat.appendChild(thinking);
 
 try{
 
-let response = await fetch("http://localhost:3000/chat",{
+// ✅ SIRF YE LINE CHANGE KI GAYI HAI
+let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
 method:"POST",
 headers:{
 "Content-Type":"application/json"
