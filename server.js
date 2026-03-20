@@ -14,23 +14,18 @@ app.post("/chat", async (req, res) => {
     const message = req.body.message;
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          contents: [
-            {
-              parts: [{ text: message }]
-            }
-          ]
+          contents: [{ parts: [{ text: message }] }]
         })
       }
     );
 
-    // 🔥 DEBUG (IMPORTANT)
     console.log("STATUS:", response.status);
 
     const data = await response.json();
@@ -38,16 +33,20 @@ app.post("/chat", async (req, res) => {
 
     let reply = "";
 
+    // 🔥 SAFE EXTRACTION (FIXED)
     if (data.candidates && data.candidates.length > 0) {
-      let parts = data.candidates[0].content.parts;
-      reply = parts.map(p => p.text).join("");
-    } 
-    else if (data.error) {
-      console.log("API ERROR:", data.error);
-      reply = "API Error: " + data.error.message;
-    } 
-    else {
-      reply = "No response";
+      const parts = data.candidates[0].content.parts || [];
+      reply = parts.map(p => p.text || "").join("");
+    }
+
+    // ❗ अगर reply खाली है
+    if (!reply) {
+      if (data.error) {
+        console.log("API ERROR:", data.error);
+        reply = "API Error: " + data.error.message;
+      } else {
+        reply = "⚠️ Empty response from API";
+      }
     }
 
     res.json({ reply });
