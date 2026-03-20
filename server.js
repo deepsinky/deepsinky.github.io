@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 const API_KEY = process.env.API_KEY;
-
+console.log("API KEY CHECK:", API_KEY ? "OK" : "MISSING");
 app.post("/chat", async (req, res) => {
   try {
     const message = req.body.message;
