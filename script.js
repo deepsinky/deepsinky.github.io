@@ -36,17 +36,20 @@ async function send(){
   try{
 
     let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify({message:text})
-    });
+  method:"POST",
+  headers:{
+    "Content-Type":"application/json"
+  },
+  body:JSON.stringify({message:text})
+});
 
-    let data = await response.json();
+// 👇 YAHAN ADD KARO
+console.log("STATUS:", response.status);
 
-    console.log("FRONTEND DATA:", data); // 🔥 DEBUG
+let data = await response.json();
 
+// 👇 YAHAN ADD KARO
+console.log("DATA:", data);
     // SAFE REPLY
     let reply = data.reply;
 
