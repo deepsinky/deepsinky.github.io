@@ -45,3 +45,5 @@ res.json({reply:"Server error"});
 app.listen(3000,()=>{
 console.log("DeepSINKY AI server running on port 3000");
 });
+console.log("API KEY:", process.env.API_KEY);
+console.log("FULL DATA:", JSON.stringify(data));
