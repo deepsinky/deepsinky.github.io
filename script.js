@@ -1,25 +1,31 @@
 const input = document.getElementById("input");
 const chat = document.getElementById("chat");
-const sendBtn = document.getElementById("send"); 
+const sendBtn = document.getElementById("sendBtn");
 
-sendBtn.addEventListener("click", send);
+// ✅ BUTTON CLICK
+sendBtn.addEventListener("click", function(){
+  console.log("BUTTON CLICKED");
+  send();
+});
 
-// ENTER KEY
+// ✅ ENTER KEY
 input.addEventListener("keypress", function(e){
   if(e.key === "Enter"){
     send();
   }
 });
 
-// SEND BUTTON CLICK
-if(sendBtn){
-  sendBtn.addEventListener("click", send);
-}
-
-async function send(){
-
+function send(){
   let text = input.value.trim();
+
+  console.log("SEND FUNCTION RUNNING:", text);
+
   if(text === "") return;
+
+  alert("Message: " + text); // test
+
+  input.value = "";
+}
 
   document.getElementById("welcome").style.display="none";
   chat.style.display="block";
