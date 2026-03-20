@@ -20,7 +20,7 @@ chat.innerHTML += `<div class="message user">${text}</div>`;
 
 input.value="";
 
-// THINKING (single)
+// THINKING
 let thinking = document.createElement("div");
 thinking.className = "message bot";
 thinking.innerHTML = "Thinking<span class='dots'></span>";
@@ -28,7 +28,6 @@ chat.appendChild(thinking);
 
 try{
 
-// ✅ UPDATED FETCH (CORS FIX)
 let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
 method:"POST",
 headers:{
@@ -39,18 +38,29 @@ body:JSON.stringify({message:text})
 
 let data = await response.json();
 
+// 🔥 DEBUG (IMPORTANT)
+console.log("FRONTEND DATA:", data);
+
+// 🔥 SAFE REPLY FIX
+let reply = data.reply;
+
+if (!reply || reply === "No response") {
+  reply = "⚠️ Server se response nahi aaya";
+}
+
 // REMOVE THINKING
 thinking.remove();
 
-// BOT MESSAGE (typing effect)
+// BOT MESSAGE
 let botDiv = document.createElement("div");
 botDiv.className = "message bot";
 chat.appendChild(botDiv);
 
-typeText(botDiv, data.reply);
+typeText(botDiv, reply);
 
-}catch{
+}catch(err){
 
+console.log("FRONT ERROR:", err);
 thinking.innerHTML = "Server error";
 
 }
