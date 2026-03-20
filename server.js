@@ -14,28 +14,21 @@ app.post("/chat", async (req, res) => {
     const message = req.body.message;
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          contents: [
-            {
-              role: "user",
-              parts: [{ text: message }]
-            }
-          ]
+          contents: [{ parts: [{ text: message }] }]
         })
       }
     );
 
     const data = await response.json();
-
     console.log("FULL DATA:", JSON.stringify(data, null, 2));
 
-    // 🔥 FINAL FIX (IMPORTANT)
     let reply = "";
 
     if (data.candidates && data.candidates.length > 0) {
@@ -61,7 +54,6 @@ app.listen(PORT, () => {
   console.log("DeepSINKY AI server running on port " + PORT);
 });
 
-// health check
 app.get("/", (req, res) => {
   res.send("Server is running");
 });
