@@ -28,7 +28,8 @@ chat.appendChild(thinking);
 
 try{
 
-let response = await fetch("https://deepsinkyserver.onrender.com/chat",{
+// ✅ FINAL SERVER URL
+let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
 method:"POST",
 headers:{
 "Content-Type":"application/json"
@@ -36,16 +37,21 @@ headers:{
 body:JSON.stringify({message:text})
 });
 
-let data = await response.json();
+// DEBUG
+console.log("STATUS:", response.status);
 
-// 🔥 DEBUG (IMPORTANT)
+if(!response.ok){
+throw new Error("Server response failed");
+}
+
+let data = await response.json();
 console.log("FRONTEND DATA:", data);
 
-// 🔥 SAFE REPLY FIX
+// SAFE REPLY
 let reply = data.reply;
 
 if (!reply || reply === "No response") {
-  reply = "⚠️ Server se response nahi aaya";
+  reply = "⚠️ Server se response nahi aaya (backend check karo)";
 }
 
 // REMOVE THINKING
@@ -60,8 +66,8 @@ typeText(botDiv, reply);
 
 }catch(err){
 
-console.log("FRONT ERROR:", err);
-thinking.innerHTML = "Server error";
+console.log("ERROR:", err);
+thinking.innerHTML = "❌ Server error aa gaya";
 
 }
 
