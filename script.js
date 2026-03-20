@@ -31,7 +31,6 @@ try{
 // ✅ UPDATED FETCH (CORS FIX)
 let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
 method:"POST",
-mode:"cors",
 headers:{
 "Content-Type":"application/json"
 },
