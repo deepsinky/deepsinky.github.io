@@ -28,7 +28,7 @@ chat.appendChild(thinking);
 
 try{
 
-let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
+let response = await fetch("https://deepsinkyserver.onrender.com/chat",{
 method:"POST",
 headers:{
 "Content-Type":"application/json"
