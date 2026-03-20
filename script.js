@@ -1,6 +1,8 @@
 const input = document.getElementById("input");
 const chat = document.getElementById("chat");
-const sendBtn = document.getElementById("send"); // 👈 ADD THIS
+const sendBtn = document.getElementById("send"); 
+
+sendBtn.addEventListener("click", send);
 
 // ENTER KEY
 input.addEventListener("keypress", function(e){
