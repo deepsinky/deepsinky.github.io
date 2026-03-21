@@ -27,7 +27,7 @@ async function send(){
 
   try{
 
-    let response = await fetch("https://openrouter.ai/api/v1/chat/completions",{
+    let response = await fetch("https://deepsinky-server-1.onrender.com/chat", {
       method:"POST",
       headers:{
         "Authorization": "Bearer YOUR_OPENROUTER_API_KEY",
