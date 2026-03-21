@@ -9,21 +9,34 @@ app.use(express.json());
 
 const API_KEY = process.env.API_KEY;
 console.log("API KEY CHECK:", API_KEY ? "OK" : "MISSING");
+
+// 🔥 CHAT ROUTE
 app.post("/chat", async (req, res) => {
   try {
     const message = req.body.message;
-console.log("USER MESSAGE:", message);
+
+    if (!message) {
+      return res.json({ reply: "No message ❌" });
+    }
+
+    console.log("USER MESSAGE:", message);
+
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
+      "https://openrouter.ai/api/v1/chat/completions",
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Authorization": `Bearer ${API_KEY}`,
+          "Content-Type": "application/json",
+          "HTTP-Referer": "https://deepsinky.onrender.com", // optional
+          "X-Title": "DeepSINKY"
         },
         body: JSON.stringify({
-          contents: [
+          model: "openai/gpt-4o-mini", // 🔥 fast & best
+          messages: [
             {
-              parts: [{ text: message }]
+              role: "user",
+              content: message
             }
           ]
         })
@@ -37,15 +50,18 @@ console.log("USER MESSAGE:", message);
 
     let reply = "";
 
-    // ✅ SAFE EXTRACTION
-    if (data.candidates && data.candidates.length > 0) {
-      const parts = data.candidates[0].content.parts || [];
-      reply = parts.map(p => p.text || "").join("");
+    // ✅ SAFE EXTRACTION (OPENROUTER)
+    if (
+      data?.choices &&
+      data.choices.length > 0 &&
+      data.choices[0]?.message?.content
+    ) {
+      reply = data.choices[0].message.content;
     }
 
-    // ❗ अगर reply empty है
+    // ❗ fallback
     if (!reply) {
-      if (data.error) {
+      if (data?.error) {
         console.log("API ERROR:", data.error);
         reply = "API Error: " + data.error.message;
       } else {
@@ -56,18 +72,18 @@ console.log("USER MESSAGE:", message);
     res.json({ reply });
 
   } catch (err) {
-    console.log("ERROR:", err);
-    res.json({ reply: "Server error" });
+    console.error("SERVER ERROR:", err);
+    res.status(500).json({ reply: "Server error 😢" });
   }
+});
+
+// ✅ ROOT CHECK
+app.get("/", (req, res) => {
+  res.send("Server is running ✅");
 });
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log("DeepSINKY AI server running on port " + PORT);
-});
-
-// ✅ ROOT FIX
-app.get("/", (req, res) => {
-  res.send("Server is running ✅");
 });
