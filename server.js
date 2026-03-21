@@ -77,11 +77,17 @@ app.post("/chat", async (req, res) => {
   }
 });
 
-// ✅ ROOT CHECK
+// ✅ ROOT ROUTE (ऊपर रखो)
 app.get("/", (req, res) => {
   res.send("Server is running ✅");
 });
 
+// 🔥 CHAT ROUTE
+app.post("/chat", async (req, res) => {
+  // ... your code
+});
+
+// ✅ LISTEN हमेशा सबसे नीचे
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
