@@ -65,7 +65,7 @@ async function send(){
   }catch(err){
 
     console.error(err);
-    thinking.innerHTML = "Error aa gaya Vikas";
+    thinking.innerHTML = "Error aa gaya Vikas 😢";
 
   }
 
