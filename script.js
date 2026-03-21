@@ -1,122 +1,99 @@
 const input = document.getElementById("input");
 const chat = document.getElementById("chat");
-const sendBtn = document.getElementById("sendBtn");
 
-// ✅ BUTTON CLICK
-sendBtn.addEventListener("click", function(){
-  console.log("BUTTON CLICKED");
-  send();
-});
-
-// ✅ ENTER KEY
 input.addEventListener("keypress", function(e){
-  if(e.key === "Enter"){
-    send();
-  }
-});
-
-function send(){
-  let text = input.value.trim();
-
-  console.log("SEND FUNCTION RUNNING:", text);
-
-  if(text === "") return;
-
-  alert("Message: " + text); // test
-
-  input.value = "";
+if(e.key==="Enter"){
+send();
 }
-
-  document.getElementById("welcome").style.display="none";
-  chat.style.display="block";
-
-  // USER MESSAGE
-  chat.innerHTML += `<div class="message user">${text}</div>`;
-
-  input.value="";
-
-  // THINKING
-  let thinking = document.createElement("div");
-  thinking.className = "message bot";
-  thinking.innerHTML = "Thinking<span class='dots'></span>";
-  chat.appendChild(thinking);
-
-  try{
-
-    let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
-  method:"POST",
-  headers:{
-    "Content-Type":"application/json"
-  },
-  body:JSON.stringify({message:text})
 });
 
-// 👇 YAHAN ADD KARO
-console.log("STATUS:", response.status);
+async function send(){
+
+let text = input.value.trim();
+if(text==="") return;
+
+document.getElementById("welcome").style.display="none";
+chat.style.display="block";
+
+// USER MESSAGE
+chat.innerHTML += `<div class="message user">${text}</div>`;
+
+input.value="";
+
+// THINKING (single)
+let thinking = document.createElement("div");
+thinking.className = "message bot";
+thinking.innerHTML = "Thinking<span class='dots'></span>";
+chat.appendChild(thinking);
+
+try{
+
+// UPDATED FETCH (CORS FIX)
+let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({message:text})
+});
 
 let data = await response.json();
 
-// 👇 YAHAN ADD KARO
-console.log("DATA:", data);
-    // SAFE REPLY
-    let reply = data.reply;
+// REMOVE THINKING
+thinking.remove();
 
-    if (!reply || reply === "No response") {
-      reply = "⚠️ Server se response nahi aaya";
-    }
+// BOT MESSAGE (typing effect)
+let botDiv = document.createElement("div");
+botDiv.className = "message bot";
+chat.appendChild(botDiv);
 
-    // REMOVE THINKING
-    thinking.remove();
+typeText(botDiv, data.reply);
 
-    // BOT MESSAGE
-    let botDiv = document.createElement("div");
-    botDiv.className = "message bot";
-    chat.appendChild(botDiv);
+}catch{
 
-    typeText(botDiv, reply);
+thinking.innerHTML = "Server error";
 
-  } catch(err){
-
-    console.log("FRONT ERROR:", err);
-    thinking.innerHTML = "Server error";
-
-  }
-
-  chat.scrollTop = chat.scrollHeight;
 }
 
+chat.scrollTop = chat.scrollHeight;
+
+}
 
 // TYPING ANIMATION
 function typeText(element, text){
 
-  let i = 0;
+let i = 0;
 
-  function typing(){
-    if(i < text.length){
-      element.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typing, 15);
-    }
-    chat.scrollTop = chat.scrollHeight;
-  }
+function typing(){
 
-  typing();
+if(i < text.length){
+element.innerHTML += text.charAt(i);
+i++;
+setTimeout(typing, 15);
 }
 
+chat.scrollTop = chat.scrollHeight;
+
+}
+
+typing();
+
+}
 
 // SIDEBAR TOGGLE
 function toggleSidebar(){
 
-  let sidebar = document.getElementById("sidebar");
-  let overlay = document.getElementById("overlay");
+let sidebar = document.getElementById("sidebar");
+let overlay = document.getElementById("overlay");
 
-  if(!sidebar || !overlay){
-    alert("Sidebar missing");
-    return;
-  }
+if(!sidebar || !overlay){
+alert("Sidebar missing");
+return;
+}
 
-  sidebar.classList.toggle("open");
-  overlay.classList.toggle("show");
+sidebar.classList.toggle("open");
+overlay.classList.toggle("show");
+
 }
 
 // DEBUG
