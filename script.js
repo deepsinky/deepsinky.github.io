@@ -1,6 +1,7 @@
 const input = document.getElementById("input");
 const chat = document.getElementById("chat");
 
+// ✅ ENTER KEY ONLY
 input.addEventListener("keypress", function(e){
   if(e.key === "Enter"){
     send();
@@ -12,8 +13,8 @@ async function send(){
   let text = input.value.trim();
   if(text === "") return;
 
-  document.getElementById("welcome").style.display="none";
-  chat.style.display="block";
+  document.getElementById("welcome").style.display = "none";
+  chat.style.display = "block";
 
   // USER MESSAGE
   chat.innerHTML += `<div class="message user">${text}</div>`;
@@ -27,45 +28,36 @@ async function send(){
 
   try{
 
-    let response = await fetch("https://deepsinky-server-1.onrender.com/chat", {
+    let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
       method:"POST",
       headers:{
-        "Authorization": "Bearer YOUR_OPENROUTER_API_KEY",
-        "Content-Type":"application/json",
-        "HTTP-Referer":"https://deepsinky.github.io",
-        "X-Title":"DeepSINKY"
+        "Content-Type":"application/json"
       },
-      body: JSON.stringify({
-        model: "openai/gpt-4o-mini",
-        messages: [
-          { role: "user", content: text }
-        ]
-      })
+      body: JSON.stringify({ message: text })
     });
 
     if(!response.ok){
-      throw new Error("API error");
+      throw new Error("Server error");
     }
 
     let data = await response.json();
-    console.log(data); // DEBUG
 
+    // REMOVE THINKING
     thinking.remove();
 
-    // BOT MESSAGE BOX
+    // BOT MESSAGE
     let botDiv = document.createElement("div");
     botDiv.className = "message bot";
     chat.appendChild(botDiv);
 
-    // SAFE RESPONSE
-    let reply = data?.choices?.[0]?.message?.content || "No response 😢";
+    let reply = data?.reply || "No response 😢";
 
     typeText(botDiv, reply);
 
   }catch(err){
 
     console.error(err);
-    thinking.innerHTML = "Error aa gaya 😢";
+    thinking.innerHTML = "⚠️ Server waking up...";
 
   }
 
@@ -105,39 +97,7 @@ function toggleSidebar(){
   sidebar.classList.toggle("open");
   overlay.classList.toggle("show");
 }
-async function send(){
 
-  try {
-    let response = await fetch("https://deepsinky-server-1.onrender.com/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ message: text })
-    });
-
-    // 🔥 retry अगर fail हो
-    if (!response.ok) {
-      await new Promise(r => setTimeout(r, 2000));
-
-      response = await fetch("https://deepsinky-server-1.onrender.com/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message: text })
-      });
-    }
-
-    let data = await response.json();
-    let reply = data.reply || "No response";
-
-    typeText(botDiv, reply);
-
-  } catch (err) {
-    thinking.innerHTML = "⚠️ Server waking up... try again";
-  }
-}
 
 // DEBUG
-alert("JS loaded");
+console.log("JS loaded ✅");
