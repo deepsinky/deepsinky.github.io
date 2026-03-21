@@ -31,11 +31,13 @@ app.post("/chat", async (req, res) => {
       {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${API_KEY}`,
-          "Content-Type": "application/json",
-          "HTTP-Referer": "https://deepsinky.onrender.com",
-          "X-Title": "DeepSINKY"
-        },
+  "Authorization": `Bearer ${API_KEY}`,
+  "Content-Type": "application/json",
+  "HTTP-Referer": "https://deepsinky.github.io",
+  "X-Title": "DeepSINKY"
+        }
+          
+        
         body: JSON.stringify({
           model: "openai/gpt-4o-mini",
           messages: [
