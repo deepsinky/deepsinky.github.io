@@ -105,7 +105,39 @@ function toggleSidebar(){
   sidebar.classList.toggle("open");
   overlay.classList.toggle("show");
 }
+async function send(){
 
+  try {
+    let response = await fetch("https://deepsinky-server-1.onrender.com/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message: text })
+    });
+
+    // 🔥 retry अगर fail हो
+    if (!response.ok) {
+      await new Promise(r => setTimeout(r, 2000));
+
+      response = await fetch("https://deepsinky-server-1.onrender.com/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message: text })
+      });
+    }
+
+    let data = await response.json();
+    let reply = data.reply || "No response";
+
+    typeText(botDiv, reply);
+
+  } catch (err) {
+    thinking.innerHTML = "⚠️ Server waking up... try again";
+  }
+}
 
 // DEBUG
 alert("JS loaded");
