@@ -2,99 +2,110 @@ const input = document.getElementById("input");
 const chat = document.getElementById("chat");
 
 input.addEventListener("keypress", function(e){
-if(e.key==="Enter"){
-send();
-}
+  if(e.key === "Enter"){
+    send();
+  }
 });
 
 async function send(){
 
-let text = input.value.trim();
-if(text==="") return;
+  let text = input.value.trim();
+  if(text === "") return;
 
-document.getElementById("welcome").style.display="none";
-chat.style.display="block";
+  document.getElementById("welcome").style.display="none";
+  chat.style.display="block";
 
-// USER MESSAGE
-chat.innerHTML += `<div class="message user">${text}</div>`;
+  // USER MESSAGE
+  chat.innerHTML += `<div class="message user">${text}</div>`;
+  input.value = "";
 
-input.value="";
+  // THINKING
+  let thinking = document.createElement("div");
+  thinking.className = "message bot";
+  thinking.innerHTML = "Thinking<span class='dots'></span>";
+  chat.appendChild(thinking);
 
-// THINKING (single)
-let thinking = document.createElement("div");
-thinking.className = "message bot";
-thinking.innerHTML = "Thinking<span class='dots'></span>";
-chat.appendChild(thinking);
+  try{
 
-try{
+    let response = await fetch("https://openrouter.ai/api/v1/chat/completions",{
+      method:"POST",
+      headers:{
+        "Authorization": "Bearer YOUR_OPENROUTER_API_KEY",
+        "Content-Type":"application/json",
+        "HTTP-Referer":"https://deepsinky.github.io",
+        "X-Title":"DeepSINKY"
+      },
+      body: JSON.stringify({
+        model: "openai/gpt-4o-mini",
+        messages: [
+          { role: "user", content: text }
+        ]
+      })
+    });
 
-//  UPDATED FETCH (CORS FIX)
-let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({message:text})
-});
+    if(!response.ok){
+      throw new Error("API error");
+    }
 
-let data = await response.json();
+    let data = await response.json();
+    console.log(data); // DEBUG
 
-// REMOVE THINKING
-thinking.remove();
+    thinking.remove();
 
-// BOT MESSAGE (typing effect)
-let botDiv = document.createElement("div");
-botDiv.className = "message bot";
-chat.appendChild(botDiv);
+    // BOT MESSAGE BOX
+    let botDiv = document.createElement("div");
+    botDiv.className = "message bot";
+    chat.appendChild(botDiv);
 
-typeText(botDiv, data.reply);
+    // SAFE RESPONSE
+    let reply = data?.choices?.[0]?.message?.content || "No response 😢";
 
-}catch{
+    typeText(botDiv, reply);
 
-thinking.innerHTML = "Server error";
+  }catch(err){
 
+    console.error(err);
+    thinking.innerHTML = "Error aa gaya 😢";
+
+  }
+
+  chat.scrollTop = chat.scrollHeight;
 }
 
-chat.scrollTop = chat.scrollHeight;
 
-}
-
-// TYPING ANIMATION
+// ✨ TYPING EFFECT
 function typeText(element, text){
 
-let i = 0;
+  let i = 0;
 
-function typing(){
+  function typing(){
+    if(i < text.length){
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, 15);
+    }
+    chat.scrollTop = chat.scrollHeight;
+  }
 
-if(i < text.length){
-element.innerHTML += text.charAt(i);
-i++;
-setTimeout(typing, 15);
+  typing();
 }
 
-chat.scrollTop = chat.scrollHeight;
 
-}
-
-typing();
-
-}
-
-// SIDEBAR TOGGLE
+// 📱 SIDEBAR
 function toggleSidebar(){
 
-let sidebar = document.getElementById("sidebar");
-let overlay = document.getElementById("overlay");
+  let sidebar = document.getElementById("sidebar");
+  let overlay = document.getElementById("overlay");
 
-if(!sidebar || !overlay){
-alert("Sidebar missing");
-return;
+  if(!sidebar || !overlay){
+    alert("Sidebar missing");
+    return;
+  }
+
+  sidebar.classList.toggle("open");
+  overlay.classList.toggle("show");
 }
 
-sidebar.classList.toggle("open");
-overlay.classList.toggle("show");
-
-}
 
 // DEBUG
 alert("JS loaded");
