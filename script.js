@@ -9,6 +9,7 @@ input.addEventListener("keypress", function(e){
 
 async function send(){
 console.log("Button clicked");
+  alert("Button clicked");
   let text = input.value.trim();
   if(text === "") return;
 
