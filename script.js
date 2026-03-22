@@ -6,9 +6,11 @@ async function send(){
   document.getElementById("welcome").style.display="none";
   chat.style.display="block";
 
+  // USER MESSAGE
   chat.innerHTML += `<div class="message user">${text}</div>`;
   input.value = "";
 
+  // THINKING
   let thinking = document.createElement("div");
   thinking.className = "message bot";
   thinking.innerHTML = "Thinking<span class='dots'></span>";
@@ -26,18 +28,26 @@ async function send(){
       })
     });
 
+    // ❌ agar error aaye to
+    if(!response.ok){
+      let errText = await response.text();
+      throw new Error(errText);
+    }
+
+    // ✅ sirf ek baar json lo
     let data = await response.json();
-    console.log("DATA:", data); // 👈 debug
+    console.log("DATA:", data);
 
     let reply = data.reply;
 
     // 🔥 safety
     if(!reply){
-      reply = "⚠️ No reply from server";
+      reply = "⚠️ No reply from AI";
     }
 
     thinking.remove();
 
+    // BOT MESSAGE
     let botDiv = document.createElement("div");
     botDiv.className = "message bot";
     chat.appendChild(botDiv);
