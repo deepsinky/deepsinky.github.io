@@ -32,12 +32,10 @@ app.post("/chat", async (req, res) => {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${API_KEY}`,
-          "Content-Type": "application/json",
-          "HTTP-Referer": "https://deepsinky.github.io",
-          "X-Title": "DeepSINKY"
-        }, // ✅ FIXED
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify({
-          model: "openai/gpt-4o-mini",
+          model: "deepseek/deepseek-chat", // 🔥 stable model
           messages: [
             {
               role: "user",
@@ -53,8 +51,9 @@ app.post("/chat", async (req, res) => {
     const data = await response.json();
     console.log("FULL DATA:", JSON.stringify(data, null, 2));
 
-    let reply = data?.choices?.[0]?.message?.content || "";
+    let reply = data?.choices?.[0]?.message?.content;
 
+    // 🔥 Safety handling
     if (!reply) {
       if (data?.error) {
         reply = "API Error: " + data.error.message;
