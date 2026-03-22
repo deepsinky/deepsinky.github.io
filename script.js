@@ -30,9 +30,9 @@ async function send(){
     let response = await fetch("https://openrouter.ai/api/v1/chat/completions",{
       method:"POST",
       headers:{
-        "Authorization": "Bearer YOUR_OPENROUTER_API_KEY",
+        "Authorization": "Bearer sk-or-xxxxxxxxxxxx", // 👈 apni real API key daalo
         "Content-Type":"application/json",
-        "HTTP-Referer":"https://deepsinky.github.io",
+        "HTTP-Referer": window.location.origin, // 🔥 FIX
         "X-Title":"DeepSINKY"
       },
       body: JSON.stringify({
@@ -43,12 +43,14 @@ async function send(){
       })
     });
 
+    // 🔥 REAL ERROR SHOW
     if(!response.ok){
-      throw new Error("API error");
+      let errText = await response.text();
+      throw new Error(errText);
     }
 
     let data = await response.json();
-    console.log(data); // DEBUG
+    console.log("API RESPONSE:", data);
 
     thinking.remove();
 
@@ -64,8 +66,10 @@ async function send(){
 
   }catch(err){
 
-    console.error(err);
-    thinking.innerHTML = "Error aa gaya Vikas 😢";
+    console.error("ERROR:", err);
+
+    // 🔥 ERROR SHOW USER KO
+    thinking.innerHTML = "❌ " + err.message;
 
   }
 
@@ -73,16 +77,17 @@ async function send(){
 }
 
 
-// ✨ TYPING EFFECT
+// ✨ TYPING EFFECT (IMPROVED)
 function typeText(element, text){
 
   let i = 0;
+  element.innerHTML = "";
 
   function typing(){
     if(i < text.length){
       element.innerHTML += text.charAt(i);
       i++;
-      setTimeout(typing, 15);
+      setTimeout(typing, 10);
     }
     chat.scrollTop = chat.scrollHeight;
   }
@@ -107,5 +112,5 @@ function toggleSidebar(){
 }
 
 
-// DEBUG
-alert("JS loaded");
+// ❌ REMOVE THIS (annoying popup)
+// alert("JS loaded");
