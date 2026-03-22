@@ -26,13 +26,15 @@ async function send(){
       })
     });
 
-    if(!response.ok){
-      let errText = await response.text();
-      throw new Error(errText);
-    }
-
     let data = await response.json();
-    let reply = data.reply; // ✅ correct
+    console.log("DATA:", data); // 👈 debug
+
+    let reply = data.reply;
+
+    // 🔥 safety
+    if(!reply){
+      reply = "⚠️ No reply from server";
+    }
 
     thinking.remove();
 
