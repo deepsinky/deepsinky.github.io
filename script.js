@@ -27,22 +27,15 @@ async function send(){
 
   try{
 
-    let response = await fetch("https://openrouter.ai/api/v1/chat/completions",{
-      method:"POST",
-      headers:{
-        "Authorization": "Bearer sk-or-xxxxxxxxxxxx", // 👈 apni real API key daalo
-        "Content-Type":"application/json",
-        "HTTP-Referer": window.location.origin, // 🔥 FIX
-        "X-Title":"DeepSINKY"
-      },
-      body: JSON.stringify({
-        model: "openai/gpt-4o-mini",
-        messages: [
-          { role: "user", content: text }
-        ]
-      })
-    });
-
+    let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
+  method:"POST",
+  headers:{
+    "Content-Type":"application/json"
+  },
+  body: JSON.stringify({
+    message: text
+  })
+});
     // 🔥 REAL ERROR SHOW
     if(!response.ok){
       let errText = await response.text();
