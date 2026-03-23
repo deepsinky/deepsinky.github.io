@@ -52,9 +52,8 @@ app.post("/chat", async (req, res) => {
 
     const data = await response.json();
     console.log("FULL DATA:", JSON.stringify(data, null, 2));
-
-    let reply = data.reply || "No response 😢";
-
+let reply = data?.choices?.[0]?.message?.content || "";
+    
     if (!reply) {
       if (data?.error) {
         reply = "API Error: " + data.error.message;
@@ -74,6 +73,6 @@ app.post("/chat", async (req, res) => {
 // LISTEN
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log("DeepSINKY AI server running on port " + PORT);
 });
