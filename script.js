@@ -8,8 +8,7 @@ input.addEventListener("keypress", function(e){
 });
 
 async function send(){
-console.log("Button clicked");
-  alert("Button clicked");
+
   let text = input.value.trim();
   if(text === "") return;
 
@@ -28,20 +27,23 @@ console.log("Button clicked");
 
   try{
 
-    let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
-  method:"POST",
-  headers:{
-    "Content-Type":"application/json"
-  },
-  body: JSON.stringify({
-    message: text
-  })
-});
+    let response = await fetch("https://openrouter.ai/api/v1/chat/completions",{
+      method:"POST",
+      headers:{
+        "Authorization": "Bearer sk-or-xxxxxxxxxxxx", // 👈 apni real API key daalo
+        "Content-Type":"application/json",
+        "HTTP-Referer": window.location.origin, // 🔥 FIX
+        "X-Title":"DeepSINKY"
+      },
+      body: JSON.stringify({
+        model: "openai/gpt-4o-mini",
+        messages: [
+          { role: "user", content: text }
+        ]
+      })
+    });
 
-let data = await response.json();
-let reply = data.reply;
-
-    //  REAL ERROR SHOW
+    // 🔥 REAL ERROR SHOW
     if(!response.ok){
       let errText = await response.text();
       throw new Error(errText);
@@ -66,7 +68,7 @@ let reply = data.reply;
 
     console.error("ERROR:", err);
 
-    // ERROR SHOW USER KO
+    // 🔥 ERROR SHOW USER KO
     thinking.innerHTML = "❌ " + err.message;
 
   }
@@ -75,7 +77,7 @@ let reply = data.reply;
 }
 
 
-// =====✓ TYPING EFFECT (IMPROVED)=======//
+// ✨ TYPING EFFECT (IMPROVED)
 function typeText(element, text){
 
   let i = 0;
@@ -94,7 +96,7 @@ function typeText(element, text){
 }
 
 
-// ======================SIDEBAR=============== //
+// 📱 SIDEBAR
 function toggleSidebar(){
 
   let sidebar = document.getElementById("sidebar");
@@ -110,5 +112,5 @@ function toggleSidebar(){
 }
 
 
-// REMOVE THIS (annoying popup)
+// ❌ REMOVE THIS (annoying popup)
 // alert("JS loaded");
