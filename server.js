@@ -10,12 +10,12 @@ app.use(express.json());
 const API_KEY = process.env.API_KEY;
 console.log("API KEY CHECK:", API_KEY ? "OK" : "MISSING");
 
-// ROOT
+// ✅ ROOT ROUTE
 app.get("/", (req, res) => {
   res.send("Server is running ✅");
 });
 
-// CHAT
+// 🔥 CHAT ROUTE (ONLY ONCE)
 app.post("/chat", async (req, res) => {
   try {
     const message = req.body.message;
@@ -31,11 +31,15 @@ app.post("/chat", async (req, res) => {
       {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${API_KEY}`,
-          "Content-Type": "application/json"
-        },
+  "Authorization": `Bearer ${API_KEY}`,
+  "Content-Type": "application/json",
+  "HTTP-Referer": "https://deepsinky.github.io",
+  "X-Title": "DeepSINKY"
+        }
+          
+        
         body: JSON.stringify({
-          model: "deepseek/deepseek-chat", // 🔥 stable model
+          model: "openai/gpt-4o-mini",
           messages: [
             {
               role: "user",
@@ -51,9 +55,8 @@ app.post("/chat", async (req, res) => {
     const data = await response.json();
     console.log("FULL DATA:", JSON.stringify(data, null, 2));
 
-    let reply = data?.choices?.[0]?.message?.content;
+    let reply = data?.choices?.[0]?.message?.content || "";
 
-    // 🔥 Safety handling
     if (!reply) {
       if (data?.error) {
         reply = "API Error: " + data.error.message;
@@ -70,7 +73,7 @@ app.post("/chat", async (req, res) => {
   }
 });
 
-// LISTEN
+// ✅ LISTEN
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
