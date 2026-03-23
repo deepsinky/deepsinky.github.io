@@ -9,7 +9,7 @@ app.use(express.json());
 
 const API_KEY = process.env.API_KEY;
 console.log("API KEY CHECK:", API_KEY ? "OK" : "MISSING");
-
+console.log("API KEY VALUE:", API_KEY);
 // ROOT
 app.get("/", (req, res) => {
   res.send("Server is running ✅");
