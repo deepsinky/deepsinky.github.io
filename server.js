@@ -10,12 +10,12 @@ app.use(express.json());
 const API_KEY = process.env.API_KEY;
 console.log("API KEY CHECK:", API_KEY ? "OK" : "MISSING");
 
-// ✅ ROOT ROUTE
+// ROOT
 app.get("/", (req, res) => {
   res.send("Server is running ✅");
 });
 
-// 🔥 CHAT ROUTE (ONLY ONCE)
+// CHAT
 app.post("/chat", async (req, res) => {
   try {
     const message = req.body.message;
@@ -31,13 +31,11 @@ app.post("/chat", async (req, res) => {
       {
         method: "POST",
         headers: {
-  "Authorization": `Bearer ${API_KEY}`,
-  "Content-Type": "application/json",
-  "HTTP-Referer": "https://deepsinky.github.io",
-  "X-Title": "DeepSINKY"
-        }
-          
-        
+          "Authorization": `Bearer ${API_KEY}`,
+          "Content-Type": "application/json",
+          "HTTP-Referer": "https://deepsinky.github.io",
+          "X-Title": "DeepSINKY"
+        }, // ✅ FIXED
         body: JSON.stringify({
           model: "openai/gpt-4o-mini",
           messages: [
@@ -73,7 +71,7 @@ app.post("/chat", async (req, res) => {
   }
 });
 
-// ✅ LISTEN
+// LISTEN
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
