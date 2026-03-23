@@ -53,7 +53,7 @@ app.post("/chat", async (req, res) => {
     const data = await response.json();
     console.log("FULL DATA:", JSON.stringify(data, null, 2));
 
-    let reply = data?.choices?.[0]?.message?.content || "";
+    let reply = data.reply || "No response 😢";
 
     if (!reply) {
       if (data?.error) {
