@@ -1,3 +1,4 @@
+alert("JS WORKING");
 const input = document.getElementById("input");
 const chat = document.getElementById("chat");
 
