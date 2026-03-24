@@ -243,3 +243,47 @@ color:white;
 margin-bottom:15px;
 outline:none;
 }
+/* ===== Heading ===== */
+.message.bot b{
+font-size:16px;
+display:block;
+margin-top:10px;
+}
+
+/* ===== Code block ===== */
+pre{
+background:#1e1e1e;
+padding:12px;
+border-radius:10px;
+overflow-x:auto;
+margin-top:10px;
+}
+
+code{
+color:#00ffcc;
+}
+
+/* ===== Bullet style ===== */
+.message.bot{
+line-height:1.6;
+}
+
+/* ===== Section spacing ===== */
+.message.bot br{
+margin-bottom:6px;
+display:block;
+content:"";
+}
+
+/* ===== Smooth card ===== */
+.bot{
+background:#2a2b32;
+border-radius:12px;
+padding:12px;
+animation:fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(10px);}
+to{opacity:1; transform:translateY(0);}
+}
