@@ -10,6 +10,7 @@ height:100%;
 font-family:Arial, sans-serif;
 background:#202123;
 color:white;
+overflow:hidden;
 }
 
 /* ===== Main layout ===== */
@@ -69,24 +70,21 @@ background:#2a2b32;
 
 /* ===== Chat ===== */
 .chat{
-  flex:1;
-  overflow-y:auto;
-  padding:20px;
-  padding-bottom:180px; 
-  display:none;
-}
-
-/* 🔥 MAIN FIX */
-padding-bottom:120px;
+flex:1;
+overflow-y:auto;
+padding:20px;
+padding-bottom:160px; /* 🔥 FINAL FIX */
+display:none;
 }
 
 /* ===== Messages ===== */
 .message{
-padding:10px 15px;
+padding:12px 15px;
 margin:10px 0;
-border-radius:10px;
+border-radius:12px;
 max-width:70%;
 word-wrap:break-word;
+line-height:1.6;
 }
 
 .user{
@@ -95,7 +93,7 @@ margin-left:auto;
 }
 
 .bot{
-background:#333;
+background:#2a2b32;
 }
 
 /* ===== Input bar ===== */
@@ -107,9 +105,9 @@ right:0;
 display:flex;
 align-items:center;
 background:#2a2b32;
-padding:8px;
+padding:10px;
 box-shadow:0 0 10px rgba(0,0,0,0.5);
-z-index:1000; /* 👈 EXTRA FIX */
+z-index:1000;
 }
 
 /* ===== Input ===== */
@@ -245,6 +243,7 @@ color:white;
 margin-bottom:15px;
 outline:none;
 }
+
 /* ===== Heading ===== */
 .message.bot b{
 font-size:16px;
@@ -265,21 +264,8 @@ code{
 color:#00ffcc;
 }
 
-/* ===== Bullet style ===== */
-.message.bot{
-line-height:1.6;
-}
-
-/* ===== Section spacing ===== */
-.message.bot br{
-margin-bottom:6px;
-display:block;
-content:"";
-}
-
 /* ===== Smooth card ===== */
 .bot{
-background:#2a2b32;
 border-radius:12px;
 padding:12px;
 animation:fadeIn 0.3s ease-in;
@@ -288,7 +274,4 @@ animation:fadeIn 0.3s ease-in;
 @keyframes fadeIn{
 from{opacity:0; transform:translateY(10px);}
 to{opacity:1; transform:translateY(0);}
-}
-html, body {
-  overflow: hidden;
 }
