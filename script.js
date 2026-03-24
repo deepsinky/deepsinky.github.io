@@ -68,7 +68,12 @@ async function send(){
 
   chat.scrollTop = chat.scrollHeight;
 }
-
+function formatText(text){
+  return text
+    .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
+    .replace(/\n/g, "<br>")
+    .replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>");
+}
 
 // ✨ TYPING EFFECT (IMPROVED)
 function typeText(element, text){
