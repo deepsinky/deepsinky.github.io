@@ -53,7 +53,7 @@ async function send(){
     chat.appendChild(botDiv);
 
     // SAFE RESPONSE
-    let reply = data?.choices?.[0]?.message?.content || "No response 😢";
+    let reply = data.reply || "No response 😢";
 
     typeText(botDiv, reply);
 
