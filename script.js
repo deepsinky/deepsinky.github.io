@@ -1,6 +1,6 @@
 const input = document.getElementById("input");
 const chat = document.getElementById("chat");
-
+let messages = [];
 input.addEventListener("keypress", function(e){
   if(e.key === "Enter"){
     send();
