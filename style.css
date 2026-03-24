@@ -125,15 +125,16 @@ body{
 }
 
 /* USER */
-.user{
-  background:#19c37d;
-  margin-left:auto;
-  color:white;
+.bot{
+  background:transparent;
 }
 
-/* BOT */
-.bot{
-  background:#444654;
+.user{
+  background:#19c37d;
+  color:white;
+  padding:10px 14px;
+  border-radius:20px;
+  display:inline-block;
 }
 
 /* ===== TEXT STYLE ===== */
