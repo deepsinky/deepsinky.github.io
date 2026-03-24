@@ -69,10 +69,12 @@ background:#2a2b32;
 
 /* ===== Chat ===== */
 .chat{
-flex:1;
-overflow-y:auto;
-padding:20px;
-display:none;
+  flex:1;
+  overflow-y:auto;
+  padding:20px;
+  padding-bottom:180px; 
+  display:none;
+}
 
 /* 🔥 MAIN FIX */
 padding-bottom:120px;
