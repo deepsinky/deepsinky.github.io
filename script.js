@@ -55,7 +55,7 @@ async function send(){
     // SAFE RESPONSE
     let reply = data.reply || "No response 😢";
 
-    typeText(botDiv, formatText(reply));
+    typeText(botDiv, reply);
 
   }catch(err){
 
@@ -77,22 +77,22 @@ function formatText(text){
 
 // ✨ TYPING EFFECT (IMPROVED)
 function typeText(element, text){
-
   let i = 0;
   element.innerHTML = "";
 
+  let formatted = formatText(text);
+
   function typing(){
-    if(i < text.length){
-      element.innerHTML += text.charAt(i);
+    if(i < formatted.length){
+      element.innerHTML = formatted.slice(0, i);
       i++;
-      setTimeout(typing, 10);
+      setTimeout(typing, 15);
     }
     chat.scrollTop = chat.scrollHeight;
   }
 
   typing();
 }
-
 
 // 📱 SIDEBAR
 function toggleSidebar(){
