@@ -33,9 +33,17 @@ async function send(){
     "Content-Type":"application/json"
   },
   body: JSON.stringify({
-    message: text
-  })
-});
+  messages: [
+    {
+      role: "system",
+      content: "Reply with emojis, bullet points, and bold text like ChatGPT"
+    },
+    {
+      role: "user",
+      content: text
+    }
+  ]
+})
     // 🔥 REAL ERROR SHOW
     if(!response.ok){
       let errText = await response.text();
