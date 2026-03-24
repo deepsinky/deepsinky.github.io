@@ -170,8 +170,69 @@ cursor:pointer;
 </div>
 
 </div>
+<script>
 
-<script src="script.js"></script>
+const input = document.getElementById("input");
+const chat = document.getElementById("chat");
 
+// ENTER KEY
+input.addEventListener("keypress", function(e){
+  if(e.key === "Enter"){
+    send();
+  }
+});
+
+async function send(){
+
+let text = input.value.trim();
+if(text==="") return;
+
+// welcome hide
+document.getElementById("welcome").style.display="none";
+chat.style.display="block";
+
+// USER MESSAGE
+chat.innerHTML += `<div class="message user">${text}</div>`;
+input.value="";
+
+// SCROLL DOWN
+chat.scrollTop = chat.scrollHeight;
+
+// BOT LOADING
+chat.innerHTML += `<div class="message bot" id="loading">Typing...</div>`;
+chat.scrollTop = chat.scrollHeight;
+
+try{
+
+const res = await fetch("https://deepsinky-server-1.onrender.com/chat", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    message: text
+  })
+});
+
+const data = await res.json();
+
+// REMOVE LOADING
+document.getElementById("loading").remove();
+
+// BOT MESSAGE
+chat.innerHTML += `<div class="message bot">${data.reply}</div>`;
+chat.scrollTop = chat.scrollHeight;
+
+}catch(err){
+
+document.getElementById("loading").remove();
+chat.innerHTML += `<div class="message bot">Error 😢</div>`;
+
+}
+
+}
+
+     </script>
+  <script src="script.js"></script>
 </body>
 </html>
