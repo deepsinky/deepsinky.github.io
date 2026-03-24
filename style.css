@@ -157,49 +157,61 @@ code{
   color:#00ffcc;
 }
 
-/* ===== INPUT AREA ===== */
+/*/* ===== Input Container ===== */
 .input-area{
   position:fixed;
-  bottom:0;
+  bottom:10px;
   left:0;
   right:0;
   display:flex;
-  align-items:center;
-  padding:10px;
-  background:#40414f;
-  border-top:1px solid #555;
+  justify-content:center;
   z-index:1000;
 }
 
-/* INPUT */
-.input-area input{
-  flex:1;
-  padding:12px;
-  border:none;
-  border-radius:25px;
-  outline:none;
-  font-size:16px;
+/* ===== Main Box ===== */
+.input-box{
+  width:95%;
+  max-width:600px;
+  display:flex;
+  align-items:center;
   background:#2a2b32;
-  color:white;
+  border-radius:30px;
+  padding:10px 15px;
+  box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
-/* BUTTON */
-button{
-  margin-left:10px;
-  padding:12px 20px;
+/* ===== Input ===== */
+.input-box input{
+  flex:1;
+  background:transparent;
   border:none;
-  border-radius:25px;
-  background:#19c37d;
   color:white;
-  font-weight:600;
+  font-size:16px;
+  outline:none;
+  padding:10px;
+}
+
+/* ===== Icons ===== */
+.plus, .mic{
+  font-size:18px;
+  margin:0 8px;
   cursor:pointer;
-  transition:0.2s;
 }
 
-button:hover{
-  background:#15a46b;
+/* ===== Send Button ===== */
+#sendBtn{
+  width:40px;
+  height:40px;
+  border:none;
+  border-radius:50%;
+  background:white;
+  color:black;
+  font-size:18px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-
 /* ===== TYPING DOTS ===== */
 .dots::after{
   content:"...";
