@@ -80,7 +80,9 @@ overflow-y:auto;
 padding:20px;
 display:none;
 }
-
+#chat {
+  padding-bottom: 100px; 
+}
 /* ===== Messages ===== */
 
 .message{
