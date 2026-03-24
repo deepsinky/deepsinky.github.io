@@ -63,7 +63,7 @@ async function send(){
     // SAFE RESPONSE
     let reply = data.reply || "No response 😢";
 
-    typeText(botDiv, reply);
+    typeText(botDiv, formatText(reply));
 
   }catch(err){
 
