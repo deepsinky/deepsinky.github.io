@@ -95,13 +95,7 @@ body{
   flex-direction:row-reverse;
   background:transparent;
 }
-.message.user .bubble{
-  background:#19c37d;
-  color:black;
-  border-radius:18px;
-  padding:10px 14px;
-  max-width:75%;
-}
+
 /* BOT */
 .message.bot{
   margin-right:auto;
