@@ -1,4 +1,4 @@
-/* ===== RESET ===== */
+  /* ===== RESET ===== */
 *{
   margin:0;
   padding:0;
@@ -109,7 +109,7 @@ body{
   flex:1;
   overflow-y:auto;
   padding:20px;
-  padding-bottom:70px;
+  padding-bottom:90px;
   scroll-behavior:smooth;
   display:none;
 }
@@ -125,23 +125,18 @@ body{
 }
 
 /* USER */
-.bot{
-  background:transparent;
-}
-
 .user{
   background:#19c37d;
   color:white;
   padding:10px 14px;
   border-radius:20px;
   display:inline-block;
+  margin-left:auto;
 }
 
-/* ===== TEXT STYLE ===== */
-.message.bot b{
-  font-size:16px;
-  display:block;
-  margin-top:8px;
+/* BOT */
+.bot{
+  background:transparent;
 }
 
 /* ===== CODE BLOCK ===== */
@@ -157,7 +152,7 @@ code{
   color:#00ffcc;
 }
 
-/*/* ===== Input Container ===== */
+/* ===== INPUT AREA ===== */
 .input-area{
   position:fixed;
   bottom:10px;
@@ -166,13 +161,9 @@ code{
   display:flex;
   justify-content:center;
   z-index:1000;
-
-  background:transparent;
-  box-shadow:none;
-  padding:0;
 }
 
-/* ===== Main Box ===== */
+/* ===== INPUT BOX ===== */
 .input-box{
   width:95%;
   max-width:600px;
@@ -181,32 +172,27 @@ code{
   background:#2a2b32;
   border-radius:30px;
   padding:10px 15px;
-  box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
-/* ===== Input ===== */
-.input-area{
-  position:fixed;
-  bottom:10px;
-  left:0;
-  right:0;
-  display:flex;
-  justify-content:center;
-  z-index:1000;
-
-  background:transparent;  
-  box-shadow:none;          
-  padding:0;                
+/* ===== INPUT ===== */
+.input-box input{
+  flex:1;
+  background:transparent;
+  border:none;
+  color:white;
+  font-size:16px;
+  padding:10px;
+  outline:none;
 }
 
-/* ===== Icons ===== */
+/* ===== ICONS ===== */
 .plus, .mic{
   font-size:18px;
   margin:0 8px;
   cursor:pointer;
 }
 
-/* ===== Send Button ===== */
+/* ===== SEND BUTTON ===== */
 #sendBtn{
   width:40px;
   height:40px;
@@ -220,6 +206,7 @@ code{
   align-items:center;
   justify-content:center;
 }
+
 /* ===== TYPING DOTS ===== */
 .dots::after{
   content:"...";
@@ -251,7 +238,7 @@ code{
   left:0;
 }
 
-/* OVERLAY */
+/* ===== OVERLAY ===== */
 .overlay{
   position:fixed;
   top:0;
@@ -267,7 +254,7 @@ code{
   display:block;
 }
 
-/* SIDEBAR ITEMS */
+/* ===== SIDEBAR ITEMS ===== */
 .side-item{
   padding:12px;
   border-radius:10px;
@@ -279,7 +266,7 @@ code{
   background:#2a2b32;
 }
 
-/* SEARCH */
+/* ===== SEARCH ===== */
 .search{
   width:100%;
   padding:10px;
@@ -301,4 +288,4 @@ code{
     opacity:1;
     transform:translateY(0);
   }
-}
+    }
