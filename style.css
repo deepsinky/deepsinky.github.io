@@ -90,10 +90,11 @@ body{
 }
 
 /* USER */
-.message.user{
-  margin-left:auto;
-  flex-direction:row-reverse;
-  background:transparent;
+.message.user .bubble{
+  background:none;
+  padding:0;
+  border-radius:0;
+  box-shadow:none;
 }
 
 /* BOT */
