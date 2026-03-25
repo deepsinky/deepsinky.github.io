@@ -28,7 +28,13 @@ document.addEventListener("DOMContentLoaded", function(){
     chat.style.display = "block";
 
     // USER MESSAGE
-    chat.innerHTML += `<div class="message user">${text}</div>`;
+    chat.innerHTML += `
+  <div class="message user">
+    <div class="bubble">
+      ${text}
+    </div>
+  </div>
+`;
     input.value = "";
 
     // THINKING
