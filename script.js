@@ -69,20 +69,25 @@ let botDiv = document.createElement("div");
 botDiv.className = "message bot";
 
 botDiv.innerHTML = `
-  <div class="text"></div>
+  <div class="avatar">🤖</div>
 
-  <div class="actions">
-    <span onclick="copyText(this)">📋</span>
-    <span onclick="likeMsg(this)">👍</span>
-    <span onclick="speakText(this)">🔊</span>
-    <span onclick="shareText(this)">🔗</span>
+  <div class="content">
+    <div class="bubble">
+      <div class="text"></div>
+    </div>
+
+    <div class="actions">
+      <span onclick="copyText(this)">📋</span>
+      <span onclick="likeMsg(this)">👍</span>
+      <span onclick="speakText(this)">🔊</span>
+      <span onclick="shareText(this)">🔗</span>
+    </div>
   </div>
 `;
 
 chat.appendChild(botDiv);
 
-      let reply = data.reply || "No response 😢";
-
+let reply = data.reply || "No response 😢";
 let textBox = botDiv.querySelector(".text");
 
 typeText(textBox, reply);
