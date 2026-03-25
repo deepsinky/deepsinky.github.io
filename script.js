@@ -58,13 +58,26 @@ document.addEventListener("DOMContentLoaded", function(){
 
       thinking.remove();
 
-      let botDiv = document.createElement("div");
-      botDiv.className = "message bot";
-      chat.appendChild(botDiv);
+      // BOT MESSAGE
+let botDiv = document.createElement("div");
+botDiv.className = "message bot";
+
+botDiv.innerHTML = `
+  <div class="text"></div>
+
+  <div class="actions">
+    <span onclick="copyText(this)">📋</span>
+    <span onclick="likeMsg(this)">👍</span>
+    <span onclick="speakText(this)">🔊</span>
+    <span onclick="shareText(this)">🔗</span>
+  </div>
+`;
+
+chat.appendChild(botDiv);
 
       let reply = data.reply || "No response 😢";
 
-      typeText(botDiv, reply);
+      typeText(botDiv.querySelector(".text"), reply);
 
     }catch(err){
       console.error("ERROR:", err);
