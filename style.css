@@ -316,3 +316,9 @@ code{
 .actions span{
   cursor:pointer;
 }
+.actions{
+  font-size:14px;
+}
+.actions span:hover{
+  opacity:1;
+}
