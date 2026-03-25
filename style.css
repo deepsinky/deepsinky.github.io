@@ -323,3 +323,6 @@ code{
   66%{content:"..";}
   100%{content:"...";}
 }
+.message.user .bubble{
+  background: transparent !important;
+}
