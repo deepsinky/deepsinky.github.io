@@ -119,27 +119,35 @@ body{
 
 /* ===== MESSAGE ===== */
 .message{
-  padding:14px 18px;
+  display:flex;
   margin:10px 0;
-  border-radius:15px;
-  max-width:75%;
-  line-height:1.6;
-  animation:fadeIn 0.3s ease;
+  max-width:100%;
 }
 
-/* USER */
-.user{
+/* USER RIGHT */
+.message.user{
+  justify-content:flex-end;
+}
+
+.message.user .text{
   background:#19c37d;
   color:white;
   padding:10px 14px;
   border-radius:20px;
-  display:inline-block;
-  margin-left:auto;
+  max-width:75%;
 }
 
-/* BOT */
-.bot{
-  background:transparent;
+/* BOT LEFT */
+.message.bot{
+  justify-content:flex-start;
+}
+
+.message.bot .text{
+  background:#2a2b32;
+  color:white;
+  padding:10px 14px;
+  border-radius:20px;
+  max-width:75%;
 }
 
 /* ===== CODE BLOCK ===== */
