@@ -10,6 +10,7 @@ html,body{
   font-family:"Segoe UI", Arial, sans-serif;
   background:#343541;
   color:white;
+  overflow-x:hidden; /* 🔥 FIX */
 }
 
 /* ===== MAIN ===== */
@@ -21,15 +22,16 @@ body{
 
 /* ===== HEADER ===== */
 .header{
+  position:relative;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:15px;
   border-bottom:1px solid #444;
   font-weight:600;
-  position:relative;
 }
 
+/* ===== LOGO ===== */
 .brand{
   display:flex;
   align-items:center;
@@ -39,6 +41,7 @@ body{
 
 .logo{
   width:28px;
+  height:28px;
 }
 
 /* ===== MENU ===== */
@@ -58,6 +61,7 @@ body{
 }
 
 .menu-circle span{
+  display:block;
   height:3px;
   background:white;
   border-radius:3px;
@@ -70,17 +74,18 @@ body{
 .chat{
   flex:1;
   overflow-y:auto;
-  padding:15px;
-  padding-bottom:100px;
+  overflow-x:hidden; /* 🔥 FIX */
+  padding:20px;
+  padding-bottom:120px;
   scroll-behavior:smooth;
   display:none;
 }
 
-/* ===== MESSAGE ===== */
+/* ===== MESSAGE BASE ===== */
 .message{
   display:flex;
   gap:10px;
-  margin:12px 0;
+  margin:15px 0;
   max-width:90%;
   animation:fadeIn 0.3s ease;
 }
@@ -98,14 +103,14 @@ body{
 
 /* ===== AVATAR ===== */
 .avatar{
-  width:34px;
-  height:34px;
+  width:35px;
+  height:35px;
   border-radius:50%;
   background:#444;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:14px;
+  font-size:16px;
 }
 
 /* ===== CONTENT ===== */
@@ -119,32 +124,93 @@ body{
   padding:12px 16px;
   border-radius:18px;
   line-height:1.5;
-  max-width:100%;
-  word-break:break-word;
-  white-space:pre-wrap;
+  word-wrap:break-word;
+  max-width:75%;
+  backdrop-filter: blur(10px);
 }
 
-/* USER */
+/* USER STYLE */
 .message.user .bubble{
   background:linear-gradient(135deg,#19c37d,#00ffcc);
   color:black;
   border-bottom-right-radius:6px;
-  box-shadow:0 4px 15px rgba(0,255,200,0.2);
 }
 
-/* BOT */
+/* BOT STYLE */
 .message.bot .bubble{
   background:#2a2b32;
   color:white;
   border-bottom-left-radius:6px;
 }
 
+/* ===== CODE BLOCK ===== */
+pre{
+  background:#1e1e1e;
+  padding:12px;
+  border-radius:10px;
+  overflow-x:auto;
+  margin-top:10px;
+}
+
+code{
+  color:#00ffcc;
+}
+
+/* ===== INPUT AREA ===== */
+.input-area{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:60px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* ===== INPUT BOX ===== */
+.input-box{
+  width:95%;
+  max-width:600px;
+  display:flex;
+  align-items:center;
+  background:#2a2b32;
+  border-radius:30px;
+  padding:10px 15px;
+}
+
+/* ===== INPUT ===== */
+.input-box input{
+  flex:1;
+  background:transparent;
+  border:none;
+  color:white;
+  font-size:16px;
+  padding:10px;
+  outline:none;
+}
+
+/* ===== SEND BUTTON ===== */
+#sendBtn{
+  width:40px;
+  height:40px;
+  border:none;
+  border-radius:50%;
+  background:white;
+  color:black;
+  font-size:18px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
 /* ===== ACTIONS ===== */
 .actions{
   display:flex;
-  gap:10px;
-  margin-top:5px;
-  font-size:13px;
+  gap:12px;
+  margin-top:6px;
+  font-size:14px;
   opacity:0;
   transition:0.2s;
 }
@@ -164,76 +230,50 @@ body{
   transform:scale(1.2);
 }
 
-/* ===== INPUT AREA ===== */
-.input-area{
-  position:fixed;
-  bottom:10px;
-  left:0;
-  right:0;
-  display:flex;
-  justify-content:center;
-}
-
-.input-box{
-  width:95%;
-  max-width:600px;
-  display:flex;
-  align-items:center;
-  background:#2a2b32;
-  border-radius:30px;
-  padding:10px 15px;
-}
-
-.input-box input{
-  flex:1;
-  background:transparent;
-  border:none;
-  color:white;
-  font-size:16px;
-  outline:none;
-}
-
-.plus,.mic{
-  margin:0 8px;
-  cursor:pointer;
-}
-
-/* SEND BUTTON */
-#sendBtn{
-  width:40px;
-  height:40px;
-  border:none;
-  border-radius:50%;
-  background:white;
-  color:black;
-  cursor:pointer;
-}
-
 /* ===== SIDEBAR ===== */
 .sidebar{
   position:fixed;
-  left:-260px;
   top:0;
+  left:-260px;
   width:260px;
   height:100%;
   background:#202123;
   padding:20px;
   transition:0.3s;
+  z-index:1000;
+  overflow-y:auto;
 }
 
 .sidebar.open{
   left:0;
 }
 
+/* ===== OVERLAY ===== */
 .overlay{
   position:fixed;
-  inset:0;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
   background:rgba(0,0,0,0.5);
   display:none;
+  z-index:900;
 }
 
 .overlay.show{
   display:block;
+}
+
+/* ===== SEARCH ===== */
+.search{
+  width:100%;
+  padding:10px;
+  border-radius:20px;
+  border:none;
+  background:#2a2b32;
+  color:white;
+  margin-bottom:15px;
+  outline:none;
 }
 
 /* ===== ANIMATION ===== */
@@ -246,4 +286,17 @@ body{
     opacity:1;
     transform:translateY(0);
   }
+}
+
+/* ===== TYPING DOTS ===== */
+.dots::after{
+  content:"";
+  animation:dots 1.2s steps(3,end) infinite;
+}
+
+@keyframes dots{
+  0%{content:"";}
+  33%{content:".";}
+  66%{content:"..";}
+  100%{content:"...";}
 }
