@@ -144,3 +144,30 @@ function toggleSidebar(){
   sidebar.classList.toggle("open");
   overlay.classList.toggle("show");
 }
+// ===== ACTION BUTTONS =====
+
+function copyText(el){
+  let text = el.closest(".content").querySelector(".text").innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copied!");
+}
+
+function likeMsg(el){
+  el.innerHTML = "❤️";
+}
+
+function speakText(el){
+  let text = el.closest(".content").querySelector(".text").innerText;
+  let speech = new SpeechSynthesisUtterance(text);
+  speech.lang = "en-US";
+  speechSynthesis.speak(speech);
+}
+
+function shareText(el){
+  let text = el.closest(".content").querySelector(".text").innerText;
+  if(navigator.share){
+    navigator.share({ text });
+  } else {
+    alert("Share not supported");
+  }
+}
