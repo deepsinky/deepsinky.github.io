@@ -2,122 +2,118 @@
 <html>
 
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DeepSINKY</title>
+
 <link rel="stylesheet" href="style.css">
+
 <style>
 
+/* 🔥 FIXED BODY */
 body{
-margin:0;
-font-family:Arial;
-background:#202123;
-color:white;
-display:flex;
-flex-direction:column;
-height:100vh;
-overflow:hidden;
+  margin:0;
+  font-family:Arial;
+  background:#202123;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  height:100vh;
 }
 
+/* HEADER */
 .header{
-display:flex;
-align-items:center;
-justify-content:center;
-padding:15px;
-border-bottom:1px solid #333;
-font-size:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+  border-bottom:1px solid #333;
+  font-size:18px;
 }
 
 .brand{
-display:flex;
-align-items:center;
-gap:8px;
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
 
 .logo{
-width:28px;
-height:28px;
+  width:28px;
 }
 
+/* CENTER */
 .center{
-flex:1;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
 
-.center h1{
-font-size:28px;
-margin-bottom:30px;
-}
-
-.options{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-}
-
-.option{
-padding:12px 20px;
-border-radius:25px;
-border:1px solid #444;
-cursor:pointer;
-}
-
-.option:hover{
-background:#2a2b32;
-}
-
+/* CHAT */
 .chat{
-flex:1;
-overflow-y:auto;
-padding:20px;
-display:none;
+  flex:1;
+  overflow-y:auto;
+  padding:20px;
+  display:none;
 }
 
+/* MESSAGE */
 .message{
-padding:10px 15px;
-margin:10px 0;
-border-radius:10px;
-max-width:70%;
+  padding:10px 15px;
+  margin:10px 0;
+  border-radius:10px;
+  max-width:70%;
 }
 
 .user{
-background:#444;
-margin-left:auto;
+  background:#19c37d;
+  margin-left:auto;
 }
 
 .bot{
-background:#333;
+  background:#333;
 }
 
+/* 🔥 INPUT FIX */
 .input-area{
-display:flex;
-padding:15px;
-border-top:1px solid #333;
-background:#202123;
+  position:fixed;
+  bottom:10px;
+  left:0;
+  right:0;
+  display:flex;
+  justify-content:center;
 }
 
-input{
-flex:1;
-padding:15px;
-border-radius:25px;
-border:none;
-background:#40414f;
-color:white;
-outline:none;
+.input-box{
+  width:95%;
+  max-width:600px;
+  display:flex;
+  align-items:center;
+  background:#2a2b32;
+  border-radius:30px;
+  padding:10px 15px;
 }
 
-button{
-margin-left:10px;
-padding:12px 18px;
-border:none;
-border-radius:25px;
-background:#19c37d;
-color:white;
-cursor:pointer;
+/* INPUT */
+.input-box input{
+  flex:1;
+  background:transparent;
+  border:none;
+  color:white;
+  padding:10px;
+  outline:none;
+}
+
+/* BUTTON */
+#sendBtn{
+  width:40px;
+  height:40px;
+  border:none;
+  border-radius:50%;
+  background:white;
+  color:black;
+  cursor:pointer;
 }
 
 </style>
@@ -126,59 +122,53 @@ cursor:pointer;
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
-<div class="menu-circle" onclick="toggleSidebar()">
-  <span></span>
-  <span></span>
-</div>
-<div class="brand">
-<img src="logo.png" class="logo">
-<span>DeepSINKY</span>
-</div>
+  <div class="menu-circle" onclick="toggleSidebar()">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="brand">
+    <img src="logo.png" class="logo">
+    <span>DeepSINKY</span>
+  </div>
 </div>
 
+<!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
-
-<input class="search" placeholder="Search">
-
-<div class="side-item">New chat</div>
-<div class="side-item">Images</div>
-<div class="side-item">Apps</div>
-
+  <input class="search" placeholder="Search">
+  <div class="side-item">New chat</div>
+  <div class="side-item">Images</div>
+  <div class="side-item">Apps</div>
 </div>
 
 <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
+<!-- WELCOME -->
 <div class="center" id="welcome">
-
-<h1>How can I be of help?</h1>
-
-<div class="options">
-<div class="option">Create image</div>
-<div class="option">Get advice</div>
-<div class="option">Summarize text</div>
-<div class="option">Make a plan</div>
+  <h1>How can I help you?</h1>
 </div>
 
-</div>
-
+<!-- CHAT -->
 <div class="chat" id="chat"></div>
 
+<!-- INPUT -->
 <div class="input-area">
-  
   <div class="input-box">
-    
-    <span class="plus">+</span>
 
-    <input type="text" id="input" placeholder="Ask DeepSINKY" />
+    <span>+</span>
 
-    <span class="mic">🎤</span>
+    <input id="input" placeholder="Ask DeepSINKY">
+
+    <span>🎤</span>
 
     <button id="sendBtn">➤</button>
 
   </div>
-
 </div>
-  <script src="script.js"></script>
+
+<script src="script.js"></script>
+
 </body>
 </html>
