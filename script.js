@@ -1,16 +1,13 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-  // ===== ELEMENTS =====
   const input = document.getElementById("input");
   const chat = document.getElementById("chat");
   const sendBtn = document.getElementById("sendBtn");
 
-  // ===== BUTTON CLICK =====
   if(sendBtn){
     sendBtn.addEventListener("click", send);
   }
 
-  // ===== ENTER KEY =====
   if(input){
     input.addEventListener("keypress", function(e){
       if(e.key === "Enter"){
@@ -25,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function(){
     let text = input.value.trim();
     if(text === "") return;
 
-    // Hide welcome
     const welcome = document.getElementById("welcome");
     if(welcome) welcome.style.display = "none";
 
@@ -62,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
       thinking.remove();
 
-      // BOT MESSAGE
       let botDiv = document.createElement("div");
       botDiv.className = "message bot";
       chat.appendChild(botDiv);
@@ -72,12 +67,15 @@ document.addEventListener("DOMContentLoaded", function(){
       typeText(botDiv, reply);
 
     }catch(err){
-
       console.error("ERROR:", err);
       thinking.innerHTML = "❌ " + err.message;
-
     }
-chat.scrollTop = chat.scrollHeight;
+
+    // ✅ सही जगह
+    chat.scrollTop = chat.scrollHeight;
+
+  } // 👈 send() यहीं बंद होगा
+
   // =========================
   function formatText(text){
     return text
@@ -105,7 +103,7 @@ chat.scrollTop = chat.scrollHeight;
     typing();
   }
 
-});
+}); // 👈 DOMContentLoaded end
 
 // ===== SIDEBAR =====
 function toggleSidebar(){
