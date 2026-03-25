@@ -307,18 +307,27 @@ code{
 /* ===== ACTION BUTTONS ===== */
 .actions{
   display:flex;
-  gap:10px;
-  margin-top:5px;
-  margin-left:10px;
-  opacity:0.7;
-}
-
-.actions span{
-  cursor:pointer;
-}
-.actions{
+  gap:12px;
+  margin-top:6px;
+  margin-left:8px;
+  opacity:0;
+  transition:0.2s;
   font-size:14px;
 }
+
+/* hover pe show */
+.message.bot:hover .actions{
+  opacity:1;
+}
+
+/* icon style */
+.actions span{
+  cursor:pointer;
+  opacity:0.6;
+  transition:0.2s;
+}
+
 .actions span:hover{
   opacity:1;
+  transform:scale(1.2);
 }
