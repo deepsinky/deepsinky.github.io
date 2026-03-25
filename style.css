@@ -17,6 +17,7 @@ body{
   display:flex;
   flex-direction:column;
   height:100vh;
+  overflow-x:hidden; /* safe fix */
 }
 
 /* ===== HEADER ===== */
@@ -141,6 +142,31 @@ body{
   border-bottom-left-radius:6px;
 }
 
+/* ===== ACTIONS ===== */
+.actions{
+  display:flex;
+  gap:12px;
+  margin-top:6px;
+  font-size:14px;
+  opacity:0;
+  transition:0.2s;
+}
+
+.message.bot:hover .actions{
+  opacity:1;
+}
+
+.actions span{
+  cursor:pointer;
+  opacity:0.6;
+  transition:0.2s;
+}
+
+.actions span:hover{
+  opacity:1;
+  transform:scale(1.2);
+}
+
 /* ===== CODE BLOCK ===== */
 pre{
   background:#1e1e1e;
@@ -188,6 +214,13 @@ code{
   outline:none;
 }
 
+/* ===== ICONS ===== */
+.plus, .mic{
+  font-size:18px;
+  margin:0 8px;
+  cursor:pointer;
+}
+
 /* ===== SEND BUTTON ===== */
 #sendBtn{
   width:40px;
@@ -201,31 +234,6 @@ code{
   display:flex;
   align-items:center;
   justify-content:center;
-}
-
-/* ===== ACTIONS ===== */
-.actions{
-  display:flex;
-  gap:12px;
-  margin-top:6px;
-  font-size:14px;
-  opacity:0;
-  transition:0.2s;
-}
-
-.message.bot:hover .actions{
-  opacity:1;
-}
-
-.actions span{
-  cursor:pointer;
-  opacity:0.6;
-  transition:0.2s;
-}
-
-.actions span:hover{
-  opacity:1;
-  transform:scale(1.2);
 }
 
 /* ===== SIDEBAR ===== */
