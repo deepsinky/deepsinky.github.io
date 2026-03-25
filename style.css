@@ -99,7 +99,14 @@ body{
 .message.bot{
   margin-right:auto;
 }
+.message.bot{
+  background:transparent !important;
+  padding:0 !important;
+}
 
+.message.bot .content{
+  background:transparent !important;
+}
 /* ===== AVATAR ===== */
 .avatar{
   width:35px;
