@@ -158,12 +158,14 @@ code{
 /* ===== INPUT AREA ===== */
 .input-area{
   position:fixed;
-  bottom:10px;
+  bottom:0;
   left:0;
   right:0;
+  height:80px;   
   display:flex;
   justify-content:center;
-  z-index:1000;
+  align-items:center;
+  background:transparent;
 }
 
 /* ===== INPUT BOX ===== */
