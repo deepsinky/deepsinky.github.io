@@ -74,7 +74,8 @@ botDiv.innerHTML = `
 `;
 
 chat.appendChild(botDiv);
-
+let textBox = botDiv.querySelector(".text");
+typeText(textBox, reply);
       let reply = data.reply || "No response 😢";
 
       typeText(botDiv.querySelector(".text"), reply);
