@@ -88,7 +88,11 @@ body{
   max-width:90%;
   animation:fadeIn 0.3s ease;
 }
-
+.message.user .bubble{
+  background:#19c37d !important;
+  background-image:none !important;
+  box-shadow:none !important;
+}
 /* USER RIGHT */
 .message.user{
   margin-left:auto;
