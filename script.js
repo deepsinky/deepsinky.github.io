@@ -77,11 +77,7 @@ document.addEventListener("DOMContentLoaded", function(){
       thinking.innerHTML = "❌ " + err.message;
 
     }
-setTimeout(()=>{
-  chat.scrollTop = chat.scrollHeight + 200;
-}, 100);
-    
-
+chat.scrollTop = chat.scrollHeight;
   // =========================
   function formatText(text){
     return text
