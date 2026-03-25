@@ -250,3 +250,25 @@ body{
   66%{content:"..";}
   100%{content:"...";}
 }
+.text{
+  font-size:16px;
+  line-height:1.7;
+  letter-spacing:0.3px;
+}
+
+/* headings */
+.text b{
+  font-size:18px;
+  display:block;
+  margin-bottom:6px;
+}
+
+/* bullet points */
+.text ul{
+  padding-left:18px;
+  margin-top:8px;
+}
+
+.text li{
+  margin-bottom:6px;
+}
