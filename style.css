@@ -10,7 +10,6 @@ html,body{
   font-family:"Segoe UI", Arial, sans-serif;
   background:#343541;
   color:white;
-  overflow-x:hidden; /* 🔥 FIX */
 }
 
 /* ===== MAIN ===== */
@@ -74,7 +73,6 @@ body{
 .chat{
   flex:1;
   overflow-y:auto;
-  overflow-x:hidden; /* 🔥 FIX */
   padding:20px;
   padding-bottom:120px;
   scroll-behavior:smooth;
