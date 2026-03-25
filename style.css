@@ -102,7 +102,9 @@ body{
   flex-direction:row-reverse;
   background: transparent;
 }
-
+.message.user .bubble{
+  background:transparent;
+}
 /* BOT LEFT */
 .message.bot{
   margin-right:auto;
