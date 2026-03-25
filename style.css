@@ -352,3 +352,67 @@ code{
   opacity:1;
   transform:scale(1.2);
 }
+/* ===== MESSAGE WRAPPER ===== */
+.message{
+  display:flex;
+  flex-direction:column;
+  margin:10px 0;
+  max-width:80%;
+}
+
+/* USER RIGHT */
+.message.user{
+  align-self:flex-end;
+}
+
+/* BOT LEFT */
+.message.bot{
+  align-self:flex-start;
+}
+
+/* ===== BUBBLE ===== */
+.bubble{
+  padding:12px 16px;
+  border-radius:18px;
+  line-height:1.5;
+  word-wrap:break-word;
+}
+
+/* USER STYLE */
+.message.user .bubble{
+  background:#19c37d;
+  color:white;
+  border-bottom-right-radius:6px;
+}
+
+/* BOT STYLE */
+.message.bot .bubble{
+  background:#2a2b32;
+  color:white;
+  border-bottom-left-radius:6px;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.actions{
+  display:flex;
+  gap:10px;
+  margin-top:5px;
+  font-size:14px;
+  opacity:0;
+  transition:0.2s;
+}
+
+/* hover pe hi dikhe */
+.message.bot:hover .actions{
+  opacity:1;
+}
+
+/* icons */
+.actions span{
+  cursor:pointer;
+  opacity:0.7;
+}
+
+.actions span:hover{
+  opacity:1;
+}
