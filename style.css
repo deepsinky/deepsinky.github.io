@@ -90,8 +90,11 @@ body{
 }
 .message.user .bubble{
   background:#19c37d !important;
-  background-image:none !important;
+  color:white;
+  border-radius:20px;
   box-shadow:none !important;
+  backdrop-filter:none !important;
+  background-image:none !important;
 }
 /* USER RIGHT */
 .message.user{
