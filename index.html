@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DeepSINKY</title>
 
-<link rel="stylesheet" href="style.css">
-
 <style>
 
 /* ===== BODY ===== */
@@ -31,10 +29,7 @@ body{
   height:100%;
   transition:0.3s;
 }
-
-.sidebar.open{
-  left:0;
-}
+.sidebar.open{ left:0; }
 
 .overlay{
   position:fixed;
@@ -42,10 +37,7 @@ body{
   background:rgba(0,0,0,0.5);
   display:none;
 }
-
-.overlay.show{
-  display:block;
-}
+.overlay.show{ display:block; }
 
 /* ===== MAIN ===== */
 .main{
@@ -64,14 +56,31 @@ body{
   border-bottom:1px solid #333;
 }
 
+/* MENU */
 .menu{
   cursor:pointer;
+  font-size:20px;
 }
 
-.logo{
+/* BRAND (LOGO + TEXT) */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.logo-img{
+  width:28px;
+  height:28px;
+  object-fit:contain;
+}
+
+.title{
   font-weight:bold;
+  font-size:18px;
 }
 
+/* LOGIN */
 .login-btn{
   background:#19c37d;
   border:none;
@@ -87,7 +96,6 @@ body{
   padding:20px;
 }
 
-/* MESSAGE */
 .message{
   margin:10px 0;
   max-width:70%;
@@ -169,9 +177,17 @@ body{
 
   <!-- HEADER -->
   <div class="header">
+
     <div class="menu" onclick="toggleSidebar()">☰</div>
-    <div class="logo">DeepSINKY</div>
+
+    <!-- ✅ FIXED LOGO -->
+    <div class="brand">
+      <img src="logo.png" class="logo-img">
+      <span class="title">DeepSINKY</span>
+    </div>
+
     <button class="login-btn">Login</button>
+
   </div>
 
   <!-- CHAT -->
@@ -191,20 +207,18 @@ body{
 
 <script>
 
-/* =========================
-CORE SYSTEM
-========================= */
-
+/* CORE */
 const chat = document.getElementById("chat");
 const input = document.getElementById("input");
 const sendBtn = document.getElementById("sendBtn");
 
 sendBtn.onclick = send;
 
-input.addEventListener("keypress", function(e){
+input.addEventListener("keypress", e=>{
   if(e.key === "Enter") send();
 });
 
+/* SEND */
 async function send(){
 
   let text = input.value.trim();
@@ -219,7 +233,6 @@ async function send(){
   chat.appendChild(loading);
 
   try{
-
     let res = await fetch("https://deepsinky-server-1.onrender.com/chat",{
       method:"POST",
       headers:{ "Content-Type":"application/json" },
@@ -234,12 +247,9 @@ async function send(){
   }catch{
     loading.innerText = "Error ❌";
   }
-
 }
 
-/* =========================
-STREAMING
-========================= */
+/* STREAM */
 function streamText(text){
 
   let div = document.createElement("div");
@@ -260,17 +270,13 @@ function streamText(text){
   type();
 }
 
-/* =========================
-SIDEBAR
-========================= */
+/* SIDEBAR */
 function toggleSidebar(){
-  document.getElementById("sidebar").classList.toggle("open");
-  document.getElementById("overlay").classList.toggle("show");
+  sidebar.classList.toggle("open");
+  overlay.classList.toggle("show");
 }
 
-/* =========================
-VOICE
-========================= */
+/* VOICE */
 function voiceInput(){
   let rec = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
   rec.start();
