@@ -1,18 +1,19 @@
 /* =========================
-🎨 ROOT THEME SYSTEM
+🌍 ROOT THEME SYSTEM (ONLY ONCE)
 ========================= */
 :root{
   --bg:#0f0f0f;
-  --bg2:#202123;
+  --bg-soft:#202123;
+  --secondary:#2a2b32;
   --text:#e5e5e5;
   --primary:#19c37d;
-  --secondary:#2a2b32;
   --accent:#00ffe1;
+  --radius:12px;
 }
 
 body.light{
   --bg:#ffffff;
-  --bg2:#f5f5f5;
+  --bg-soft:#f5f5f5;
   --text:#000;
 }
 
@@ -29,17 +30,41 @@ body{
   overflow:hidden;
 }
 
-/* FLEX + GRID */
 .flex{ display:flex; }
 .grid{ display:grid; }
 .center{ display:flex; justify-content:center; align-items:center; }
+
+/* =========================
+🎨 UI DESIGN TYPES
+========================= */
+.glass{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+.neu{
+  background:#1a1a1a;
+  box-shadow: 8px 8px 15px #0a0a0a,
+             -8px -8px 15px #222;
+}
+
+.brutal{
+  background:#000;
+  border:3px solid #fff;
+  font-weight:bold;
+}
+
+.gradient{
+  background:linear-gradient(135deg,#00ffe1,#19c37d);
+}
 
 /* =========================
 📦 SIDEBAR
 ========================= */
 .sidebar{
   width:260px;
-  background:var(--bg2);
+  background:var(--bg-soft);
   padding:10px;
   overflow-y:auto;
 }
@@ -97,22 +122,31 @@ body{
 .message.user{
   text-align:right;
 }
+
 .message.user .bubble{
   background:var(--primary);
   color:#000;
-  display:inline-block;
   padding:10px;
   border-radius:15px;
+  display:inline-block;
 }
 
 /* BOT */
 .message.bot{
   text-align:left;
 }
+
 .message.bot .bubble{
   background:var(--secondary);
   padding:10px;
   border-radius:15px;
+}
+
+/* TERMINAL MODE */
+.terminal{
+  background:#000;
+  color:#0f0;
+  font-family:monospace;
 }
 
 /* =========================
@@ -120,6 +154,7 @@ body{
 ========================= */
 h1,h2,h3{ font-weight:bold; }
 p{ line-height:1.6; }
+
 code{
   font-family:monospace;
   background:#111;
@@ -128,7 +163,7 @@ code{
 }
 
 /* =========================
-🧾 CODE BLOCK + MARKDOWN
+🧾 CODE & MARKDOWN
 ========================= */
 pre{
   background:#111;
@@ -153,13 +188,14 @@ table{
   width:100%;
   border-collapse:collapse;
 }
+
 td,th{
   border:1px solid #444;
   padding:5px;
 }
 
 /* =========================
-🧩 INPUT + BUTTON
+🧩 INPUT & BUTTON
 ========================= */
 .input-area{
   display:flex;
@@ -177,31 +213,32 @@ input{
   color:white;
 }
 
-/* STATES */
 input:focus{
   border:1px solid var(--primary);
 }
 
-input.error{
-  border:1px solid red;
-}
+input.error{ border:1px solid red; }
+input.success{ border:1px solid green; }
 
-input.success{
-  border:1px solid green;
-}
-
-/* BUTTON */
 button{
   border:none;
   padding:10px;
   border-radius:50%;
   cursor:pointer;
   background:white;
+  transition:0.2s;
 }
 
 button:hover{
   transform:scale(1.1);
 }
+
+/* =========================
+🧠 INTERACTIONS
+========================= */
+.hover:hover{ transform:scale(1.05); }
+.click:active{ transform:scale(0.95); }
+.drag{ cursor:grab; }
 
 /* =========================
 🎬 ANIMATIONS
@@ -211,7 +248,10 @@ button:hover{
   to{opacity:1;}
 }
 
-/* LOADING SPINNER */
+@keyframes spin{
+  100%{ transform:rotate(360deg); }
+}
+
 .spinner{
   width:20px;
   height:20px;
@@ -221,14 +261,11 @@ button:hover{
   animation:spin 1s linear infinite;
 }
 
-@keyframes spin{
-  100%{ transform:rotate(360deg); }
-}
-
 /* TYPING DOTS */
 .typing span{
   animation:blink 1.4s infinite;
 }
+
 @keyframes blink{
   0%,100%{opacity:0;}
   50%{opacity:1;}
@@ -238,12 +275,8 @@ button:hover{
 📱 RESPONSIVE
 ========================= */
 @media(max-width:768px){
-  .sidebar{
-    display:none;
-  }
-  .chat{
-    padding:10px;
-  }
+  .sidebar{ display:none; }
+  .chat{ padding:10px; }
 }
 
 /* =========================
@@ -272,7 +305,32 @@ img{
 }
 
 /* =========================
-⚙️ UTILITIES
+🧠 AI UI
+========================= */
+.prompt-box{
+  border:1px dashed #555;
+  padding:10px;
+}
+
+.suggestion{
+  background:#222;
+  padding:5px;
+  border-radius:6px;
+  margin:3px;
+}
+
+/* =========================
+🔐 AUTH UI
+========================= */
+.login-box{
+  width:300px;
+  padding:20px;
+  background:var(--bg-soft);
+  border-radius:10px;
+}
+
+/* =========================
+🧩 UTILITIES
 ========================= */
 .m-10{ margin:10px; }
 .p-10{ padding:10px; }
@@ -283,15 +341,10 @@ img{
 /* =========================
 ⚡ PERFORMANCE
 ========================= */
-*{
-  will-change:transform;
-}
+*{ will-change:transform; }
 
-html{
-  scroll-behavior:smooth;
-}
+html{ scroll-behavior:smooth; }
 
-/* REDUCED MOTION */
 @media (prefers-reduced-motion: reduce){
   *{
     animation:none;
