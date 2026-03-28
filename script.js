@@ -1,7 +1,41 @@
 // 🔥 DeepSINKY PRO SCRIPT
 
 document.addEventListener("DOMContentLoaded", function(){
+const languages = [
 
+/* 🇮🇳 INDIA LANGUAGES */
+"Hindi","English","Bengali","Telugu","Marathi","Tamil","Urdu","Gujarati",
+"Kannada","Odia","Malayalam","Punjabi","Assamese","Maithili","Santali",
+"Kashmiri","Nepali","Sindhi","Konkani","Dogri","Manipuri","Bodo",
+"Sanskrit","Tulu","Garhwali","Khasi","Mizo","Naga","Ladakhi",
+
+/* 🌍 WORLD LANGUAGES */
+"English","Spanish","French","German","Italian","Portuguese","Dutch",
+"Russian","Chinese","Japanese","Korean","Arabic","Turkish","Persian",
+"Greek","Hebrew","Polish","Swedish","Norwegian","Finnish","Danish",
+"Czech","Hungarian","Romanian","Bulgarian","Ukrainian","Serbian",
+"Croatian","Slovak","Slovenian","Estonian","Latvian","Lithuanian",
+
+/* 🌏 ASIA */
+"Thai","Vietnamese","Indonesian","Malay","Filipino","Sinhala",
+"Burmese","Khmer","Lao","Mongolian","Kazakh","Uzbek","Tajik",
+"Pashto","Dari","Armenian","Georgian","Azerbaijani",
+
+/* 🌍 AFRICA */
+"Swahili","Zulu","Xhosa","Yoruba","Igbo","Hausa","Amharic",
+"Somali","Shona","Sesotho","Tswana","Tigrinya",
+
+/* 🌎 AMERICA */
+"English (US)","Spanish (Latin)","French (Canada)",
+"Quechua","Guarani","Haitian Creole",
+
+/* 🌐 EXTRA GLOBAL */
+"Icelandic","Irish","Welsh","Albanian","Maltese","Luxembourgish",
+"Faroese","Basque","Catalan","Galician","Corsican","Breton",
+"Esperanto","Latin"
+
+/* 👉 total ~120–150 depending duplicate remove */
+];
   const input = document.getElementById("input");
   const chat = document.getElementById("chat");
   const sendBtn = document.getElementById("sendBtn");
