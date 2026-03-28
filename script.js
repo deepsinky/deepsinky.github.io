@@ -50,7 +50,11 @@ document.addEventListener("DOMContentLoaded", function(){
     // THINKING
     let thinking = document.createElement("div");
     thinking.className = "message bot";
-    thinking.innerHTML = "Thinking<span class='dots'></span>";
+    thinking.innerHTML = `
+  <div class="wave">
+    <span></span><span></span><span></span>
+  </div>
+`;
     chat.appendChild(thinking);
 
     try{
