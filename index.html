@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="style.css">
 
-<!-- 🔥 MARKDOWN ENGINE -->
+<!-- MARKDOWN ENGINE -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <style>
@@ -21,6 +21,13 @@ body{
   display:flex;
   flex-direction:column;
   height:100vh;
+  transition:0.3s;
+}
+
+/* 🌙 LIGHT MODE */
+body.light{
+  background:#ffffff;
+  color:#000;
 }
 
 /* ===== HEADER ===== */
@@ -66,6 +73,13 @@ body{
   background:white;
 }
 
+/* 🌗 THEME BUTTON */
+.theme-btn{
+  position:absolute;
+  right:15px;
+  cursor:pointer;
+}
+
 /* ===== CENTER ===== */
 .center{
   flex:1;
@@ -91,7 +105,7 @@ body{
   display:flex;
 }
 
-/* ===== USER (NO BUBBLE) ===== */
+/* ===== USER ===== */
 .message.user{
   justify-content:flex-end;
 }
@@ -101,7 +115,7 @@ body{
   font-size:15px;
 }
 
-/* ===== BOT (FULL WIDTH) ===== */
+/* ===== BOT ===== */
 .message.bot{
   width:100%;
 }
@@ -199,6 +213,12 @@ code{
   cursor:pointer;
 }
 
+/* 🎤 FIX */
+.mic{
+  cursor:pointer;
+  margin:0 10px;
+}
+
 /* ===== ANIMATION ===== */
 @keyframes fadeIn{
   from{
@@ -223,6 +243,7 @@ code{
 
 <!-- HEADER -->
 <div class="header">
+
   <div class="menu-circle" onclick="toggleSidebar()">
     <span></span>
     <span></span>
@@ -232,11 +253,17 @@ code{
     <img src="logo.png" class="logo">
     <span>DeepSINKY</span>
   </div>
+
+  <!-- 🌗 THEME -->
+  <div class="theme-btn" onclick="toggleTheme()">🌙</div>
+
 </div>
 
 <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar"></div>
-<div class="overlay" id="overlay"></div>
+
+<!-- ✅ FIXED -->
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
 <!-- WELCOME -->
 <div class="center" id="welcome">
@@ -254,14 +281,16 @@ code{
 
     <input id="input" placeholder="Ask DeepSINKY">
 
-    <span>🎤</span>
+    <!-- ✅ FIXED -->
+    <span class="mic">🎤</span>
 
     <button id="sendBtn">➤</button>
 
   </div>
 </div>
 
-<script src="script.js"></script>
+<!-- ✅ FIXED PATH -->
+<script src="./script.js"></script>
 
 </body>
 </html>
