@@ -4,53 +4,28 @@ document.addEventListener("DOMContentLoaded", function(){
   const chat = document.getElementById("chat");
   const sendBtn = document.getElementById("sendBtn");
 
-  if(sendBtn){
-    sendBtn.addEventListener("click", send);
-  }
-
-  if(input){
-    input.addEventListener("keypress", function(e){
-      if(e.key === "Enter"){
-        send();
-      }
-    });
-  }
-
-  // =========================
-  async function send(){
-
-    let text = input.value.trim();
-    if(text === "") return;
-
-    const welcome = document.getElementById("welcome");
-    if(welcome) welcome.style.display = "none";
-
-    chat.style.display = "block";
-
-    // USER MESSAGE
-    chat.innerHTML += `
-  <div class="message user">
-    <div class="bubble">
-      ${text}
-    </div>
-  </div>
-`;
-    input.value = "";
-
-    // THINKING
-    let thinking = document.createElement("div");
-    thinking.className = "message bot";
-    thinking.innerHTML = "Thinking<span class='dots'></span>";
-document.addEventListener("DOMContentLoaded", function(){
-
-  const input = document.getElementById("input");
-  const chat = document.getElementById("chat");
-  const sendBtn = document.getElementById("sendBtn");
+  let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
+  let memory = JSON.parse(localStorage.getItem("memory")) || {};
 
   sendBtn.onclick = send;
-  input.addEventListener("keypress", e=>{
+
+  input.addEventListener("keypress", function(e){
     if(e.key === "Enter") send();
   });
+
+  // 🎤 VOICE INPUT
+  const mic = document.querySelector(".mic");
+  if(mic){
+    mic.onclick = ()=>{
+      let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = "en-US";
+      recognition.start();
+
+      recognition.onresult = function(e){
+        input.value = e.results[0][0].transcript;
+      };
+    };
+  }
 
   // =========================
   async function send(){
@@ -58,9 +33,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let text = input.value.trim();
     if(!text) return;
 
-    const welcome = document.getElementById("welcome");
-    if(welcome) welcome.style.display = "none";
-
+    document.getElementById("welcome")?.style.display = "none";
     chat.style.display = "block";
 
     // ✅ USER (NO BUBBLE)
@@ -80,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function(){
     chat.appendChild(thinking);
 
     try{
+
       let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
         method:"POST",
         headers:{ "Content-Type":"application/json" },
@@ -88,6 +62,19 @@ document.addEventListener("DOMContentLoaded", function(){
 
       let data = await response.json();
       thinking.remove();
+
+      let reply = data.reply || "No response 😢";
+
+      // 🧠 MEMORY
+      if(text.includes("my name is")){
+        let name = text.split("my name is")[1].trim();
+        memory.name = name;
+        localStorage.setItem("memory", JSON.stringify(memory));
+      }
+
+      if(memory.name){
+        reply = "Hello " + memory.name + " 👋\n\n" + reply;
+      }
 
       // BOT MESSAGE
       let botDiv = document.createElement("div");
@@ -108,10 +95,15 @@ document.addEventListener("DOMContentLoaded", function(){
 
       chat.appendChild(botDiv);
 
-      let reply = data.reply || "No response 😢";
       let textBox = botDiv.querySelector(".text");
 
       typeText(textBox, reply);
+
+      // 📜 SAVE HISTORY
+      history.push({q:text, a:reply});
+      localStorage.setItem("chatHistory", JSON.stringify(history));
+
+      loadHistory();
 
     }catch(err){
       thinking.innerHTML = "❌ " + err.message;
@@ -132,19 +124,21 @@ document.addEventListener("DOMContentLoaded", function(){
   function typeText(element, text){
 
     let formatted = formatText(text);
+    let words = formatted.split(" ");
     let i = 0;
 
     function typing(){
-      if(i < formatted.length){
-        element.innerHTML = formatted.slice(0, i);
+      if(i < words.length){
+        element.innerHTML += words[i] + " ";
         i++;
-        setTimeout(typing, 10);
-      } else {
-        addCopyButtons(); // 🔥 auto copy
+        setTimeout(typing, 30);
+      }else{
+        addCopyButtons();
       }
       scrollBottom();
     }
 
+    element.innerHTML = "";
     typing();
   }
 
@@ -171,6 +165,23 @@ document.addEventListener("DOMContentLoaded", function(){
     chat.scrollTop = chat.scrollHeight;
   }
 
+  // =========================
+  function loadHistory(){
+    let sidebar = document.getElementById("sidebar");
+    if(!sidebar) return;
+
+    sidebar.innerHTML = "";
+
+    history.forEach(item=>{
+      let div = document.createElement("div");
+      div.className = "side-item";
+      div.innerText = item.q;
+      sidebar.appendChild(div);
+    });
+  }
+
+  loadHistory();
+
 });
 
 // ===== SIDEBAR =====
@@ -187,7 +198,6 @@ function toggleSidebar(){
 function copyText(el){
   let text = el.closest(".content").querySelector(".text").innerText;
   navigator.clipboard.writeText(text);
-  alert("Copied!");
 }
 
 function likeMsg(el){
@@ -208,4 +218,9 @@ function shareText(el){
   } else {
     alert("Share not supported");
   }
+}
+
+// 🌗 THEME SWITCH
+function toggleTheme(){
+  document.body.classList.toggle("light");
 }
