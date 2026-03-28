@@ -303,7 +303,17 @@ function detectStyle(text){
 
     try{
 
-      let reply = await askAI(text, mode);
+      296: let mode = detectFeature(text);
+
+298: addUserMessage(text);
+299: input.value = "";
+300: scrollBottom();
+
+302: let thinking = addThinking();
+
+305: try{
+
+306:   let reply = await askAI(text, mode);
 
       thinking.remove();
       addBotMessage(reply);
