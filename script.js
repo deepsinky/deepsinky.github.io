@@ -1,4 +1,4 @@
-alert("JS WORKING 100%");
+alert("JS WORKING FINAL 🔥");
 
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   // ✅ SAFE BUTTON
   if(sendBtn){
-    sendBtn.onclick = send;
+    sendBtn.addEventListener("click", send);
   }
 
   // ✅ SAFE INPUT
@@ -21,27 +21,17 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 
-  // 🎤 VOICE INPUT (ONLY ONE VERSION)
+  // 🎤 VOICE INPUT SAFE
   const mic = document.querySelector(".mic");
 
   if(mic){
     mic.onclick = ()=>{
-      let wave = document.createElement("div");
-      wave.className = "voice-wave";
-      wave.innerHTML = "<span></span><span></span><span></span><span></span>";
-
-      input.value = "";
-      input.placeholder = "Listening...";
-      input.parentNode.appendChild(wave);
-
       let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
       recognition.lang = "en-US";
       recognition.start();
 
       recognition.onresult = function(e){
         input.value = e.results[0][0].transcript;
-        wave.remove();
-        input.placeholder = "Ask DeepSINKY";
       };
     };
   }
@@ -49,13 +39,15 @@ document.addEventListener("DOMContentLoaded", function(){
   // =========================
   async function send(){
 
+    if(!input || !chat) return;
+
     let text = input.value.trim();
     if(!text) return;
 
     document.getElementById("welcome")?.style.display = "none";
     chat.style.display = "block";
 
-    // USER
+    // ✅ USER MESSAGE
     chat.innerHTML += `
       <div class="message user">
         <div class="text">${text}</div>
@@ -68,27 +60,30 @@ document.addEventListener("DOMContentLoaded", function(){
     // THINKING
     let thinking = document.createElement("div");
     thinking.className = "message bot";
-    thinking.innerHTML = `
-      <div class="wave">
-        <span></span><span></span><span></span>
-      </div>
-    `;
+    thinking.innerHTML = "Thinking...";
     chat.appendChild(thinking);
 
     try{
+
       let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
         method:"POST",
         headers:{ "Content-Type":"application/json" },
         body: JSON.stringify({ message:text })
       });
 
+      // ❗ अगर server down है
+      if(!response.ok){
+        throw new Error("Server not responding");
+      }
+
       let data = await response.json();
+
       thinking.remove();
 
-      let reply = data.reply || "No response 😢";
+      let reply = data.reply || "⚠️ No response";
 
       // MEMORY
-      if(text.includes("my name is")){
+      if(text.toLowerCase().includes("my name is")){
         let name = text.split("my name is")[1].trim();
         memory.name = name;
         localStorage.setItem("memory", JSON.stringify(memory));
@@ -128,7 +123,8 @@ document.addEventListener("DOMContentLoaded", function(){
       loadHistory();
 
     }catch(err){
-      thinking.innerHTML = "❌ " + err.message;
+      console.error(err);
+      thinking.innerHTML = "❌ Server error / API not working";
     }
 
     scrollBottom();
@@ -153,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function(){
       if(i < words.length){
         element.innerHTML += words[i] + " ";
         i++;
-        setTimeout(typing, 30);
+        setTimeout(typing, 25);
       }else{
         addCopyButtons();
       }
@@ -206,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-// ===== SIDEBAR SAFE =====
+// ===== SIDEBAR =====
 function toggleSidebar(){
   let sidebar = document.getElementById("sidebar");
   let overlay = document.getElementById("overlay");
