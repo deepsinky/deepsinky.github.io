@@ -78,7 +78,7 @@ body{
   padding:25px;
   padding-bottom:130px;
   scroll-behavior:smooth;
-  display:none;
+  display:block;
 }
 
 /* ===== MESSAGE ===== */
