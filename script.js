@@ -1,222 +1,155 @@
-alert("JS WORKING FINAL 🔥");
-
 document.addEventListener("DOMContentLoaded", function(){
 
   const input = document.getElementById("input");
   const chat = document.getElementById("chat");
   const sendBtn = document.getElementById("sendBtn");
 
-  let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
-  let memory = JSON.parse(localStorage.getItem("memory")) || {};
-
-  // ✅ SAFE BUTTON
   if(sendBtn){
     sendBtn.addEventListener("click", send);
   }
 
-  // ✅ SAFE INPUT
   if(input){
     input.addEventListener("keypress", function(e){
-      if(e.key === "Enter") send();
+      if(e.key === "Enter"){
+        send();
+      }
     });
-  }
-
-  // 🎤 VOICE INPUT SAFE
-  const mic = document.querySelector(".mic");
-
-  if(mic){
-    mic.onclick = ()=>{
-      let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-      recognition.lang = "en-US";
-      recognition.start();
-
-      recognition.onresult = function(e){
-        input.value = e.results[0][0].transcript;
-      };
-    };
   }
 
   // =========================
   async function send(){
-alert("MESSAGE ADDED");
-    if(!input || !chat) return;
 
     let text = input.value.trim();
-    if(!text) return;
+    if(text === "") return;
 
-    document.getElementById("welcome")?.style.display = "none";
+    const welcome = document.getElementById("welcome");
+    if(welcome) welcome.style.display = "none";
+
     chat.style.display = "block";
 
-    // ✅ USER MESSAGE
+    // USER MESSAGE
     chat.innerHTML += `
-      <div class="message user">
-        <div class="text">${text}</div>
-      </div>
-    `;
-
+  <div class="message user">
+    <div class="bubble">
+      ${text}
+    </div>
+  </div>
+`;
     input.value = "";
-    scrollBottom();
 
     // THINKING
     let thinking = document.createElement("div");
     thinking.className = "message bot";
-    thinking.innerHTML = "Thinking...";
+    thinking.innerHTML = "Thinking<span class='dots'></span>";
     chat.appendChild(thinking);
 
     try{
 
-      let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
-        method:"POST",
-        headers:{ "Content-Type":"application/json" },
-        body: JSON.stringify({ message:text })
+      let response = await fetch("https://deepsinky-server-1.onrender.com/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: text
+        })
       });
 
-      // ❗ अगर server down है
       if(!response.ok){
-        throw new Error("Server not responding");
+        let errText = await response.text();
+        throw new Error(errText);
       }
 
       let data = await response.json();
 
       thinking.remove();
 
-      let reply = data.reply || "⚠️ No response";
-
-      // MEMORY
-      if(text.toLowerCase().includes("my name is")){
-        let name = text.split("my name is")[1].trim();
-        memory.name = name;
-        localStorage.setItem("memory", JSON.stringify(memory));
-      }
-
-      if(memory.name){
-        reply = "Hello " + memory.name + " 👋\n\n" + reply;
-      }
-
       // BOT MESSAGE
-      let botDiv = document.createElement("div");
-      botDiv.className = "message bot";
+let botDiv = document.createElement("div");
+botDiv.className = "message bot";
 
-      botDiv.innerHTML = `
-        <div class="content">
-          <div class="text"></div>
+botDiv.innerHTML = `
+  <div class="avatar">🤖</div>
 
-          <div class="actions">
-            <span onclick="copyText(this)">📋</span>
-            <span onclick="likeMsg(this)">👍</span>
-            <span onclick="speakText(this)">🔊</span>
-            <span onclick="shareText(this)">🔗</span>
-          </div>
-        </div>
-      `;
+  <div class="content">
+    <div class="bubble">
+      <div class="text"></div>
+    </div>
 
-      chat.appendChild(botDiv);
+    <div class="actions">
+      <span onclick="copyText(this)">📋</span>
+      <span onclick="likeMsg(this)">👍</span>
+      <span onclick="speakText(this)">🔊</span>
+      <span onclick="shareText(this)">🔗</span>
+    </div>
+  </div>
+`;
 
-      let textBox = botDiv.querySelector(".text");
+chat.appendChild(botDiv);
 
-      typeText(textBox, reply);
+let reply = data.reply || "No response 😢";
+let textBox = botDiv.querySelector(".text");
 
-      // SAVE HISTORY
-      history.push({q:text, a:reply});
-      localStorage.setItem("chatHistory", JSON.stringify(history));
-
-      loadHistory();
+typeText(textBox, reply);
 
     }catch(err){
-      console.error(err);
-      thinking.innerHTML = "❌ Server error / API not working";
+      console.error("ERROR:", err);
+      thinking.innerHTML = "❌ " + err.message;
     }
 
-    scrollBottom();
-  }
+    // ✅ सही जगह
+    chat.scrollTop = chat.scrollHeight;
+
+  } // 👈 send() यहीं बंद होगा
 
   // =========================
   function formatText(text){
     return text
-      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-      .replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>")
-      .replace(/\n/g, "<br>");
+      .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
+      .replace(/\n/g, "<br>")
+      .replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>");
   }
 
   // =========================
   function typeText(element, text){
+    let i = 0;
+    element.innerHTML = "";
 
     let formatted = formatText(text);
-    let words = formatted.split(" ");
-    let i = 0;
 
     function typing(){
-      if(i < words.length){
-        element.innerHTML += words[i] + " ";
+      if(i < formatted.length){
+        element.innerHTML = formatted.slice(0, i);
         i++;
-        setTimeout(typing, 25);
-      }else{
-        addCopyButtons();
+        setTimeout(typing, 15);
       }
-      scrollBottom();
+      chat.scrollTop = chat.scrollHeight;
     }
 
-    element.innerHTML = "";
     typing();
   }
 
-  // =========================
-  function addCopyButtons(){
-    document.querySelectorAll("pre").forEach(block=>{
-      if(block.querySelector(".copy-btn")) return;
-
-      let btn = document.createElement("span");
-      btn.innerText = "Copy";
-      btn.className = "copy-btn";
-
-      btn.onclick = ()=>{
-        navigator.clipboard.writeText(block.innerText);
-        btn.innerText = "Copied!";
-      };
-
-      block.appendChild(btn);
-    });
-  }
-
-  // =========================
-  function scrollBottom(){
-    chat.scrollTop = chat.scrollHeight;
-  }
-
-  // =========================
-  function loadHistory(){
-    let sidebar = document.getElementById("sidebar");
-    if(!sidebar) return;
-
-    sidebar.innerHTML = "";
-
-    history.forEach(item=>{
-      let div = document.createElement("div");
-      div.className = "side-item";
-      div.innerText = item.q;
-      sidebar.appendChild(div);
-    });
-  }
-
-  loadHistory();
-
-});
+}); // 👈 DOMContentLoaded end
 
 // ===== SIDEBAR =====
 function toggleSidebar(){
   let sidebar = document.getElementById("sidebar");
   let overlay = document.getElementById("overlay");
 
-  if(!sidebar || !overlay) return;
+  if(!sidebar || !overlay){
+    alert("Sidebar missing");
+    return;
+  }
 
   sidebar.classList.toggle("open");
   overlay.classList.toggle("show");
 }
-
 // ===== ACTION BUTTONS =====
+
 function copyText(el){
   let text = el.closest(".content").querySelector(".text").innerText;
   navigator.clipboard.writeText(text);
+  alert("Copied!");
 }
 
 function likeMsg(el){
@@ -237,9 +170,4 @@ function shareText(el){
   } else {
     alert("Share not supported");
   }
-}
-
-// 🌗 THEME SWITCH
-function toggleTheme(){
-  document.body.classList.toggle("light");
 }
