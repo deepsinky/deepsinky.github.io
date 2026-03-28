@@ -1,4 +1,5 @@
-alert("JS WORKING");
+alert("JS WORKING 100%");
+
 document.addEventListener("DOMContentLoaded", function(){
 
   const input = document.getElementById("input");
@@ -8,63 +9,43 @@ document.addEventListener("DOMContentLoaded", function(){
   let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
   let memory = JSON.parse(localStorage.getItem("memory")) || {};
 
-  sendBtn.onclick = send;
+  // ✅ SAFE BUTTON
+  if(sendBtn){
+    sendBtn.onclick = send;
+  }
 
-  input.addEventListener("keypress", function(e){
-    if(e.key === "Enter") send();
-  });
+  // ✅ SAFE INPUT
+  if(input){
+    input.addEventListener("keypress", function(e){
+      if(e.key === "Enter") send();
+    });
+  }
 
-  // 🎤 VOICE INPUT
+  // 🎤 VOICE INPUT (ONLY ONE VERSION)
   const mic = document.querySelector(".mic");
+
   if(mic){
     mic.onclick = ()=>{
+      let wave = document.createElement("div");
+      wave.className = "voice-wave";
+      wave.innerHTML = "<span></span><span></span><span></span><span></span>";
+
+      input.value = "";
+      input.placeholder = "Listening...";
+      input.parentNode.appendChild(wave);
+
       let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
       recognition.lang = "en-US";
       recognition.start();
 
       recognition.onresult = function(e){
         input.value = e.results[0][0].transcript;
+        wave.remove();
+        input.placeholder = "Ask DeepSINKY";
       };
     };
   }
-function typeText(element, text){
 
-  let formatted = formatText(text);
-  let i = 0;
-
-  function typing(){
-    if(i < formatted.length){
-      element.innerHTML = formatted.slice(0, i) + '<span class="cursor"></span>';
-      i++;
-      setTimeout(typing, 15);
-    }else{
-      element.innerHTML = formatted;
-      addCopyButtons();
-    }
-    scrollBottom();
-  }
-
-  typing();
-}
-  mic.onclick = ()=>{
-  let wave = document.createElement("div");
-  wave.className = "voice-wave";
-  wave.innerHTML = "<span></span><span></span><span></span><span></span>";
-
-  input.value = "";
-  input.placeholder = "Listening...";
-  input.parentNode.appendChild(wave);
-
-  let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-  recognition.lang = "en-US";
-  recognition.start();
-
-  recognition.onresult = function(e){
-    input.value = e.results[0][0].transcript;
-    wave.remove();
-    input.placeholder = "Ask DeepSINKY";
-  };
-};
   // =========================
   async function send(){
 
@@ -74,7 +55,7 @@ function typeText(element, text){
     document.getElementById("welcome")?.style.display = "none";
     chat.style.display = "block";
 
-    // ✅ USER (NO BUBBLE)
+    // USER
     chat.innerHTML += `
       <div class="message user">
         <div class="text">${text}</div>
@@ -88,14 +69,13 @@ function typeText(element, text){
     let thinking = document.createElement("div");
     thinking.className = "message bot";
     thinking.innerHTML = `
-  <div class="wave">
-    <span></span><span></span><span></span>
-  </div>
-`;
+      <div class="wave">
+        <span></span><span></span><span></span>
+      </div>
+    `;
     chat.appendChild(thinking);
 
     try{
-
       let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
         method:"POST",
         headers:{ "Content-Type":"application/json" },
@@ -107,7 +87,7 @@ function typeText(element, text){
 
       let reply = data.reply || "No response 😢";
 
-      // 🧠 MEMORY
+      // MEMORY
       if(text.includes("my name is")){
         let name = text.split("my name is")[1].trim();
         memory.name = name;
@@ -141,7 +121,7 @@ function typeText(element, text){
 
       typeText(textBox, reply);
 
-      // 📜 SAVE HISTORY
+      // SAVE HISTORY
       history.push({q:text, a:reply});
       localStorage.setItem("chatHistory", JSON.stringify(history));
 
@@ -226,17 +206,18 @@ function typeText(element, text){
 
 });
 
-// ===== SIDEBAR =====
+// ===== SIDEBAR SAFE =====
 function toggleSidebar(){
   let sidebar = document.getElementById("sidebar");
   let overlay = document.getElementById("overlay");
+
+  if(!sidebar || !overlay) return;
 
   sidebar.classList.toggle("open");
   overlay.classList.toggle("show");
 }
 
 // ===== ACTION BUTTONS =====
-
 function copyText(el){
   let text = el.closest(".content").querySelector(".text").innerText;
   navigator.clipboard.writeText(text);
