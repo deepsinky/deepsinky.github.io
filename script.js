@@ -1,3 +1,4 @@
+alert("JS WORKING");
 document.addEventListener("DOMContentLoaded", function(){
 
   const input = document.getElementById("input");
