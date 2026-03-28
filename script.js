@@ -1,39 +1,42 @@
+alert("JS WORKING");
+
 document.addEventListener("DOMContentLoaded", function(){
 
   const input = document.getElementById("input");
   const chat = document.getElementById("chat");
   const sendBtn = document.getElementById("sendBtn");
-  const mic = document.querySelector(".mic");
 
-  // 👉 NEW (SIDEBAR STORAGE)
   let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
+  let memory = JSON.parse(localStorage.getItem("memory")) || {};
 
-  // =========================
-  // SEND EVENTS
+  // ✅ SAFE BUTTON
   if(sendBtn){
-    sendBtn.addEventListener("click", send);
+    sendBtn.onclick = send;
   }
 
+  // ✅ SAFE INPUT
   if(input){
     input.addEventListener("keypress", function(e){
       if(e.key === "Enter") send();
     });
   }
 
-  // =========================
-  // 🎤 VOICE INPUT + WAVE
+  // 🎤 VOICE INPUT (ONLY ONE VERSION)
+  const mic = document.querySelector(".mic");
+
   if(mic){
     mic.onclick = ()=>{
       let wave = document.createElement("div");
       wave.className = "voice-wave";
       wave.innerHTML = "<span></span><span></span><span></span><span></span>";
+
+      input.value = "";
+      input.placeholder = "Listening...";
       input.parentNode.appendChild(wave);
 
       let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
       recognition.lang = "en-US";
       recognition.start();
-
-      input.placeholder = "Listening...";
 
       recognition.onresult = function(e){
         input.value = e.results[0][0].transcript;
@@ -52,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("welcome")?.style.display = "none";
     chat.style.display = "block";
 
-    // USER MESSAGE
+    // USER
     chat.innerHTML += `
       <div class="message user">
         <div class="text">${text}</div>
@@ -65,11 +68,14 @@ document.addEventListener("DOMContentLoaded", function(){
     // THINKING
     let thinking = document.createElement("div");
     thinking.className = "message bot";
-    thinking.innerHTML = `<div class="wave"><span></span><span></span><span></span></div>`;
+    thinking.innerHTML = `
+      <div class="wave">
+        <span></span><span></span><span></span>
+      </div>
+    `;
     chat.appendChild(thinking);
 
     try{
-
       let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
         method:"POST",
         headers:{ "Content-Type":"application/json" },
@@ -81,6 +87,17 @@ document.addEventListener("DOMContentLoaded", function(){
 
       let reply = data.reply || "No response 😢";
 
+      // MEMORY
+      if(text.includes("my name is")){
+        let name = text.split("my name is")[1].trim();
+        memory.name = name;
+        localStorage.setItem("memory", JSON.stringify(memory));
+      }
+
+      if(memory.name){
+        reply = "Hello " + memory.name + " 👋\n\n" + reply;
+      }
+
       // BOT MESSAGE
       let botDiv = document.createElement("div");
       botDiv.className = "message bot";
@@ -88,6 +105,13 @@ document.addEventListener("DOMContentLoaded", function(){
       botDiv.innerHTML = `
         <div class="content">
           <div class="text"></div>
+
+          <div class="actions">
+            <span onclick="copyText(this)">📋</span>
+            <span onclick="likeMsg(this)">👍</span>
+            <span onclick="speakText(this)">🔊</span>
+            <span onclick="shareText(this)">🔗</span>
+          </div>
         </div>
       `;
 
@@ -95,44 +119,19 @@ document.addEventListener("DOMContentLoaded", function(){
 
       let textBox = botDiv.querySelector(".text");
 
-      streamText(textBox, reply);
+      typeText(textBox, reply);
 
-      // 👉 SAVE HISTORY
-      history.push(text);
+      // SAVE HISTORY
+      history.push({q:text, a:reply});
       localStorage.setItem("chatHistory", JSON.stringify(history));
 
       loadHistory();
 
     }catch(err){
-      thinking.innerHTML = "❌ Server error";
+      thinking.innerHTML = "❌ " + err.message;
     }
 
     scrollBottom();
-  }
-
-  // =========================
-  // STREAMING TEXT
-  function streamText(el, text){
-
-    let formatted = formatText(text);
-    let words = formatted.split(" ");
-    let i = 0;
-
-    function type(){
-      if(i < words.length){
-        el.innerHTML += words[i] + " ";
-        el.innerHTML += `<span class="cursor">|</span>`;
-        i++;
-        setTimeout(type, 25);
-      }else{
-        el.innerHTML = formatted;
-        addCopyButtons();
-      }
-      scrollBottom();
-    }
-
-    el.innerHTML = "";
-    type();
   }
 
   // =========================
@@ -140,9 +139,29 @@ document.addEventListener("DOMContentLoaded", function(){
     return text
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
       .replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>")
-      .replace(/\n/g, "<br>")
-      .replace(/- (.*?)(<br>|$)/g, "<li>$1</li>")
-      .replace(/(<li>.*<\/li>)/g, "<ul>$1</ul>");
+      .replace(/\n/g, "<br>");
+  }
+
+  // =========================
+  function typeText(element, text){
+
+    let formatted = formatText(text);
+    let words = formatted.split(" ");
+    let i = 0;
+
+    function typing(){
+      if(i < words.length){
+        element.innerHTML += words[i] + " ";
+        i++;
+        setTimeout(typing, 30);
+      }else{
+        addCopyButtons();
+      }
+      scrollBottom();
+    }
+
+    element.innerHTML = "";
+    typing();
   }
 
   // =========================
@@ -163,12 +182,12 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 
+  // =========================
   function scrollBottom(){
     chat.scrollTop = chat.scrollHeight;
   }
 
   // =========================
-  // 👉 SIDEBAR LOAD
   function loadHistory(){
     let sidebar = document.getElementById("sidebar");
     if(!sidebar) return;
@@ -178,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function(){
     history.forEach(item=>{
       let div = document.createElement("div");
       div.className = "side-item";
-      div.innerText = item;
+      div.innerText = item.q;
       sidebar.appendChild(div);
     });
   }
@@ -187,8 +206,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-// =========================
-// 👉 SIDEBAR TOGGLE
+// ===== SIDEBAR SAFE =====
 function toggleSidebar(){
   let sidebar = document.getElementById("sidebar");
   let overlay = document.getElementById("overlay");
@@ -198,3 +216,34 @@ function toggleSidebar(){
   sidebar.classList.toggle("open");
   overlay.classList.toggle("show");
 }
+
+// ===== ACTION BUTTONS =====
+function copyText(el){
+  let text = el.closest(".content").querySelector(".text").innerText;
+  navigator.clipboard.writeText(text);
+}
+
+function likeMsg(el){
+  el.innerHTML = "❤️";
+}
+
+function speakText(el){
+  let text = el.closest(".content").querySelector(".text").innerText;
+  let speech = new SpeechSynthesisUtterance(text);
+  speech.lang = "en-US";
+  speechSynthesis.speak(speech);
+}
+
+function shareText(el){
+  let text = el.closest(".content").querySelector(".text").innerText;
+  if(navigator.share){
+    navigator.share({ text });
+  } else {
+    alert("Share not supported");
+  }
+}
+
+// 🌗 THEME SWITCH
+function toggleTheme(){
+  document.body.classList.toggle("light");
+                          }
