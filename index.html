@@ -9,25 +9,32 @@
 
 <style>
 
-/* 🔥 FIXED BODY */
+/* ===== BODY ===== */
 body{
   margin:0;
-  font-family:Arial;
-  background:#202123;
-  color:white;
+  font-family:Segoe UI, Arial;
+  background:#0f0f0f;
+  color:#e5e5e5;
   display:flex;
   flex-direction:column;
   height:100vh;
+  transition:0.3s;
 }
 
-/* HEADER */
+/* LIGHT MODE */
+body.light{
+  background:#ffffff;
+  color:#000;
+}
+
+/* ===== HEADER ===== */
 .header{
   display:flex;
   align-items:center;
   justify-content:center;
   padding:15px;
-  border-bottom:1px solid #333;
-  font-size:18px;
+  border-bottom:1px solid #222;
+  position:relative;
 }
 
 .brand{
@@ -40,80 +47,163 @@ body{
   width:28px;
 }
 
-/* CENTER */
+/* MENU */
+.menu-circle{
+  position:absolute;
+  left:15px;
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  background:#2a2b32;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+/* THEME BUTTON */
+.theme-btn{
+  position:absolute;
+  right:15px;
+  cursor:pointer;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+  position:fixed;
+  left:-260px;
+  top:0;
+  width:260px;
+  height:100%;
+  background:#202123;
+  padding:15px;
+  transition:0.3s;
+  z-index:1000;
+}
+
+.sidebar.open{
+  left:0;
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+  display:none;
+}
+
+.overlay.show{
+  display:block;
+}
+
+/* ===== CENTER ===== */
 .center{
   flex:1;
   display:flex;
-  flex-direction:column;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   text-align:center;
 }
 
-/* CHAT */
+/* ===== CHAT ===== */
 .chat{
   flex:1;
   overflow-y:auto;
   padding:20px;
+  padding-bottom:120px;
   display:none;
 }
 
-/* MESSAGE */
+/* ===== MESSAGE ===== */
 .message{
-  padding:10px 15px;
-  margin:10px 0;
-  border-radius:10px;
-  max-width:70%;
+  margin:20px 0;
 }
 
-.user{
-  background:#19c37d;
-  margin-left:auto;
+/* USER */
+.message.user{
+  text-align:right;
 }
 
-.bot{
-  background:#333;
+.message.user .text{
+  color:#aaa;
 }
 
-/* 🔥 INPUT FIX */
+/* BOT */
+.message.bot .text{
+  line-height:1.7;
+}
+
+/* ===== INPUT ===== */
 .input-area{
   position:fixed;
-  bottom:10px;
-  left:0;
-  right:0;
+  bottom:0;
+  width:100%;
+  padding:10px;
   display:flex;
   justify-content:center;
+  background:#0f0f0f;
 }
 
 .input-box{
   width:95%;
-  max-width:600px;
+  max-width:700px;
   display:flex;
   align-items:center;
+  gap:10px;
+}
+
+/* + BUTTON */
+.plus{
+  font-size:22px;
   background:#2a2b32;
-  border-radius:30px;
-  padding:10px 15px;
+  padding:10px;
+  border-radius:50%;
+  cursor:pointer;
 }
 
 /* INPUT */
 .input-box input{
   flex:1;
-  background:transparent;
+  background:#1e1e1e;
   border:none;
+  border-radius:25px;
+  padding:12px;
   color:white;
-  padding:10px;
   outline:none;
 }
 
-/* BUTTON */
+/* MIC */
+.mic{
+  background:#2a2b32;
+  padding:10px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+/* SEND */
 #sendBtn{
-  width:40px;
-  height:40px;
+  width:45px;
+  height:45px;
   border:none;
   border-radius:50%;
   background:white;
-  color:black;
   cursor:pointer;
+  transition:0.3s;
+}
+
+/* GLOW */
+#sendBtn:hover{
+  box-shadow:0 0 10px #19c37d;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.message{
+  animation:fadeIn 0.3s ease;
 }
 
 </style>
@@ -124,25 +214,20 @@ body{
 
 <!-- HEADER -->
 <div class="header">
-  <div class="menu-circle" onclick="toggleSidebar()">
-    <span></span>
-    <span></span>
-  </div>
+
+  <div class="menu-circle" onclick="toggleSidebar()">☰</div>
 
   <div class="brand">
     <img src="logo.png" class="logo">
     <span>DeepSINKY</span>
   </div>
+
+  <div class="theme-btn" onclick="toggleTheme()">🌙</div>
+
 </div>
 
 <!-- SIDEBAR -->
-<div class="sidebar" id="sidebar">
-  <input class="search" placeholder="Search">
-  <div class="side-item">New chat</div>
-  <div class="side-item">Images</div>
-  <div class="side-item">Apps</div>
-</div>
-
+<div class="sidebar" id="sidebar"></div>
 <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
 <!-- WELCOME -->
@@ -157,18 +242,19 @@ body{
 <div class="input-area">
   <div class="input-box">
 
-    <span>+</span>
+    <span class="plus">+</span>
 
     <input id="input" placeholder="Ask DeepSINKY">
 
-    <span>🎤</span>
+    <span class="mic">🎤</span>
 
     <button id="sendBtn">➤</button>
 
   </div>
 </div>
 
-<script src="script.js"></script>
+<!-- SCRIPT -->
+<script src="./script.js"></script>
 
 </body>
-</html>
+  </html>
