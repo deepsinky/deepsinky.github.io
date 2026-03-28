@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   // =========================
   async function send(){
-
+alert("MESSAGE ADDED");
     if(!input || !chat) return;
 
     let text = input.value.trim();
