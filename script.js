@@ -1,37 +1,44 @@
-alert("JS WORKING FINAL 🔥");
-
 document.addEventListener("DOMContentLoaded", function(){
 
   const input = document.getElementById("input");
   const chat = document.getElementById("chat");
   const sendBtn = document.getElementById("sendBtn");
+  const mic = document.querySelector(".mic");
 
+  // 👉 NEW (SIDEBAR STORAGE)
   let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
-  let memory = JSON.parse(localStorage.getItem("memory")) || {};
 
-  // ✅ SAFE BUTTON
+  // =========================
+  // SEND EVENTS
   if(sendBtn){
     sendBtn.addEventListener("click", send);
   }
 
-  // ✅ SAFE INPUT
   if(input){
     input.addEventListener("keypress", function(e){
       if(e.key === "Enter") send();
     });
   }
 
-  // 🎤 VOICE INPUT SAFE
-  const mic = document.querySelector(".mic");
-
+  // =========================
+  // 🎤 VOICE INPUT + WAVE
   if(mic){
     mic.onclick = ()=>{
+      let wave = document.createElement("div");
+      wave.className = "voice-wave";
+      wave.innerHTML = "<span></span><span></span><span></span><span></span>";
+      input.parentNode.appendChild(wave);
+
       let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
       recognition.lang = "en-US";
       recognition.start();
 
+      input.placeholder = "Listening...";
+
       recognition.onresult = function(e){
         input.value = e.results[0][0].transcript;
+        wave.remove();
+        input.placeholder = "Ask DeepSINKY";
       };
     };
   }
@@ -39,15 +46,13 @@ document.addEventListener("DOMContentLoaded", function(){
   // =========================
   async function send(){
 
-    if(!input || !chat) return;
-
     let text = input.value.trim();
     if(!text) return;
 
     document.getElementById("welcome")?.style.display = "none";
     chat.style.display = "block";
 
-    // ✅ USER MESSAGE
+    // USER MESSAGE
     chat.innerHTML += `
       <div class="message user">
         <div class="text">${text}</div>
@@ -60,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function(){
     // THINKING
     let thinking = document.createElement("div");
     thinking.className = "message bot";
-    thinking.innerHTML = "Thinking...";
+    thinking.innerHTML = `<div class="wave"><span></span><span></span><span></span></div>`;
     chat.appendChild(thinking);
 
     try{
@@ -71,27 +76,10 @@ document.addEventListener("DOMContentLoaded", function(){
         body: JSON.stringify({ message:text })
       });
 
-      // ❗ अगर server down है
-      if(!response.ok){
-        throw new Error("Server not responding");
-      }
-
       let data = await response.json();
-
       thinking.remove();
 
-      let reply = data.reply || "⚠️ No response";
-
-      // MEMORY
-      if(text.toLowerCase().includes("my name is")){
-        let name = text.split("my name is")[1].trim();
-        memory.name = name;
-        localStorage.setItem("memory", JSON.stringify(memory));
-      }
-
-      if(memory.name){
-        reply = "Hello " + memory.name + " 👋\n\n" + reply;
-      }
+      let reply = data.reply || "No response 😢";
 
       // BOT MESSAGE
       let botDiv = document.createElement("div");
@@ -100,13 +88,6 @@ document.addEventListener("DOMContentLoaded", function(){
       botDiv.innerHTML = `
         <div class="content">
           <div class="text"></div>
-
-          <div class="actions">
-            <span onclick="copyText(this)">📋</span>
-            <span onclick="likeMsg(this)">👍</span>
-            <span onclick="speakText(this)">🔊</span>
-            <span onclick="shareText(this)">🔗</span>
-          </div>
         </div>
       `;
 
@@ -114,20 +95,44 @@ document.addEventListener("DOMContentLoaded", function(){
 
       let textBox = botDiv.querySelector(".text");
 
-      typeText(textBox, reply);
+      streamText(textBox, reply);
 
-      // SAVE HISTORY
-      history.push({q:text, a:reply});
+      // 👉 SAVE HISTORY
+      history.push(text);
       localStorage.setItem("chatHistory", JSON.stringify(history));
 
       loadHistory();
 
     }catch(err){
-      console.error(err);
-      thinking.innerHTML = "❌ Server error / API not working";
+      thinking.innerHTML = "❌ Server error";
     }
 
     scrollBottom();
+  }
+
+  // =========================
+  // STREAMING TEXT
+  function streamText(el, text){
+
+    let formatted = formatText(text);
+    let words = formatted.split(" ");
+    let i = 0;
+
+    function type(){
+      if(i < words.length){
+        el.innerHTML += words[i] + " ";
+        el.innerHTML += `<span class="cursor">|</span>`;
+        i++;
+        setTimeout(type, 25);
+      }else{
+        el.innerHTML = formatted;
+        addCopyButtons();
+      }
+      scrollBottom();
+    }
+
+    el.innerHTML = "";
+    type();
   }
 
   // =========================
@@ -135,29 +140,9 @@ document.addEventListener("DOMContentLoaded", function(){
     return text
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
       .replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>")
-      .replace(/\n/g, "<br>");
-  }
-
-  // =========================
-  function typeText(element, text){
-
-    let formatted = formatText(text);
-    let words = formatted.split(" ");
-    let i = 0;
-
-    function typing(){
-      if(i < words.length){
-        element.innerHTML += words[i] + " ";
-        i++;
-        setTimeout(typing, 25);
-      }else{
-        addCopyButtons();
-      }
-      scrollBottom();
-    }
-
-    element.innerHTML = "";
-    typing();
+      .replace(/\n/g, "<br>")
+      .replace(/- (.*?)(<br>|$)/g, "<li>$1</li>")
+      .replace(/(<li>.*<\/li>)/g, "<ul>$1</ul>");
   }
 
   // =========================
@@ -178,12 +163,12 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 
-  // =========================
   function scrollBottom(){
     chat.scrollTop = chat.scrollHeight;
   }
 
   // =========================
+  // 👉 SIDEBAR LOAD
   function loadHistory(){
     let sidebar = document.getElementById("sidebar");
     if(!sidebar) return;
@@ -193,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function(){
     history.forEach(item=>{
       let div = document.createElement("div");
       div.className = "side-item";
-      div.innerText = item.q;
+      div.innerText = item;
       sidebar.appendChild(div);
     });
   }
@@ -202,7 +187,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-// ===== SIDEBAR =====
+// =========================
+// 👉 SIDEBAR TOGGLE
 function toggleSidebar(){
   let sidebar = document.getElementById("sidebar");
   let overlay = document.getElementById("overlay");
@@ -212,34 +198,3 @@ function toggleSidebar(){
   sidebar.classList.toggle("open");
   overlay.classList.toggle("show");
 }
-
-// ===== ACTION BUTTONS =====
-function copyText(el){
-  let text = el.closest(".content").querySelector(".text").innerText;
-  navigator.clipboard.writeText(text);
-}
-
-function likeMsg(el){
-  el.innerHTML = "❤️";
-}
-
-function speakText(el){
-  let text = el.closest(".content").querySelector(".text").innerText;
-  let speech = new SpeechSynthesisUtterance(text);
-  speech.lang = "en-US";
-  speechSynthesis.speak(speech);
-}
-
-function shareText(el){
-  let text = el.closest(".content").querySelector(".text").innerText;
-  if(navigator.share){
-    navigator.share({ text });
-  } else {
-    alert("Share not supported");
-  }
-}
-
-// 🌗 THEME SWITCH
-function toggleTheme(){
-  document.body.classList.toggle("light");
-    }
