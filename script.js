@@ -27,7 +27,25 @@ document.addEventListener("DOMContentLoaded", function(){
       };
     };
   }
+function typeText(element, text){
 
+  let formatted = formatText(text);
+  let i = 0;
+
+  function typing(){
+    if(i < formatted.length){
+      element.innerHTML = formatted.slice(0, i) + '<span class="cursor"></span>';
+      i++;
+      setTimeout(typing, 15);
+    }else{
+      element.innerHTML = formatted;
+      addCopyButtons();
+    }
+    scrollBottom();
+  }
+
+  typing();
+}
   // =========================
   async function send(){
 
