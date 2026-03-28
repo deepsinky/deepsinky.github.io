@@ -46,6 +46,25 @@ function typeText(element, text){
 
   typing();
 }
+  mic.onclick = ()=>{
+  let wave = document.createElement("div");
+  wave.className = "voice-wave";
+  wave.innerHTML = "<span></span><span></span><span></span><span></span>";
+
+  input.value = "";
+  input.placeholder = "Listening...";
+  input.parentNode.appendChild(wave);
+
+  let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  recognition.lang = "en-US";
+  recognition.start();
+
+  recognition.onresult = function(e){
+    input.value = e.results[0][0].transcript;
+    wave.remove();
+    input.placeholder = "Ask DeepSINKY";
+  };
+};
   // =========================
   async function send(){
 
