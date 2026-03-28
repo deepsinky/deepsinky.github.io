@@ -6,61 +6,7 @@ document.addEventListener("DOMContentLoaded", function(){
   const chat = document.getElementById("chat");
   const sendBtn = document.getElementById("sendBtn");
   const mic = document.querySelector(".mic");
-// =========================
-// 🧠 STYLE DETECTION ENGINE
-function detectStyle(text){
 
-  text = text.toLowerCase();
-
-  let styles = [];
-
-  // 🧠 RESPONSE STYLES
-  if(text.includes("formal")) styles.push("formal");
-  if(text.includes("casual") || text.includes("informal")) styles.push("casual");
-  if(text.includes("friendly")) styles.push("friendly");
-  if(text.includes("strict")) styles.push("strict");
-  if(text.includes("motivate")) styles.push("motivational");
-  if(text.includes("story")) styles.push("storytelling");
-  if(text.includes("teach") || text.includes("explain")) styles.push("teaching");
-  if(text.includes("step")) styles.push("step-by-step");
-  if(text.includes("short")) styles.push("short");
-  if(text.includes("detail")) styles.push("detailed");
-  if(text.includes("bullet")) styles.push("bullet");
-  if(text.includes("hinglish")) styles.push("hinglish");
-  if(text.includes("hindi")) styles.push("hindi");
-  if(text.includes("english")) styles.push("english");
-  if(text.includes("funny")) styles.push("humor");
-  if(text.includes("logic")) styles.push("logical");
-  if(text.includes("debate")) styles.push("debate");
-
-  // 💻 CODING
-  if(text.includes("code")) styles.push("coding");
-  if(text.includes("debug")) styles.push("debug");
-
-  // 📚 STUDY
-  if(text.includes("notes")) styles.push("notes");
-  if(text.includes("exam")) styles.push("exam");
-  if(text.includes("revision")) styles.push("revision");
-
-  // 🎨 CREATIVE
-  if(text.includes("poem") || text.includes("shayari")) styles.push("poetry");
-  if(text.includes("script")) styles.push("script");
-
-  // 🌐 LANGUAGE
-  if(text.includes("translate")) styles.push("translate");
-  if(text.includes("grammar")) styles.push("grammar");
-
-  // ⚙️ PRODUCTIVITY
-  if(text.includes("resume")) styles.push("resume");
-  if(text.includes("plan")) styles.push("planner");
-  if(text.includes("idea")) styles.push("ideas");
-
-  // 🔍 INTELLIGENCE
-  if(text.includes("solve")) styles.push("problem-solving");
-  if(text.includes("compare")) styles.push("comparison");
-
-  return styles.length ? styles : ["general"];
-}
   // =========================
   // ✅ SEND BUTTON
   if(sendBtn){
@@ -311,4 +257,4 @@ function shareText(el){
 // 🌗 THEME
 function toggleTheme(){
   document.body.classList.toggle("light");
-}
+      }
