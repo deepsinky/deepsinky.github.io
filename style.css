@@ -8,8 +8,8 @@
 html,body{
   height:100%;
   font-family:"Segoe UI", Arial, sans-serif;
-  background:#343541;
-  color:white;
+  background:#0f0f0f;
+  color:#e5e5e5;
 }
 
 /* ===== MAIN ===== */
@@ -26,9 +26,10 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:15px;
-  border-bottom:1px solid #444;
+  padding:14px;
+  border-bottom:1px solid #222;
   font-weight:600;
+  background:#0f0f0f;
 }
 
 /* ===== LOGO ===== */
@@ -41,107 +42,125 @@ body{
 
 .logo{
   width:28px;
-  height:28px;
 }
 
 /* ===== MENU ===== */
 .menu-circle{
   position:absolute;
   left:15px;
-  width:40px;
-  height:40px;
+  width:36px;
+  height:36px;
   border-radius:50%;
-  background:#444;
+  background:#1e1e1e;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  gap:5px;
+  gap:4px;
   cursor:pointer;
+  transition:0.2s;
+}
+
+.menu-circle:hover{
+  background:#2a2b32;
 }
 
 .menu-circle span{
-  display:block;
-  height:3px;
+  height:2px;
+  width:16px;
   background:white;
-  border-radius:3px;
 }
-
-.menu-circle span:nth-child(1){ width:18px; }
-.menu-circle span:nth-child(2){ width:12px; }
 
 /* ===== CHAT ===== */
 .chat{
   flex:1;
   overflow-y:auto;
-  padding:20px;
-  padding-bottom:120px;
+  padding:25px;
+  padding-bottom:130px;
   scroll-behavior:smooth;
   display:none;
 }
 
 /* ===== MESSAGE ===== */
 .message{
-  display:flex;
-  gap:10px;
-  margin:15px 0;
-  max-width:90%;
+  width:100%;
+  margin:20px 0;
   animation:fadeIn 0.3s ease;
 }
 
-/* USER */
-.message.user .bubble{
-  background:none;
-  padding:0;
-  border-radius:0;
-  box-shadow:none;
+/* ===== USER (NO BUBBLE) ===== */
+.message.user{
+  display:flex;
+  justify-content:flex-end;
 }
 
-/* BOT */
+.message.user .text{
+  color:#9ca3af;
+  font-size:15px;
+}
+
+/* ===== BOT ===== */
 .message.bot{
-  margin-right:auto;
-  background:transparent;
+  display:block;
 }
 
-/* ===== CONTENT ===== */
 .content{
-  display:flex;
-  flex-direction:column;
+  width:100%;
 }
 
-/* ===== BUBBLE (ONLY BOT) ===== */
-.message.bot .bubble{
-  background:#2a2b32;
+/* ===== TEXT ===== */
+.text{
+  font-size:16px;
+  line-height:1.75;
+  letter-spacing:0.3px;
+}
+
+/* ===== HEADINGS ===== */
+.text h1,
+.text h2,
+.text h3{
+  margin:14px 0 6px;
+  font-weight:600;
   color:white;
-  padding:12px 16px;
-  border-radius:18px;
-  border-bottom-left-radius:6px;
-  max-width:75%;
-  line-height:1.5;
 }
 
-/* ===== ACTIONS ===== */
-.actions{
-  display:flex;
-  gap:12px;
-  margin-top:6px;
-  font-size:14px;
-  opacity:0;
-  transition:0.2s;
+/* ===== BOLD ===== */
+.text strong{
+  color:#ffffff;
 }
 
-.message.bot:hover .actions{
-  opacity:1;
+/* ===== LIST ===== */
+.text ul{
+  padding-left:20px;
+  margin-top:8px;
 }
 
-.actions span{
+.text li{
+  margin-bottom:6px;
+}
+
+/* ===== CODE BLOCK ===== */
+pre{
+  background:#1e1e1e;
+  padding:14px;
+  border-radius:12px;
+  overflow:auto;
+  margin-top:10px;
+  position:relative;
+}
+
+code{
+  color:#00ffcc;
+}
+
+/* ===== COPY BUTTON ===== */
+.copy-btn{
+  position:absolute;
+  top:8px;
+  right:10px;
+  font-size:12px;
+  color:#00ffcc;
   cursor:pointer;
-  opacity:0.6;
-}
-
-.actions span:hover{
-  opacity:1;
-  transform:scale(1.2);
 }
 
 /* ===== INPUT ===== */
@@ -150,22 +169,23 @@ body{
   bottom:0;
   left:0;
   right:0;
-  height:60px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  padding:12px;
+  background:#0f0f0f;
 }
 
 .input-box{
   width:95%;
-  max-width:600px;
+  max-width:650px;
+  margin:auto;
   display:flex;
   align-items:center;
-  background:#2a2b32;
+  background:#1e1e1e;
   border-radius:30px;
-  padding:10px 15px;
+  padding:12px 15px;
+  box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
+/* INPUT */
 .input-box input{
   flex:1;
   background:transparent;
@@ -175,15 +195,20 @@ body{
   outline:none;
 }
 
-/* SEND BUTTON */
+/* BUTTON */
 #sendBtn{
-  width:40px;
-  height:40px;
+  width:42px;
+  height:42px;
   border:none;
   border-radius:50%;
   background:white;
   color:black;
   cursor:pointer;
+  transition:0.2s;
+}
+
+#sendBtn:hover{
+  transform:scale(1.05);
 }
 
 /* ===== SIDEBAR ===== */
@@ -193,7 +218,7 @@ body{
   left:-260px;
   width:260px;
   height:100%;
-  background:#202123;
+  background:#171717;
   padding:20px;
   transition:0.3s;
   z-index:1000;
@@ -250,26 +275,4 @@ body{
   33%{content:".";}
   66%{content:"..";}
   100%{content:"...";}
-}
-.text{
-  font-size:16px;
-  line-height:1.7;
-  letter-spacing:0.3px;
-}
-
-/* headings */
-.text b{
-  font-size:18px;
-  display:block;
-  margin-bottom:6px;
-}
-
-/* bullet points */
-.text ul{
-  padding-left:18px;
-  margin-top:8px;
-}
-
-.text li{
-  margin-bottom:6px;
 }
