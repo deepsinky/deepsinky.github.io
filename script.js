@@ -61,6 +61,125 @@ function detectStyle(text){
 
   return styles.length ? styles : ["general"];
 }
+  
+  // =========================
+  function buildStylePrompt(text, styles){
+
+  let prompt = text + "\n\n";
+
+  styles.forEach(style=>{
+
+    switch(style){
+
+      case "formal":
+        prompt += "Answer in formal professional tone.\n";
+        break;
+
+      case "casual":
+        prompt += "Answer in casual friendly tone.\n";
+        break;
+
+      case "motivational":
+        prompt += "Make response motivational and inspiring.\n";
+        break;
+
+      case "storytelling":
+        prompt += "Explain like a story.\n";
+        break;
+
+      case "teaching":
+        prompt += "Explain like a teacher in simple way.\n";
+        break;
+
+      case "step-by-step":
+        prompt += "Give step by step explanation.\n";
+        break;
+
+      case "short":
+        prompt += "Keep answer short.\n";
+        break;
+
+      case "detailed":
+        prompt += "Give detailed explanation.\n";
+        break;
+
+      case "bullet":
+        prompt += "Use bullet points.\n";
+        break;
+
+      case "hinglish":
+        prompt += "Reply in Hinglish.\n";
+        break;
+
+      case "hindi":
+        prompt += "Reply in Hindi.\n";
+        break;
+
+      case "english":
+        prompt += "Reply in English.\n";
+        break;
+
+      case "humor":
+        prompt += "Make it funny.\n";
+        break;
+
+      case "logical":
+        prompt += "Use logical reasoning.\n";
+        break;
+
+      case "coding":
+        prompt += "Give clean code with explanation.\n";
+        break;
+
+      case "debug":
+        prompt += "Explain debugging clearly.\n";
+        break;
+
+      case "notes":
+        prompt += "Make notes format.\n";
+        break;
+
+      case "exam":
+        prompt += "Answer exam oriented.\n";
+        break;
+
+      case "poetry":
+        prompt += "Write in poetry style.\n";
+        break;
+
+      case "script":
+        prompt += "Write like a script.\n";
+        break;
+
+      case "translate":
+        prompt += "Translate properly.\n";
+        break;
+
+      case "resume":
+        prompt += "Create professional resume.\n";
+        break;
+
+      case "planner":
+        prompt += "Make structured plan.\n";
+        break;
+
+      case "ideas":
+        prompt += "Generate creative ideas.\n";
+        break;
+
+      case "problem-solving":
+        prompt += "Solve step by step.\n";
+        break;
+
+      case "comparison":
+        prompt += "Compare clearly.\n";
+        break;
+    }
+
+  });
+
+  return prompt;
+}
   // =========================
   // ✅ SEND BUTTON
   if(sendBtn){
