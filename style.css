@@ -163,7 +163,7 @@ code{
   cursor:pointer;
 }
 
-/* ===== INPUT ===== */
+/* ===== INPUT AREA ===== */
 .input-area{
   position:fixed;
   bottom:0;
@@ -171,21 +171,32 @@ code{
   right:0;
   padding:12px;
   background:#0f0f0f;
+  display:flex;
+  justify-content:center;
 }
 
+/* MAIN WRAPPER */
 .input-box{
   width:95%;
   max-width:650px;
-  margin:auto;
   display:flex;
   align-items:center;
   background:#1e1e1e;
   border-radius:30px;
-  padding:12px 15px;
-  box-shadow:0 0 10px rgba(0,0,0,0.5);
+  padding:10px;
+  gap:10px;
 }
 
-/* INPUT */
+/* + BUTTON (OUTSIDE LOOK) */
+.input-box .plus{
+  font-size:22px;
+  padding:8px;
+  border-radius:50%;
+  background:#2a2b32;
+  cursor:pointer;
+}
+
+/* INPUT FIELD */
 .input-box input{
   flex:1;
   background:transparent;
@@ -195,20 +206,28 @@ code{
   outline:none;
 }
 
-/* BUTTON */
+/* MIC */
+.mic{
+  font-size:18px;
+  padding:8px;
+  border-radius:50%;
+  background:#2a2b32;
+  cursor:pointer;
+}
+
+/* SEND BUTTON */
 #sendBtn{
   width:42px;
   height:42px;
   border:none;
   border-radius:50%;
-  background:white;
+  background:#ffffff;
   color:black;
+  font-size:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   cursor:pointer;
-  transition:0.2s;
-}
-
-#sendBtn:hover{
-  transform:scale(1.05);
 }
 
 /* ===== SIDEBAR ===== */
