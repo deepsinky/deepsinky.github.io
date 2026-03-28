@@ -21,6 +21,11 @@ body{
   transition:0.3s;
 }
 
+/* LIGHT MODE */
+body.light{
+  background:#ffffff;
+  color:#000;
+}
 
 /* ===== HEADER ===== */
 .header{
@@ -29,7 +34,6 @@ body{
   justify-content:center;
   padding:15px;
   border-bottom:1px solid #222;
-  font-size:18px;
   position:relative;
 }
 
@@ -43,7 +47,7 @@ body{
   width:28px;
 }
 
-/* ===== MENU ===== */
+/* MENU */
 .menu-circle{
   position:absolute;
   left:15px;
@@ -52,33 +56,52 @@ body{
   border-radius:50%;
   background:#2a2b32;
   display:flex;
-  flex-direction:column;
-  justify-content:center;
   align-items:center;
-  gap:4px;
+  justify-content:center;
   cursor:pointer;
 }
 
-.menu-circle span{
-  width:16px;
-  height:2px;
-  background:white;
-}
-
-/* 🌗 THEME BUTTON */
+/* THEME BUTTON */
 .theme-btn{
   position:absolute;
   right:15px;
   cursor:pointer;
 }
 
+/* ===== SIDEBAR ===== */
+.sidebar{
+  position:fixed;
+  left:-260px;
+  top:0;
+  width:260px;
+  height:100%;
+  background:#202123;
+  padding:15px;
+  transition:0.3s;
+  z-index:1000;
+}
+
+.sidebar.open{
+  left:0;
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+  display:none;
+}
+
+.overlay.show{
+  display:block;
+}
+
 /* ===== CENTER ===== */
 .center{
   flex:1;
   display:flex;
-  flex-direction:column;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   text-align:center;
 }
 
@@ -91,136 +114,92 @@ body{
   display:none;
 }
 
-/* ===== MESSAGE BASE ===== */
+/* ===== MESSAGE ===== */
 .message{
   margin:20px 0;
-  display:flex;
 }
 
-/* ===== USER ===== */
+/* USER */
 .message.user{
-  justify-content:flex-end;
+  text-align:right;
 }
 
 .message.user .text{
   color:#aaa;
-  font-size:15px;
 }
 
-/* ===== BOT ===== */
-.message.bot{
-  width:100%;
-}
-
-.message.bot .content{
-  width:100%;
-}
-
+/* BOT */
 .message.bot .text{
-  font-size:16px;
   line-height:1.7;
-}
-
-/* ===== FORMAT ===== */
-.message.bot h1,
-.message.bot h2,
-.message.bot h3{
-  margin:12px 0 6px;
-  font-weight:600;
-}
-
-.message.bot strong{
-  color:white;
-}
-
-.message.bot ul{
-  padding-left:20px;
-}
-
-.message.bot li{
-  margin:6px 0;
-}
-
-/* ===== CODE ===== */
-pre{
-  background:#1e1e1e;
-  padding:12px;
-  border-radius:10px;
-  overflow:auto;
-  position:relative;
-}
-
-code{
-  color:#00ffcc;
-}
-
-/* COPY BUTTON */
-.copy-btn{
-  position:absolute;
-  right:10px;
-  top:5px;
-  font-size:12px;
-  cursor:pointer;
-  color:#00ffcc;
 }
 
 /* ===== INPUT ===== */
 .input-area{
   position:fixed;
   bottom:0;
-  left:0;
-  right:0;
+  width:100%;
+  padding:10px;
   display:flex;
   justify-content:center;
-  padding:10px;
   background:#0f0f0f;
 }
 
 .input-box{
   width:95%;
-  max-width:600px;
+  max-width:700px;
   display:flex;
   align-items:center;
-  background:#1e1e1e;
-  border-radius:30px;
-  padding:10px 15px;
+  gap:10px;
 }
 
+/* + BUTTON */
+.plus{
+  font-size:22px;
+  background:#2a2b32;
+  padding:10px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+/* INPUT */
 .input-box input{
   flex:1;
-  background:transparent;
+  background:#1e1e1e;
   border:none;
+  border-radius:25px;
+  padding:12px;
   color:white;
-  padding:10px;
   outline:none;
 }
 
+/* MIC */
+.mic{
+  background:#2a2b32;
+  padding:10px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+/* SEND */
 #sendBtn{
-  width:40px;
-  height:40px;
+  width:45px;
+  height:45px;
   border:none;
   border-radius:50%;
   background:white;
-  color:black;
   cursor:pointer;
+  transition:0.3s;
 }
 
-/* 🎤 FIX */
-.mic{
-  cursor:pointer;
-  margin:0 10px;
+/* GLOW */
+#sendBtn:hover{
+  box-shadow:0 0 10px #19c37d;
 }
 
-/* ===== ANIMATION ===== */
+/* ANIMATION */
 @keyframes fadeIn{
-  from{
-    opacity:0;
-    transform:translateY(10px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
 .message{
@@ -236,20 +215,19 @@ code{
 <!-- HEADER -->
 <div class="header">
 
-  <div class="menu-circle" onclick="toggleSidebar()">
-    <span></span>
-    <span></span>
-  </div>
+  <div class="menu-circle" onclick="toggleSidebar()">☰</div>
 
   <div class="brand">
     <img src="logo.png" class="logo">
     <span>DeepSINKY</span>
   </div>
 
+  <div class="theme-btn" onclick="toggleTheme()">🌙</div>
+
+</div>
+
 <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar"></div>
-
-<!-- ✅ FIXED -->
 <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
 <!-- WELCOME -->
@@ -268,7 +246,6 @@ code{
 
     <input id="input" placeholder="Ask DeepSINKY">
 
-    <!-- ✅ FIXED -->
     <span class="mic">🎤</span>
 
     <button id="sendBtn">➤</button>
@@ -276,7 +253,7 @@ code{
   </div>
 </div>
 
-<!-- ✅ FIXED PATH -->
+<!-- SCRIPT -->
 <script src="./script.js"></script>
 
 </body>
