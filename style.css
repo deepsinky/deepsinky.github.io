@@ -26,6 +26,11 @@ body{
   background:var(--bg);
   color:var(--text);
 }
+.main{
+  display:flex;
+  flex-direction:column;
+  height:100vh;
+}
 
 .flex{ display:flex; }
 .grid{ display:grid; }
