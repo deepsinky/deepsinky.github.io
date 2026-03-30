@@ -35,9 +35,10 @@ body{
 width:100%;
 }
 .main{
+  flex:1;
   display:flex;
   flex-direction:column;
-  width:100vw;   /* 🔥 main fix */
+  width:100%;      /* ✅ सही */
   min-height:100vh;
 }
 
