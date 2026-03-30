@@ -31,7 +31,8 @@ body{
   font-family:Segoe UI, Arial;
   background:var(--bg);
   color:var(--text);
-width:100%;
+  display:flex;
+  width:100%;
 }
 .main{
   flex:1;
