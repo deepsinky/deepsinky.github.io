@@ -355,11 +355,14 @@ function detectStyle(text){
   // =========================
   // 🤔 THINKING
   function addThinking(){
-    let div = document.createElement("div");
-    div.className = "message bot";
-    div.innerHTML = `<div class="dot"></div>`;
-    chat.appendChild(div);
-    return div;
+  let div = document.createElement("div");
+  div.className = "message bot";
+
+  div.innerHTML = `<div class="dot"></div>`;
+
+  chat.appendChild(div);
+  scrollBottom();
+  return div;
   }
 
   // =========================
