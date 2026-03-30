@@ -372,7 +372,7 @@ function detectStyle(text){
   let words = text.split(" ");
   let i = 0;
 
-  el.innerHTML = "";   // reset
+  el.innerHTML = "";
 
   function type(){
     if(i < words.length){
@@ -380,9 +380,9 @@ function detectStyle(text){
       el.innerHTML += words[i] + " ";
       i++;
 
-      chat.scrollTop = chat.scrollHeight;   // 🔥 FORCE SCROLL
+      scrollBottom();   // 🔥 यही final fix है
 
-      requestAnimationFrame(type);          // 🔥 smoother than setTimeout
+      setTimeout(type, 20);
 
     }else{
       el.innerHTML = formatText(text);
@@ -392,7 +392,6 @@ function detectStyle(text){
 
   type();
   }
-
   // =========================
   // 🧾 FORMAT TEXT
   function formatText(text){
