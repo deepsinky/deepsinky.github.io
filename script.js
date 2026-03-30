@@ -369,23 +369,28 @@ function detectStyle(text){
   // ⚡ STREAMING TEXT
   function streamText(el, text){
 
-    let words = text.split(" ");
-    let i = 0;
+  let words = text.split(" ");
+  let i = 0;
 
-    function type(){
-      if(i < words.length){
-        el.innerHTML += words[i] + " <span class='cursor'>|</span>";
-        i++;
-        setTimeout(type, 25);
-      }else{
-        el.innerHTML = formatText(text);
-        addCopyButtons();
-      }
-      scrollBottom();
+  el.innerHTML = "";   // reset
+
+  function type(){
+    if(i < words.length){
+
+      el.innerHTML += words[i] + " ";
+      i++;
+
+      chat.scrollTop = chat.scrollHeight;   // 🔥 FORCE SCROLL
+
+      requestAnimationFrame(type);          // 🔥 smoother than setTimeout
+
+    }else{
+      el.innerHTML = formatText(text);
+      addCopyButtons();
     }
+  }
 
-    el.innerHTML = "";
-    type();
+  type();
   }
 
   // =========================
@@ -418,9 +423,10 @@ function detectStyle(text){
 
   // =========================
   function scrollBottom(){
+  requestAnimationFrame(()=>{
     chat.scrollTop = chat.scrollHeight;
+  });
   }
-
 }); // DOM END
 
 // =========================
