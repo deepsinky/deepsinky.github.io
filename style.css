@@ -25,6 +25,8 @@ body{
   font-family:Segoe UI, Arial;
   background:var(--bg);
   color:var(--text);
+  display:flex;
+width:100%;
 }
 .main{
   flex:1;
