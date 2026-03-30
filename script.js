@@ -357,9 +357,7 @@ function detectStyle(text){
   function addThinking(){
     let div = document.createElement("div");
     div.className = "message bot";
-    div.innerHTML = `<div class="dots">
-  <span></span><span></span><span></span>
-</div>`;
+    div.innerHTML = `<div class="dot"></div>`;
     chat.appendChild(div);
     return div;
   }
