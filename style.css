@@ -300,11 +300,7 @@ button:hover{
   50%{opacity:1; transform:scale(1.4);}
   100%{opacity:0.3; transform:scale(0.8);}
 }
-/* TYPING DOTS */
 
-.typing span{ ... }
-
-@keyframes blink{ ... }
 
 
 /* =========================
