@@ -299,7 +299,7 @@ function detectStyle(text){
     input.value = "";
     scrollBottom();
 
-    let thinking = addThinking();
+    loading.innerHTML = `<div class="dots"><span></span><span></span><span></span></div>`;
 
     try{
 
