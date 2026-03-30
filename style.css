@@ -285,16 +285,27 @@ button:hover{
   border-radius:50%;
   animation:spin 1s linear infinite;
 }
+/* SINGLE DOT LOADING */
+.dot{
+  width:8px;
+  height:8px;
+  background:#19c37d;
+  border-radius:50%;
+  display:inline-block;
+  animation:pulse 1s infinite;
+}
 
+@keyframes pulse{
+  0%{opacity:0.3; transform:scale(0.8);}
+  50%{opacity:1; transform:scale(1.4);}
+  100%{opacity:0.3; transform:scale(0.8);}
+}
 /* TYPING DOTS */
-.typing span{
-  animation:blink 1.4s infinite;
-}
 
-@keyframes blink{
-  0%,100%{opacity:0;}
-  50%{opacity:1;}
-}
+.typing span{ ... }
+
+@keyframes blink{ ... }
+
 
 /* =========================
 📱 RESPONSIVE
