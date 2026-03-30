@@ -22,10 +22,12 @@ body{
   background:#202123;
   padding:10px;
   overflow-y:auto;
+
   position:fixed;
-  left:-260px;
   top:0;
-  height:100%;
+  left:0;
+
+  transform:translateX(-100%);   /* 🔥 MAIN FIX */
   transition:0.3s;
 }
 .sidebar.open{ left:0; }
