@@ -77,8 +77,16 @@ width:100%;
   background:var(--bg-soft);
   padding:10px;
   overflow-y:auto;
-}
 
+  position:fixed;   /* 🔥 main fix */
+  left:-260px;      /* hide sidebar */
+  top:0;
+  height:100%;
+  transition:0.3s;
+}
+.sidebar.open{
+  left:0;
+}
 .sidebar .chat-item{
   padding:10px;
   border-radius:6px;
