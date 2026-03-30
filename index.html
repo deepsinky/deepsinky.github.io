@@ -59,11 +59,28 @@ body{
   padding:12px;
   border-bottom:1px solid #333;
 }
-
 /* MENU */
 .menu{
   cursor:pointer;
-  font-size:20px;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.line{
+  height:2px;
+  background:white;
+  border-radius:2px;
+}
+
+/* FULL LINE */
+.line.full{
+  width:22px;
+}
+
+/* HALF LINE */
+.line.half{
+  width:12px;
 }
 
 /* BRAND (LOGO + TEXT) */
