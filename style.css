@@ -38,8 +38,8 @@ body{
   flex:1;
   display:flex;
   flex-direction:column;
-  width:100%;      /* ✅ सही */
-  min-height:100vh;
+  width:100%;
+  height:100vh;   
 }
 
 .flex{ display:flex; }
