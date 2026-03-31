@@ -342,7 +342,9 @@ async function send(){
   text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
 
   // ✅ code block
-  text = text.replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>");
+  text = text.replace(/```([\s\S]*?)```/g, (match, code)=>{
+  return `<pre><code>${code}</code></pre>`;
+});
 
   // ✅ inline code
   text = text.replace(/`(.*?)`/g, "<code>$1</code>");
