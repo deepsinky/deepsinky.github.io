@@ -274,25 +274,33 @@ function detectStyle(text){
 
   // =========================
   // 🤖 AI CALL
-  async function askAI(prompt, type="general"){
+ async function askAI(prompt, type="general"){
 
+  const controller = new AbortController();
+  const timeout = setTimeout(()=>controller.abort(), 15000); // ⏱ 15 sec limit
+
+  try{
     let response = await fetch("https://deepsinky-server-1.onrender.com/chat",{
       method:"POST",
       headers:{ "Content-Type":"application/json" },
       body: JSON.stringify({
         message: prompt,
         mode: type
-      })
+      }),
+      signal: controller.signal
     });
-
-    if(!response.ok){
-      throw new Error("Server not responding");
-    }
+if(!response.ok){
+  throw new Error("Server error");
+}
+   
+   clearTimeout(timeout);
 
     let data = await response.json();
     return data.reply;
-  }
-
+    catch(err){
+   throw err;
+}
+  
   // =========================
   // 🚀 SEND FUNCTION
   async function send(){
