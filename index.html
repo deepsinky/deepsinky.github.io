@@ -385,21 +385,28 @@ function streamText(text){
 
     if(i < words.length){
 
-      // 🔥 LIVE formatting
       let currentText = words.slice(0, i+1).join(" ");
       div.innerHTML = formatText(currentText);
 
       i++;
       chat.scrollTop = chat.scrollHeight;
 
-      setTimeout(type, 10); // speed control
+      setTimeout(type, 10);
+
+    }else{
+
+      // ✅ FINAL render
+      div.innerHTML = formatText(text);
+
+      // ✅ 👉 YAHAN ADD KARNA HAI
+      addCopyButtons();
 
     }
+
   }
 
   type();
 }
-
 /* SIDEBAR */
 function toggleSidebar(){
   sidebar.classList.toggle("open");
