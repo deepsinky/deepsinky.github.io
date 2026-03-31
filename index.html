@@ -326,11 +326,16 @@ function streamText(text){
   let i = 0;
 
   function type(){
+
     if(i < text.length){
       div.innerHTML += text[i];
       i++;
       setTimeout(type, 15);
+    }else{
+      // 🔥 YAHAN DALNA HAI
+      div.innerHTML = formatText(text);
     }
+
     chat.scrollTop = chat.scrollHeight;
   }
 
