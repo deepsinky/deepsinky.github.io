@@ -287,33 +287,41 @@ function detectStyle(text){
   // 🚀 SEND FUNCTION
   async function send(){
 
-    let text = input.value.trim();
-    if(!text) return;
+  let text = input.value.trim();
+  if(!text) return;
 
-    document.getElementById("welcome")?.style.display = "none";
-    chat.style.display = "block";
+  document.getElementById("welcome")?.style.display = "none";
+  chat.style.display = "block";
 
-    let mode = detectFeature(text);
+  let mode = detectFeature(text);
 
-    addUserMessage(text);
-    input.value = "";
-    scrollBottom();
+  addUserMessage(text);
+  input.value = "";
+  scrollBottom();
 
-    let thinking = addThinking(); 
+  let thinking = addThinking();
 
-    try{
+  try{
 
-      let reply = await askAI(text, mode);
+    let reply = await askAI(text, mode);
 
-      thinking.remove();
-      addBotMessage(reply);
+    // ✅ ALWAYS REMOVE THINKING
+    if(thinking) thinking.remove();
 
-    }catch(err){
-      thinking.innerHTML = "❌ Server error / API issue";
-    }
+    addBotMessage(reply);
 
-    scrollBottom();
+  }catch(err){
+
+    // ❌ REMOVE thinking first
+    if(thinking) thinking.remove();
+
+    // ✅ show error as message
+    addBotMessage("❌ Server error. Try again.");
+
   }
+
+  scrollBottom();
+}
 
   // =========================
   // 💬 USER MESSAGE
