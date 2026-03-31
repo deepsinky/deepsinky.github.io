@@ -356,29 +356,18 @@ if(!response.ok){
   // 🤖 BOT MESSAGE
   function addBotMessage(text){
 
-    let div = document.createElement("div");
-    div.className = "message bot";
+  let div = document.createElement("div");
+  div.className = "bot-text";
 
-    div.innerHTML = `
-      <div class="content">
-        <div class="text"></div>
+  div.innerHTML = `<span class="text"></span>`;
 
-        <div class="actions">
-          <span onclick="copyText(this)">📋</span>
-          <span onclick="likeMsg(this)">👍</span>
-          <span onclick="speakText(this)">🔊</span>
-          <span onclick="shareText(this)">🔗</span>
-        </div>
-      </div>
-    `;
+  chat.appendChild(div);
 
-    chat.appendChild(div);
+  let textBox = div.querySelector(".text");
 
-    let textBox = div.querySelector(".text");
-
-    streamText(textBox, text);
+  streamText(textBox, text);
   }
-
+    
   // =========================
   // 🤔 THINKING
   function addThinking(){
