@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(){
     fetch("https://deepsinky-server-1.onrender.com/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: "ping" })
+      body: JSON.stringify({ message: "hi" })
     });
   }, 240000);
 
