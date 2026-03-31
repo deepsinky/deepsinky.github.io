@@ -336,23 +336,26 @@ async function send(){
 function streamText(text){
 
   let div = document.createElement("div");
-  div.className = "bot-text";
+  div.className = "message bot";
   chat.appendChild(div);
 
+  let words = text.split(" ");
   let i = 0;
 
   function type(){
 
-    if(i < text.length){
-      div.innerHTML += text[i];
-      i++;
-      setTimeout(type, 15);
-    }else{
-      // 🔥 YAHAN DALNA HAI
-      div.innerHTML = formatText(text);
-    }
+    if(i < words.length){
 
-    chat.scrollTop = chat.scrollHeight;
+      // 🔥 LIVE formatting
+      let currentText = words.slice(0, i+1).join(" ");
+      div.innerHTML = formatText(currentText);
+
+      i++;
+      chat.scrollTop = chat.scrollHeight;
+
+      setTimeout(type, 10); // speed control
+
+    }
   }
 
   type();
