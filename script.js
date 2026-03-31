@@ -1,10 +1,17 @@
 // 🔥 DeepSINKY PRO SCRIPT
-
 document.addEventListener("DOMContentLoaded", function(){
-setInterval(()=>{
-  fetch("https://deepsinky-server-1.onrender.com");
-}, 240000);
+
+  // 🔥 SERVER WAKE SYSTEM
+  setInterval(()=>{
+    fetch("https://deepsinky-server-1.onrender.com/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: "ping" })
+    });
+  }, 240000);
+
   const languages = [
+
 
 /* 🇮🇳 INDIA LANGUAGES */
 "Hindi","English","Bengali","Telugu","Marathi","Tamil","Urdu","Gujarati",
