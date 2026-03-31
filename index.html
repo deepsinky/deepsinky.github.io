@@ -107,26 +107,28 @@ body{
 }
 
 /* ===== CHAT ===== */
-.chat{
-  flex:1;
-  overflow-y:auto;
-  padding:20px;
-}
-
 .message{
   margin:10px 0;
-  max-width:70%;
-  padding:10px;
-  border-radius:10px;
+  padding:10px 14px;
+  border-radius:18px;
+  max-width:fit-content;   /* 🔥 auto size */
+  width:auto;
+  word-wrap:break-word;
+  line-height:1.4;
 }
 
+/* 👤 USER BUBBLE */
 .user{
-  background:#19c37d;
-  margin-left:auto;
+  background:#2a2b32;   /* 🔥 grey color */
+  color:#fff;
+  margin-left:auto;     /* right side */
+  border-bottom-right-radius:4px;
 }
 
+/* 🤖 BOT (no bubble clean text) */
 .bot{
-  background:#2a2b32;
+  background:transparent;
+  color:#ddd;
 }
 
 /* ===== INPUT ===== */
