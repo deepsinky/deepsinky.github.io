@@ -175,14 +175,26 @@ body{
 }
 
 /* LOADING */
-.loading{
+.dot{
+  display:flex;
+  gap:5px;
+}
+
+.dot span{
+  width:6px;
+  height:6px;
+  background:#aaa;
+  border-radius:50%;
   animation: blink 1s infinite;
 }
 
+.dot span:nth-child(2){
+  animation-delay:0.3s;
+}
+
 @keyframes blink{
-  0%{opacity:0.2;}
-  50%{opacity:1;}
-  100%{opacity:0.2;}
+  0%,100%{ opacity:0.3; }
+  50%{ opacity:1; }
 }
 
 </style>
