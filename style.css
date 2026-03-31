@@ -154,16 +154,24 @@ body{
 }
 
 /* BOT */
-.message{
-  display:none !important;
-}
 
 .bot-text{
-  color:white;
-  padding:5px 10px;
-  margin:5px 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 5px 10px;
+  margin: 5px 0;
+  color: white;
 }
 
+.message,
+.message.bot,
+.message.user,
+.content{
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
 
 /* =========================
 ✍️ TYPOGRAPHY
