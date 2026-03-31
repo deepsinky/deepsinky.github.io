@@ -378,29 +378,29 @@ function streamText(text){
   div.className = "message bot";
   chat.appendChild(div);
 
-  let words = text.split(" ");
   let i = 0;
 
   function type(){
 
-    if(i < words.length){
+    if(i < text.length){
 
-      let currentText = words.slice(0, i+1).join(" ");
+      // 🔥 character based (emoji safe)
+      let currentText = text.substring(0, i+1);
+
       div.innerHTML = formatText(currentText);
 
       i++;
       chat.scrollTop = chat.scrollHeight;
 
-      setTimeout(type, 10);
+      setTimeout(type, 15);
 
     }else{
 
-      // ✅ FINAL render
+      // ✅ FINAL clean render
       div.innerHTML = formatText(text);
 
-      // ✅ 👉 YAHAN ADD KARNA HAI
+      // ✅ COPY BUTTON
       addCopyButtons();
-
     }
 
   }
