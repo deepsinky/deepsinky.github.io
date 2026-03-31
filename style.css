@@ -154,22 +154,16 @@ body{
 }
 
 /* BOT */
-.message.bot{
-  text-align:left;
+.message{
+  display:none !important;
 }
 
-.message.bot .bubble{
-  background:var(--secondary);
-  padding:10px;
-  border-radius:15px;
+.bot-text{
+  color:white;
+  padding:5px 10px;
+  margin:5px 0;
 }
 
-/* TERMINAL MODE */
-.terminal{
-  background:#000;
-  color:#0f0;
-  font-family:monospace;
-}
 
 /* =========================
 ✍️ TYPOGRAPHY
