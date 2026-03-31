@@ -296,7 +296,26 @@ async function send(){
     loading.innerText = "Error ❌";
   }
 }
+function formatText(text){
+  return text
+    // ✅ bold **text**
+    .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
 
+    // ✅ inline code `code`
+    .replace(/`(.*?)`/g, "<code>$1</code>")
+
+    // ✅ code block ```
+    .replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>")
+
+    // ✅ list - item
+    .replace(/^- (.*)$/gm, "<li>$1</li>")
+
+    // ✅ wrap li in ul
+    .replace(/(<li>.*<\/li>)/g, "<ul>$1</ul>")
+
+    // ✅ new line
+    .replace(/\n/g, "<br>");
+}
 /* STREAM */
 function streamText(text){
 
