@@ -206,7 +206,22 @@ pre{
   padding:3px 6px;
   border-radius:4px;
 }
+/* 🔥 UPGRADE CODE UI */
+code{
+  background:#1e1e1e;
+  padding:3px 6px;
+  border-radius:5px;
+  font-size:13px;
+}
 
+pre{
+  background:#1e1e1e;
+  padding:14px;
+  border-radius:10px;
+  overflow:auto;
+  margin-top:10px;
+  position:relative;
+}
 /* TABLE */
 table{
   width:100%;
