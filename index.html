@@ -253,7 +253,7 @@ async function send(){
 
   let loading = document.createElement("div");
   loading.className = "bot-text loading";
-  loading.innerText = "Thinking...";
+  loading.innerHTML = `<div class="dot"></div>`;
   chat.appendChild(loading);
 
   try{
