@@ -252,7 +252,7 @@ async function send(){
   input.value = "";
 
   let loading = document.createElement("div");
-  loading.className = "message bot loading";
+  loading.className = "bot-text loading";
   loading.innerText = "Thinking...";
   chat.appendChild(loading);
 
@@ -277,7 +277,7 @@ async function send(){
 function streamText(text){
 
   let div = document.createElement("div");
-  div.className = "message bot";
+  div.className = "bot-text";
   chat.appendChild(div);
 
   let i = 0;
