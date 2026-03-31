@@ -297,9 +297,10 @@ if(!response.ok){
 
     let data = await response.json();
     return data.reply;
-    catch(err){
+
+} catch(err){
    throw err;
-}
+  }
   
   // =========================
   // 🚀 SEND FUNCTION
