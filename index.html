@@ -173,6 +173,57 @@ code{
   .bot{
   line-height:1.6;
   }
+  /* =========================
+   🔥 CODE BLOCK STYLE
+========================= */
+
+pre {
+  background: #0d1117;
+  color: #c9d1d9;
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  margin: 12px 0;
+  position: relative;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+code {
+  font-family: "Fira Code", monospace;
+  font-size: 13px;
+}
+
+pre code {
+  background: none !important;
+  padding: 0 !important;
+}
+
+/* 🎨 COLORS */
+.hljs-keyword { color: #ff7b72; }
+.hljs-string { color: #a5d6ff; }
+.hljs-number { color: #79c0ff; }
+.hljs-title { color: #d2a8ff; }
+.hljs-variable { color: #ffa657; }
+.hljs-comment { color: #8b949e; font-style: italic; }
+
+/* 📋 COPY BUTTON */
+.copy-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: #21262d;
+  color: #c9d1d9;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  background: #30363d;
+}
 
 /* ===== INPUT ===== */
 .input-area{
