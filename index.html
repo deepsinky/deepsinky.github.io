@@ -260,7 +260,12 @@ async function send(){
 
   let loading = document.createElement("div");
   loading.className = "bot-text loading";
-  loading.innerHTML = `<div class="dot"></div>`;
+  loading.innerHTML = `
+  <div class="dot">
+    <span></span>
+    <span></span>
+  </div>
+`;
   chat.appendChild(loading);
 
   try{
