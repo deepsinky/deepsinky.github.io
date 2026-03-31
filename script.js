@@ -1,7 +1,10 @@
 // 🔥 DeepSINKY PRO SCRIPT
 
 document.addEventListener("DOMContentLoaded", function(){
-const languages = [
+setInterval(()=>{
+  fetch("https://deepsinky-server-1.onrender.com");
+}, 240000);
+  const languages = [
 
 /* 🇮🇳 INDIA LANGUAGES */
 "Hindi","English","Bengali","Telugu","Marathi","Tamil","Urdu","Gujarati",
