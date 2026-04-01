@@ -326,14 +326,29 @@ pre code {
 
   <!-- INPUT -->
   <div class="input-area">
-    <div class="input-box">
-      <span>+</span>
+  <div class="input-container">
+    
+   <button class="icon-btn">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+    <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2"/>
+    <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2"/>
+  </svg>
+</button>
 
-      <input id="input" placeholder="Ask DeepSINKY">
-      <span onclick="voiceInput()">🎤</span>
-      <button id="sendBtn">➤</button>
-    </div>
+    <input id="input" placeholder="Ask DeepSINKY...">
+
+    <button class="icon-btn">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+    <path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3z" stroke="currentColor" stroke-width="2"/>
+    <path d="M19 11a7 7 0 0 1-14 0" stroke="currentColor" stroke-width="2"/>
+    <line x1="12" y1="18" x2="12" y2="22" stroke="currentColor" stroke-width="2"/>
+  </svg>
+    </button>
+
+    <button id="sendBtn">➤</button>
+
   </div>
+</div>
 
 </div>
 
