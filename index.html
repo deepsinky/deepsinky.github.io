@@ -292,6 +292,34 @@ pre code {
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
+  .plus-menu{
+  transform: translateX(-50%) translateY(20px) scale(0.95);
+}
+
+/* 🔥 GPT STYLE OPEN */
+.plus-menu.active{
+  display: block;
+  opacity: 1;
+
+  transform: translateX(-50%) translateY(0) scale(1);
+
+  animation: popupBounce 0.35s ease;
+}
+
+/* 🔥 BOUNCE KEYFRAMES */
+@keyframes popupBounce{
+  0%{
+    transform: translateX(-50%) translateY(40px) scale(0.9);
+    opacity:0;
+  }
+  60%{
+    transform: translateX(-50%) translateY(-5px) scale(1.03);
+  }
+  100%{
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity:1;
+  }
+}
   /* ===== GPT STYLE CONTAINER ===== */
 
 .input-container{
