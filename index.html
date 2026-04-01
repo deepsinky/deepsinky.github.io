@@ -263,6 +263,35 @@ pre code {
   .input-container{
   backdrop-filter: blur(10px);
   }
+  /* 🔥 PLUS MENU FIX (BOTTOM POPUP) */
+.plus-menu{
+  position: fixed;
+  bottom: 80px; /* input ke upar */
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+
+  width: 90%;
+  max-width: 420px;
+
+  background: #1e1f23;
+  border-radius: 18px;
+
+  padding: 16px;
+  display: none;
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  z-index: 999;
+
+  opacity: 0;
+  transition: 0.25s ease;
+}
+
+/* 🔥 open state */
+.plus-menu.active{
+  display: block;
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
   /* ===== GPT STYLE CONTAINER ===== */
 
 .input-container{
