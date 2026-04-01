@@ -512,7 +512,12 @@ pre code {
 const chat = document.getElementById("chat");
 const input = document.getElementById("input");
 const sendBtn = document.getElementById("sendBtn");
+const plusBtn = document.querySelector(".icon-btn:first-child");
+const menu = document.getElementById("plusMenu");
 
+plusBtn.onclick = () => {
+  menu.classList.toggle("active");
+};
 sendBtn.onclick = send;
 
 input.addEventListener("keypress", e=>{
