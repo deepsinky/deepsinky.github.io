@@ -245,13 +245,28 @@ pre code {
   padding:10px;
   gap:10px;
 }
+  /* ===== GPT STYLE CONTAINER ===== */
 
-.input-box input{
-  flex:1;
-  background:transparent;
-  border:none;
-  color:white;
-  outline:none;
+.input-container{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  max-width:750px;
+  margin:auto;
+
+  background:#1e1f23;
+  border-radius:28px;
+
+  padding:10px 14px;
+
+  border:1px solid #2f2f2f;
+
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.02);
+
+  transition:0.25s ease;
 }
 
 #sendBtn{
