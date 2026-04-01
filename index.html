@@ -527,9 +527,17 @@ const input = document.getElementById("input");
 const sendBtn = document.getElementById("sendBtn");
 const plusBtn = document.querySelector(".icon-btn:first-child");
 const menu = document.getElementById("plusMenu");
+const overlay = document.getElementById("overlay");
 
 plusBtn.onclick = () => {
   menu.classList.toggle("active");
+  overlay.classList.toggle("active");
+};
+
+// 🔥 outside click close
+overlay.onclick = () => {
+  menu.classList.remove("active");
+  overlay.classList.remove("active");
 };
 sendBtn.onclick = send;
 
