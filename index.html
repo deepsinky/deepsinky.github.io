@@ -606,23 +606,66 @@ input.addEventListener("keypress", e=>{
 });
 
 /* SEND */
+let selectedFile = null;
+
+document.getElementById("cameraInput").onchange = (e) => {
+  selectedFile = e.target.files[0];
+};
+
+document.getElementById("photoInput").onchange = (e) => {
+  selectedFile = e.target.files[0];
+};
+
+document.getElementById("fileInput").onchange = (e) => {
+  selectedFile = e.target.files[0];
+};
+
 async function send(){
 
   let text = input.value.trim();
-  if(!text) return;
 
-  chat.innerHTML += `<div class="message user">${text}</div>`;
+  if(!text && !selectedFile) return;
+
+  // text
+  if(text){
+    chat.innerHTML += `<div class="message user">${text}</div>`;
+  }
+
+  // file
+  if(selectedFile){
+    let url = URL.createObjectURL(selectedFile);
+
+    if(selectedFile.type.startsWith("image")){
+      chat.innerHTML += `
+        <div class="message user">
+          <img src="${url}" style="max-width:150px;border-radius:10px;">
+        </div>
+      `;
+    }else{
+      chat.innerHTML += `
+        <div class="message user">
+          📎 ${selectedFile.name}
+        </div>
+      `;
+    }
+
+    selectedFile = null;
+  }
+
   input.value = "";
 
+  // 🔥 YEH ANDAR HI RAHEGA
   let loading = document.createElement("div");
   loading.className = "bot-text loading";
   loading.innerHTML = `
-  <div class="dot">
-    <span></span>
-    <span></span>
-  </div>
-`;
+    <div class="dot">
+      <span></span>
+      <span></span>
+    </div>
+  `;
   chat.appendChild(loading);
+
+} // 👈 AB YAHAN CLOSE HOGA
 
   try{
     let res = await fetch("https://deepsinky-server-1.onrender.com/chat",{
