@@ -572,7 +572,20 @@ const sendBtn = document.getElementById("sendBtn");
 const plusBtn = document.querySelector(".icon-btn:first-child");
 const menu = document.getElementById("plusMenu");
 const overlay = document.getElementById("overlay");
+// 📷 Camera
+document.querySelector(".menu-item:nth-child(1)").onclick = () => {
+  document.getElementById("cameraInput").click();
+};
 
+// 🖼️ Photos
+document.querySelector(".menu-item:nth-child(2)").onclick = () => {
+  document.getElementById("photoInput").click();
+};
+
+// 📎 Files
+document.querySelector(".menu-item:nth-child(3)").onclick = () => {
+  document.getElementById("fileInput").click();
+};
 plusBtn.onclick = () => {
   menu.classList.toggle("active");
   overlay.classList.toggle("active");
