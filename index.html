@@ -575,6 +575,17 @@ const sendBtn = document.getElementById("sendBtn");
 const plusBtn = document.querySelector(".icon-btn:first-child");
 const menu = document.getElementById("plusMenu");
 const overlay = document.getElementById("overlay");
+  // 🎤 VOICE INPUT
+function startVoice(){
+  const rec = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+
+  rec.lang = "en-IN";
+  rec.start();
+
+  rec.onresult = (e)=>{
+    input.value = e.results[0][0].transcript;
+  };
+}
 // 📷 Camera
 document.querySelector(".menu-item:nth-child(1)").onclick = () => {
   document.getElementById("cameraInput").click();
