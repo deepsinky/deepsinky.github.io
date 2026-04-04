@@ -684,8 +684,8 @@ async function send(){
 }
   function formatText(text){
 
-  // 🔥 YE LINE ADD KAR (sabse upar)
-  text = text.replace(/---/g, '<div class="section-divider"></div>');
+  // 🔥 divider
+  text = text.replace(/\n---\n/g, '<div class="section-divider"></div>');
 
   // ✅ bold
   text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
@@ -697,9 +697,6 @@ async function send(){
 
   // ✅ inline code
   text = text.replace(/`(.*?)`/g, "<code>$1</code>");
-
-  return text;
-  }
 
   // ✅ list (proper UL)
   let lines = text.split("\n");
@@ -725,7 +722,8 @@ async function send(){
   if(inList) formatted += "</ul>";
 
   return formatted;
-  }
+}
+
 /* STREAM */
 function streamText(text){
 
