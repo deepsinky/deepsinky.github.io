@@ -800,69 +800,56 @@ async function send(){
   }
   function formatText(text){
 
-  
-  // ===== HEADINGS (EMOJI VERSION) =====
-text = text.replace(/^### (.*$)/gm, (match, title)=>{
-  return `<h3>${getHeadingEmoji(title)} ${title}</h3>`;
-});
+  // 🔥 reset emoji system
+  emojiCount = 0;
+  usedEmojis.clear();
 
-text = text.replace(/^## (.*$)/gm, (match, title)=>{
-  return `<h2>${getHeadingEmoji(title)} ${title}</h2>`;
-});
+  // ===== HEADINGS =====
+  text = text.replace(/^### (.*$)/gm, (m,t)=>`<h3>${getHeadingEmoji(t)} ${t}</h3>`);
+  text = text.replace(/^## (.*$)/gm, (m,t)=>`<h2>${getHeadingEmoji(t)} ${t}</h2>`);
+  text = text.replace(/^# (.*$)/gm, (m,t)=>`<h1>${getHeadingEmoji(t)} ${t}</h1>`);
 
-text = text.replace(/^# (.*$)/gm, (match, title)=>{
-  return `<h1>${getHeadingEmoji(title)} ${title}</h1>`;
-});
   // ===== BOLD =====
   text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
-
-  // ===== INLINE CODE =====
-  text = text.replace(/`(.*?)`/g, "<code>$1</code>");
 
   // ===== CODE BLOCK =====
   text = text.replace(/```([\s\S]*?)```/g, (m, code)=>{
     return `<pre><code>${code}</code></pre>`;
   });
 
-  // ===== TABLE =====
-  if(text.includes("|")){
-    
-let lines = text.split("\n");
-let formatted = "";
-let inList = false;
+  // ===== INLINE CODE =====
+  text = text.replace(/`(.*?)`/g, "<code>$1</code>");
 
-lines.forEach(line=>{
-  if(line.startsWith("• ") || line.startsWith("- ")){
-    if(!inList){
-      formatted += "<ul>";
-      inList = true;
+  // ===== BULLET SYSTEM (FIXED) =====
+  let lines = text.split("\n");
+  let formatted = "";
+  let inList = false;
+
+  lines.forEach(line=>{
+    if(line.startsWith("• ") || line.startsWith("- ")){
+      if(!inList){
+        formatted += "<ul>";
+        inList = true;
+      }
+
+      let item = line.replace(/^[-•]\s/, "");
+      formatted += `<li>${getBulletEmoji(item)} ${item}</li>`;
     }
-    let item = line.replace(/^[-•]\s/, "");
-    formatted += `<li>${getBulletEmoji(item)} ${item}</li>`;
-  } else {
-    if(inList){
-      formatted += "</ul>";
-      inList = false;
+    else{
+      if(inList){
+        formatted += "</ul>";
+        inList = false;
+      }
+
+      formatted += line + "<br>";
     }
-    formatted += line + "<br>";
-  }
-});
+  });
 
-if(inList) formatted += "</ul>";
+  if(inList) formatted += "</ul>";
 
-text = formatted;
-  // ===== BULLETS =====
-  text = text.replace(/• (.*)/g, "<li>$1</li>");
-  text = text.replace(/(<li>.*<\/li>)/g, "<ul>$1</ul>");
+  return formatted;
+       }
 
-  // ===== NUMBERED LIST =====
-  text = text.replace(/^\d+\.\s(.*)/gm, "<li>$1</li>");
-
-  // ===== LINE BREAK =====
-  text = text.replace(/\n/g, "<br>");
-
-  return text;
-  }
 /* STREAM */
 function streamText(text){
 
