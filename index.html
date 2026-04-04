@@ -818,24 +818,31 @@ async function send(){
 
   // ===== TABLE =====
   if(text.includes("|")){
-    let rows = text.split("\n");
-    let table = "<table>";
+    
+let lines = text.split("\n");
+let formatted = "";
+let inList = false;
 
-    rows.forEach(r=>{
-      if(r.includes("|")){
-        let cols = r.split("|").filter(c=>c.trim()!="");
-        table += "<tr>";
-        cols.forEach(c=>{
-          table += `<td>${c.trim()}</td>`;
-        });
-        table += "</tr>";
-      }
-    });
-
-    table += "</table>";
-    text = table;
+lines.forEach(line=>{
+  if(line.startsWith("• ") || line.startsWith("- ")){
+    if(!inList){
+      formatted += "<ul>";
+      inList = true;
+    }
+    let item = line.replace(/^[-•]\s/, "");
+    formatted += `<li>${getBulletEmoji(item)} ${item}</li>`;
+  } else {
+    if(inList){
+      formatted += "</ul>";
+      inList = false;
+    }
+    formatted += line + "<br>";
   }
+});
 
+if(inList) formatted += "</ul>";
+
+text = formatted;
   // ===== BULLETS =====
   text = text.replace(/• (.*)/g, "<li>$1</li>");
   text = text.replace(/(<li>.*<\/li>)/g, "<ul>$1</ul>");
