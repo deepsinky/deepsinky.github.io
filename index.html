@@ -691,45 +691,54 @@ async function send(){
 }
   function formatText(text){
 
-  // 🔥 divider
-  text = text.replace(/---/g, '<div class="section-divider"></div>');
-  // ✅ bold
+  // ===== HEADINGS =====
+  text = text.replace(/^### (.*$)/gm, "<h3>$1</h3>");
+  text = text.replace(/^## (.*$)/gm, "<h2>$1</h2>");
+  text = text.replace(/^# (.*$)/gm, "<h1>$1</h1>");
+
+  // ===== BOLD =====
   text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
 
-  // ✅ code block
-  text = text.replace(/```([\s\S]*?)```/g, (match, code)=>{
+  // ===== INLINE CODE =====
+  text = text.replace(/`(.*?)`/g, "<code>$1</code>");
+
+  // ===== CODE BLOCK =====
+  text = text.replace(/```([\s\S]*?)```/g, (m, code)=>{
     return `<pre><code>${code}</code></pre>`;
   });
 
-  // ✅ inline code
-  text = text.replace(/`(.*?)`/g, "<code>$1</code>");
+  // ===== TABLE =====
+  if(text.includes("|")){
+    let rows = text.split("\n");
+    let table = "<table>";
 
-  // ✅ list (proper UL)
-  let lines = text.split("\n");
-  let formatted = "";
-  let inList = false;
-
-  lines.forEach(line=>{
-    if(line.startsWith("- ")){
-      if(!inList){
-        formatted += "<ul>";
-        inList = true;
+    rows.forEach(r=>{
+      if(r.includes("|")){
+        let cols = r.split("|").filter(c=>c.trim()!="");
+        table += "<tr>";
+        cols.forEach(c=>{
+          table += `<td>${c.trim()}</td>`;
+        });
+        table += "</tr>";
       }
-      formatted += `<li>${line.substring(2)}</li>`;
-    }else{
-      if(inList){
-        formatted += "</ul>";
-        inList = false;
-      }
-      formatted += line + "<br><br>";
-    }
-  });
+    });
 
-  if(inList) formatted += "</ul>";
+    table += "</table>";
+    text = table;
+  }
 
-  return formatted;
-}
+  // ===== BULLETS =====
+  text = text.replace(/• (.*)/g, "<li>$1</li>");
+  text = text.replace(/(<li>.*<\/li>)/g, "<ul>$1</ul>");
 
+  // ===== NUMBERED LIST =====
+  text = text.replace(/^\d+\.\s(.*)/gm, "<li>$1</li>");
+
+  // ===== LINE BREAK =====
+  text = text.replace(/\n/g, "<br>");
+
+  return text;
+  }
 /* STREAM */
 function streamText(text){
 
