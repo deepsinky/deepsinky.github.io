@@ -870,7 +870,7 @@ text = text.replace(/^# (.*$)/gm, (match, title)=>{
     }
   });
 
-  if(inList) formatted += "</ul>";
+  if(inList) formatted += "</ul>"; 
 
   return formatted;
   }
@@ -904,7 +904,6 @@ function streamText(text){
       div.innerHTML = formatText(text);
 
       // ✅ COPY BUTTON
-      addCopyButtons();
       hljs.highlightAll();
     }
 
