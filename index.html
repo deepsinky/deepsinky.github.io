@@ -684,16 +684,22 @@ async function send(){
 }
   function formatText(text){
 
+  // 🔥 YE LINE ADD KAR (sabse upar)
+  text = text.replace(/---/g, '<div class="section-divider"></div>');
+
   // ✅ bold
   text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
 
   // ✅ code block
   text = text.replace(/```([\s\S]*?)```/g, (match, code)=>{
-  return `<pre><code>${code}</code></pre>`;
-});
+    return `<pre><code>${code}</code></pre>`;
+  });
 
   // ✅ inline code
   text = text.replace(/`(.*?)`/g, "<code>$1</code>");
+
+  return text;
+  }
 
   // ✅ list (proper UL)
   let lines = text.split("\n");
