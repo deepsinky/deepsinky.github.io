@@ -804,10 +804,6 @@ async function send(){
   }
   function formatText(text){
 
-  // 🔥 reset emoji system
-  emojiCount = 0;
-  usedEmojis.clear();
-
   // ===== HEADINGS =====
   text = text.replace(/^### (.*$)/gm, (m,t)=>`<h3>${getHeadingEmoji(t)} ${t}</h3>`);
   text = text.replace(/^## (.*$)/gm, (m,t)=>`<h2>${getHeadingEmoji(t)} ${t}</h2>`);
@@ -816,15 +812,11 @@ async function send(){
   // ===== BOLD =====
   text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
 
-  // ===== CODE BLOCK =====
-  text = text.replace(/```([\s\S]*?)```/g, (m, code)=>{
-    return `<pre><code>${code}</code></pre>`;
-  });
-
-  // ===== INLINE CODE =====
+  // ===== CODE =====
   text = text.replace(/`(.*?)`/g, "<code>$1</code>");
+  text = text.replace(/```([\s\S]*?)```/g, (m,c)=>`<pre><code>${c}</code></pre>`);
 
-  // ===== BULLET SYSTEM (FIXED) =====
+  // ===== BULLETS (SAFE) =====
   let lines = text.split("\n");
   let formatted = "";
   let inList = false;
@@ -835,16 +827,13 @@ async function send(){
         formatted += "<ul>";
         inList = true;
       }
-
       let item = line.replace(/^[-•]\s/, "");
       formatted += `<li>${getBulletEmoji(item)} ${item}</li>`;
-    }
-    else{
+    }else{
       if(inList){
         formatted += "</ul>";
         inList = false;
       }
-
       formatted += line + "<br>";
     }
   });
@@ -852,7 +841,7 @@ async function send(){
   if(inList) formatted += "</ul>";
 
   return formatted;
-       }
+  }
 
 /* STREAM */
 function streamText(text){
