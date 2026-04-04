@@ -861,31 +861,37 @@ function formatText(text){
   text = text.replace(/`(.*?)`/g, "<code>$1</code>");
 
   // ========= BULLETS =========
-  let lines = text.split("\n");
-  let html = "";
-  let inList = false;
-
   lines.forEach(line=>{
-    if(line.startsWith("- ") || line.startsWith("• ")){
-      if(!inList){
-        html += "<ul>";
-        inList = true;
-      }
-      let item = line.replace(/^[-•]\s/, "");
-      html += `<li>${getEmoji(item)} ${item}</li>`;
-    }else{
-      if(inList){
-        html += "</ul>";
-        inList = false;
-      }
+  if(line.startsWith("- ") || line.startsWith("• ")){
+
+    if(!inList){
+      html += "<ul>";
+      inList = true;
+    }
+
+    let item = line.replace(/^[-•]\s/, "");
+
+    // ✅ SAFE EMOJI (no crash)
+    let emoji = "";
+    try{
+      emoji = getEmoji ? getEmoji(item) : "";
+    }catch{
+      emoji = "";
+    }
+
+    html += `<li>${emoji} ${item}</li>`;
+
+  }else{
+    if(inList){
+      html += "</ul>";
+      inList = false;
+    }
+
+    if(line.trim() !== ""){
       html += `<p>${line}</p>`;
     }
-  });
-
-  if(inList) html += "</ul>";
-
-  return html;
-}
+  }
+});
 /* STREAM */
 function streamText(text){
 
