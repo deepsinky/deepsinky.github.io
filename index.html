@@ -787,6 +787,17 @@ async function send(){
 
   return bestMatch ? bestMatch.emoji : "👉";
            }
+  function getHeadingEmoji(text){
+  text = text.toLowerCase();
+
+  if(text.includes("ai")) return "🧠";
+  if(text.includes("money")) return "💰";
+  if(text.includes("health")) return "💊";
+  if(text.includes("study")) return "📚";
+  if(text.includes("warning")) return "⚠️";
+
+  return "🔥";
+  }
   function formatText(text){
 
   // ===== HEADINGS =====
