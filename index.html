@@ -692,8 +692,7 @@ async function send(){
   function formatText(text){
 
   // 🔥 divider
-  text = text.replace(/\n---\n/g, '<div class="section-divider"></div>');
-
+  text = text.replace(/---/g, '<div class="section-divider"></div>');
   // ✅ bold
   text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
 
