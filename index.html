@@ -822,9 +822,15 @@ async function send(){
   function formatText(text){
 
   // ===== HEADINGS =====
-  text = text.replace(/^### (.*$)/gm, (m,t)=>`<h3>${getHeadingEmoji(t)} ${t}</h3>`);
-  text = text.replace(/^## (.*$)/gm, (m,t)=>`<h2>${getHeadingEmoji(t)} ${t}</h2>`);
-  text = text.replace(/^# (.*$)/gm, (m,t)=>`<h1>${getHeadingEmoji(t)} ${t}</h1>`);
+text = text.replace(/^# (.*$)/gm, (match, title)=>{
+  return `<h1><span class="emoji">${getHeadingEmoji(title)}</span> ${title}</h1>`;
+});
+    text = text.replace(/^## (.*$)/gm, (match, title)=>{
+  return `<h2><span class="emoji">${getHeadingEmoji(title)}</span> ${title}</h2>`;
+});
+    text = text.replace(/^### (.*$)/gm, (match, title)=>{
+  return `<h3><span class="emoji">${getHeadingEmoji(title)}</span> ${title}</h3>`;
+});
 
   // ===== BOLD =====
   text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
