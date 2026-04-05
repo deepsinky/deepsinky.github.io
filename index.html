@@ -820,89 +820,80 @@ async function send(){
 function formatText(text){
 
   // ===== HEADINGS =====
-
-  // H1 (emoji based)
   text = text.replace(/^(👋|🧠|🚀|🎯|🔥|📌|💡)\s(.+)/gm,
-    (m, e, t)=> `<h1><span class="emoji">${e}</span> ${t}</h1>`
-  );
+    (m,e,t)=> `<h1><span class="emoji">${e}</span>${t}</h1>`);
 
-  // H2 (emoji based)
   text = text.replace(/^(👉|📌)\s(.+)/gm,
-    (m, e, t)=> `<h2><span class="emoji">${e}</span> ${t}</h2>`
-  );
+    (m,e,t)=> `<h2><span class="emoji">${e}</span>${t}</h2>`);
 
-  // H3 (emoji based)
   text = text.replace(/^(✔|➤)\s(.+)/gm,
-    (m, e, t)=> `<h3><span class="emoji">${e}</span> ${t}</h3>`
-  );
+    (m,e,t)=> `<h3><span class="emoji">${e}</span>${t}</h3>`);
 
-  // Markdown headings
+  // Markdown
   text = text.replace(/^### (.*$)/gm,
-    (m,t)=> `<h3><span class="emoji">${getHeadingEmoji(t)}</span> ${t}</h3>`
-  );
+    (m,t)=> `<h3>${t}</h3>`);
 
   text = text.replace(/^## (.*$)/gm,
-    (m,t)=> `<h2><span class="emoji">${getHeadingEmoji(t)}</span> ${t}</h2>`
-  );
+    (m,t)=> `<h2>${t}</h2>`);
 
   text = text.replace(/^# (.*$)/gm,
-    (m,t)=> `<h1><span class="emoji">${getHeadingEmoji(t)}</span> ${t}</h1>`
-  );
+    (m,t)=> `<h1>${t}</h1>`);
 
-  // ===== BOLD =====
+  // Bold
   text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
 
-  // ===== CODE =====
+  // Code
   text = text.replace(/```([\s\S]*?)```/g,
-    (m,c)=> `<pre><code>${c}</code></pre>`
-  );
+    (m,c)=> `<pre><code>${c}</code></pre>`);
 
   text = text.replace(/`(.*?)`/g, "<code>$1</code>");
 
-  // ===== DIVIDER =====
+  // Divider
   text = text.replace(/^---$/gm, "<hr>");
 
-  // ===== LINES PROCESS =====
-let lines = text.split("\n");
-let html = "";
-let inList = false;
+  // ===== LINE ENGINE =====
+  let lines = text.split("\n");
+  let html = "";
+  let inList = false;
 
-for(let i = 0; i < lines.length; i++){
+  for(let line of lines){
 
-  let line = lines[i].trim();
+    line = line.trim();
 
-  // ✅ HEADING
-  if(/^<h[1-3]/.test(line)){
-    html += `<div style="margin-top:18px">${line}</div>`;
-    continue;
-  }
-
-  // ✅ BULLETS
-  if(line.startsWith("- ") || line.startsWith("• ")){
-    if(!inList){
-      html += "<ul>";
-      inList = true;
+    // HEADINGS SAFE
+    if(/^<h[1-3]/.test(line)){
+      html += `<div style="margin-top:18px">${line}</div>`;
+      continue;
     }
 
-    let item = line.replace(/^[-•]\s/, "");
-    html += `<li>${getEmoji(item)} ${item}</li>`;
-  }
+    // BULLETS
+    if(line.startsWith("- ") || line.startsWith("• ")){
+      if(!inList){
+        html += "<ul>";
+        inList = true;
+      }
 
-  else{
-    if(inList){
-      html += "</ul>";
-      inList = false;
+      let item = line.replace(/^[-•]\s/, "");
+      html += `<li>${getEmoji(item)} ${item}</li>`;
     }
 
-    if(line !== ""){
-      html += `<p>${line}</p>`;
+    else{
+      if(inList){
+        html += "</ul>";
+        inList = false;
+      }
+
+      if(line !== ""){
+        html += `<p>${line}</p>`;
+      }
     }
   }
-}
 
-if(inList) html += "</ul>";
+  if(inList) html += "</ul>";
+
   return html;
 }
+  
 
 
 /* STREAM */
