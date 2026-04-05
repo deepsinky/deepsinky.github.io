@@ -832,7 +832,7 @@ async function send(){
 
 function formatText(text){
 
-  text = text.replace(/^(👋|🧠|🚀|🎯|🔥|👉|📌|💡)\s([A-Z ].{3,})$/gm,
+  text = text.replace(/^(👋|🧠|🚀|🎯|🔥|👉|📌|💡)\s(.+)/gm,
   (m, emoji, title)=>`<h1><span class="emoji">${emoji}</span> ${title}</h1>`
 );
 
@@ -870,31 +870,33 @@ text = text.replace(/^(✔|➤)\s(.+)/gm,
   let inList = false;
 
   lines.forEach(line=>{
-    if(line.startsWith("- ") || line.startsWith("• ")){
-      if(!inList){
-        html += "<ul>";
-        inList = true;
-      }
 
-      let item = line.replace(/^[-•]\s/, "");
-      html += `<li>${getEmoji(item)} ${item}</li>`;
-
-    }else{
-      if(inList){
-        html += "</ul>";
-        inList = false;
-      }
-
-      if(line.trim() !== ""){
-        html += `<p>${line}</p>`;
-      }
-    }
-  });
-
-  if(inList) html += "</ul>";
-
-  return html;
+  // ✅ अगर already heading है तो direct add करो
+  if(line.startsWith("<h1") || line.startsWith("<h2") || line.startsWith("<h3")){
+    html += line;
+    return;
   }
+
+  if(line.startsWith("- ") || line.startsWith("• ")){
+    if(!inList){
+      html += "<ul>";
+      inList = true;
+    }
+
+    let item = line.replace(/^[-•]\s/, "");
+    html += `<li>${getEmoji(item)} ${item}</li>`;
+
+  }else{
+    if(inList){
+      html += "</ul>";
+      inList = false;
+    }
+
+    if(line.trim() !== ""){
+      html += `<p>${line}</p>`;
+    }
+  }
+});
 /* STREAM */
 function streamText(text){
 
