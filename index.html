@@ -745,7 +745,7 @@ async function send(){
     })(reply);
 
     // ================= GPT STYLE FORMAT =================
-    reply = formatGPT(reply);
+    reply = formatText(reply); ✔️
 
     streamText(reply);
 
@@ -753,52 +753,44 @@ async function send(){
     loading.innerText = "Error ❌";
   }
 }
-  
+  function getEmoji(text){
+
+  text = text.toLowerCase();
 
   const emojiMap = [
-    // 🧠 Tech / AI
     { keywords: ["ai","artificial intelligence","ml","neural","brain"], emoji: "🧠", priority: 5 },
     { keywords: ["code","coding","program","function","developer"], emoji: "💻", priority: 5 },
     { keywords: ["robot","bot","automation"], emoji: "🤖", priority: 4 },
 
-    // 💰 Business
     { keywords: ["money","earn","income","profit","cash"], emoji: "💰", priority: 5 },
     { keywords: ["business","startup","company"], emoji: "🏢", priority: 4 },
     { keywords: ["success","growth","win"], emoji: "📈", priority: 3 },
 
-    // ❤️ Emotion
     { keywords: ["love","heart"], emoji: "❤️", priority: 5 },
     { keywords: ["happy","smile","joy"], emoji: "😊", priority: 4 },
     { keywords: ["sad","cry","depressed"], emoji: "😢", priority: 4 },
     { keywords: ["angry","mad"], emoji: "😡", priority: 4 },
 
-    // ⚠️ Alerts
     { keywords: ["warning","alert","danger"], emoji: "⚠️", priority: 6 },
     { keywords: ["error","fail","wrong"], emoji: "❌", priority: 6 },
     { keywords: ["success","done","complete"], emoji: "✅", priority: 6 },
 
-    // 🎯 Productivity
     { keywords: ["goal","target","aim"], emoji: "🎯", priority: 4 },
     { keywords: ["time","deadline","clock"], emoji: "⏰", priority: 4 },
     { keywords: ["fast","speed","quick"], emoji: "⚡", priority: 3 },
 
-    // 📚 Study
     { keywords: ["study","learn","education","book"], emoji: "📚", priority: 5 },
     { keywords: ["exam","test"], emoji: "📝", priority: 5 },
 
-    // 💊 Health
     { keywords: ["health","doctor","medicine","ill","pain"], emoji: "💊", priority: 6 },
     { keywords: ["gym","fitness","workout"], emoji: "🏋️", priority: 4 },
 
-    // 🎮 Fun
     { keywords: ["game","play"], emoji: "🎮", priority: 3 },
     { keywords: ["music","song"], emoji: "🎵", priority: 3 },
     { keywords: ["party","fun","dance"], emoji: "🎉", priority: 3 },
 
-    // 💡 Idea
     { keywords: ["idea","tip","suggest"], emoji: "💡", priority: 5 },
 
-    // 🔥 Default cool
     { keywords: ["awesome","fire","lit"], emoji: "🔥", priority: 2 }
   ];
 
@@ -815,7 +807,9 @@ async function send(){
   }
 
   return bestMatch ? bestMatch.emoji : "👉";
-           }
+  }
+
+  
   function getHeadingEmoji(text){
   text = text.toLowerCase();
 
