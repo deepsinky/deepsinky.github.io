@@ -831,11 +831,11 @@ async function send(){
 // ===== HEADINGS (FIXED ORDER) =====
 
 function formatText(text){
-  
-text = text.replace(/^(👋|🧠|🚀|🎯|🔥|👉|📌|💡)\s([A-Z ].{3,})$/gm,
+
+  text = text.replace(/^(👋|🧠|🚀|🎯|🔥|👉|📌|💡)\s([A-Z ].{3,})$/gm,
   (m, emoji, title)=>`<h1><span class="emoji">${emoji}</span> ${title}</h1>`
 );
-  // ========= MARKDOWN HEADINGS =========
+
   text = text.replace(/^### (.*$)/gm,
     (m,t)=>`<h3><span class="emoji">${getHeadingEmoji(t)}</span> ${t}</h3>`
   );
@@ -848,37 +848,27 @@ text = text.replace(/^(👋|🧠|🚀|🎯|🔥|👉|📌|💡)\s([A-Z ].{3,})$/
     (m,t)=>`<h1><span class="emoji">${getHeadingEmoji(t)}</span> ${t}</h1>`
   );
 
-  // ========= BOLD =========
   text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
 
-  // ========= CODE =========
   text = text.replace(/```([\s\S]*?)```/g,
     (m,c)=>`<pre><code>${c}</code></pre>`
   );
 
   text = text.replace(/`(.*?)`/g, "<code>$1</code>");
 
-  // ========= BULLETS =========
   let lines = text.split("\n");
   let html = "";
   let inList = false;
 
   lines.forEach(line=>{
     if(line.startsWith("- ") || line.startsWith("• ")){
-
       if(!inList){
         html += "<ul>";
         inList = true;
       }
 
       let item = line.replace(/^[-•]\s/, "");
-
-      let emoji = "";
-      try{
-        emoji = getEmoji(item);
-      }catch{}
-
-      html += `<li>${emoji} ${item}</li>`;
+      html += `<li>${getEmoji(item)} ${item}</li>`;
 
     }else{
       if(inList){
@@ -887,12 +877,7 @@ text = text.replace(/^(👋|🧠|🚀|🎯|🔥|👉|📌|💡)\s([A-Z ].{3,})$/
       }
 
       if(line.trim() !== ""){
-
-  // 🚀 IMPORTANT FIX
-  if(line.includes("<h1") || line.includes("<h2") || line.includes("<h3") || line.includes("<pre")){
-    html += line;   // heading ko direct rehne do
-  }else{
-    html += `<p>${line}</p>`;
+        html += `<p>${line}</p>`;
       }
     }
   });
@@ -900,7 +885,7 @@ text = text.replace(/^(👋|🧠|🚀|🎯|🔥|👉|📌|💡)\s([A-Z ].{3,})$/
   if(inList) html += "</ul>";
 
   return html;
-}
+  }
 /* STREAM */
 function streamText(text){
 
