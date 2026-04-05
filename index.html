@@ -832,7 +832,9 @@ async function send(){
 
 function formatText(text){
 
-  // ========= AUTO HEADING (emoji based) =========
+function formatText(text){
+
+  // ========= AUTO HEADING =========
   text = text.replace(/^(🧠|🚀|🎯|🔥|👉|📌|💡)\s(.+)/gm,
     (m, emoji, title)=>`<h1><span class="emoji">${emoji}</span> ${title}</h1>`
   );
@@ -861,37 +863,43 @@ function formatText(text){
   text = text.replace(/`(.*?)`/g, "<code>$1</code>");
 
   // ========= BULLETS =========
+  let lines = text.split("\n");
+  let html = "";
+  let inList = false;
+
   lines.forEach(line=>{
-  if(line.startsWith("- ") || line.startsWith("• ")){
+    if(line.startsWith("- ") || line.startsWith("• ")){
 
-    if(!inList){
-      html += "<ul>";
-      inList = true;
+      if(!inList){
+        html += "<ul>";
+        inList = true;
+      }
+
+      let item = line.replace(/^[-•]\s/, "");
+
+      let emoji = "";
+      try{
+        emoji = getEmoji(item);
+      }catch{}
+
+      html += `<li>${emoji} ${item}</li>`;
+
+    }else{
+      if(inList){
+        html += "</ul>";
+        inList = false;
+      }
+
+      if(line.trim() !== ""){
+        html += `<p>${line}</p>`;
+      }
     }
+  });
 
-    let item = line.replace(/^[-•]\s/, "");
+  if(inList) html += "</ul>";
 
-    // ✅ SAFE EMOJI (no crash)
-    let emoji = "";
-    try{
-      emoji = getEmoji ? getEmoji(item) : "";
-    }catch{
-      emoji = "";
-    }
-
-    html += `<li>${emoji} ${item}</li>`;
-
-  }else{
-    if(inList){
-      html += "</ul>";
-      inList = false;
-    }
-
-    if(line.trim() !== ""){
-      html += `<p>${line}</p>`;
-    }
-  }
-});
+  return html;
+}
 /* STREAM */
 function streamText(text){
 
