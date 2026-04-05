@@ -732,23 +732,35 @@ async function send(){
       body: JSON.stringify({ message:text })
     });
 
-    let data = await res.json();
-loading.remove();
+try{
+  let data = await res.json();
+  loading.remove();
 
-let reply = data.reply || "No response";
+  let reply = data.reply || "No response";
 
-// ✅ SMART TRIM APPLY
-reply = smartTrim(reply);
+  reply = smartTrim(reply);
 
-streamText(reply);
+  streamText(reply);
 
-  }catch{
-    loading.innerText = "Error ❌";
+}catch{
+  loading.innerText = "Error ❌";
+    
   }
-}
-  function getEmoji(text){
+  }
+function getHeadingEmoji(text){
   text = text.toLowerCase();
 
+  if(text.includes("ai")) return "🧠";
+  if(text.includes("money")) return "💰";
+
+  return "🔥";
+}
+
+function smartTrim(text){
+  if(text.length < 80) return text;
+  if(text.length < 300) return text;
+  return text.replace(/\n{2,}/g, "\n\n");
+}
   const emojiMap = [
     // 🧠 Tech / AI
     { keywords: ["ai","artificial intelligence","ml","neural","brain"], emoji: "🧠", priority: 5 },
