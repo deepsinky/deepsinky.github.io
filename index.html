@@ -522,7 +522,7 @@ pre code {
 <input type="file" id="cameraInput" accept="image/*" capture hidden>
 <input type="file" id="photoInput" accept="image/*" hidden>
 <input type="file" id="fileInput" hidden>
-  <div id="overlay" class="overlay"></div>
+  
 <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
   <h3>Chats</h3>
@@ -716,7 +716,7 @@ async function send(){
 
   // 🔥 YEH ANDAR HI RAHEGA
   let loading = document.createElement("div");
-  loading.className = "bot-text loading";
+  loading.className = "message bot";
   loading.innerHTML = `
     <div class="dot">
       <span></span>
@@ -939,7 +939,7 @@ function streamText(text){
 }
 /* SIDEBAR */
 function toggleSidebar(){
-  sidebar.classList.toggle("open");
+  const sidebar = document.getElementById("sidebar");
   overlay.classList.toggle("show");
 }
 
