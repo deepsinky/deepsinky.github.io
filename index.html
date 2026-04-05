@@ -832,10 +832,9 @@ async function send(){
 
 function formatText(text){
   
-  text = text.replace(/^(🧠|🚀|🎯|🔥|👉|📌|💡)\s(.+)/gm,
-    (m, emoji, title)=>`<h1><span class="emoji">${emoji}</span> ${title}</h1>`
-  );
-
+text = text.replace(/^(👋|🧠|🚀|🎯|🔥|👉|📌|💡)\s([A-Z ].{3,})$/gm,
+  (m, emoji, title)=>`<h1><span class="emoji">${emoji}</span> ${title}</h1>`
+);
   // ========= MARKDOWN HEADINGS =========
   text = text.replace(/^### (.*$)/gm,
     (m,t)=>`<h3><span class="emoji">${getHeadingEmoji(t)}</span> ${t}</h3>`
