@@ -733,9 +733,14 @@ async function send(){
     });
 
     let data = await res.json();
-    loading.remove();
+loading.remove();
 
-    streamText(data.reply || "No response");
+let reply = data.reply || "No response";
+
+// ✅ SMART TRIM APPLY
+reply = smartTrim(reply);
+
+streamText(reply);
 
   }catch{
     loading.innerText = "Error ❌";
