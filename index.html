@@ -863,51 +863,44 @@ function formatText(text){
   text = text.replace(/^---$/gm, "<hr>");
 
   // ===== LINES PROCESS =====
-  let lines = text.split("\n");
-  let html = "";
-  let inList = false;
+let lines = text.split("\n");
+let html = "";
+let inList = false;
 
-  for(let i = 0; i < lines.length; i++){
+for(let i = 0; i < lines.length; i++){
 
-    let line = lines[i].trim();
+  let line = lines[i].trim();
 
-    // ✅ HEADING SAFE (FINAL FIX)
-    if(/^<h[1-3]/.test(line)){
-      html += line;
-      continue;
-    }
-
-    // ✅ BULLETS
-    if(line.startsWith("- ") || line.startsWith("• ")){
-      if(!inList){
-        html += "<ul>";
-        inList = true;
-      }
-
-      let item = line.replace(/^[-•]\s/, "");
-
-      let emoji = "";
-      try{
-        emoji = getEmoji(item);
-      }catch{}
-
-      html += `<li>${emoji} ${item}</li>`;
-    }
-
-    else{
-      if(inList){
-        html += "</ul>";
-        inList = false;
-      }
-
-      if(line !== ""){
-        html += `<p>${line}</p>`;
-      }
-    }
+  // ✅ HEADING
+  if(/^<h[1-3]/.test(line)){
+    html += `<div style="margin-top:18px">${line}</div>`;
+    continue;
   }
 
-  if(inList) html += "</ul>";
+  // ✅ BULLETS
+  if(line.startsWith("- ") || line.startsWith("• ")){
+    if(!inList){
+      html += "<ul>";
+      inList = true;
+    }
 
+    let item = line.replace(/^[-•]\s/, "");
+    html += `<li>${getEmoji(item)} ${item}</li>`;
+  }
+
+  else{
+    if(inList){
+      html += "</ul>";
+      inList = false;
+    }
+
+    if(line !== ""){
+      html += `<p>${line}</p>`;
+    }
+  }
+}
+
+if(inList) html += "</ul>";
   return html;
 }
 
