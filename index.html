@@ -887,7 +887,12 @@ text = text.replace(/^(👋|🧠|🚀|🎯|🔥|👉|📌|💡)\s([A-Z ].{3,})$/
       }
 
       if(line.trim() !== ""){
-        html += `<p>${line}</p>`;
+
+  // 🚀 IMPORTANT FIX
+  if(line.includes("<h1") || line.includes("<h2") || line.includes("<h3") || line.includes("<pre")){
+    html += line;   // heading ko direct rehne do
+  }else{
+    html += `<p>${line}</p>`;
       }
     }
   });
