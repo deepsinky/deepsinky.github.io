@@ -800,51 +800,52 @@ async function send(){
   return "🔥";
   }
   
-
 function formatText(text){
 
-  // ========= HEADINGS =========
+  // ===== HEADINGS =====
 
-  // H1 (Top level - sabse bada)
-  text = text.replace(/^(🧠|🚀|🎯|🔥)\s(.+)/gm,
-    (m,e,t)=>`<h1><span class="emoji">${e}</span> ${t}</h1>`
+  // H1 (emoji based)
+  text = text.replace(/^(👋|🧠|🚀|🎯|🔥|📌|💡)\s(.+)/gm,
+    (m, e, t)=> `<h1><span class="emoji">${e}</span> ${t}</h1>`
   );
 
-  // H2 (medium)
+  // H2 (emoji based)
   text = text.replace(/^(👉|📌)\s(.+)/gm,
-    (m,e,t)=>`<h2><span class="emoji">${e}</span> ${t}</h2>`
+    (m, e, t)=> `<h2><span class="emoji">${e}</span> ${t}</h2>`
   );
 
-  // H3 (small)
+  // H3 (emoji based)
   text = text.replace(/^(✔|➤)\s(.+)/gm,
-    (m,e,t)=>`<h3><span class="emoji">${e}</span> ${t}</h3>`
+    (m, e, t)=> `<h3><span class="emoji">${e}</span> ${t}</h3>`
   );
 
   // Markdown headings
   text = text.replace(/^### (.*$)/gm,
-    (m,t)=>`<h3><span class="emoji">${getHeadingEmoji(t)}</span> ${t}</h3>`
+    (m,t)=> `<h3><span class="emoji">${getHeadingEmoji(t)}</span> ${t}</h3>`
   );
 
   text = text.replace(/^## (.*$)/gm,
-    (m,t)=>`<h2><span class="emoji">${getHeadingEmoji(t)}</span> ${t}</h2>`
+    (m,t)=> `<h2><span class="emoji">${getHeadingEmoji(t)}</span> ${t}</h2>`
   );
 
   text = text.replace(/^# (.*$)/gm,
-    (m,t)=>`<h1><span class="emoji">${getHeadingEmoji(t)}</span> ${t}</h1>`
+    (m,t)=> `<h1><span class="emoji">${getHeadingEmoji(t)}</span> ${t}</h1>`
   );
 
-  // ========= TEXT STYLING =========
-
+  // ===== BOLD =====
   text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
 
+  // ===== CODE =====
   text = text.replace(/```([\s\S]*?)```/g,
-    (m,c)=>`<pre><code>${c}</code></pre>`
+    (m,c)=> `<pre><code>${c}</code></pre>`
   );
 
   text = text.replace(/`(.*?)`/g, "<code>$1</code>");
 
-  // ========= LINE PROCESS =========
+  // ===== DIVIDER =====
+  text = text.replace(/^---$/gm, "<hr>");
 
+  // ===== LINES PROCESS =====
   let lines = text.split("\n");
   let html = "";
   let inList = false;
@@ -853,13 +854,13 @@ function formatText(text){
 
     let line = lines[i].trim();
 
-    // 🔥 Heading direct (safe)
-    if(line.includes("<h1") || line.includes("<h2") || line.includes("<h3")){
+    // ✅ HEADING SAFE (FINAL FIX)
+    if(/^<h[1-3]/.test(line)){
       html += line;
       continue;
     }
 
-    // 🔹 Bullet list
+    // ✅ BULLETS
     if(line.startsWith("- ") || line.startsWith("• ")){
       if(!inList){
         html += "<ul>";
@@ -876,7 +877,6 @@ function formatText(text){
       html += `<li>${emoji} ${item}</li>`;
     }
 
-    // 🔸 Normal text
     else{
       if(inList){
         html += "</ul>";
@@ -893,7 +893,6 @@ function formatText(text){
 
   return html;
 }
-
 
 
 /* STREAM */
