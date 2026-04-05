@@ -863,8 +863,8 @@ function formatText(text){
   text = text.replace(/`(.*?)`/g, "<code>$1</code>");
 
   // Divider
-  text = text.replace(/^---$/gm, "<hr>");
-
+  
+text = text.replace(/\n?---\n?/g, "<hr>");
   // ===== LINE ENGINE =====
   let lines = text.split("\n");
   let html = "";
