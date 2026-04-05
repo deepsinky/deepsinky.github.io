@@ -825,16 +825,13 @@ async function send(){
 
   return "🔥";
   }
-  function formatText(text){
+  
 
 
 // ===== HEADINGS (FIXED ORDER) =====
 
 function formatText(text){
-
-function formatText(text){
-
-  // ========= AUTO HEADING =========
+  
   text = text.replace(/^(🧠|🚀|🎯|🔥|👉|📌|💡)\s(.+)/gm,
     (m, emoji, title)=>`<h1><span class="emoji">${emoji}</span> ${title}</h1>`
   );
