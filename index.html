@@ -836,6 +836,15 @@ function formatText(text){
   (m, emoji, title)=>`<h1><span class="emoji">${emoji}</span> ${title}</h1>`
 );
 
+  // H2 detection
+text = text.replace(/^(👉|📌)\s(.+)/gm,
+  (m,e,t)=>`<h2><span class="emoji">${e}</span> ${t}</h2>`
+);
+
+// H3 detection
+text = text.replace(/^(✔|➤)\s(.+)/gm,
+  (m,e,t)=>`<h3><span class="emoji">${e}</span> ${t}</h3>`
+);
   text = text.replace(/^### (.*$)/gm,
     (m,t)=>`<h3><span class="emoji">${getHeadingEmoji(t)}</span> ${t}</h3>`
   );
