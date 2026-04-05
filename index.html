@@ -509,9 +509,19 @@ pre code {
 
 /* DIVIDER */
 .bot hr{
-  border:none;
-  border-top:1px solid rgba(255,255,255,0.06);
-  margin:24px 0;
+  border: none;
+
+  height: 1px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,0.06),
+    transparent
+  );
+
+  margin: 28px -20px;
+  width: calc(100% + 40px);
 }
 
 </style>
