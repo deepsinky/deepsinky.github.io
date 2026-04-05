@@ -854,7 +854,7 @@ function formatText(text){
     let line = lines[i].trim();
 
     // 🔥 Heading direct (safe)
-    if(line.startsWith("<h1") || line.startsWith("<h2") || line.startsWith("<h3")){
+    if(line.includes("<h1") || line.includes("<h2") || line.includes("<h3")){
       html += line;
       continue;
     }
