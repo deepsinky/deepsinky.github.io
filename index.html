@@ -965,18 +965,54 @@ function streamText(text){
 
       hljs.highlightAll();
 
-      // ✅ ACTIONS (यहीं डालना है)
-      let actions = document.createElement("div");
-      actions.className = "actions";
+     const actions = `
+<div class="action-bar">
 
-      actions.innerHTML = `
-        <span>📋</span>
-        <span>👍</span>
-        <span>👎</span>
-        <span>🔊</span>
-        <span>🔗</span>
-        <span>⋮</span>
-      `;
+  <button class="icon-btn">
+    <svg viewBox="0 0 24 24" fill="none">
+      <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="2" y="2" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
+
+  <button class="icon-btn">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M14 9V5a3 3 0 0 0-3-3l-1 5H5v12h11a3 3 0 0 0 3-3l1-5a2 2 0 0 0-2-2h-4z" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
+
+  <button class="icon-btn">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M10 15v4a3 3 0 0 0 3 3l1-5h5V5H8a3 3 0 0 0-3 3l-1 5a2 2 0 0 0 2 2h4z" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
+
+  <button class="icon-btn">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M11 5L6 9H3v6h3l5 4V5z" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M15 9a4 4 0 0 1 0 6" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
+
+  <button class="icon-btn">
+    <svg viewBox="0 0 24 24" fill="none">
+      <circle cx="18" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="6" cy="12" r="2" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="18" cy="19" r="2" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M8 12l8-7M8 12l8 7" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
+
+  <button class="icon-btn">
+    <svg viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="5" r="1.5" fill="currentColor"/>
+      <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+      <circle cx="12" cy="19" r="1.5" fill="currentColor"/>
+    </svg>
+  </button>
+
+</div>
+`;
 
       div.appendChild(actions);
     }
