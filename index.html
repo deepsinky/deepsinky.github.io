@@ -511,38 +511,68 @@ pre code {
   padding-bottom: 14px;
 }
 /* ===== CODE BLOCK FIX ===== */
-.code-wrapper{
-  position: relative;
-  display: inline-block;
-  width: 100%;
+.action-bar{
+  display:flex;
+  align-items:center;
+  gap:18px;
+
+  margin-top:8px;
+  padding:6px 4px;
+
+  opacity:0.85;
 }
 
-.code-wrapper pre{
-  background:#0d1117;
-  padding:14px;
-  border-radius:10px;
-  overflow:auto;
-}
-
-/* 🔥 FINAL COPY BUTTON FIX */
-.copy-btn{
-  position:absolute;
-  top:6px;
-  right:6px;
-
-  background:#21262d;
-  color:#fff;
-
+/* BUTTON */
+.action-bar .icon-btn{
+  background:transparent;
   border:none;
-  padding:4px 8px;
-  font-size:12px;
 
-  border-radius:6px;
+  width:28px;
+  height:28px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#9ca3af;
   cursor:pointer;
 
-  z-index:999;   /* 🔥 force top */
+  border-radius:6px;
+  transition:all 0.2s ease;
 }
-  
+
+/* ICON SIZE */
+.action-bar .icon-btn svg{
+  width:18px;
+  height:18px;
+}
+
+/* HOVER EFFECT */
+.action-bar .icon-btn:hover{
+  background:#2a2b32;
+  color:#ffffff;
+  transform:scale(1.05);
+}
+
+/* ACTIVE (LIKE GREEN) */
+.action-bar .like-btn.active{
+  color:#19c37d;
+}
+
+/* DISLIKE */
+.action-bar .dislike-btn.active{
+  color:#ef4444;
+}
+
+/* COPY SUCCESS */
+.action-bar .copy-btn.copied{
+  color:#19c37d;
+}
+
+/* MORE (3 dots) subtle */
+.action-bar .more-btn{
+  opacity:0.7;
+}
 /* 🔥 SEGMENTED DIVIDER (message-wise break) */
 .message::after{
   content: "";
