@@ -512,25 +512,20 @@ pre code {
 }
 .actions{
   display:flex;
-  gap:18px;
-  margin-top:10px;
-  opacity:0.6;
+  gap:16px;
+  margin-top:8px;
+  opacity:0.7;
 }
 
-.actions svg{
-  width:18px;
-  height:18px;
-  fill:none;
-  stroke:#aaa;
-  stroke-width:1.5;
+.actions span{
   cursor:pointer;
+  font-size:16px;
   transition:0.2s;
 }
 
-.actions svg:hover{
-  stroke:#fff;
-  transform:scale(1.15);
+.actions span:hover{
   opacity:1;
+  transform:scale(1.1);
 }
 /* 🔥 SEGMENTED DIVIDER (message-wise break) */
 .message::after{
@@ -975,64 +970,22 @@ function streamText(text){
 
   type();
 }
-  function addActions(div){
+  else{
 
-  let actions = document.createElement("div");
-  actions.className = "actions";
-
-  actions.innerHTML = `
-  <svg viewBox="0 0 24 24">
-    <rect x="9" y="9" width="10" height="10" rx="2"/>
-    <rect x="5" y="5" width="10" height="10" rx="2"/>
-  </svg>
-
-  <svg viewBox="0 0 24 24">
-    <path d="M7 10v10H4V10h3zm2 0l4-6 2 1v5h4a2 2 0 0 1 2 2l-1 6a2 2 0 0 1-2 2H9V10z"/>
-  </svg>
-
-  <svg viewBox="0 0 24 24">
-    <path d="M7 14V4H4v10h3zm2 0l4 6 2-1v-5h4a2 2 0 0 0 2-2l-1-6a2 2 0 0 0-2-2H9v10z"/>
-  </svg>
-
-  <svg viewBox="0 0 24 24">
-    <path d="M3 10v4h4l5 4V6L7 10H3z"/>
-    <path d="M16 8a4 4 0 0 1 0 8"/>
-  </svg>
-
-  <svg viewBox="0 0 24 24">
-    <circle cx="18" cy="5" r="2"/>
-    <circle cx="6" cy="12" r="2"/>
-    <circle cx="18" cy="19" r="2"/>
-    <path d="M8 12l8-6M8 12l8 6"/>
-  </svg>
-
-  <svg viewBox="0 0 24 24">
-    <circle cx="12" cy="5" r="1.5"/>
-    <circle cx="12" cy="12" r="1.5"/>
-    <circle cx="12" cy="19" r="1.5"/>
-  </svg>
-  `;
-
-  div.appendChild(actions);
-  }
-  if(i < text.length){
-
-  div.innerHTML = text.substring(0, i+1);
-
-  i++;
-  chat.scrollTop = chat.scrollHeight;
-
-  setTimeout(type, 10);
-
-}else{
-
-  // ✅ FINAL render
   div.innerHTML = formatText(text);
-
   hljs.highlightAll();
 
-  // 🔥 अब यहाँ add करो (IMPORTANT)
-  addActions(div);
+  // 🔥 DIRECT ACTIONS ADD
+  div.innerHTML += `
+    <div class="actions">
+      <span>📋</span>
+      <span>👍</span>
+      <span>👎</span>
+      <span>🔊</span>
+      <span>🔗</span>
+      <span>⋮</span>
+    </div>
+  `;
   }
 /* SIDEBAR */
 function toggleSidebar(){
