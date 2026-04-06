@@ -987,53 +987,59 @@ function streamText(text){
       actions.className = "actions";
 
       actions.innerHTML = `
-        <div class="action-bar">
+<div class="action-bar">
 
-          <button class="icon-btn">
-            <svg viewBox="0 0 24 24" fill="none">
-              <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
-              <rect x="2" y="2" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </button>
+  <!-- COPY -->
+  <button class="icon-btn copy-btn">
+    <svg viewBox="0 0 24 24" fill="none">
+      <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+      <rect x="2" y="2" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
 
-          <button class="icon-btn">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M14 9V5a3 3 0 0 0-3-3l-1 5H5v12h11a3 3 0 0 0 3-3l1-5a2 2 0 0 0-2-2h-4z" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </button>
+  <!-- LIKE -->
+  <button class="icon-btn like-btn">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M14 9V5a3 3 0 0 0-3-3l-1 5H5v12h11a3 3 0 0 0 3-3l1-5a2 2 0 0 0-2-2h-4z" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
 
-          <button class="icon-btn">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M10 15v4a3 3 0 0 0 3 3l1-5h5V5H8a3 3 0 0 0-3 3l-1 5a2 2 0 0 0 2 2h4z" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </button>
+  <!-- DISLIKE -->
+  <button class="icon-btn dislike-btn">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M10 15v4a3 3 0 0 0 3 3l1-5h5V5H8a3 3 0 0 0-3 3l-1 5a2 2 0 0 0 2 2h4z" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
 
-          <button class="icon-btn">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M11 5L6 9H3v6h3l5 4V5z" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M15 9a4 4 0 0 1 0 6" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </button>
+  <!-- VOICE -->
+  <button class="icon-btn speak-btn">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M11 5L6 9H3v6h3l5 4V5z" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M15 9a4 4 0 0 1 0 6" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
 
-          <button class="icon-btn">
-            <svg viewBox="0 0 24 24" fill="none">
-              <circle cx="18" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
-              <circle cx="6" cy="12" r="2" stroke="currentColor" stroke-width="1.5"/>
-              <circle cx="18" cy="19" r="2" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M8 12l8-7M8 12l8 7" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </button>
+  <!-- SHARE -->
+  <button class="icon-btn share-btn">
+    <svg viewBox="0 0 24 24" fill="none">
+      <circle cx="18" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="6" cy="12" r="2" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="18" cy="19" r="2" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M8 12l8-7M8 12l8 7" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
 
-          <button class="icon-btn">
-            <svg viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="5" r="1.5" fill="currentColor"/>
-              <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
-              <circle cx="12" cy="19" r="1.5" fill="currentColor"/>
-            </svg>
-          </button>
+  <!-- MENU -->
+  <button class="icon-btn">
+    <svg viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="5" r="1.5" fill="currentColor"/>
+      <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+      <circle cx="12" cy="19" r="1.5" fill="currentColor"/>
+    </svg>
+  </button>
 
-        </div>
-      `;
+</div>
+`;
 
       div.appendChild(actions);
     }
