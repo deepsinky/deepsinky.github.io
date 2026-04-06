@@ -951,7 +951,7 @@ function streamText(text){
 
     if(i < text.length){
 
-      div.innerHTML = text.substring(0, i+1);  // 🔥 NO format here
+      div.innerHTML = text.substring(0, i+1);
 
       i++;
       chat.scrollTop = chat.scrollHeight;
@@ -960,38 +960,33 @@ function streamText(text){
 
     }else{
 
-      // ✅ FINAL formatting only once
+      // ✅ FINAL render
       div.innerHTML = formatText(text);
 
       hljs.highlightAll();
+
+      // ✅ ACTIONS (यहीं डालना है)
+      let actions = document.createElement("div");
+      actions.className = "actions";
+
+      actions.innerHTML = `
+        <span>📋</span>
+        <span>👍</span>
+        <span>👎</span>
+        <span>🔊</span>
+        <span>🔗</span>
+        <span>⋮</span>
+      `;
+
+      div.appendChild(actions);
     }
 
   }
 
   type();
 }
-  else{
 
-  // ✅ FINAL render
-  div.innerHTML = formatText(text);
-
-  hljs.highlightAll();
-
-  // ✅ CREATE अलग से element (safe तरीका)
-  let actions = document.createElement("div");
-  actions.className = "actions";
-
-  actions.innerHTML = `
-    <span>📋</span>
-    <span>👍</span>
-    <span>👎</span>
-    <span>🔊</span>
-    <span>🔗</span>
-    <span>⋮</span>
-  `;
-
-  div.appendChild(actions);
-  }
+      
 /* SIDEBAR */
 function toggleSidebar(){
   const sidebar = document.getElementById("sidebar");
