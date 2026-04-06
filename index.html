@@ -510,7 +510,28 @@ pre code {
   position: relative;
   padding-bottom: 14px;
 }
+.actions{
+  display:flex;
+  gap:18px;
+  margin-top:10px;
+  opacity:0.6;
+}
 
+.actions svg{
+  width:18px;
+  height:18px;
+  fill:none;
+  stroke:#aaa;
+  stroke-width:1.5;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.actions svg:hover{
+  stroke:#fff;
+  transform:scale(1.15);
+  opacity:1;
+}
 /* 🔥 SEGMENTED DIVIDER (message-wise break) */
 .message::after{
   content: "";
