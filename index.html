@@ -972,20 +972,25 @@ function streamText(text){
 }
   else{
 
+  // ✅ FINAL render
   div.innerHTML = formatText(text);
+
   hljs.highlightAll();
 
-  // 🔥 DIRECT ACTIONS ADD
-  div.innerHTML += `
-    <div class="actions">
-      <span>📋</span>
-      <span>👍</span>
-      <span>👎</span>
-      <span>🔊</span>
-      <span>🔗</span>
-      <span>⋮</span>
-    </div>
+  // ✅ CREATE अलग से element (safe तरीका)
+  let actions = document.createElement("div");
+  actions.className = "actions";
+
+  actions.innerHTML = `
+    <span>📋</span>
+    <span>👍</span>
+    <span>👎</span>
+    <span>🔊</span>
+    <span>🔗</span>
+    <span>⋮</span>
   `;
+
+  div.appendChild(actions);
   }
 /* SIDEBAR */
 function toggleSidebar(){
