@@ -506,10 +506,19 @@ pre code {
   font-size:1.5em;
   margin-right:8px;
 }
+.message{
+  position: relative;
+  padding-bottom: 14px;
+}
 
-/* DIVIDER */
-.bot hr{
-  border: none;
+/* 🔥 SEGMENTED DIVIDER (message-wise break) */
+.message::after{
+  content: "";
+  position: absolute;
+  left: 0;      /* ❌ no full width */
+  right: 0;     /* ✅ message ke width tak */
+  bottom: 0;
+
   height: 1px;
 
   background: linear-gradient(
@@ -518,9 +527,13 @@ pre code {
     rgba(255,255,255,0.08),
     transparent
   );
-
-  margin: 28px -20px;   /* 🔥 FULL WIDTH FIX */
 }
+
+/* last message clean */
+.message:last-child::after{
+  display: none;
+}
+
 
 </style>
 
