@@ -922,10 +922,7 @@ function streamText(text){
 
     if(i < text.length){
 
-      // 🔥 character based (emoji safe)
-      let currentText = text.substring(0, i+1);
-
-      div.innerHTML = formatText(currentText);
+      div.innerHTML = text.substring(0, i+1);  // 🔥 NO format here
 
       i++;
       chat.scrollTop = chat.scrollHeight;
@@ -934,10 +931,9 @@ function streamText(text){
 
     }else{
 
-      // ✅ FINAL clean render
+      // ✅ FINAL formatting only once
       div.innerHTML = formatText(text);
 
-      // ✅ COPY BUTTON
       hljs.highlightAll();
     }
 
@@ -945,6 +941,7 @@ function streamText(text){
 
   type();
 }
+
 /* SIDEBAR */
 function toggleSidebar(){
   const sidebar = document.getElementById("sidebar");
