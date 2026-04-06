@@ -1047,7 +1047,51 @@ function streamText(text){
 
   type();
 }
-      
+      document.addEventListener("click", function(e){
+
+  // COPY
+  if(e.target.closest(".copy-btn")){
+    let msg = e.target.closest(".message");
+    let text = msg.innerText;
+
+    navigator.clipboard.writeText(text);
+
+    e.target.innerText = "✅";
+    setTimeout(()=> e.target.innerText="📋",1000);
+  }
+
+  // LIKE
+  if(e.target.closest(".like-btn")){
+    e.target.style.color = "#19c37d";
+  }
+
+  // DISLIKE
+  if(e.target.closest(".dislike-btn")){
+    e.target.style.color = "#ff4d4d";
+  }
+
+  // VOICE
+  if(e.target.closest(".speak-btn")){
+    let msg = e.target.closest(".message");
+    let text = msg.innerText;
+
+    let speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US";
+    speechSynthesis.speak(speech);
+  }
+
+  // SHARE
+  if(e.target.closest(".share-btn")){
+    let msg = e.target.closest(".message");
+    let text = msg.innerText;
+
+    navigator.share({
+      title:"DeepSINKY AI",
+      text:text
+    });
+  }
+
+});
 /* SIDEBAR */
 function toggleSidebar(){
   const sidebar = document.getElementById("sidebar");
