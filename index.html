@@ -820,7 +820,7 @@ async function send(){
     })(reply);
 
     // ================= GPT STYLE FORMAT =================
-
+    reply = formatText(reply);
     streamText(reply);
 
   }catch{
