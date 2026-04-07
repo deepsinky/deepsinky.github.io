@@ -512,16 +512,23 @@ pre code {
 }
 .action-bar{
   display:flex;
+  flex-direction:row;
+
+  flex-wrap:nowrap;        /* ❌ wrap बंद */
   align-items:center;
-  gap:10px;   
+
+  gap:14px;
   margin-top:8px;
+
+  width:100%;              /* 🔥 FULL WIDTH */
 }
 
-/* ICON SIZE */
-.icon-btn svg{
-  width:17px;
-  height:17px;
-}
+/* 🔥 BUTTON FIX */
+.icon-btn{
+  flex:0 0 auto;           /* ❌ shrink बंद */
+  width:32px;
+  height:32px;
+  }
 
 /* 🔥 HOVER = GPT STYLE */
 .icon-btn:hover{
