@@ -510,69 +510,57 @@ pre code {
   position: relative;
   padding-bottom: 14px;
 }
-/* ===== CODE BLOCK FIX ===== */
 .action-bar{
   display:flex;
   align-items:center;
-  gap:18px;
-
+  gap:10px;   /* 🔥 close spacing like GPT */
   margin-top:8px;
-  padding:6px 4px;
-
-  opacity:0.85;
 }
 
-/* BUTTON */
-.action-bar .icon-btn{
+/* 🔥 EACH ICON BOX */
+.icon-btn{
   background:transparent;
-  border:none;
+  border:1px solid rgba(255,255,255,0.08);  /* 👈 subtle border */
 
-  width:28px;
-  height:28px;
+  width:32px;
+  height:32px;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
+  border-radius:8px;
+
   color:#9ca3af;
   cursor:pointer;
 
-  border-radius:6px;
   transition:all 0.2s ease;
 }
 
 /* ICON SIZE */
-.action-bar .icon-btn svg{
-  width:18px;
-  height:18px;
+.icon-btn svg{
+  width:17px;
+  height:17px;
 }
 
-/* HOVER EFFECT */
-.action-bar .icon-btn:hover{
-  background:#2a2b32;
+/* 🔥 HOVER = GPT STYLE */
+.icon-btn:hover{
+  background:rgba(255,255,255,0.05);
+  border-color:rgba(255,255,255,0.15);
   color:#ffffff;
-  transform:scale(1.05);
 }
 
-/* ACTIVE (LIKE GREEN) */
-.action-bar .like-btn.active{
+/* 🔥 ACTIVE STATES */
+.like-btn.active{
   color:#19c37d;
+  border-color:#19c37d55;
 }
 
-/* DISLIKE */
-.action-bar .dislike-btn.active{
+.dislike-btn.active{
   color:#ef4444;
+  border-color:#ef444455;
 }
 
-/* COPY SUCCESS */
-.action-bar .copy-btn.copied{
-  color:#19c37d;
-}
-
-/* MORE (3 dots) subtle */
-.action-bar .more-btn{
-  opacity:0.7;
-}
 /* 🔥 SEGMENTED DIVIDER (message-wise break) */
 .message::after{
   content: "";
