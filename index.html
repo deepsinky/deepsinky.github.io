@@ -1017,54 +1017,51 @@ function streamText(text){
       let actions = document.createElement("div");
       actions.className = "actions";
 
-      actions.innerHTML = `
+      div.innerHTML = formatText(text) + `
 <div class="action-bar">
 
-  <!-- COPY -->
-  <button class="icon-btn copy-btn">
+  
+  <button class="icon-btn copy-btn" title="Copy">
     <svg viewBox="0 0 24 24" fill="none">
       <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
       <rect x="2" y="2" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
     </svg>
   </button>
 
-  <!-- LIKE -->
-  <button class="icon-btn like-btn">
+  
+  <button class="icon-btn like-btn" title="Like">
     <svg viewBox="0 0 24 24" fill="none">
-      <path d="M14 9V5a3 3 0 0 0-6 0v4" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M5 9h14l-1 10H6L5 9z" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M7 10v10M7 10l5-7 2 1v6h5l-1 10H7z" stroke="currentColor" stroke-width="1.5"/>
     </svg>
   </button>
 
-  <!-- DISLIKE -->
-  <button class="icon-btn dislike-btn">
+
+  <button class="icon-btn dislike-btn" title="Dislike">
     <svg viewBox="0 0 24 24" fill="none">
-      <path d="M10 15v4a3 3 0 0 0 6 0v-4" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M19 15H5l1-10h12l1 10z" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M7 14V4M7 14l5 7 2-1v-6h5L18 4H7z" stroke="currentColor" stroke-width="1.5"/>
     </svg>
   </button>
 
-  <!-- SOUND -->
-  <button class="icon-btn">
+  
+  <button class="icon-btn speak-btn" title="Speak">
     <svg viewBox="0 0 24 24" fill="none">
-      <path d="M3 10v4h4l5 4V6L7 10H3z" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M16 8c1.5 1.5 1.5 6.5 0 8" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M19 5c3 3 3 11 0 14" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M5 9v6h4l5 4V5L9 9H5z" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M15 9a3 3 0 0 1 0 6" stroke="currentColor" stroke-width="1.5"/>
     </svg>
   </button>
 
-  <!-- SHARE -->
-  <button class="icon-btn">
+  
+  <button class="icon-btn share-btn" title="Share">
     <svg viewBox="0 0 24 24" fill="none">
       <circle cx="18" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
       <circle cx="6" cy="12" r="2" stroke="currentColor" stroke-width="1.5"/>
       <circle cx="18" cy="19" r="2" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M8 12l8-6M8 12l8 6" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M8 12l8-7M8 12l8 7" stroke="currentColor" stroke-width="1.5"/>
     </svg>
   </button>
 
-  <!-- MORE -->
-  <button class="icon-btn more-btn">
+
+  <button class="icon-btn more-btn" title="More">
     <svg viewBox="0 0 24 24" fill="none">
       <circle cx="12" cy="5" r="1.5" fill="currentColor"/>
       <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
