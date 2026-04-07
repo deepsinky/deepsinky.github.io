@@ -1020,7 +1020,7 @@ function streamText(text){
       div.innerHTML = formatText(text) + `
 <div class="action-bar">
 
-  
+  <!-- COPY -->
   <button class="icon-btn copy-btn" title="Copy">
     <svg viewBox="0 0 24 24" fill="none">
       <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
@@ -1028,21 +1028,21 @@ function streamText(text){
     </svg>
   </button>
 
-  
+  <!-- LIKE -->
   <button class="icon-btn like-btn" title="Like">
     <svg viewBox="0 0 24 24" fill="none">
       <path d="M7 10v10M7 10l5-7 2 1v6h5l-1 10H7z" stroke="currentColor" stroke-width="1.5"/>
     </svg>
   </button>
 
-
+  <!-- DISLIKE -->
   <button class="icon-btn dislike-btn" title="Dislike">
     <svg viewBox="0 0 24 24" fill="none">
       <path d="M7 14V4M7 14l5 7 2-1v-6h5L18 4H7z" stroke="currentColor" stroke-width="1.5"/>
     </svg>
   </button>
 
-  
+  <!-- SPEAK -->
   <button class="icon-btn speak-btn" title="Speak">
     <svg viewBox="0 0 24 24" fill="none">
       <path d="M5 9v6h4l5 4V5L9 9H5z" stroke="currentColor" stroke-width="1.5"/>
@@ -1050,7 +1050,7 @@ function streamText(text){
     </svg>
   </button>
 
-  
+  <!-- SHARE -->
   <button class="icon-btn share-btn" title="Share">
     <svg viewBox="0 0 24 24" fill="none">
       <circle cx="18" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
@@ -1060,7 +1060,7 @@ function streamText(text){
     </svg>
   </button>
 
-
+  <!-- MORE -->
   <button class="icon-btn more-btn" title="More">
     <svg viewBox="0 0 24 24" fill="none">
       <circle cx="12" cy="5" r="1.5" fill="currentColor"/>
@@ -1071,6 +1071,7 @@ function streamText(text){
 
 </div>
 `;
+
 
       div.appendChild(actions);
     }
