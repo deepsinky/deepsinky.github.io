@@ -790,7 +790,33 @@ async function send(){
     </div>
   `;
   chat.appendChild(loading);
+ let text = input.value.trim();
 
+// 🎨 IMAGE MODE (यहीं डाल)
+if(
+  text.toLowerCase().includes("draw") ||
+  text.toLowerCase().includes("image") ||
+  text.toLowerCase().includes("generate")
+){
+
+  chat.innerHTML += `<div class="message bot">🎨 Generating image...</div>`;
+
+  let imgRes = await fetch("https://deepsinky-server-1.onrender.com/image",{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({ prompt: text })
+  });
+
+  let imgData = await imgRes.json();
+
+  chat.innerHTML += `
+    <div class="message bot">
+      <img src="${imgData.image}" style="max-width:100%; border-radius:10px;">
+    </div>
+  `;
+
+  return;
+}
   try{
     let res = await fetch("https://deepsinky-server-1.onrender.com/chat",{
       method:"POST",
