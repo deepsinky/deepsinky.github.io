@@ -778,7 +778,7 @@ async function send(){
     selectedFile = null;
   }
 
-  let text = input.value.trim();
+  let text = input.value?.trim() || "";
 input.value = "";
 
 // 🎨 IMAGE MODE (यहीं डाल)
