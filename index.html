@@ -996,16 +996,14 @@ function streamText(text){
 
     }else{
 
-      // ✅ FINAL render
-      div.innerHTML = formatText(text);
+      // FINAL render
+div.innerHTML = formatText(text);
 
-      hljs.highlightAll();
+// ACTION BAR
+let actions = document.createElement("div");
+actions.className = "action-bar";
 
-      // ✅ ACTIONS (FIXED + PREMIUM)
-      let actions = document.createElement("div");
-      actions.className = "actions";
-
-      div.innerHTML = formatText(text) + `
+actions.innerHTML = `
 <div class="action-bar">
 
   <!-- COPY -->
