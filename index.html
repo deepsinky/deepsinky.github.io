@@ -804,6 +804,7 @@ async function send(){
     })(reply);
 
     // ================= GPT STYLE FORMAT =================
+    
     reply = formatText(reply);
     streamText(reply);
 
@@ -974,7 +975,7 @@ function streamText(text){
 
     if(i < text.length){
 
-      div.innerText = text.substring(0, i+1);
+      div.innerHTML = text.substring(0, i+1);
 
       i++;
       chat.scrollTop = chat.scrollHeight;
@@ -986,7 +987,6 @@ function streamText(text){
       // FINAL render
 div.innerHTML = formatText(text);
 
- hljs.highlightElement(el);
 // ACTION BAR
 let actions = document.createElement("div");
 actions.className = "action-bar";
