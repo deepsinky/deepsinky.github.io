@@ -778,19 +778,8 @@ async function send(){
     selectedFile = null;
   }
 
-  input.value = "";
-
-  // 🔥 YEH ANDAR HI RAHEGA
-  let loading = document.createElement("div");
-  loading.className = "message bot";
-  loading.innerHTML = `
-    <div class="dot">
-      <span></span>
-      <span></span>
-    </div>
-  `;
-  chat.appendChild(loading);
- let text = input.value.trim();
+  let text = input.value.trim();
+input.value = "";
 
 // 🎨 IMAGE MODE (यहीं डाल)
 if(
@@ -817,6 +806,17 @@ if(
 
   return;
 }
+  // 🔥 YEH ANDAR HI RAHEGA
+  let loading = document.createElement("div");
+  loading.className = "message bot";
+  loading.innerHTML = `
+    <div class="dot">
+      <span></span>
+      <span></span>
+    </div>
+  `;
+  chat.appendChild(loading);
+ 
   try{
     let res = await fetch("https://deepsinky-server-1.onrender.com/chat",{
       method:"POST",
