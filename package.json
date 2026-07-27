@@ -1,0 +1,46 @@
+{
+  "name": "deepsinky",
+  "version": "1.0.0",
+  "description": "DeepSINKY - Next Generation AI Platform",
+  "private": true,
+  "type": "module",
+
+  "author": "Vikas Kumar",
+  "license": "MIT",
+
+  "main": "backend/server.js",
+
+  "scripts": {
+    "start": "...",
+    "dev": "...",
+    "build": "...",
+    "test": "...",
+    "lint": "...",
+    "format": "...",
+    "deploy": "...",
+    "backup": "...",
+    "clean": "..."
+  },
+
+  "dependencies": {
+    "...": "..."
+  },
+
+  "devDependencies": {
+    "...": "..."
+  },
+
+  "engines": {
+    "node": ">=22"
+  },
+
+  "keywords": [
+    "AI",
+    "Chatbot",
+    "LLM",
+    "DeepSINKY",
+    "OpenAI",
+    "Gemini",
+    "Claude"
+  ]
+}
