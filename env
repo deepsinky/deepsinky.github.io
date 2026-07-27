@@ -1,0 +1,60 @@
+# ==========================
+# APP
+# ==========================
+NODE_ENV=development
+PORT=3000
+APP_NAME=DeepSINKY
+APP_URL=http://localhost:3000
+
+# ==========================
+# AI APIs
+# ==========================
+OPENAI_API_KEY=
+GEMINI_API_KEY=
+ANTHROPIC_API_KEY=
+OPENROUTER_API_KEY=
+DEEPSEEK_API_KEY=
+
+# ==========================
+# DATABASE
+# ==========================
+DATABASE_URL=
+MONGODB_URI=
+
+# ==========================
+# AUTH
+# ==========================
+JWT_SECRET=
+SESSION_SECRET=
+
+# ==========================
+# SEARCH
+# ==========================
+SERPER_API_KEY=
+TAVILY_API_KEY=
+
+# ==========================
+# IMAGE
+# ==========================
+IMAGE_API_KEY=
+
+# ==========================
+# EMAIL
+# ==========================
+SMTP_HOST=
+SMTP_PORT=
+SMTP_USER=
+SMTP_PASS=
+
+# ==========================
+# STORAGE
+# ==========================
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+
+# ==========================
+# SECURITY
+# ==========================
+CORS_ORIGIN=http://localhost:3000
+RATE_LIMIT=100
