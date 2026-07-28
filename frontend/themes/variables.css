@@ -1,1 +1,159 @@
+/* ==========================================================
+   DeepSINKY Theme Variables
+   File: variables.css
+   Version: 1.0
+========================================================== */
 
+/* ==========================================================
+   COLORS
+========================================================== */
+
+:root{
+
+/* Brand */
+--primary-color:
+--secondary-color:
+--accent-color:
+
+/* Background */
+--bg-primary:
+--bg-secondary:
+--bg-tertiary:
+
+/* Text */
+--text-primary:
+--text-secondary:
+--text-muted:
+
+/* Status */
+--success:
+--warning:
+--danger:
+--info:
+
+}
+
+/* ==========================================================
+   TYPOGRAPHY
+========================================================== */
+
+:root{
+
+--font-family:
+--font-size-xs:
+--font-size-sm:
+--font-size-md:
+--font-size-lg:
+--font-size-xl:
+--font-size-2xl:
+--font-size-3xl:
+
+--font-weight-light:
+--font-weight-normal:
+--font-weight-medium:
+--font-weight-bold:
+
+--line-height:
+--letter-spacing:
+
+}
+
+/* ==========================================================
+   SPACING
+========================================================== */
+
+:root{
+
+--space-1:
+--space-2:
+--space-3:
+--space-4:
+--space-5:
+--space-6:
+--space-7:
+--space-8:
+
+}
+
+/* ==========================================================
+   SHADOWS
+========================================================== */
+
+:root{
+
+--shadow-sm:
+--shadow-md:
+--shadow-lg:
+--shadow-xl:
+
+}
+
+/* ==========================================================
+   BORDERS
+========================================================== */
+
+:root{
+
+--border-width:
+--border-style:
+--border-color:
+
+}
+
+/* ==========================================================
+   BORDER RADIUS
+========================================================== */
+
+:root{
+
+--radius-xs:
+--radius-sm:
+--radius-md:
+--radius-lg:
+--radius-xl:
+--radius-round:
+
+}
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+:root{
+
+--transition-fast:
+--transition-normal:
+--transition-slow:
+
+--animation-speed:
+
+}
+
+/* ==========================================================
+   Z-INDEX
+========================================================== */
+
+:root{
+
+--z-navbar:
+--z-sidebar:
+--z-dropdown:
+--z-modal:
+--z-tooltip:
+--z-loader:
+
+}
+
+/* ==========================================================
+   RESPONSIVE BREAKPOINTS
+========================================================== */
+
+:root{
+
+--mobile:
+--tablet:
+--laptop:
+--desktop:
+--wide-screen:
+
+}
