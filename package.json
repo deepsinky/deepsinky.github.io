@@ -4,43 +4,42 @@
   "description": "DeepSINKY - Next Generation AI Platform",
   "private": true,
   "type": "module",
-
-  "author": "Vikas Kumar",
   "license": "MIT",
+  "author": "Vikas Kumar",
 
   "main": "backend/server.js",
 
   "scripts": {
-    "start": "...",
-    "dev": "...",
-    "build": "...",
-    "test": "...",
-    "lint": "...",
-    "format": "...",
-    "deploy": "...",
-    "backup": "...",
-    "clean": "..."
+    "start": "node backend/server.js",
+    "dev": "node --watch backend/server.js",
+    "test": "echo \"No tests specified\"",
+    "clean": "echo \"Cleaning project...\""
   },
 
   "dependencies": {
-    "...": "..."
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.0"
   },
 
   "devDependencies": {
-    "...": "..."
+    "nodemon": "^3.1.10"
   },
 
   "engines": {
-    "node": ">=22"
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
   },
 
   "keywords": [
     "AI",
+    "DeepSINKY",
     "Chatbot",
     "LLM",
-    "DeepSINKY",
-    "OpenAI",
-    "Gemini",
-    "Claude"
+    "Artificial Intelligence",
+    "Node.js",
+    "Express"
   ]
 }
