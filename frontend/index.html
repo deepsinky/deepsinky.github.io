@@ -1,1152 +1,933 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DeepSINKY</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<style>
 
-/* ===== BODY ===== */
-body{
-  margin:0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
-  font-size:16px;
-  line-height:1.7;
-  letter-spacing:0.1px;
-  background:#0f0f0f;
-  color:white;
-  height:100vh;
-}
- b{
-  font-size:16px;
-  font-weight:600;
-  color:#ffffff;
- }
+    <!-- ============================= -->
+    <!-- Basic Meta -->
+    <!-- ============================= -->
 
-/* ===== SIDEBAR ===== */
-.sidebar{
-  width:260px;
-  background:#202123;
-  padding:10px;
-  overflow-y:auto;
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-  position:fixed;
-  top:0;
-  left:0;
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
 
-  transform:translateX(-100%);   /* 🔥 MAIN FIX */
-  transition:0.3s;
-}
-.sidebar.open{ left:0; }
+    <!-- ============================= -->
+    <!-- SEO -->
+    <!-- ============================= -->
 
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.5);
-  display:none;
-}
-.overlay.show{ display:block; }
+    <title>DeepSINKY AI</title>
 
-/* ===== MAIN ===== */
-.main{
-  display:flex;
-  flex-direction:column;
-  height:100vh;   /* 🔥 FINAL FIX */
-}
+    <meta name="description"
+          content="DeepSINKY AI - Next Generation Artificial Intelligence Platform">
 
-/* ===== HEADER ===== */
-.header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px;
-  border-bottom:1px solid #333;
-}
-/* MENU */
-.menu{
-  cursor:pointer;
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-}
+    <meta name="keywords"
+          content="AI, ChatGPT, DeepSINKY, Artificial Intelligence">
 
-.line{
-  height:2px;
-  background:white;
-  border-radius:2px;
-}
+    <meta name="author"
+          content="Vikas Kumar">
 
-/* FULL LINE */
-.line.full{
-  width:22px;
-}
+    <!-- ============================= -->
+    <!-- Theme -->
+    <!-- ============================= -->
 
-/* HALF LINE */
-.line.half{
-  width:12px;
-}
+    <meta name="theme-color"
+          content="#0f172a">
 
-/* BRAND (LOGO + TEXT) */
-.brand{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
+    <!-- ============================= -->
+    <!-- Favicon -->
+    <!-- ============================= -->
 
-.logo-img{
-  width:28px;
-  height:28px;
-  object-fit:contain;
-}
+    <link rel="icon"
+          href="assets/logo.png">
 
-.title{
-  font-weight:bold;
-  font-size:18px;
-}
+    <!-- ============================= -->
+    <!-- CSS -->
+    <!-- ============================= -->
 
-/* LOGIN */
-.login-btn{
-  background:#19c37d;
-  border:none;
-  padding:6px 12px;
-  border-radius:6px;
-  cursor:pointer;
-}
+    <link rel="stylesheet"
+          href="style.css">
 
-/* ===== CHAT ===== */
- .chat{
-  flex:1;
-  overflow-y:auto;
-  padding:20px;
-  }
-  .message{
-  margin:8px 0;
-  }
-  .message{
-  margin:10px 0;
-  padding:10px 14px;
-  border-radius:18px;
-  max-width:fit-content;   /* 🔥 auto size */
-  width:auto;
-  word-wrap:break-word;
-  line-height:1.4;
-}
+    <link rel="stylesheet"
+          href="themes/dark.css">
 
-/* 👤 USER BUBBLE */
-.user{
-  background:#2a2b32;
-  color:#fff;
-  margin-left:auto;
-  border-radius:18px;
-  padding:10px 14px;
-  max-width:75%;
+    <link rel="stylesheet"
+          href="themes/light.css">
 
-  /* 👇 ADD ये */
-  width:fit-content;
-  word-wrap:break-word;
-  line-height:1.5;
-}
-
-/* 🤖 BOT (no bubble clean text) */
-.bot{
-  background:transparent;
-  color:#e5e5e5;
-  padding:0;
-  margin-left:0;
-  margin-right:auto;
-  max-width:85%;
-}
-  pre{
-  background:#0d1117;
-  padding:14px;
-  border-radius:10px;
-  overflow:auto;
-}
-
-code{
-  font-family:Consolas, monospace;
-  font-size:13px;
-}
-
-  .bot{
-  line-height:1.6;
-  }
-  /* =========================
-   🔥 CODE BLOCK STYLE
-========================= */
-
-pre {
-  background: #0d1117;
-  color: #c9d1d9;
-  padding: 14px;
-  border-radius: 10px;
-  overflow: auto;
-  margin: 12px 0;
-  position: relative;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-code {
-  font-family: "Fira Code", monospace;
-  font-size: 13px;
-}
-
-pre code {
-  background: none !important;
-  padding: 0 !important;
-}
-
-/* 🎨 COLORS */
-.hljs-keyword { color: #ff7b72; }
-.hljs-string { color: #a5d6ff; }
-.hljs-number { color: #79c0ff; }
-.hljs-title { color: #d2a8ff; }
-.hljs-variable { color: #ffa657; }
-.hljs-comment { color: #8b949e; font-style: italic; }
-
-/* 📋 COPY BUTTON */
-.copy-btn {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  background: #21262d;
-  color: #c9d1d9;
-  border: none;
-  padding: 4px 8px;
-  font-size: 12px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.copy-btn:hover {
-  background: #30363d;
-}
-
-/* ===== INPUT ===== */
-.input-area{
-  padding:10px;
-  display:flex;
-  justify-content:center;
-  position:sticky;   /* ✅ ADD */
-  bottom:0;          /* ✅ ADD */
-  background:#0f0f0f; /* ✅ ADD */
-}
-
-.input-box{
-  width:95%;
-  max-width:700px;
-  display:flex;
-  align-items:center;
-  background:#2a2b32;
-  border-radius:30px;
-  padding:10px;
-  gap:10px;
-}
-  .input-box input{
-  flex:1;
-  background:transparent;
-  border:none;
-
-  color:#ffffff;
-  font-size:15px;
-  font-weight:500;
-
-  outline:none;
-  }
-  .input-box input::placeholder{
-  color:#b5b5b5;   /* 🔥 visible grey */
-  font-weight:500;
-  }
-  .input-container{
-  backdrop-filter: blur(10px);
-  }
-  /* 🔥 PLUS MENU FIX (BOTTOM POPUP) */
-.plus-menu{
-  position: fixed;
-  bottom: 80px; /* input ke upar */
-  left: 50%;
-  transform: translateX(-50%) scale(0.9);
-
-  width: 90%;
-  max-width: 420px;
-
-  background: #1e1f23;
-  border-radius: 18px;
-
-  padding: 16px;
-  display: none;
-
-  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-  z-index: 999;
-
-  opacity: 0;
-  transition: 0.25s ease;
-}
-
-/* 🔥 open state */
-.plus-menu.active{
-  display: block;
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-}
-  .plus-menu{
-  transform: translateX(-50%) translateY(20px) scale(0.95);
-}
-
-/* 🔥 GPT STYLE OPEN */
-.plus-menu.active{
-  display: block;
-  opacity: 1;
-
-  transform: translateX(-50%) translateY(0) scale(1);
-
-  animation: popupBounce 0.35s ease;
-}
-
-/* 🔥 BOUNCE KEYFRAMES */
-@keyframes popupBounce{
-  0%{
-    transform: translateX(-50%) translateY(40px) scale(0.9);
-    opacity:0;
-  }
-  60%{
-    transform: translateX(-50%) translateY(-5px) scale(1.03);
-  }
-  100%{
-    transform: translateX(-50%) translateY(0) scale(1);
-    opacity:1;
-  }
-}
-  .overlay{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(6px);
-
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.3s;
-  z-index: 998;
-}
-
-.overlay.active{
-  opacity: 1;
-  pointer-events: all;
-}
-  /* ===== GPT STYLE CONTAINER ===== */
-
-.input-container{
-  display:flex;
-  align-items:center;
-  gap:8px;
-
-  max-width:750px;
-  margin:auto;
-
-  background:#1e1f23;
-  border-radius:28px;
-
-  padding:10px 14px;
-
-  border:1px solid #2f2f2f;
-
-  box-shadow:
-    0 4px 20px rgba(0,0,0,0.3),
-    inset 0 1px 0 rgba(255,255,255,0.02);
-
-  transition:0.25s ease;
-}
-.menu-grid{
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 12px;
-}
-
-.menu-item{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:6px;
-  color:#ccc;
-  font-size:12px;
-}
-  .input-container input{
-  flex:1;
-  background:transparent;   /* 🔥 white हट गया */
-  border:none;
-  outline:none;
-  color:#e5e5e5;
-  font-size:15px;
-  }
-.icon-btn{
-  background:transparent;
-  border:none;
-
-  color:#ffffff;        /* 🔥 bright white */
-  font-size:20px;       /* 🔥 bada + clear */
-  font-weight:600;
-
-  width:36px;
-  height:36px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:50%;
-  cursor:pointer;
-  transition:0.2s;
-}
-
-.icon-btn:hover{
-  background:#2a2b32;
-  color:#ffffff;
-}
-#sendBtn{
-  width:40px;
-  height:40px;
-  border:none;
-  border-radius:50%;
-
-  background:#2a2b32;   /* 🔥 dark grey */
-  color:#ffffff;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  cursor:pointer;
-  transition:0.2s;
-}
-
-/* LOADING */
-.dot{
-  display:flex;
-  gap:5px;
-}
-
-.dot span{
-  width:6px;
-  height:6px;
-  background:#aaa;
-  border-radius:50%;
-  animation: blink 1s infinite;
-}
-
-.dot span:nth-child(2){
-  animation-delay:0.3s;
-}
-
-@keyframes blink{
-  0%,100%{ opacity:0.3; }
-  50%{ opacity:1; }
-}
-.icon-btn svg{
-  width:18px;
-  height:18px;
-} 
-  .icon-btn:active{
-  transform:scale(0.9);
-  }
-  
-  .icon-btn:hover{
-  background:#2a2b32;
-  color:#fff;
-  }
-  /* ===== CHATGPT PERFECT STYLE ===== */
-
-.bot{
-  max-width:680px;
-  margin:auto;
-  color:#e5e5e5;
-  font-size:15px;
-  line-height:1.75;
-}
-
-/* HEADINGS */
-.bot h1{
-  font-size:34px;
-  font-weight:800;
-  margin:32px 0 14px;
-}
-
-.bot h2{
-  font-size:26px;
-  font-weight:700;
-  margin:28px 0 12px;
-}
-
-.bot h3{
-  font-size:20px;
-  font-weight:600;
-  margin:22px 0 10px;
-}
-
-/* PARAGRAPH */
-.bot p{
-  margin:12px 0;
-  color:#d1d1d1;
-}
-
-/* LIST */
-.bot ul{
-  margin:14px 0;
-  padding-left:22px;
-}
-
-.bot li{
-  margin:10px 0;
-}
-
-/* EMOJI */
-.bot .emoji{
-  font-size:1.5em;
-  margin-right:8px;
-}
-.message{
-  position: relative;
-  padding-bottom: 14px;
-}
- 
-.action-bar{
-  display:flex;
-  flex-direction:row;
-
-  flex-wrap:nowrap;        /* ❌ wrap बंद */
-  align-items:center;
-
-  gap:14px;
-  margin-top:8px;
-
-  width:100%;              /* 🔥 FULL WIDTH */
-}
-pre .copy-btn {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-}
-  .copy-action-btn {
-  position: static;
-  }
-/* 🔥 BUTTON FIX */
-.icon-btn{
-  flex:0 0 auto;           /* ❌ shrink बंद */
-  width:32px;
-  height:32px;
-  }
-
-/* 🔥 HOVER = GPT STYLE */
-.icon-btn:hover{
-  background:rgba(255,255,255,0.05);
-  border-color:rgba(255,255,255,0.15);
-  color:#ffffff;
-}
-
-/* 🔥 ACTIVE STATES */
-.like-btn.active{
-  color:#19c37d;
-  border-color:#19c37d55;
-}
-
-.dislike-btn.active{
-  color:#ef4444;
-  border-color:#ef444455;
-}
-
-/* 🔥 SEGMENTED DIVIDER (message-wise break) */
-.message::after{
-  content: "";
-  position: absolute;
-  left: 0;      /* ❌ no full width */
-  right: 0;     /* ✅ message ke width tak */
-  bottom: 0;
-
-  height: 1px;
-
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255,255,255,0.08),
-    transparent
-  );
-}
-
-/* last message clean */
-.message:last-child::after{
-  display: none;
-}
-
-
-</style>
+    <link rel="stylesheet"
+          href="themes/glass.css">
 
 </head>
 
 <body>
-<input type="file" id="cameraInput" accept="image/*" capture hidden>
-<input type="file" id="photoInput" accept="image/*" hidden>
-<input type="file" id="fileInput" hidden>
-  
-<!-- SIDEBAR -->
-<div class="sidebar" id="sidebar">
-  <h3>Chats</h3>
-  <div>New Chat</div>
-</div>
 
-<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+<!-- App Container -->
 
-<!-- MAIN -->
-<div class="main">
-
-  <!-- HEADER -->
-  <div class="header">
-
-    <div class="menu" onclick="toggleSidebar()">
-  <span class="line full"></span>
-  <span class="line half"></span>
-    </div>
-
-    <!-- ✅ FIXED LOGO -->
-    <div class="brand">
-      <img src="logo.png" class="logo-img">
-      <span class="title">DeepSINKY</span>
-    </div>
-
-    <button class="login-btn">Login</button>
-
-  </div>
-
-  <!-- CHAT -->
-<div class="chat" id="chat"></div>
-
-  <!-- INPUT -->
-  <div class="input-area">
-  <div class="input-container">
-    
-   <button class="icon-btn">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-    <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2"/>
-    <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2"/>
-  </svg>
-</button>
-
-    <input id="input" placeholder="Ask DeepSINKY">
-
-    <button class="icon-btn">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-    <path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3z" stroke="currentColor" stroke-width="2"/>
-    <path d="M19 11a7 7 0 0 1-14 0" stroke="currentColor" stroke-width="2"/>
-    <line x1="12" y1="18" x2="12" y2="22" stroke="currentColor" stroke-width="2"/>
-  </svg>
-    </button>
-
-    <button id="sendBtn">➤</button>
-<div id="plusMenu" class="plus-menu">
-
-  <!-- 🔥 YAHAN PASTE KARNA HAI 👇 -->
-  <div class="menu-grid">
-
-    <div class="menu-item">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M4 7h3l2-2h6l2 2h3v12H4z" stroke="white" stroke-width="1.5"/>
-        <circle cx="12" cy="13" r="3" stroke="white" stroke-width="1.5"/>
-      </svg>
-      <span>Camera</span>
-    </div>
-
-    <div class="menu-item">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <rect x="4" y="4" width="16" height="16" stroke="white" stroke-width="1.5"/>
-        <path d="M4 15l4-4 4 4 4-6 4 6" stroke="white" stroke-width="1.5"/>
-      </svg>
-      <span>Photos</span>
-    </div>
-
-    <div class="menu-item">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M6 2h9l5 5v15H6z" stroke="white" stroke-width="1.5"/>
-        <path d="M14 2v6h6" stroke="white" stroke-width="1.5"/>
-      </svg>
-      <span>Files</span>
-    </div>
-
-  </div>
-  <!-- 🔥 YAHAN TAK -->
-
-  <hr>
-
-  <div class="menu-list">
-    <div>Create image</div>
-    <div>Thinking</div>
-    <div>Deep research</div>
-    <div>Web search</div>
-    <div>Study and learn</div>
-    <div>Quizzes</div>
-    <div>Explore apps</div>
-  </div>
-</div>
+<div id="app">
 
 </div>
 
-<script>
-let emojiCount = 0;
-let usedEmojis = new Set();
-/* CORE */
-const chat = document.getElementById("chat");
-const input = document.getElementById("input");
-const sendBtn = document.getElementById("sendBtn");
-const plusBtn = document.querySelector(".icon-btn:first-child");
-const menu = document.getElementById("plusMenu");
-const overlay = document.getElementById("overlay");
-
-// 📷 Camera
-document.querySelector(".menu-item:nth-child(1)").onclick = () => {
-  document.getElementById("cameraInput").click();
-};
-
-// 🖼️ Photos
-document.querySelector(".menu-item:nth-child(2)").onclick = () => {
-  document.getElementById("photoInput").click();
-};
-
-// 📎 Files
-document.querySelector(".menu-item:nth-child(3)").onclick = () => {
-  document.getElementById("fileInput").click();
-};
-plusBtn.onclick = () => {
-  menu.classList.toggle("active");
-  overlay.classList.toggle("active");
-};
-
-// 🔥 outside click close
-overlay.onclick = () => {
-  menu.classList.remove("active");
-  overlay.classList.remove("active");
-};
-sendBtn.onclick = send;
-
-input.addEventListener("keypress", e=>{
-  if(e.key === "Enter") send();
-});
-
-/* SEND */
-let selectedFile = null;
-
-document.getElementById("cameraInput").onchange = (e) => {
-  selectedFile = e.target.files[0];
-};
-
-document.getElementById("photoInput").onchange = (e) => {
-  selectedFile = e.target.files[0];
-};
-
-document.getElementById("fileInput").onchange = (e) => {
-  selectedFile = e.target.files[0];
-};
-
-async function send(){
-
-  let text = input.value.trim();
-
-  if(!text && !selectedFile) return;
-
-  // text
-  if(text){
-    chat.innerHTML += `<div class="message user">${text}</div>`;
-  }
-
-  // file
-  if(selectedFile){
-    let url = URL.createObjectURL(selectedFile);
-
-    if(selectedFile.type.startsWith("image")){
-      chat.innerHTML += `
-        <div class="message user">
-          <img src="${url}" style="max-width:150px;border-radius:10px;">
-        </div>
-      `;
-    }else{
-      chat.innerHTML += `
-        <div class="message user">
-          📎 ${selectedFile.name}
-        </div>
-      `;
-    }
-
-    selectedFile = null;
-  }
-
-input.value = "";
-
-// 🎨 IMAGE MODE (यहीं डाल)
-if(
-  text.toLowerCase().includes("draw") ||
-  text.toLowerCase().includes("image") ||
-  text.toLowerCase().includes("generate")
-){
-
-  chat.innerHTML += `<div class="message bot">🎨 Generating image...</div>`;
-
-  let imgRes = await fetch("https://deepsinky-server-1.onrender.com/image",{
-    method:"POST",
-    headers:{ "Content-Type":"application/json" },
-    body: JSON.stringify({ prompt: text })
-  });
-
-  let imgData = await imgRes.json();
-
-  chat.innerHTML += `
-    <div class="message bot">
-      <img src="${imgData.image}" style="max-width:100%; border-radius:10px;">
-    </div>
-  `;
-
-  return;
-}
-  // 🔥 YEH ANDAR HI RAHEGA
-  let loading = document.createElement("div");
-  loading.className = "message bot";
-  loading.innerHTML = `
-    <div class="dot">
-      <span></span>
-      <span></span>
-    </div>
-  `;
-  chat.appendChild(loading);
- 
-  try{
-    let res = await fetch("https://deepsinky-server-1.onrender.com/chat",{
-      method:"POST",
-      headers:{ "Content-Type":"application/json" },
-      body: JSON.stringify({ message:text })
-    });
-   
-    let data = await res.json();
-    loading.remove();
-
-    let reply = data.reply || "No response";
-
-    // ================= SMART TRIM (SAFE INLINE) =================
-    reply = (function(t){
-      if(t.length < 80) return t;
-      if(t.length < 300) return t;
-      return t.replace(/\n{2,}/g, "\n\n");
-    })(reply);
-
-    // ================= GPT STYLE FORMAT =================
-    
-    reply = formatText(reply);
-    streamText(reply);
-
-  }catch{
-    loading.innerText = "Error ❌";
-  }
-}
-  function getEmoji(text){
-
-  text = text.toLowerCase();
-
-  const emojiMap = [
-    { keywords: ["ai","artificial intelligence","ml","neural","brain"], emoji: "🧠", priority: 5 },
-    { keywords: ["code","coding","program","function","developer"], emoji: "💻", priority: 5 },
-    { keywords: ["robot","bot","automation"], emoji: "🤖", priority: 4 },
-
-    { keywords: ["money","earn","income","profit","cash"], emoji: "💰", priority: 5 },
-    { keywords: ["business","startup","company"], emoji: "🏢", priority: 4 },
-    { keywords: ["success","growth","win"], emoji: "📈", priority: 3 },
-
-    { keywords: ["love","heart"], emoji: "❤️", priority: 5 },
-    { keywords: ["happy","smile","joy"], emoji: "😊", priority: 4 },
-    { keywords: ["sad","cry","depressed"], emoji: "😢", priority: 4 },
-    { keywords: ["angry","mad"], emoji: "😡", priority: 4 },
-
-    { keywords: ["warning","alert","danger"], emoji: "⚠️", priority: 6 },
-    { keywords: ["error","fail","wrong"], emoji: "❌", priority: 6 },
-    { keywords: ["success","done","complete"], emoji: "✅", priority: 6 },
-
-    { keywords: ["goal","target","aim"], emoji: "🎯", priority: 4 },
-    { keywords: ["time","deadline","clock"], emoji: "⏰", priority: 4 },
-    { keywords: ["fast","speed","quick"], emoji: "⚡", priority: 3 },
-
-    { keywords: ["study","learn","education","book"], emoji: "📚", priority: 5 },
-    { keywords: ["exam","test"], emoji: "📝", priority: 5 },
-
-    { keywords: ["health","doctor","medicine","ill","pain"], emoji: "💊", priority: 6 },
-    { keywords: ["gym","fitness","workout"], emoji: "🏋️", priority: 4 },
-
-    { keywords: ["game","play"], emoji: "🎮", priority: 3 },
-    { keywords: ["music","song"], emoji: "🎵", priority: 3 },
-    { keywords: ["party","fun","dance"], emoji: "🎉", priority: 3 },
-
-    { keywords: ["idea","tip","suggest"], emoji: "💡", priority: 5 },
-
-    { keywords: ["awesome","fire","lit"], emoji: "🔥", priority: 2 }
-  ];
-
-  let bestMatch = null;
-
-  for (let item of emojiMap){
-    for (let word of item.keywords){
-      if(text.includes(word)){
-        if(!bestMatch || item.priority > bestMatch.priority){
-          bestMatch = item;
-        }
-      }
-    }
-  }
-
-  return bestMatch ? bestMatch.emoji : "👉";
-  }
-
-  
-  function getHeadingEmoji(text){
-  text = text.toLowerCase();
-
-  if(text.includes("ai")) return "🧠";
-  if(text.includes("money")) return "💰";
-  if(text.includes("health")) return "💊";
-  if(text.includes("study")) return "📚";
-  if(text.includes("warning")) return "⚠️";
-
-  return "🔥";
-  }
-  
-function formatText(text){
-
-  // ===== HEADINGS =====
-  text = text.replace(/^(👋|🧠|🚀|🎯|🔥|📌|💡)\s(.+)/gm,
-    (m,e,t)=> `<h1><span class="emoji">${e}</span>${t}</h1>`);
-
-  text = text.replace(/^(👉|📌)\s(.+)/gm,
-    (m,e,t)=> `<h2><span class="emoji">${e}</span>${t}</h2>`);
-
-  text = text.replace(/^(✔|➤)\s(.+)/gm,
-    (m,e,t)=> `<h3><span class="emoji">${e}</span>${t}</h3>`);
-
-  // Markdown
-  text = text.replace(/^### (.*$)/gm,
-    (m,t)=> `<h3>${t}</h3>`);
-
-  text = text.replace(/^## (.*$)/gm,
-    (m,t)=> `<h2>${t}</h2>`);
-
-  text = text.replace(/^# (.*$)/gm,
-    (m,t)=> `<h1>${t}</h1>`);
-
-  // Bold
-  text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
-
-  // Code
-  text = text.replace(/```([\s\S]*?)```/g,
-    (m,c)=> `<pre><code>${c}</code></pre>`);
-
-  text = text.replace(/`(.*?)`/g, "<code>$1</code>");
-
-  // Divider
-  
-text = text.replace(/\n?---\n?/g, "<hr>");
-  // ===== LINE ENGINE =====
-  let lines = text.split("\n");
-  let html = "";
-  let inList = false;
-
-  for(let line of lines){
-
-    line = line.trim();
-
-    // HEADINGS SAFE
-    if(/^<h[1-3]/.test(line)){
-      html += `<div style="margin-top:18px">${line}</div>`;
-      continue;
-    }
-
-    // BULLETS
-    if(line.startsWith("- ") || line.startsWith("• ")){
-      if(!inList){
-        html += "<ul>";
-        inList = true;
-      }
-
-      let item = line.replace(/^[-•]\s/, "");
-      html += `<li>${getEmoji(item)} ${item}</li>`;
-    }
-
-    else{
-      if(inList){
-        html += "</ul>";
-        inList = false;
-      }
-
-      if(line !== ""){
-        html += `<p>${line}</p>`;
-      }
-    }
-  }
-
-  if(inList) html += "</ul>";
-
-  return html;
-}
-  
-
-
-
-  
-/* STREAM */
-function streamText(text){
-
-  let div = document.createElement("div");
-  div.className = "message bot";
-  chat.appendChild(div);
-
-  let i = 0;
-
-  function type(){
-
-    if(i < text.length){
-
-      div.innerHTML = text.substring(0, i+1);
-
-      i++;
-      chat.scrollTop = chat.scrollHeight;
-
-      setTimeout(type, 10);
-
-    }else{
-
-      // FINAL render
-div.innerHTML = formatText(text);
-
-// ACTION BAR
-let actions = document.createElement("div");
-actions.className = "action-bar";
-
-actions.innerHTML = `
-<div class="action-bar">
-
-  <!-- COPY -->
-  <button class="icon-btn copy-action-btn" title="Copy">
-    <svg viewBox="0 0 24 24" fill="none">
-      <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
-      <rect x="2" y="2" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
-    </svg>
-  </button>
-
-  <!-- LIKE -->
-  <button class="icon-btn like-btn" title="Like">
-    <svg viewBox="0 0 24 24" fill="none">
-      <path d="M7 10v10M7 10l5-7 2 1v6h5l-1 10H7z" stroke="currentColor" stroke-width="1.5"/>
-    </svg>
-  </button>
-
-  <!-- DISLIKE -->
-  <button class="icon-btn dislike-btn" title="Dislike">
-    <svg viewBox="0 0 24 24" fill="none">
-      <path d="M7 14V4M7 14l5 7 2-1v-6h5L18 4H7z" stroke="currentColor" stroke-width="1.5"/>
-    </svg>
-  </button>
-
-  <!-- SPEAK -->
-  <button class="icon-btn speak-btn" title="Speak">
-    <svg viewBox="0 0 24 24" fill="none">
-      <path d="M5 9v6h4l5 4V5L9 9H5z" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M15 9a3 3 0 0 1 0 6" stroke="currentColor" stroke-width="1.5"/>
-    </svg>
-  </button>
-
-  <!-- SHARE -->
-  <button class="icon-btn share-btn" title="Share">
-    <svg viewBox="0 0 24 24" fill="none">
-      <circle cx="18" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
-      <circle cx="6" cy="12" r="2" stroke="currentColor" stroke-width="1.5"/>
-      <circle cx="18" cy="19" r="2" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M8 12l8-7M8 12l8 7" stroke="currentColor" stroke-width="1.5"/>
-    </svg>
-  </button>
-
-  <!-- MORE -->
-  <button class="icon-btn more-btn" title="More">
-    <svg viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="5" r="1.5" fill="currentColor"/>
-      <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
-      <circle cx="12" cy="19" r="1.5" fill="currentColor"/>
-    </svg>
-  </button>
-
-</div>
-`;
-
-
-      div.appendChild(actions);
-    }
-  }
-
-  type();
-}
-      document.addEventListener("click", function(e){
-
-  // COPY
-  if(e.target.closest(".copy-btn")){
-    let msg = e.target.closest(".message");
-    let text = msg.innerText;
-
-    navigator.clipboard.writeText(text);
-
-    e.target.innerText = "✅";
-    setTimeout(()=> e.target.innerText="📋",1000);
-  }
-
-  // LIKE
-  if(e.target.closest(".like-btn")){
-    e.target.style.color = "#19c37d";
-  }
-
-  // DISLIKE
-  if(e.target.closest(".dislike-btn")){
-    e.target.style.color = "#ff4d4d";
-  }
-
-  // VOICE
-  if(e.target.closest(".speak-btn")){
-    let msg = e.target.closest(".message");
-    let text = msg.innerText;
-
-    let speech = new SpeechSynthesisUtterance(text);
-    speech.lang = "en-US";
-    speechSynthesis.speak(speech);
-  }
-
-  // SHARE
-  if(e.target.closest(".share-btn")){
-    let msg = e.target.closest(".message");
-    let text = msg.innerText;
-
-    navigator.share({
-      title:"DeepSINKY AI",
-      text:text
-    });
-  }
-
-});
-/* SIDEBAR */
-function toggleSidebar(){
-  const sidebar = document.getElementById("sidebar");
-  overlay.classList.toggle("show");
-}
-
-/* VOICE */
-function voiceInput(){
-  let rec = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-  rec.start();
-  rec.onresult = e=>{
-    input.value = e.results[0][0].transcript;
-  }
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
+
+</html>
+<!-- ========================================================= -->
+<!-- Header Start -->
+<!-- ========================================================= -->
+
+<header id="main-header">
+
+    <!-- Left Section -->
+    <div class="header-left">
+
+        <!-- Sidebar Toggle -->
+        <button id="menu-btn"
+                class="icon-btn"
+                title="Menu">
+
+            ☰
+
+        </button>
+
+        <!-- Logo -->
+        <div class="logo-container">
+
+            <img src="assets/logo.png"
+                 alt="DeepSINKY Logo"
+                 id="logo">
+
+            <div class="logo-text">
+
+                <h1>DeepSINKY</h1>
+
+                <span>AI Platform</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Center Section -->
+
+    <div class="header-center">
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <button class="icon-btn">
+
+                🔍
+
+            </button>
+
+            <input
+                type="text"
+                placeholder="Search conversations...">
+
+        </div>
+
+    </div>
+
+    <!-- Right Section -->
+
+    <div class="header-right">
+
+        <!-- AI Model -->
+
+        <select id="model-selector">
+
+            <option>GPT</option>
+
+            <option>Claude</option>
+
+            <option>Gemini</option>
+
+            <option>DeepSeek</option>
+
+        </select>
+
+        <!-- New Chat -->
+
+        <button class="header-btn">
+
+            + New Chat
+
+        </button>
+
+        <!-- Notification -->
+
+        <button class="icon-btn">
+
+            🔔
+
+        </button>
+
+        <!-- Theme -->
+
+        <button class="icon-btn">
+
+            🌙
+
+        </button>
+
+        <!-- Settings -->
+
+        <button class="icon-btn">
+
+            ⚙
+
+        </button>
+
+        <!-- Profile -->
+
+        <div class="profile">
+
+            <img
+                src="assets/default-user.png"
+                alt="User">
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- ========================================================= -->
+<!-- Header End -->
+<!-- =========================================================-->
+<!-- ========================================================= -->
+<!-- Main Layout -->
+<!-- ========================================================= -->
+
+<main id="main-layout">
+
+    <!-- ====================================== -->
+    <!-- Sidebar Start -->
+    <!-- ====================================== -->
+
+    <aside id="sidebar">
+
+        <!-- New Chat -->
+
+        <button class="sidebar-btn active">
+
+            <span>💬</span>
+
+            <span>New Chat</span>
+
+        </button>
+
+        <!-- Chat History -->
+
+        <button class="sidebar-btn">
+
+            <span>🕒</span>
+
+            <span>History</span>
+
+        </button>
+
+        <!-- AI Models -->
+
+        <button class="sidebar-btn">
+
+            <span>🤖</span>
+
+            <span>AI Models</span>
+
+        </button>
+
+        <!-- Memory -->
+
+        <button class="sidebar-btn">
+
+            <span>🧠</span>
+
+            <span>Memory</span>
+
+        </button>
+
+        <!-- Files -->
+
+        <button class="sidebar-btn">
+
+            <span>📁</span>
+
+            <span>Files</span>
+
+        </button>
+
+        <!-- Search -->
+
+        <button class="sidebar-btn">
+
+            <span>🌐</span>
+
+            <span>Web Search</span>
+
+        </button>
+
+        <!-- Image -->
+
+        <button class="sidebar-btn">
+
+            <span>🖼️</span>
+
+            <span>Image AI</span>
+
+        </button>
+
+        <!-- Voice -->
+
+        <button class="sidebar-btn">
+
+            <span>🎤</span>
+
+            <span>Voice</span>
+
+        </button>
+
+        <!-- Workspace -->
+
+        <button class="sidebar-btn">
+
+            <span>💼</span>
+
+            <span>Workspace</span>
+
+        </button>
+
+        <!-- Analytics -->
+
+        <button class="sidebar-btn">
+
+            <span>📊</span>
+
+            <span>Analytics</span>
+
+        </button>
+
+        <!-- Plugins -->
+
+        <button class="sidebar-btn">
+
+            <span>🧩</span>
+
+            <span>Plugins</span>
+
+        </button>
+
+        <!-- Settings -->
+
+        <button class="sidebar-btn">
+
+            <span>⚙️</span>
+
+            <span>Settings</span>
+
+        </button>
+
+    </aside>
+
+    <!-- ====================================== -->
+    <!-- Sidebar End -->
+    <!-- ====================================== -->
+
+    <!-- Chat Section Start -->
+
+    <section id="chat-container">
+
+    </section>
+
+</main>
+<!-- ========================================================= -->
+<!-- Chat Window -->
+<!-- ========================================================= -->
+
+<div id="chat-window">
+
+    <!-- Welcome Screen -->
+    <section id="welcome-screen">
+
+        <div class="welcome-logo">
+            <img src="assets/logo.png" alt="DeepSINKY Logo">
+        </div>
+
+        <h1>Welcome to DeepSINKY AI</h1>
+
+        <p>
+            Ask anything, generate code, analyze files,
+            create images and search the web with AI.
+        </p>
+
+        <!-- Suggestion Cards -->
+
+        <div class="suggestion-grid">
+
+            <button class="suggestion-card">
+                💡 Explain Quantum Physics
+            </button>
+
+            <button class="suggestion-card">
+                💻 Write JavaScript Code
+            </button>
+
+            <button class="suggestion-card">
+                📝 Summarize a Document
+            </button>
+
+            <button class="suggestion-card">
+                🌍 Search the Internet
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- Messages -->
+
+    <section id="messages-container">
+
+        <!-- AI Message -->
+
+        <div class="message ai-message">
+
+            <div class="avatar">
+                🤖
+            </div>
+
+            <div class="message-content">
+
+                Hello! I'm DeepSINKY AI.
+                How can I help you today?
+
+            </div>
+
+        </div>
+
+        <!-- User messages will be added here -->
+
+    </section>
+
+    <!-- Typing Indicator -->
+
+    <section id="typing-indicator" hidden>
+
+        <div class="typing-avatar">
+            🤖
+        </div>
+
+        <div class="typing-dots">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </section>
+
+    <!-- Scroll To Bottom -->
+
+    <button id="scroll-bottom-btn"
+            title="Scroll to Bottom">
+
+        ⬇
+
+    </button>
+
+</div>
+
+<!-- End Chat Window -->
+
+<!-- ========================================================= -->
+<!-- Prompt Area Start -->
+<!-- ========================================================= -->
+
+<footer id="prompt-area">
+
+    <div class="prompt-container">
+
+        <!-- Left Tools -->
+
+        <div class="prompt-tools">
+
+            <!-- File Upload -->
+
+            <button class="tool-btn"
+                    id="upload-btn"
+                    title="Upload File">
+
+                📎
+
+            </button>
+
+            <input
+                type="file"
+                id="file-input"
+                hidden>
+
+            <!-- Image Generation -->
+
+            <button class="tool-btn"
+                    id="image-btn"
+                    title="Generate Image">
+
+                🖼️
+
+            </button>
+
+            <!-- Voice -->
+
+            <button class="tool-btn"
+                    id="voice-btn"
+                    title="Voice Input">
+
+                🎤
+
+            </button>
+
+            <!-- Web Search -->
+
+            <button class="tool-btn"
+                    id="web-btn"
+                    title="Web Search">
+
+                🌐
+
+            </button>
+
+        </div>
+
+        <!-- Prompt Input -->
+
+        <div class="prompt-box">
+
+            <textarea
+                id="prompt-input"
+                rows="1"
+                placeholder="Message DeepSINKY AI..."></textarea>
+
+        </div>
+
+        <!-- Right Tools -->
+
+        <div class="prompt-actions">
+
+            <!-- Stop -->
+
+            <button class="action-btn"
+                    id="stop-btn"
+                    hidden>
+
+                ⏹
+
+            </button>
+
+            <!-- Regenerate -->
+
+            <button class="action-btn"
+                    id="regenerate-btn">
+
+                🔄
+
+            </button>
+
+            <!-- Send -->
+
+            <button class="action-btn send-btn"
+                    id="send-btn">
+
+                ➤
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Prompt Footer -->
+
+    <div class="prompt-footer">
+
+        <small>
+
+            DeepSINKY AI can make mistakes.
+            Verify important information.
+
+        </small>
+
+    </div>
+
+</footer>
+
+<!-- ========================================================= -->
+<!-- Prompt Area End -->
+<!-- ========================================================= -->
+<!-- ========================================================= -->
+<!-- Settings Modal -->
+<!-- ========================================================= -->
+
+<div id="settings-modal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2>Settings</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+
+            <div class="setting-item">
+                <label>Theme</label>
+
+                <select id="theme-select">
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                    <option value="glass">Glass</option>
+                    <option value="system">System</option>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <label>Language</label>
+
+                <select id="language-select">
+                    <option>English</option>
+                    <option>Hindi</option>
+                    <option>Spanish</option>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <label>
+
+                    <input type="checkbox" id="stream-toggle">
+
+                    Enable Streaming Response
+
+                </label>
+            </div>
+
+            <div class="setting-item">
+                <label>
+
+                    <input type="checkbox" id="sound-toggle">
+
+                    Notification Sound
+
+                </label>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- Profile Modal -->
+<!-- ========================================================= -->
+
+<div id="profile-modal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2>Profile</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+
+            <img src="assets/default-user.png"
+                 class="profile-image"
+                 alt="User">
+
+            <h3>Guest User</h3>
+
+            <p>Welcome to DeepSINKY AI</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- AI Model Modal -->
+<!-- ========================================================= -->
+
+<div id="model-modal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2>Select AI Model</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+
+            <button class="model-card">GPT</button>
+            <button class="model-card">Claude</button>
+            <button class="model-card">Gemini</button>
+            <button class="model-card">DeepSeek</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- File Preview Modal -->
+<!-- ========================================================= -->
+
+<div id="preview-modal" class="modal hidden">
+
+    <div class="modal-content large">
+
+        <div class="modal-header">
+            <h2>File Preview</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+
+            <div id="preview-content">
+
+                File Preview Area
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- Keyboard Shortcuts Panel -->
+<!-- ========================================================= -->
+
+<div id="shortcut-panel" class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2>Keyboard Shortcuts</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+
+            <ul>
+
+                <li><b>Enter</b> → Send Message</li>
+
+                <li><b>Shift + Enter</b> → New Line</li>
+
+                <li><b>Ctrl + K</b> → Search</li>
+
+                <li><b>Ctrl + /</b> → Shortcuts</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- About Modal -->
+<!-- ========================================================= -->
+
+<div id="about-modal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2>About DeepSINKY</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+
+            <h3>DeepSINKY AI</h3>
+
+            <p>
+                Next-generation AI platform designed for chat,
+                coding, image generation, web search, document
+                analysis, and productivity.
+            </p>
+
+            <p>Version: 1.0.0</p>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ========================================================= -->
+<!-- Loading Screen -->
+<!-- ========================================================= -->
+
+<div id="loading-screen">
+
+    <div class="loader">
+
+        <div class="loader-ring"></div>
+
+        <h2>DeepSINKY AI</h2>
+
+        <p>Loading...</p>
+
+    </div>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- Toast Notification -->
+<!-- ========================================================= -->
+
+<div id="toast-container">
+
+    <div class="toast success hidden">
+
+        <span>✅</span>
+
+        <span id="toast-message">
+
+            Success
+
+        </span>
+
+    </div>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- Context Menu -->
+<!-- ========================================================= -->
+
+<div id="context-menu" class="hidden">
+
+    <button class="context-item">
+
+        📋 Copy
+
+    </button>
+
+    <button class="context-item">
+
+        ✏ Edit
+
+    </button>
+
+    <button class="context-item">
+
+        🔄 Regenerate
+
+    </button>
+
+    <button class="context-item">
+
+        🗑 Delete
+
+    </button>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- Right Sidebar -->
+<!-- ========================================================= -->
+
+<aside id="right-sidebar">
+
+    <h3>Quick Access</h3>
+
+    <button class="quick-btn">
+
+        💬 Recent Chats
+
+    </button>
+
+    <button class="quick-btn">
+
+        ⭐ Favorites
+
+    </button>
+
+    <button class="quick-btn">
+
+        📁 Files
+
+    </button>
+
+    <button class="quick-btn">
+
+        🧠 Memory
+
+    </button>
+
+</aside>
+
+<!-- ========================================================= -->
+<!-- Floating Action Buttons -->
+<!-- ========================================================= -->
+
+<div id="floating-buttons">
+
+    <button id="scroll-top-btn"
+            title="Scroll Top">
+
+        ⬆
+
+    </button>
+
+    <button id="help-btn"
+            title="Help">
+
+        ❓
+
+    </button>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- JavaScript Libraries -->
+<!-- ========================================================= -->
+
 <script src="script.js"></script>
+
+<script src="components/chat.js"></script>
+<script src="components/sidebar.js"></script>
+<script src="components/header.js"></script>
+<script src="components/modal.js"></script>
+
+<script src="themes/theme.js"></script>
+
+<script src="animations/loader.js"></script>
+<script src="animations/typing.js"></script>
+
+<script src="responsive/mobile.js"></script>
+
+<script src="utils/storage.js"></script>
+<script src="utils/helpers.js"></script>
+
+<!-- ========================================================= -->
+<!-- End Body -->
+<!-- ========================================================= -->
+
+</body>
+
 </html>
