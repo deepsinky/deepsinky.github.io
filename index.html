@@ -3,40 +3,42 @@
 
 <head>
 
-    <!-- ========================================= -->
-    <!-- DeepSINKY AI -->
-    <!-- Part 1 : HTML Foundation -->
-    <!-- ========================================= -->
+    <!-- ============================= -->
+    <!-- DeepSINKY AI - Part 1 -->
+    <!-- Core HTML Foundation -->
+    <!-- ============================= -->
 
     <meta charset="UTF-8">
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        content="width=device-width,
+                 initial-scale=1.0,
+                 viewport-fit=cover">
 
     <meta
         http-equiv="X-UA-Compatible"
         content="IE=edge">
 
-    <!-- Primary SEO -->
-
     <title>DeepSINKY AI</title>
+
+    <!-- SEO -->
+
+    <meta
+        name="title"
+        content="DeepSINKY AI">
 
     <meta
         name="description"
-        content="DeepSINKY AI - Professional Artificial Intelligence Assistant">
+        content="DeepSINKY AI - Advanced Artificial Intelligence Assistant">
 
     <meta
         name="keywords"
-        content="AI, Artificial Intelligence, Chatbot, DeepSINKY">
+        content="AI, ChatGPT, DeepSINKY, Artificial Intelligence">
 
     <meta
         name="author"
         content="DeepSINKY">
-
-    <meta
-        name="robots"
-        content="index,follow">
 
     <meta
         name="theme-color"
@@ -46,12 +48,15 @@
         name="color-scheme"
         content="dark">
 
+    <meta
+        name="robots"
+        content="index,follow">
+
     <!-- Open Graph -->
 
     <meta property="og:type" content="website">
 
-    <meta property="og:title"
-          content="DeepSINKY AI">
+    <meta property="og:title" content="DeepSINKY AI">
 
     <meta property="og:description"
           content="Professional AI Assistant">
@@ -71,15 +76,9 @@
 
     <meta
         name="apple-mobile-web-app-title"
-        content="DeepSINKY AI">
+        content="DeepSINKY">
 
-    <!-- Manifest -->
-
-    <link
-        rel="manifest"
-        href="manifest.json">
-
-    <!-- Icons -->
+    <!-- Favicon -->
 
     <link
         rel="icon"
@@ -89,7 +88,13 @@
         rel="apple-touch-icon"
         href="assets/icons/icon-192.png">
 
-    <!-- Google Fonts -->
+    <!-- Manifest -->
+
+    <link
+        rel="manifest"
+        href="manifest.json">
+
+    <!-- Fonts -->
 
     <link
         rel="preconnect"
@@ -104,7 +109,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome -->
+    <!-- Icons -->
 
     <link
         rel="stylesheet"
@@ -116,10 +121,7 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
 
-    <script
-        defer
-        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
     <!-- Main CSS -->
 
@@ -130,15 +132,28 @@
 </head>
 
 <body>
-    <!-- ========================================= -->
-<!-- DeepSINKY AI -->
-<!-- Part 2 : App Root + Loader + Layout -->
+
+<!--
+=========================================
+DeepSINKY AI
+
+Part 1 Completed
+
+Next Part:
+App Container
+Loader
+Overlay
+Sidebar Root
+=========================================
+-->
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 2 -->
+<!-- App Container + Loader + Overlay + Root -->
 <!-- ========================================= -->
 
 <div id="app">
 
     <!-- Splash Loader -->
-
     <div id="app-loader">
 
         <div class="loader-content">
@@ -166,48 +181,48 @@
 
     </div>
 
-    <!-- Global UI -->
-
+    <!-- Global Overlay -->
     <div id="global-overlay"></div>
 
+    <!-- Blur Overlay -->
     <div id="blur-overlay"></div>
 
+    <!-- Toast Container -->
     <div id="toast-container"></div>
 
+    <!-- Notification Container -->
     <div id="notification-container"></div>
 
+    <!-- Modal Root -->
     <div id="modal-root"></div>
 
+    <!-- Floating Panels -->
     <div id="floating-root"></div>
 
-    <!-- Main Application -->
+    <!-- Application Layout -->
 
     <div id="app-layout">
 
-        <!-- Sidebar -->
+        <!-- Sidebar (Part 4) -->
         <aside id="sidebar"></aside>
 
-        <!-- Main -->
+        <!-- Main Area -->
 
         <main id="main-content">
 
-            <!-- Header -->
+            <!-- Header (Part 3) -->
             <header id="header"></header>
 
-            <!-- Chat Screen -->
-
+            <!-- Chat Area (Part 5) -->
             <section id="chat-screen">
 
-                <!-- Welcome Screen -->
-                <section id="welcome-screen"></section>
+                <div id="welcome-screen"></div>
 
-                <!-- Chat Messages -->
-                <section id="chat-window"></section>
+                <div id="chat-window"></div>
 
             </section>
 
-            <!-- Prompt -->
-
+            <!-- Prompt Area (Part 8) -->
             <footer id="prompt-area"></footer>
 
         </main>
@@ -219,52 +234,71 @@
 <!-- Hidden Inputs -->
 
 <input
-    id="cameraInput"
     type="file"
+    id="cameraInput"
     accept="image/*"
     capture
     hidden>
 
 <input
-    id="photoInput"
     type="file"
+    id="photoInput"
     accept="image/*"
     hidden>
 
 <input
-    id="fileInput"
     type="file"
+    id="fileInput"
     hidden>
+
+<!-- End Part 2 -->
     <!-- ========================================= -->
-<!-- DeepSINKY AI -->
-<!-- Part 3 : Header Template -->
+<!-- DeepSINKY AI - PART 3 -->
+<!-- Professional Header -->
 <!-- ========================================= -->
 
-<template id="header-template">
+<header id="header">
+
+    <!-- Left -->
 
     <div class="header-left">
 
-        <button id="menuBtn" class="header-btn" aria-label="Open Sidebar">
+        <!-- Sidebar Button -->
 
-            <i class="fas fa-bars"></i>
+        <button
+            id="menuBtn"
+            class="header-btn"
+            aria-label="Open Sidebar">
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M4 7H20M4 12H16M4 17H20"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+
+            </svg>
 
         </button>
 
-        <div class="brand">
+        <!-- Logo -->
+
+        <div id="brand">
 
             <img
                 src="assets/logo.png"
-                alt="DeepSINKY"
-                class="brand-logo">
+                id="logo"
+                alt="DeepSINKY">
 
-            <div class="brand-info">
+            <div id="brand-text">
 
-                <span class="brand-name">
+                <span id="brand-name">
                     DeepSINKY
                 </span>
 
-                <span class="brand-version">
-                    AI Pro
+                <span id="brand-version">
+                    AI
                 </span>
 
             </div>
@@ -273,49 +307,164 @@
 
     </div>
 
+    <!-- Center -->
+
     <div class="header-center">
 
         <button
             id="modelSelector"
             class="header-pill">
 
-            <span>
+            <span id="selected-model">
+
                 DeepSINKY Pro
+
             </span>
 
-            <i class="fas fa-chevron-down"></i>
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M7 10L12 15L17 10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"/>
+
+            </svg>
 
         </button>
 
     </div>
 
+    <!-- Right -->
+
     <div class="header-right">
 
-        <button id="searchBtn" class="header-btn">
+        <!-- Search -->
 
-            <i class="fas fa-search"></i>
+        <button
+            id="searchBtn"
+            class="header-btn"
+            title="Search">
+
+            <svg viewBox="0 0 24 24">
+
+                <circle
+                    cx="11"
+                    cy="11"
+                    r="6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"/>
+
+                <path
+                    d="M20 20L16.5 16.5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+
+            </svg>
 
         </button>
 
-        <button id="newChatBtn" class="header-btn">
+        <!-- New Chat -->
 
-            <i class="fas fa-plus"></i>
+        <button
+            id="newChatBtn"
+            class="header-btn"
+            title="New Chat">
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M12 5V19"
+                    stroke="currentColor"
+                    stroke-width="2"/>
+
+                <path
+                    d="M5 12H19"
+                    stroke="currentColor"
+                    stroke-width="2"/>
+
+            </svg>
 
         </button>
 
-        <button id="notificationBtn" class="header-btn">
+        <!-- Notifications -->
 
-            <i class="fas fa-bell"></i>
+        <button
+            id="notificationBtn"
+            class="header-btn"
+            title="Notifications">
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M12 4
+                       C9 4 7 6 7 9
+                       V13
+                       L5 16
+                       H19
+                       L17 13
+                       V9
+                       C17 6 15 4 12 4Z"
+
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"/>
+
+                <circle
+                    cx="12"
+                    cy="19"
+                    r="1.5"
+                    fill="currentColor"/>
+
+            </svg>
 
         </button>
 
-        <button id="settingsBtn" class="header-btn">
+        <!-- Settings -->
 
-            <i class="fas fa-gear"></i>
+        <button
+            id="settingsBtn"
+            class="header-btn"
+            title="Settings">
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M12 8
+                       A4 4 0 1 0
+                       12 16
+                       A4 4 0 1 0
+                       12 8"
+
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"/>
+
+                <path
+                    d="M12 2V5
+                       M12 19V22
+                       M2 12H5
+                       M19 12H22
+                       M4.9 4.9L7 7
+                       M17 17L19.1 19.1
+                       M19.1 4.9L17 7
+                       M7 17L4.9 19.1"
+
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+
+            </svg>
 
         </button>
 
-        <button id="profileBtn" class="profile-btn">
+        <!-- Profile -->
+
+        <button
+            id="profileBtn">
 
             <img
                 src="assets/avatar.png"
@@ -325,22 +474,33 @@
 
     </div>
 
-</template>
+</header>
+
+<!-- End Part 3 -->
+    
     <!-- ========================================= -->
-<!-- DeepSINKY AI -->
-<!-- Part 4 : Sidebar Template -->
+<!-- DeepSINKY AI - PART 4 -->
+<!-- Professional Sidebar -->
 <!-- ========================================= -->
 
-<template id="sidebar-template">
+<aside id="sidebar">
 
-    <div class="sidebar-header">
+    <!-- Sidebar Header -->
+
+    <div id="sidebar-header">
 
         <button
             id="closeSidebarBtn"
             class="sidebar-icon-btn"
             aria-label="Close Sidebar">
 
-            <i class="fas fa-times"></i>
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M6 6L18 18M18 6L6 18"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+            </svg>
 
         </button>
 
@@ -348,7 +508,13 @@
             id="sidebarNewChatBtn"
             class="primary-sidebar-btn">
 
-            <i class="fas fa-plus"></i>
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 5V19M5 12H19"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+            </svg>
 
             <span>New Chat</span>
 
@@ -356,13 +522,26 @@
 
     </div>
 
-    <!-- Search -->
+    <!-- Search Chats -->
 
-    <div class="sidebar-search">
+    <div id="sidebar-search">
 
         <button id="searchChatsBtn">
 
-            <i class="fas fa-search"></i>
+            <svg viewBox="0 0 24 24">
+                <circle
+                    cx="11"
+                    cy="11"
+                    r="6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"/>
+                <path
+                    d="M20 20L16.5 16.5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+            </svg>
 
             <span>Search Chats</span>
 
@@ -372,70 +551,118 @@
 
     <!-- Navigation -->
 
-    <nav class="sidebar-navigation">
+    <nav id="sidebar-navigation">
 
-        <button id="libraryBtn" class="sidebar-nav-btn">
-            <i class="fas fa-book"></i>
-            <span>Library</span>
+        <button class="sidebar-nav-btn" id="libraryBtn">
+            Library
         </button>
 
-        <button id="exploreBtn" class="sidebar-nav-btn">
-            <i class="fas fa-compass"></i>
-            <span>Explore AI</span>
+        <button class="sidebar-nav-btn" id="exploreBtn">
+            Explore AI
         </button>
 
-        <button id="imageStudioBtn" class="sidebar-nav-btn">
-            <i class="fas fa-image"></i>
-            <span>Image Studio</span>
+        <button class="sidebar-nav-btn" id="imageStudioBtn">
+            Image Studio
         </button>
 
-        <button id="researchBtn" class="sidebar-nav-btn">
-            <i class="fas fa-microscope"></i>
-            <span>Deep Research</span>
+        <button class="sidebar-nav-btn" id="researchBtn">
+            Deep Research
         </button>
 
     </nav>
 
-    <!-- History -->
+    <!-- Chat History -->
 
-    <section class="history-section">
+    <section id="history-section">
 
-        <h3>Today</h3>
-        <div id="today-history" class="history-list"></div>
+        <h3 class="history-title">
 
-        <h3>Yesterday</h3>
-        <div id="yesterday-history" class="history-list"></div>
+            Today
 
-        <h3>Older</h3>
-        <div id="older-history" class="history-list"></div>
+        </h3>
+
+        <div
+            id="today-history"
+            class="history-list">
+
+        </div>
+
+        <h3 class="history-title">
+
+            Yesterday
+
+        </h3>
+
+        <div
+            id="yesterday-history"
+            class="history-list">
+
+        </div>
+
+        <h3 class="history-title">
+
+            Older
+
+        </h3>
+
+        <div
+            id="older-history"
+            class="history-list">
+
+        </div>
 
     </section>
 
-    <!-- Footer -->
+    <!-- Bottom -->
 
-    <div class="sidebar-footer">
+    <div id="sidebar-footer">
 
-        <button id="memoryBtn" class="sidebar-footer-btn">
+        <button
+            id="memoryBtn"
+            class="sidebar-footer-btn">
+
             Memory
+
         </button>
 
-        <button id="settingsSidebarBtn" class="sidebar-footer-btn">
+        <button
+            id="settingsSidebarBtn"
+            class="sidebar-footer-btn">
+
             Settings
+
         </button>
 
-        <button id="helpBtn" class="sidebar-footer-btn">
+        <button
+            id="helpBtn"
+            class="sidebar-footer-btn">
+
             Help
+
         </button>
 
-        <button id="logoutBtn" class="sidebar-footer-btn danger">
+        <button
+            id="logoutBtn"
+            class="sidebar-footer-btn danger">
+
             Log Out
+
         </button>
 
     </div>
 
-</template>
+</aside>
+
+<!-- Sidebar Backdrop -->
 
 <div id="sidebar-backdrop"></div>
+
+<!-- End Part 4 -->
+<script src="script.js"></script>
+
+</body>
+</html>
+
     
 <!-- ========================================= -->
 <!-- DeepSINKY AI - PART 5 -->
