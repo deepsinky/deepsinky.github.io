@@ -7078,4 +7078,2919 @@ document.addEventListener(
 
 );
 
+/* ==========================================
+   DeepSINKY AI
+   script.js - PART 6A
+   AI Model Router
+========================================== */
+
+"use strict";
+
+/* ===========================
+   MODEL REGISTRY
+=========================== */
+
+CoreEngine.models = {
+
+    openai: {
+
+        enabled: true,
+
+        priority: 1,
+
+        endpoint: "/providers/openai"
+
+    },
+
+    gemini: {
+
+        enabled: true,
+
+        priority: 2,
+
+        endpoint: "/providers/gemini"
+
+    },
+
+    claude: {
+
+        enabled: true,
+
+        priority: 3,
+
+        endpoint: "/providers/claude"
+
+    },
+
+    deepseek: {
+
+        enabled: true,
+
+        priority: 4,
+
+        endpoint: "/providers/deepseek"
+
+    },
+
+    grok: {
+
+        enabled: false,
+
+        priority: 5,
+
+        endpoint: "/providers/grok"
+
+    },
+
+    ollama: {
+
+        enabled: false,
+
+        priority: 6,
+
+        endpoint: "/providers/ollama"
+
+    }
+
+};
+
+/* ===========================
+   ACTIVE MODEL
+=========================== */
+
+CoreEngine.activeModel = "openai";
+
+/* ===========================
+   CHANGE MODEL
+=========================== */
+
+CoreEngine.setModel = function(name) {
+
+    if (!this.models[name]) {
+
+        throw new Error("Unknown model.");
+
+    }
+
+    this.activeModel = name;
+
+    this.emit(
+
+        "model:changed",
+
+        name
+
+    );
+
+};
+
+/* ===========================
+   GET MODEL
+=========================== */
+
+CoreEngine.getModel = function() {
+
+    return this.models[
+
+        this.activeModel
+
+    ];
+
+};
+
+/* ===========================
+   AVAILABLE MODELS
+=========================== */
+
+CoreEngine.getAvailableModels =
+
+function() {
+
+    return Object.keys(
+
+        this.models
+
+    ).filter(
+
+        model =>
+
+        this.models[model].enabled
+
+    );
+
+};
+
+/* ===========================
+   BUILD REQUEST
+=========================== */
+
+CoreEngine.buildAIRequest =
+
+function(messages) {
+
+    return {
+
+        provider:
+
+            this.activeModel,
+
+        endpoint:
+
+            this.getModel().endpoint,
+
+        messages
+
+    };
+
+};
+
+/* ===========================
+   SEND
+=========================== */
+
+CoreEngine.sendAI =
+
+async function(messages) {
+
+    const payload =
+
+        this.buildAIRequest(
+
+            messages
+
+        );
+
+    return APIClient.post(
+
+        payload.endpoint,
+
+        payload
+
+    );
+
+};
+
+/* ==========================================
+   DeepSINKY AI
+   script.js - PART 6B
+   Prompt Pipeline
+========================================== */
+
+"use strict";
+
+/* ===========================
+   SYSTEM PROMPT
+=========================== */
+
+CoreEngine.systemPrompt =
+
+"You are DeepSINKY AI, an intelligent, reliable and helpful assistant.";
+
+/* ===========================
+   PROMPT TEMPLATE
+=========================== */
+
+CoreEngine.createPrompt = function(messages) {
+
+    return [
+
+        {
+
+            role: "system",
+
+            content: this.systemPrompt
+
+        },
+
+        ...messages
+
+    ];
+
+};
+
+/* ===========================
+   MEMORY INJECTION
+=========================== */
+
+CoreEngine.injectMemory = function(prompt) {
+
+    if (!this.memorySummary) {
+
+        return prompt;
+
+    }
+
+    prompt.splice(
+
+        1,
+
+        0,
+
+        {
+
+            role: "system",
+
+            content:
+
+                "Memory:\n" +
+
+                this.memorySummary
+
+        }
+
+    );
+
+    return prompt;
+
+};
+
+/* ===========================
+   CONTEXT INJECTION
+=========================== */
+
+CoreEngine.injectContext = function(prompt) {
+
+    if (!this.contextWindow) {
+
+        return prompt;
+
+    }
+
+    prompt.push({
+
+        role: "system",
+
+        content:
+
+            "Context:\n" +
+
+            this.contextWindow
+
+    });
+
+    return prompt;
+
+};
+
+/* ===========================
+   TOOL INSTRUCTIONS
+=========================== */
+
+CoreEngine.injectTools = function(prompt) {
+
+    if (
+
+        !this.availableTools ||
+
+        !this.availableTools.length
+
+    ) {
+
+        return prompt;
+
+    }
+
+    prompt.push({
+
+        role: "system",
+
+        content:
+
+            "Available Tools:\n" +
+
+            this.availableTools.join(", ")
+
+    });
+
+    return prompt;
+
+};
+
+/* ===========================
+   FINAL PIPELINE
+=========================== */
+
+CoreEngine.buildPrompt = function(messages) {
+
+    let prompt =
+
+        this.createPrompt(messages);
+
+    prompt =
+
+        this.injectMemory(prompt);
+
+    prompt =
+
+        this.injectContext(prompt);
+
+    prompt =
+
+        this.injectTools(prompt);
+
+    return prompt;
+
+};
+
+/* ===========================
+   SEND THROUGH PIPELINE
+=========================== */
+
+CoreEngine.chat = async function(messages) {
+
+    const prompt =
+
+        this.buildPrompt(messages);
+
+    return this.sendAI(prompt);
+
+};
+
+/* ==========================================
+   DeepSINKY AI
+   script.js - PART 6C
+   Context Manager
+========================================== */
+
+"use strict";
+
+/* ===========================
+   CONTEXT CONFIG
+=========================== */
+
+CoreEngine.context = {
+
+    history: [],
+
+    maxMessages: 20,
+
+    maxCharacters: 50000,
+
+    summary: null
+
+};
+
+/* ===========================
+   ADD MESSAGE
+=========================== */
+
+CoreEngine.addContext = function(message) {
+
+    this.context.history.push(message);
+
+    this.trimContext();
+
+};
+
+/* ===========================
+   GET CONTEXT
+=========================== */
+
+CoreEngine.getContext = function() {
+
+    return [
+
+        ...this.context.history
+
+    ];
+
+};
+
+/* ===========================
+   CLEAR CONTEXT
+=========================== */
+
+CoreEngine.clearContext = function() {
+
+    this.context.history = [];
+
+    this.context.summary = null;
+
+};
+
+/* ===========================
+   SLIDING WINDOW
+=========================== */
+
+CoreEngine.trimContext = function() {
+
+    while (
+
+        this.context.history.length >
+
+        this.context.maxMessages
+
+    ) {
+
+        this.context.history.shift();
+
+    }
+
+};
+
+/* ===========================
+   CHARACTER BUDGET
+=========================== */
+
+CoreEngine.enforceBudget = function() {
+
+    let total = this.context.history
+
+        .reduce(
+
+            (sum, msg) =>
+
+                sum +
+
+                (msg.content?.length || 0),
+
+            0
+
+        );
+
+    while (
+
+        total >
+
+        this.context.maxCharacters &&
+
+        this.context.history.length
+
+    ) {
+
+        const removed =
+
+            this.context.history.shift();
+
+        total -=
+
+            removed.content?.length || 0;
+
+    }
+
+};
+
+/* ===========================
+   BUILD CONTEXT
+=========================== */
+
+CoreEngine.buildContext = function() {
+
+    this.trimContext();
+
+    this.enforceBudget();
+
+    return this.getContext();
+
+};
+
+/* ===========================
+   CHAT PIPELINE
+=========================== */
+
+CoreEngine.chat = async function(messages) {
+
+    messages.forEach(
+
+        message =>
+
+            this.addContext(message)
+
+    );
+
+    const prompt = this.buildPrompt(
+
+        this.buildContext()
+
+    );
+
+    return this.sendAI(prompt);
+
+};
+
+/* ===========================
+   CONTEXT INFO
+=========================== */
+
+CoreEngine.getContextInfo = function() {
+
+    return {
+
+        messages:
+
+            this.context.history.length,
+
+        maxMessages:
+
+            this.context.maxMessages,
+
+        maxCharacters:
+
+            this.context.maxCharacters,
+
+        summary:
+
+            this.context.summary
+
+    };
+
+};
+
+/* ==========================================
+   DeepSINKY AI
+   script.js - PART 6D
+   Memory Engine
+========================================== */
+
+"use strict";
+
+/* ===========================
+   MEMORY STORE
+=========================== */
+
+CoreEngine.memory = {
+
+    shortTerm: [],
+
+    longTerm: [],
+
+    preferences: {},
+
+    summary: null
+
+};
+
+/* ===========================
+   SAVE SHORT MEMORY
+=========================== */
+
+CoreEngine.remember = function(message) {
+
+    this.memory.shortTerm.push(message);
+
+    if (
+
+        this.memory.shortTerm.length > 100
+
+    ) {
+
+        this.memory.shortTerm.shift();
+
+    }
+
+};
+
+/* ===========================
+   SAVE LONG MEMORY
+=========================== */
+
+CoreEngine.storeMemory = function(memory) {
+
+    this.memory.longTerm.push({
+
+        id: crypto.randomUUID(),
+
+        timestamp: Date.now(),
+
+        ...memory
+
+    });
+
+};
+
+/* ===========================
+   USER PREFERENCES
+=========================== */
+
+CoreEngine.setPreference = function(key, value) {
+
+    this.memory.preferences[key] = value;
+
+};
+
+CoreEngine.getPreference = function(key) {
+
+    return this.memory.preferences[key];
+
+};
+
+/* ===========================
+   MEMORY SUMMARY
+=========================== */
+
+CoreEngine.updateMemorySummary = function(summary) {
+
+    this.memory.summary = summary;
+
+};
+
+/* ===========================
+   MEMORY SEARCH
+=========================== */
+
+CoreEngine.searchMemory = function(query) {
+
+    return this.memory.longTerm.filter(item =>
+
+        JSON.stringify(item)
+
+        .toLowerCase()
+
+        .includes(query.toLowerCase())
+
+    );
+
+};
+
+/* ===========================
+   BUILD MEMORY
+=========================== */
+
+CoreEngine.buildMemoryContext = function() {
+
+    return {
+
+        summary:
+
+            this.memory.summary,
+
+        preferences:
+
+            this.memory.preferences,
+
+        recent:
+
+            this.memory.shortTerm.slice(-10)
+
+    };
+
+};
+
+/* ===========================
+   PROMPT INTEGRATION
+=========================== */
+
+CoreEngine.injectMemory = function(prompt) {
+
+    const memory =
+
+        this.buildMemoryContext();
+
+    prompt.splice(1, 0, {
+
+        role: "system",
+
+        content:
+
+            JSON.stringify(memory)
+
+    });
+
+    return prompt;
+
+};
+
+/* ===========================
+   RESET MEMORY
+=========================== */
+
+CoreEngine.clearMemory = function() {
+
+    this.memory.shortTerm = [];
+
+    this.memory.longTerm = [];
+
+    this.memory.preferences = {};
+
+    this.memory.summary = null;
+
+};
+/* ==========================================
+   DeepSINKY AI
+   script.js - PART 6E
+   Embedding Engine
+========================================== */
+
+"use strict";
+
+/* ===========================
+   EMBEDDING CONFIG
+=========================== */
+
+CoreEngine.embedding = {
+
+    model: "text-embedding-3-small",
+
+    chunkSize: 1000,
+
+    chunkOverlap: 200,
+
+    dimensions: 1536
+
+};
+
+/* ===========================
+   TEXT CHUNKING
+=========================== */
+
+CoreEngine.chunkText = function(text) {
+
+    const chunks = [];
+
+    const size = this.embedding.chunkSize;
+
+    const overlap = this.embedding.chunkOverlap;
+
+    let index = 0;
+
+    while (index < text.length) {
+
+        chunks.push(
+
+            text.slice(
+
+                index,
+
+                index + size
+
+            )
+
+        );
+
+        index += size - overlap;
+
+    }
+
+    return chunks;
+
+};
+
+/* ===========================
+   EMBEDDING REQUEST
+=========================== */
+
+APIClient.createEmbedding =
+
+async function(text) {
+
+    return this.post(
+
+        "/embeddings",
+
+        {
+
+            model:
+
+                CoreEngine.embedding.model,
+
+            input: text
+
+        }
+
+    );
+
+};
+
+/* ===========================
+   BUILD EMBEDDINGS
+=========================== */
+
+CoreEngine.generateEmbeddings =
+
+async function(text) {
+
+    const chunks =
+
+        this.chunkText(text);
+
+    const vectors = [];
+
+    for (const chunk of chunks) {
+
+        const result =
+
+            await APIClient.createEmbedding(
+
+                chunk
+
+            );
+
+        vectors.push({
+
+            text: chunk,
+
+            embedding:
+
+                result.embedding
+
+        });
+
+    }
+
+    return vectors;
+
+};
+
+/* ===========================
+   VECTOR SEARCH
+=========================== */
+
+CoreEngine.searchEmbeddings =
+
+async function(query, limit = 5) {
+
+    return APIClient.post(
+
+        "/vector/search",
+
+        {
+
+            query,
+
+            limit
+
+        }
+
+    );
+
+};
+
+/* ===========================
+   SAVE VECTORS
+=========================== */
+
+CoreEngine.storeEmbeddings =
+
+async function(documentId, vectors) {
+
+    return APIClient.post(
+
+        "/vector/store",
+
+        {
+
+            documentId,
+
+            vectors
+
+        }
+
+    );
+
+};
+
+/* ===========================
+   DOCUMENT INDEXING
+=========================== */
+
+CoreEngine.indexDocument =
+
+async function(documentId, text) {
+
+    const vectors =
+
+        await this.generateEmbeddings(
+
+            text
+
+        );
+
+    return this.storeEmbeddings(
+
+        documentId,
+
+        vectors
+
+    );
+
+};
+
+/* ==========================================
+   DeepSINKY AI
+   script.js - PART 6F
+   Retrieval-Augmented Generation
+========================================== */
+
+"use strict";
+
+/* ===========================
+   RAG CONFIG
+=========================== */
+
+CoreEngine.rag = {
+
+    enabled: true,
+
+    topK: 5,
+
+    maxContextChunks: 5,
+
+    includeCitations: true
+
+};
+
+/* ===========================
+   RETRIEVE DOCUMENTS
+=========================== */
+
+CoreEngine.retrieveKnowledge =
+
+async function(query) {
+
+    if (!this.rag.enabled) {
+
+        return [];
+
+    }
+
+    return APIClient.post(
+
+        "/rag/search",
+
+        {
+
+            query,
+
+            topK: this.rag.topK
+
+        }
+
+    );
+
+};
+
+/* ===========================
+   BUILD KNOWLEDGE
+=========================== */
+
+CoreEngine.buildKnowledgeContext =
+
+function(results) {
+
+    return results
+
+        .slice(
+
+            0,
+
+            this.rag.maxContextChunks
+
+        )
+
+        .map(
+
+            item =>
+
+                item.content
+
+        )
+
+        .join("\n\n");
+
+};
+
+/* ===========================
+   INJECT KNOWLEDGE
+=========================== */
+
+CoreEngine.injectKnowledge =
+
+function(prompt, knowledge) {
+
+    if (!knowledge) {
+
+        return prompt;
+
+    }
+
+    prompt.splice(
+
+        1,
+
+        0,
+
+        {
+
+            role: "system",
+
+            content:
+
+                "Knowledge Base:\n\n"
+
+                + knowledge
+
+        }
+
+    );
+
+    return prompt;
+
+};
+
+/* ===========================
+   BUILD CITATIONS
+=========================== */
+
+CoreEngine.buildCitations =
+
+function(results) {
+
+    return results.map(
+
+        item => ({
+
+            id: item.id,
+
+            title: item.title,
+
+            source: item.source
+
+        })
+
+    );
+
+};
+
+/* ===========================
+   RAG PIPELINE
+=========================== */
+
+CoreEngine.chatWithRAG =
+
+async function(messages) {
+
+    const query =
+
+        messages
+
+            .at(-1)
+
+            ?.content || "";
+
+    const documents =
+
+        await this.retrieveKnowledge(
+
+            query
+
+        );
+
+    const knowledge =
+
+        this.buildKnowledgeContext(
+
+            documents
+
+        );
+
+    let prompt =
+
+        this.buildPrompt(messages);
+
+    prompt =
+
+        this.injectKnowledge(
+
+            prompt,
+
+            knowledge
+
+        );
+
+    const response =
+
+        await this.sendAI(prompt);
+
+    if (
+
+        this.rag.includeCitations
+
+    ) {
+
+        response.citations =
+
+            this.buildCitations(
+
+                documents
+
+            );
+
+    }
+
+    return response;
+
+};
+/* ==========================================
+   DeepSINKY AI
+   script.js - PART 6G
+   Agent Workflow Engine
+========================================== */
+
+"use strict";
+
+/* ===========================
+   AGENT CONFIG
+=========================== */
+
+CoreEngine.agent = {
+
+    enabled: true,
+
+    maxSteps: 10,
+
+    retryLimit: 2,
+
+    verifyResults: true
+
+};
+
+/* ===========================
+   CREATE TASK
+=========================== */
+
+CoreEngine.createTask = function(goal) {
+
+    return {
+
+        id: crypto.randomUUID(),
+
+        goal,
+
+        status: "pending",
+
+        currentStep: 0,
+
+        steps: [],
+
+        results: []
+
+    };
+
+};
+
+/* ===========================
+   PLAN TASK
+=========================== */
+
+CoreEngine.planTask = async function(task) {
+
+    const response = await APIClient.post(
+
+        "/agent/plan",
+
+        {
+
+            goal: task.goal
+
+        }
+
+    );
+
+    task.steps = response.steps || [];
+
+    return task;
+
+};
+
+/* ===========================
+   EXECUTE STEP
+=========================== */
+
+CoreEngine.executeStep = async function(task, step) {
+
+    const result = await APIClient.post(
+
+        "/agent/execute",
+
+        {
+
+            taskId: task.id,
+
+            step
+
+        }
+
+    );
+
+    task.results.push(result);
+
+    task.currentStep++;
+
+    return result;
+
+};
+
+/* ===========================
+   VERIFY RESULT
+=========================== */
+
+CoreEngine.verifyStep = async function(result) {
+
+    if (!this.agent.verifyResults) {
+
+        return true;
+
+    }
+
+    const verification = await APIClient.post(
+
+        "/agent/verify",
+
+        result
+
+    );
+
+    return verification.valid === true;
+
+};
+
+/* ===========================
+   RUN TASK
+=========================== */
+
+CoreEngine.runTask = async function(goal) {
+
+    const task = this.createTask(goal);
+
+    await this.planTask(task);
+
+    for (const step of task.steps) {
+
+        let attempts = 0;
+
+        while (attempts <= this.agent.retryLimit) {
+
+            const result = await this.executeStep(
+
+                task,
+
+                step
+
+            );
+
+            const valid = await this.verifyStep(
+
+                result
+
+            );
+
+            if (valid) {
+
+                break;
+
+            }
+
+            attempts++;
+
+        }
+
+    }
+
+    task.status = "completed";
+
+    return task;
+
+};
+
+/* ===========================
+   CANCEL TASK
+=========================== */
+
+CoreEngine.cancelTask = function(task) {
+
+    task.status = "cancelled";
+
+};
+
+/* ===========================
+   TASK STATUS
+=========================== */
+
+CoreEngine.getTaskStatus = function(task) {
+
+    return {
+
+        id: task.id,
+
+        status: task.status,
+
+        progress: task.currentStep,
+
+        totalSteps: task.steps.length
+
+    };
+
+};
+
+/* ==========================================
+   DeepSINKY AI
+   script.js - PART 6H
+   AI Optimization Engine
+========================================== */
+
+"use strict";
+
+/* ===========================
+   OPTIMIZATION CONFIG
+=========================== */
+
+CoreEngine.optimization = {
+
+    cacheEnabled: true,
+
+    cacheTTL: 300000,
+
+    autoFallback: true,
+
+    latencyThreshold: 5000,
+
+    costTracking: true,
+
+    metrics: new Map()
+
+};
+
+/* ===========================
+   RESPONSE CACHE
+=========================== */
+
+CoreEngine.responseCache = new Map();
+
+/* ===========================
+   CACHE KEY
+=========================== */
+
+CoreEngine.createCacheKey = function(messages) {
+
+    return JSON.stringify(messages);
+
+};
+
+/* ===========================
+   CACHE GET
+=========================== */
+
+CoreEngine.getCachedResponse = function(key) {
+
+    const item = this.responseCache.get(key);
+
+    if (!item) return null;
+
+    if (Date.now() > item.expires) {
+
+        this.responseCache.delete(key);
+
+        return null;
+
+    }
+
+    return item.response;
+
+};
+
+/* ===========================
+   CACHE SAVE
+=========================== */
+
+CoreEngine.cacheResponse = function(key, response) {
+
+    this.responseCache.set(key, {
+
+        response,
+
+        expires:
+
+            Date.now() +
+
+            this.optimization.cacheTTL
+
+    });
+
+};
+
+/* ===========================
+   LATENCY TRACKING
+=========================== */
+
+CoreEngine.trackLatency = function(
+
+    provider,
+
+    milliseconds
+
+) {
+
+    this.optimization.metrics.set(
+
+        provider,
+
+        {
+
+            ...(this.optimization.metrics.get(provider) || {}),
+
+            latency: milliseconds
+
+        }
+
+    );
+
+};
+
+/* ===========================
+   TOKEN TRACKING
+=========================== */
+
+CoreEngine.trackUsage = function(
+
+    provider,
+
+    usage
+
+) {
+
+    this.optimization.metrics.set(
+
+        provider,
+
+        {
+
+            ...(this.optimization.metrics.get(provider) || {}),
+
+            usage
+
+        }
+
+    );
+
+};
+
+/* ===========================
+   FALLBACK
+=========================== */
+
+CoreEngine.fallbackModel = function() {
+
+    const models = this.getAvailableModels();
+
+    const current = models.indexOf(
+
+        this.activeModel
+
+    );
+
+    if (
+
+        current < models.length - 1
+
+    ) {
+
+        this.setModel(
+
+            models[current + 1]
+
+        );
+
+    }
+
+};
+
+/* ===========================
+   OPTIMIZED REQUEST
+=========================== */
+
+CoreEngine.optimizedChat =
+
+async function(messages) {
+
+    const key =
+
+        this.createCacheKey(
+
+            messages
+
+        );
+
+    if (
+
+        this.optimization.cacheEnabled
+
+    ) {
+
+        const cached =
+
+            this.getCachedResponse(key);
+
+        if (cached) {
+
+            return cached;
+
+        }
+
+    }
+
+    const start =
+
+        performance.now();
+
+    try {
+
+        const response =
+
+            await this.chat(messages);
+
+        this.trackLatency(
+
+            this.activeModel,
+
+            performance.now() - start
+
+        );
+
+        if (
+
+            response.usage
+
+        ) {
+
+            this.trackUsage(
+
+                this.activeModel,
+
+                response.usage
+
+            );
+
+        }
+
+        this.cacheResponse(
+
+            key,
+
+            response
+
+        );
+
+        return response;
+
+    }
+
+    catch (error) {
+
+        if (
+
+            this.optimization.autoFallback
+
+        ) {
+
+            this.fallbackModel();
+
+            return this.chat(messages);
+
+        }
+
+        throw error;
+
+    }
+
+};
+
+/* ===========================
+   METRICS
+=========================== */
+
+CoreEngine.getOptimizationMetrics =
+
+function() {
+
+    return Object.fromEntries(
+
+        this.optimization.metrics
+
+    );
+
+};
+
+/* ==========================================
+   DeepSINKY AI
+   script.js - PART 6I
+   AI Safety Layer
+========================================== */
+
+"use strict";
+
+/* ===========================
+   SAFETY CONFIG
+=========================== */
+
+CoreEngine.safety = {
+
+    enabled: true,
+
+    maxPromptLength: 50000,
+
+    maxOutputLength: 100000,
+
+    blockedPatterns: [
+
+        /ignore\s+previous\s+instructions/i,
+
+        /system\s+prompt/i,
+
+        /developer\s+message/i
+
+    ],
+
+    riskThreshold: 70
+
+};
+
+/* ===========================
+   RISK SCORE
+=========================== */
+
+CoreEngine.calculateRisk = function(text) {
+
+    let score = 0;
+
+    for (const pattern of this.safety.blockedPatterns) {
+
+        if (pattern.test(text)) {
+
+            score += 25;
+
+        }
+
+    }
+
+    if (text.length > this.safety.maxPromptLength) {
+
+        score += 20;
+
+    }
+
+    return Math.min(score, 100);
+
+};
+
+/* ===========================
+   INPUT VALIDATION
+=========================== */
+
+CoreEngine.validateInput = function(messages) {
+
+    const text = messages
+
+        .map(item => item.content || "")
+
+        .join("\n");
+
+    const risk = this.calculateRisk(text);
+
+    if (risk >= this.safety.riskThreshold) {
+
+        throw new Error(
+
+            "Prompt rejected."
+
+        );
+
+    }
+
+    return risk;
+
+};
+
+/* ===========================
+   OUTPUT VALIDATION
+=========================== */
+
+CoreEngine.validateOutput = function(response) {
+
+    if (!response) {
+
+        throw new Error(
+
+            "Empty response."
+
+        );
+
+    }
+
+    const text =
+
+        response.content || "";
+
+    if (
+
+        text.length >
+
+        this.safety.maxOutputLength
+
+    ) {
+
+        response.content =
+
+            text.slice(
+
+                0,
+
+                this.safety.maxOutputLength
+
+            );
+
+    }
+
+    return response;
+
+};
+
+/* ===========================
+   TOOL PERMISSION
+=========================== */
+
+CoreEngine.validateToolCall =
+
+function(toolName) {
+
+    const allowed = [
+
+        "search",
+
+        "calculator",
+
+        "document",
+
+        "image",
+
+        "audio",
+
+        "video"
+
+    ];
+
+    return allowed.includes(toolName);
+
+};
+
+/* ===========================
+   SAFE CHAT
+=========================== */
+
+CoreEngine.safeChat =
+
+async function(messages) {
+
+    this.validateInput(messages);
+
+    const response =
+
+        await this.optimizedChat(
+
+            messages
+
+        );
+
+    return this.validateOutput(
+
+        response
+
+    );
+
+};
+
+/* ===========================
+   SECURITY REPORT
+=========================== */
+
+CoreEngine.getSafetyStatus =
+
+function() {
+
+    return {
+
+        enabled:
+
+            this.safety.enabled,
+
+        threshold:
+
+            this.safety.riskThreshold,
+
+        blockedPatterns:
+
+            this.safety.blockedPatterns.length
+
+    };
+
+};
+
+/* ==========================================
+   DeepSINKY AI
+   script.js - PART 6J
+   Intelligence Coordinator
+========================================== */
+
+"use strict";
+
+/* ===========================
+   AI STATE
+=========================== */
+
+CoreEngine.intelligence = {
+
+    initialized: false,
+
+    running: false,
+
+    requests: 0,
+
+    completed: 0,
+
+    failed: 0
+
+};
+
+/* ===========================
+   INITIALIZE
+=========================== */
+
+CoreEngine.initializeAI = async function() {
+
+    if (this.intelligence.initialized) {
+
+        return;
+
+    }
+
+    await this.healthCheck();
+
+    this.intelligence.initialized = true;
+
+    this.emit("ai:initialized");
+
+};
+
+/* ===========================
+   PREPARE PIPELINE
+=========================== */
+
+CoreEngine.preparePipeline = async function(messages) {
+
+    this.validateInput(messages);
+
+    const context = this.buildContext();
+
+    let prompt = this.buildPrompt(context);
+
+    if (this.rag?.enabled) {
+
+        const query = messages.at(-1)?.content || "";
+
+        const docs = await this.retrieveKnowledge(query);
+
+        const knowledge =
+
+            this.buildKnowledgeContext(docs);
+
+        prompt = this.injectKnowledge(
+
+            prompt,
+
+            knowledge
+
+        );
+
+    }
+
+    return prompt;
+
+};
+
+/* ===========================
+   EXECUTE
+=========================== */
+
+CoreEngine.executeAI = async function(messages) {
+
+    this.intelligence.requests++;
+
+    try {
+
+        const prompt =
+
+            await this.preparePipeline(
+
+                messages
+
+            );
+
+        const response =
+
+            await this.optimizedChat(
+
+                prompt
+
+            );
+
+        this.validateOutput(response);
+
+        this.intelligence.completed++;
+
+        this.emit(
+
+            "ai:completed",
+
+            response
+
+        );
+
+        return response;
+
+    }
+
+    catch (error) {
+
+        this.intelligence.failed++;
+
+        this.emit(
+
+            "ai:error",
+
+            error
+
+        );
+
+        throw error;
+
+    }
+
+};
+
+/* ===========================
+   AGENT ENTRY
+=========================== */
+
+CoreEngine.executeGoal = async function(goal) {
+
+    if (
+
+        this.agent?.enabled
+
+    ) {
+
+        return this.runTask(goal);
+
+    }
+
+    return this.executeAI([
+
+        {
+
+            role: "user",
+
+            content: goal
+
+        }
+
+    ]);
+
+};
+
+/* ===========================
+   PERFORMANCE REPORT
+=========================== */
+
+CoreEngine.getAIReport = function() {
+
+    return {
+
+        initialized:
+
+            this.intelligence.initialized,
+
+        running:
+
+            this.intelligence.running,
+
+        requests:
+
+            this.intelligence.requests,
+
+        completed:
+
+            this.intelligence.completed,
+
+        failed:
+
+            this.intelligence.failed,
+
+        models:
+
+            this.getAvailableModels(),
+
+        activeModel:
+
+            this.activeModel,
+
+        metrics:
+
+            this.getOptimizationMetrics(),
+
+        health:
+
+            this.state.healthy
+
+    };
+
+};
+
+/* ===========================
+   RESET
+=========================== */
+
+CoreEngine.resetAI = function() {
+
+    this.clearContext();
+
+    this.clearMemory();
+
+    this.responseCache.clear();
+
+    this.intelligence.requests = 0;
+
+    this.intelligence.completed = 0;
+
+    this.intelligence.failed = 0;
+
+    this.emit("ai:reset");
+
+};
+
+/* ===========================
+   STARTUP
+=========================== */
+
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    async () => {
+
+        await CoreEngine.initializeAI();
+
+    }
+
+);
+/* ==========================================
+   DeepSINKY AI
+   script.js - PART 7A
+   Intelligent Problem Solver
+========================================== */
+
+"use strict";
+
+/* ===========================
+   SOLVER CONFIG
+=========================== */
+
+CoreEngine.solver = {
+
+    enabled: true,
+
+    showSteps: true,
+
+    verifyAnswer: true,
+
+    explainLevel: "detailed"
+
+};
+
+/* ===========================
+   SUBJECT DETECTION
+=========================== */
+
+CoreEngine.detectSubject = function(question) {
+
+    const text = question.toLowerCase();
+
+    if (/solve|equation|integral|matrix|x=|sqrt|sin|cos/.test(text)) {
+
+        return "math";
+
+    }
+
+    if (/force|velocity|current|voltage|newton|physics/.test(text)) {
+
+        return "physics";
+
+    }
+
+    if (/reaction|mole|organic|chemistry/.test(text)) {
+
+        return "chemistry";
+
+    }
+
+    if (/cell|dna|biology|genetics/.test(text)) {
+
+        return "biology";
+
+    }
+
+    if (/code|python|javascript|java|c\+\+/.test(text)) {
+
+        return "coding";
+
+    }
+
+    return "general";
+
+};
+
+/* ===========================
+   BUILD SOLVER PROMPT
+=========================== */
+
+CoreEngine.buildSolverPrompt = function(question) {
+
+    const subject = this.detectSubject(question);
+
+    return [
+
+        {
+
+            role: "system",
+
+            content:
+            "You are an expert " + subject +
+            " teacher. Solve accurately. " +
+            "Explain every important step clearly. " +
+            "If calculation is involved, verify it before giving the final answer."
+
+        },
+
+        {
+
+            role: "user",
+
+            content: question
+
+        }
+
+    ];
+
+};
+
+/* ===========================
+   SOLVE QUESTION
+=========================== */
+
+CoreEngine.solveQuestion = async function(question) {
+
+    const prompt =
+
+        this.buildSolverPrompt(question);
+
+    return this.executeAI(prompt);
+
+};
+
+/* ===========================
+   VERIFY ANSWER
+=========================== */
+
+CoreEngine.verifySolution = async function(question, answer) {
+
+    return APIClient.post(
+
+        "/solver/verify",
+
+        {
+
+            question,
+
+            answer
+
+        }
+
+    );
+
+};
+
+/* ===========================
+   COMPLETE SOLVER
+=========================== */
+
+CoreEngine.solve = async function(question) {
+
+    const answer =
+
+        await this.solveQuestion(question);
+
+    if (
+
+        this.solver.verifyAnswer
+
+    ) {
+
+        answer.verification =
+
+            await this.verifySolution(
+
+                question,
+
+                answer
+
+            );
+
+    }
+
+    return answer;
+
+};
+
+
+/* ==========================================
+   DeepSINKY AI
+   script.js - PART 7B
+   OCR & Image Question Solver
+========================================== */
+
+"use strict";
+
+/* ===========================
+   OCR CONFIG
+=========================== */
+
+CoreEngine.ocr = {
+
+    enabled: true,
+
+    languages: [
+
+        "en",
+
+        "hi"
+
+    ],
+
+    detectMath: true,
+
+    detectTables: true,
+
+    detectDiagrams: true
+
+};
+
+/* ===========================
+   OCR REQUEST
+=========================== */
+
+APIClient.extractText = async function(fileId) {
+
+    return this.post(
+
+        "/ocr/extract",
+
+        {
+
+            fileId,
+
+            languages:
+
+                CoreEngine.ocr.languages,
+
+            math:
+
+                CoreEngine.ocr.detectMath
+
+        }
+
+    );
+
+};
+
+/* ===========================
+   IMAGE ANALYSIS
+=========================== */
+
+CoreEngine.readQuestionImage =
+
+async function(file) {
+
+    const upload =
+
+        await this.upload(file);
+
+    const result =
+
+        await APIClient.extractText(
+
+            upload.fileId
+
+        );
+
+    return result;
+
+};
+
+/* ===========================
+   CLEAN TEXT
+=========================== */
+
+CoreEngine.cleanOCRText =
+
+function(text) {
+
+    return text
+
+        .replace(/\s+/g, " ")
+
+        .trim();
+
+};
+
+/* ===========================
+   DETECT QUESTION
+=========================== */
+
+CoreEngine.extractQuestion =
+
+function(text) {
+
+    return this.cleanOCRText(text);
+
+};
+
+/* ===========================
+   IMAGE SOLVER
+=========================== */
+
+CoreEngine.solveImageQuestion =
+
+async function(file) {
+
+    const result =
+
+        await this.readQuestionImage(file);
+
+    const question =
+
+        this.extractQuestion(
+
+            result.text
+
+        );
+
+    return this.solve(question);
+
+};
+
+/* ===========================
+   OCR STATUS
+=========================== */
+
+CoreEngine.getOCRStatus =
+
+function() {
+
+    return {
+
+        enabled:
+
+            this.ocr.enabled,
+
+        languages:
+
+            this.ocr.languages,
+
+        math:
+
+            this.ocr.detectMath,
+
+        diagrams:
+
+            this.ocr.detectDiagrams
+
+    };
+
+};
+
+/* ==========================================
+   DeepSINKY AI
+   script.js - PART 7C
+   Advanced Math Engine
+========================================== */
+
+"use strict";
+
+/* ===========================
+   MATH CONFIG
+=========================== */
+
+CoreEngine.math = {
+
+    enabled: true,
+
+    verify: true,
+
+    explainSteps: true,
+
+    showAlternativeMethod: true,
+
+    latexOutput: true
+
+};
+
+/* ===========================
+   DETECT MATH
+=========================== */
+
+CoreEngine.isMathQuestion = function(question) {
+
+    return this.detectSubject(
+
+        question
+
+    ) === "math";
+
+};
+
+/* ===========================
+   BUILD MATH PROMPT
+=========================== */
+
+CoreEngine.buildMathPrompt = function(question) {
+
+    return [
+
+        {
+
+            role: "system",
+
+            content:
+`You are an expert mathematics teacher.
+
+Rules:
+
+1. Identify the topic.
+2. List the given values.
+3. Select the correct formula.
+4. Solve step by step.
+5. Verify calculations.
+6. Give the final answer.
+7. If possible, provide another method.
+8. Format equations using LaTeX.`
+
+        },
+
+        {
+
+            role: "user",
+
+            content: question
+
+        }
+
+    ];
+
+};
+
+/* ===========================
+   SOLVE MATH
+=========================== */
+
+CoreEngine.solveMath =
+
+async function(question) {
+
+    const prompt =
+
+        this.buildMathPrompt(
+
+            question
+
+        );
+
+    return this.executeAI(
+
+        prompt
+
+    );
+
+};
+
+/* ===========================
+   VERIFY
+=========================== */
+
+CoreEngine.verifyMath =
+
+async function(question, answer) {
+
+    return APIClient.post(
+
+        "/math/verify",
+
+        {
+
+            question,
+
+            answer
+
+        }
+
+    );
+
+};
+
+/* ===========================
+   COMPLETE PIPELINE
+=========================== */
+
+CoreEngine.mathPipeline =
+
+async function(question) {
+
+    const response =
+
+        await this.solveMath(
+
+            question
+
+        );
+
+    if (
+
+        this.math.verify
+
+    ) {
+
+        response.verification =
+
+            await this.verifyMath(
+
+                question,
+
+                response
+
+            );
+
+    }
+
+    return response;
+
+};
+
+/* ===========================
+   AUTO ROUTING
+=========================== */
+
+CoreEngine.solve =
+
+async function(question) {
+
+    if (
+
+        this.isMathQuestion(
+
+            question
+
+        )
+
+    ) {
+
+        return this.mathPipeline(
+
+            question
+
+        );
+
+    }
+
+    return this.solveQuestion(
+
+        question
+
+    );
+
+};
+/* ==========================================
+   DeepSINKY AI
+   script.js - PART 7D
+   Code Interpreter & Programming Engine
+========================================== */
+
+"use strict";
+
+/* ===========================
+   CODE CONFIG
+=========================== */
+
+CoreEngine.code = {
+
+    enabled: true,
+
+    explain: true,
+
+    debug: true,
+
+    analyze: true,
+
+    execute: true,
+
+    maxSourceLength: 100000
+
+};
+
+/* ===========================
+   LANGUAGE DETECTION
+=========================== */
+
+CoreEngine.detectLanguage = function(source) {
+
+    const text = source.toLowerCase();
+
+    if (text.includes("import ") || text.includes("def ")) {
+
+        return "python";
+
+    }
+
+    if (text.includes("#include")) {
+
+        return "cpp";
+
+    }
+
+    if (text.includes("public static void main")) {
+
+        return "java";
+
+    }
+
+    if (
+
+        text.includes("function") ||
+
+        text.includes("const ") ||
+
+        text.includes("let ")
+
+    ) {
+
+        return "javascript";
+
+    }
+
+    if (text.includes("<html")) {
+
+        return "html";
+
+    }
+
+    if (
+
+        text.includes("select ") ||
+
+        text.includes("create table")
+
+    ) {
+
+        return "sql";
+
+    }
+
+    return "text";
+
+};
+
+/* ===========================
+   BUILD PROMPT
+=========================== */
+
+CoreEngine.buildCodePrompt = function(
+
+    source,
+
+    task
+
+) {
+
+    const language =
+
+        this.detectLanguage(source);
+
+    return [
+
+        {
+
+            role: "system",
+
+            content:
+
+`You are an expert ${language} software engineer.
+
+Task:
+${task}
+
+Requirements:
+1. Analyze the code.
+2. Explain the logic.
+3. Find bugs if present.
+4. Suggest improvements.
+5. Estimate time & space complexity.
+6. Return corrected code if needed.`
+
+        },
+
+        {
+
+            role: "user",
+
+            content: source
+
+        }
+
+    ];
+
+};
+
+/* ===========================
+   CODE ANALYSIS
+=========================== */
+
+CoreEngine.analyzeCode = async function(
+
+    source
+
+) {
+
+    return this.executeAI(
+
+        this.buildCodePrompt(
+
+            source,
+
+            "Analyze"
+
+        )
+
+    );
+
+};
+
+/* ===========================
+   DEBUG CODE
+=========================== */
+
+CoreEngine.debugCode = async function(
+
+    source
+
+) {
+
+    return this.executeAI(
+
+        this.buildCodePrompt(
+
+            source,
+
+            "Debug"
+
+        )
+
+    );
+
+};
+
+/* ===========================
+   EXPLAIN CODE
+=========================== */
+
+CoreEngine.explainCode = async function(
+
+    source
+
+) {
+
+    return this.executeAI(
+
+        this.buildCodePrompt(
+
+            source,
+
+            "Explain"
+
+        )
+
+    );
+
+};
+
+/* ===========================
+   EXECUTE CODE
+=========================== */
+
+CoreEngine.runCode = async function(
+
+    source,
+
+    stdin = ""
+
+) {
+
+    return APIClient.post(
+
+        "/code/run",
+
+        {
+
+            language:
+
+                this.detectLanguage(source),
+
+            source,
+
+            stdin
+
+        }
+
+    );
+
+};
+
+/* ===========================
+   COMPLETE PIPELINE
+=========================== */
+
+CoreEngine.solveCode = async function(
+
+    source,
+
+    mode = "analyze"
+
+) {
+
+    switch (mode) {
+
+        case "debug":
+
+            return this.debugCode(source);
+
+        case "explain":
+
+            return this.explainCode(source);
+
+        case "run":
+
+            return this.runCode(source);
+
+        default:
+
+            return this.analyzeCode(source);
+
+    }
+
+};
 
