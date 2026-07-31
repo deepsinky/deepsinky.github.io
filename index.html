@@ -1,103 +1,180 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
     <!-- ============================= -->
-    <!-- Basic Meta -->
+    <!-- DeepSINKY AI - Part 1 -->
+    <!-- Core HTML Foundation -->
     <!-- ============================= -->
 
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
 
-    <meta http-equiv="X-UA-Compatible"
-          content="IE=edge">
+    <meta
+        name="viewport"
+        content="width=device-width,
+                 initial-scale=1.0,
+                 viewport-fit=cover">
 
-    <!-- ============================= -->
-    <!-- SEO -->
-    <!-- ============================= -->
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge">
 
     <title>DeepSINKY AI</title>
 
-    <meta name="description"
-          content="DeepSINKY AI - Next Generation Artificial Intelligence Platform">
+    <!-- SEO -->
 
-    <meta name="keywords"
-          content="AI, ChatGPT, DeepSINKY, Artificial Intelligence">
+    <meta
+        name="title"
+        content="DeepSINKY AI">
 
-    <meta name="author"
-          content="Vikas Kumar">
+    <meta
+        name="description"
+        content="DeepSINKY AI - Advanced Artificial Intelligence Assistant">
 
-    <!-- ============================= -->
-    <!-- Theme -->
-    <!-- ============================= -->
+    <meta
+        name="keywords"
+        content="AI, ChatGPT, DeepSINKY, Artificial Intelligence">
 
-    <meta name="theme-color"
-          content="#0f172a">
+    <meta
+        name="author"
+        content="DeepSINKY">
 
-    <!-- ============================= -->
+    <meta
+        name="theme-color"
+        content="#0D0D0D">
+
+    <meta
+        name="color-scheme"
+        content="dark">
+
+    <meta
+        name="robots"
+        content="index,follow">
+
+    <!-- Open Graph -->
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:title" content="DeepSINKY AI">
+
+    <meta property="og:description"
+          content="Professional AI Assistant">
+
+    <meta property="og:image"
+          content="assets/images/banner.png">
+
+    <!-- Apple -->
+
+    <meta
+        name="apple-mobile-web-app-capable"
+        content="yes">
+
+    <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent">
+
+    <meta
+        name="apple-mobile-web-app-title"
+        content="DeepSINKY">
+
     <!-- Favicon -->
-    <!-- ============================= -->
 
-    <link rel="icon"
-          href="assets/logo.png">
+    <link
+        rel="icon"
+        href="assets/icons/favicon.png">
 
-    <!-- ============================= -->
-    <!-- CSS -->
-    <!-- ============================= -->
+    <link
+        rel="apple-touch-icon"
+        href="assets/icons/icon-192.png">
 
-    <link rel="stylesheet"
-          href="style.css">
+    <!-- Manifest -->
 
-    <link rel="stylesheet"
-          href="themes/dark.css">
+    <link
+        rel="manifest"
+        href="manifest.json">
 
-    <link rel="stylesheet"
-          href="themes/light.css">
+    <!-- Fonts -->
 
-    <link rel="stylesheet"
-          href="themes/glass.css">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Highlight.js -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+    <!-- Main CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css">
 
 </head>
 
 <body>
 
-<!-- App Container -->
+<!--
+=========================================
+DeepSINKY AI
+
+Part 1 Completed
+
+Next Part:
+App Container
+Loader
+Overlay
+Sidebar Root
+=========================================
+-->
+
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 2 -->
+<!-- App Container + Loader + Overlay + Root -->
+<!-- ========================================= -->
 
 <div id="app">
 
-<!-- ========================================================= -->
-<!-- Header Start -->
-<!-- ========================================================= -->
+    <!-- Splash Loader -->
+    <div id="app-loader">
 
-<header id="main-header">
+        <div class="loader-content">
 
-    <!-- Left Section -->
-    <div class="header-left">
+            <img
+                id="loader-logo"
+                src="assets/logo.png"
+                alt="DeepSINKY Logo">
 
-        <!-- Sidebar Toggle -->
-        <button id="menu-btn"
-                class="icon-btn"
-                title="Menu">
+            <h1 id="loader-title">
+                DeepSINKY
+            </h1>
 
-            ☰
+            <p id="loader-subtitle">
+                Initializing AI Engine...
+            </p>
 
-        </button>
+            <div class="loader-progress">
 
-        <!-- Logo -->
-        <div class="logo-container">
-
-            <img src="assets/logo.png"
-                 alt="DeepSINKY Logo"
-                 id="logo">
-
-            <div class="logo-text">
-
-                <h1>DeepSINKY</h1>
-
-                <span>AI Platform</span>
+                <div id="loader-bar"></div>
 
             </div>
 
@@ -105,315 +182,648 @@
 
     </div>
 
-    <!-- Center Section -->
+    <!-- Global Overlay -->
+    <div id="global-overlay"></div>
 
-    <div class="header-center">
+    <!-- Blur Overlay -->
+    <div id="blur-overlay"></div>
 
-        <!-- Search -->
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
 
-        <div class="search-box">
+    <!-- Notification Container -->
+    <div id="notification-container"></div>
 
-            <button class="icon-btn">
+    <!-- Modal Root -->
+    <div id="modal-root"></div>
 
-                🔍
+    <!-- Floating Panels -->
+    <div id="floating-root"></div>
 
-            </button>
+    <!-- Application Layout -->
 
-            <input
-                type="text"
-                placeholder="Search conversations...">
+    <div id="app-layout">
+
+        <!-- Sidebar (Part 4) -->
+        <aside id="sidebar"></aside>
+
+        <!-- Main Area -->
+
+        <main id="main-content">
+
+            <!-- Header (Part 3) -->
+            <header id="header"></header>
+
+            <!-- Chat Area (Part 5) -->
+            <section id="chat-screen">
+
+                <div id="welcome-screen"></div>
+
+                <div id="chat-window"></div>
+
+            </section>
+
+            <!-- Prompt Area (Part 8) -->
+            <footer id="prompt-area"></footer>
+
+        </main>
+
+    </div>
+
+</div>
+
+<!-- Hidden Inputs -->
+
+<input
+    type="file"
+    id="cameraInput"
+    accept="image/*"
+    capture
+    hidden>
+
+<input
+    type="file"
+    id="photoInput"
+    accept="image/*"
+    hidden>
+
+<input
+    type="file"
+    id="fileInput"
+    hidden>
+
+<!-- End Part 2 -->
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 3 -->
+<!-- Professional Header -->
+<!-- ========================================= -->
+
+<header id="header">
+
+    <!-- Left -->
+
+    <div class="header-left">
+
+        <!-- Sidebar Button -->
+
+        <button
+            id="menuBtn"
+            class="header-btn"
+            aria-label="Open Sidebar">
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M4 7H20M4 12H16M4 17H20"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+
+            </svg>
+
+        </button>
+
+        <!-- Logo -->
+
+        <div id="brand">
+
+            <img
+                src="assets/logo.png"
+                id="logo"
+                alt="DeepSINKY">
+
+            <div id="brand-text">
+
+                <span id="brand-name">
+                    DeepSINKY
+                </span>
+
+                <span id="brand-version">
+                    AI
+                </span>
+
+            </div>
 
         </div>
 
     </div>
 
-    <!-- Right Section -->
+    <!-- Center -->
+
+    <div class="header-center">
+
+        <button
+            id="modelSelector"
+            class="header-pill">
+
+            <span id="selected-model">
+
+                DeepSINKY Pro
+
+            </span>
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M7 10L12 15L17 10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"/>
+
+            </svg>
+
+        </button>
+
+    </div>
+
+    <!-- Right -->
 
     <div class="header-right">
 
-        <!-- AI Model -->
+        <!-- Search -->
 
-        <select id="model-selector">
+        <button
+            id="searchBtn"
+            class="header-btn"
+            title="Search">
 
-            <option>GPT</option>
+            <svg viewBox="0 0 24 24">
 
-            <option>Claude</option>
+                <circle
+                    cx="11"
+                    cy="11"
+                    r="6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"/>
 
-            <option>Gemini</option>
+                <path
+                    d="M20 20L16.5 16.5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
 
-            <option>DeepSeek</option>
+            </svg>
 
-        </select>
+        </button>
 
         <!-- New Chat -->
 
-        <button class="header-btn">
+        <button
+            id="newChatBtn"
+            class="header-btn"
+            title="New Chat">
 
-            + New Chat
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M12 5V19"
+                    stroke="currentColor"
+                    stroke-width="2"/>
+
+                <path
+                    d="M5 12H19"
+                    stroke="currentColor"
+                    stroke-width="2"/>
+
+            </svg>
 
         </button>
 
-        <!-- Notification -->
+        <!-- Notifications -->
 
-        <button class="icon-btn">
+        <button
+            id="notificationBtn"
+            class="header-btn"
+            title="Notifications">
 
-            🔔
+            <svg viewBox="0 0 24 24">
 
-        </button>
+                <path
+                    d="M12 4
+                       C9 4 7 6 7 9
+                       V13
+                       L5 16
+                       H19
+                       L17 13
+                       V9
+                       C17 6 15 4 12 4Z"
 
-        <!-- Theme -->
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"/>
 
-        <button class="icon-btn">
+                <circle
+                    cx="12"
+                    cy="19"
+                    r="1.5"
+                    fill="currentColor"/>
 
-            🌙
+            </svg>
 
         </button>
 
         <!-- Settings -->
 
-        <button class="icon-btn">
+        <button
+            id="settingsBtn"
+            class="header-btn"
+            title="Settings">
 
-            ⚙
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M12 8
+                       A4 4 0 1 0
+                       12 16
+                       A4 4 0 1 0
+                       12 8"
+
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"/>
+
+                <path
+                    d="M12 2V5
+                       M12 19V22
+                       M2 12H5
+                       M19 12H22
+                       M4.9 4.9L7 7
+                       M17 17L19.1 19.1
+                       M19.1 4.9L17 7
+                       M7 17L4.9 19.1"
+
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+
+            </svg>
 
         </button>
 
         <!-- Profile -->
 
-        <div class="profile">
+        <button
+            id="profileBtn">
 
             <img
-                src="assets/default-user.png"
-                alt="User">
+                src="assets/avatar.png"
+                alt="Profile">
 
-        </div>
+        </button>
 
     </div>
 
 </header>
 
-<!-- ========================================================= -->
-<!-- Header End -->
-<!-- =========================================================-->
-<!-- ========================================================= -->
-<!-- Main Layout -->
-<!-- ========================================================= -->
+<!-- End Part 3 -->
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 4 -->
+<!-- Professional Sidebar -->
+<!-- ========================================= -->
 
-<main id="main-layout">
+<aside id="sidebar">
 
-    <!-- ====================================== -->
-    <!-- Sidebar Start -->
-    <!-- ====================================== -->
+    <!-- Sidebar Header -->
 
-    <aside id="sidebar">
+    <div id="sidebar-header">
 
-        <!-- New Chat -->
+        <button
+            id="closeSidebarBtn"
+            class="sidebar-icon-btn"
+            aria-label="Close Sidebar">
 
-        <button class="sidebar-btn active">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M6 6L18 18M18 6L6 18"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+            </svg>
 
-            <span>💬</span>
+        </button>
+
+        <button
+            id="sidebarNewChatBtn"
+            class="primary-sidebar-btn">
+
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 5V19M5 12H19"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+            </svg>
 
             <span>New Chat</span>
 
         </button>
 
-        <!-- Chat History -->
+    </div>
 
-        <button class="sidebar-btn">
+    <!-- Search Chats -->
 
-            <span>🕒</span>
+    <div id="sidebar-search">
 
-            <span>History</span>
+        <button id="searchChatsBtn">
 
-        </button>
+            <svg viewBox="0 0 24 24">
+                <circle
+                    cx="11"
+                    cy="11"
+                    r="6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"/>
+                <path
+                    d="M20 20L16.5 16.5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+            </svg>
 
-        <!-- AI Models -->
-
-        <button class="sidebar-btn">
-
-            <span>🤖</span>
-
-            <span>AI Models</span>
-
-        </button>
-
-        <!-- Memory -->
-
-        <button class="sidebar-btn">
-
-            <span>🧠</span>
-
-            <span>Memory</span>
+            <span>Search Chats</span>
 
         </button>
 
-        <!-- Files -->
+    </div>
 
-        <button class="sidebar-btn">
+    <!-- Navigation -->
 
-            <span>📁</span>
+    <nav id="sidebar-navigation">
 
-            <span>Files</span>
-
+        <button class="sidebar-nav-btn" id="libraryBtn">
+            Library
         </button>
 
-        <!-- Search -->
-
-        <button class="sidebar-btn">
-
-            <span>🌐</span>
-
-            <span>Web Search</span>
-
+        <button class="sidebar-nav-btn" id="exploreBtn">
+            Explore AI
         </button>
 
-        <!-- Image -->
-
-        <button class="sidebar-btn">
-
-            <span>🖼️</span>
-
-            <span>Image AI</span>
-
+        <button class="sidebar-nav-btn" id="imageStudioBtn">
+            Image Studio
         </button>
 
-        <!-- Voice -->
-
-        <button class="sidebar-btn">
-
-            <span>🎤</span>
-
-            <span>Voice</span>
-
+        <button class="sidebar-nav-btn" id="researchBtn">
+            Deep Research
         </button>
 
-        <!-- Workspace -->
+    </nav>
 
-        <button class="sidebar-btn">
+    <!-- Chat History -->
 
-            <span>💼</span>
+    <section id="history-section">
 
-            <span>Workspace</span>
+        <h3 class="history-title">
 
-        </button>
+            Today
 
-        <!-- Analytics -->
+        </h3>
 
-        <button class="sidebar-btn">
+        <div
+            id="today-history"
+            class="history-list">
 
-            <span>📊</span>
+        </div>
 
-            <span>Analytics</span>
+        <h3 class="history-title">
 
-        </button>
+            Yesterday
 
-        <!-- Plugins -->
+        </h3>
 
-        <button class="sidebar-btn">
+        <div
+            id="yesterday-history"
+            class="history-list">
 
-            <span>🧩</span>
+        </div>
 
-            <span>Plugins</span>
+        <h3 class="history-title">
 
-        </button>
+            Older
 
-        <!-- Settings -->
+        </h3>
 
-        <button class="sidebar-btn">
+        <div
+            id="older-history"
+            class="history-list">
 
-            <span>⚙️</span>
-
-            <span>Settings</span>
-
-        </button>
-
-    </aside>
-
-    <!-- ====================================== -->
-    <!-- Sidebar End -->
-    <!-- ====================================== -->
-
-    <!-- Chat Section Start -->
-
-    <section id="chat-container">
+        </div>
 
     </section>
 
-</main>
-<!-- ========================================================= -->
-<!-- Chat Window -->
-<!-- ========================================================= -->
+    <!-- Bottom -->
 
-<div id="chat-window">
+    <div id="sidebar-footer">
+
+        <button
+            id="memoryBtn"
+            class="sidebar-footer-btn">
+
+            Memory
+
+        </button>
+
+        <button
+            id="settingsSidebarBtn"
+            class="sidebar-footer-btn">
+
+            Settings
+
+        </button>
+
+        <button
+            id="helpBtn"
+            class="sidebar-footer-btn">
+
+            Help
+
+        </button>
+
+        <button
+            id="logoutBtn"
+            class="sidebar-footer-btn danger">
+
+            Log Out
+
+        </button>
+
+    </div>
+
+</aside>
+
+<!-- Sidebar Backdrop -->
+
+<div id="sidebar-backdrop"></div>
+
+<!-- End Part 4 -->
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 5 -->
+<!-- Welcome Screen + Chat Window -->
+<!-- ========================================= -->
+
+<section id="chat-screen">
 
     <!-- Welcome Screen -->
+
     <section id="welcome-screen">
 
-        <div class="welcome-logo">
-            <img src="assets/logo.png" alt="DeepSINKY Logo">
+        <div id="welcome-container">
+
+            <img
+                id="welcome-logo"
+                src="assets/logo.png"
+                alt="DeepSINKY">
+
+            <h1 id="welcome-title">
+
+                How can I help you today?
+
+            </h1>
+
+            <p id="welcome-description">
+
+                DeepSINKY can answer questions, generate code,
+                create images, explain concepts, summarize files,
+                search the web and help with your daily work.
+
+            </p>
+
         </div>
 
-        <h1>Welcome to DeepSINKY AI</h1>
+        <!-- Suggestion Grid -->
 
-        <p>
-            Ask anything, generate code, analyze files,
-            create images and search the web with AI.
-        </p>
+        <div id="suggestion-grid">
 
-        <!-- Suggestion Cards -->
+            <button
+                class="suggestion-card"
+                data-prompt="Explain quantum computing in simple language">
 
-        <div class="suggestion-grid">
+                <div class="card-icon">
 
-            <button class="suggestion-card">
-                💡 Explain Quantum Physics
+                    <!-- Brain -->
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 3a5 5 0 0 0-5 5v8a5 5 0 0 0 10 0V8a5 5 0 0 0-5-5z"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              fill="none"/>
+                    </svg>
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Explain</h3>
+
+                    <p>Learn difficult topics easily.</p>
+
+                </div>
+
             </button>
 
-            <button class="suggestion-card">
-                💻 Write JavaScript Code
+            <button
+                class="suggestion-card"
+                data-prompt="Write a professional JavaScript project">
+
+                <div class="card-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 4h14v16H5z"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              fill="none"/>
+                    </svg>
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Code</h3>
+
+                    <p>Generate production-quality code.</p>
+
+                </div>
+
             </button>
 
-            <button class="suggestion-card">
-                📝 Summarize a Document
+            <button
+                class="suggestion-card"
+                data-prompt="Create a realistic futuristic city image">
+
+                <div class="card-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <rect x="4" y="4"
+                              width="16"
+                              height="16"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              fill="none"/>
+                    </svg>
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Create</h3>
+
+                    <p>Generate stunning AI images.</p>
+
+                </div>
+
             </button>
 
-            <button class="suggestion-card">
-                🌍 Search the Internet
+            <button
+                class="suggestion-card"
+                data-prompt="Search latest AI news">
+
+                <div class="card-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12"
+                                cy="12"
+                                r="8"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                fill="none"/>
+                    </svg>
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Search</h3>
+
+                    <p>Find information from the web.</p>
+
+                </div>
+
             </button>
 
         </div>
 
     </section>
 
-    <!-- Messages -->
+    <!-- Chat Messages -->
 
-    <section id="messages-container">
+    <section id="chat-window">
 
-        <!-- AI Message -->
-
-        <div class="message ai-message">
-
-            <div class="avatar">
-                🤖
-            </div>
-
-            <div class="message-content">
-
-                Hello! I'm DeepSINKY AI.
-                How can I help you today?
-
-            </div>
-
-        </div>
-
-        <!-- User messages will be added here -->
+        <!-- Dynamic messages -->
 
     </section>
 
     <!-- Typing Indicator -->
 
-    <section id="typing-indicator" hidden>
+    <div id="typing-indicator" hidden>
 
         <div class="typing-avatar">
-            🤖
+
+            <img
+                src="assets/logo.png"
+                alt="AI">
+
         </div>
 
         <div class="typing-dots">
@@ -424,120 +834,483 @@
 
         </div>
 
-    </section>
+    </div>
 
     <!-- Scroll To Bottom -->
 
-    <button id="scroll-bottom-btn"
-            title="Scroll to Bottom">
+    <button
+        id="scrollBottomBtn"
+        aria-label="Scroll to Bottom">
 
-        ⬇
+        <svg viewBox="0 0 24 24">
+
+            <path
+                d="M7 10L12 15L17 10"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"/>
+
+        </svg>
 
     </button>
 
-</div>
+</section>
 
-<!-- End Chat Window -->
+<!-- End Part 5 -->
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 6 -->
+<!-- Professional Chat Templates -->
+<!-- ========================================= -->
 
-<!-- ========================================================= -->
-<!-- Prompt Area Start -->
-<!-- ========================================================= -->
+<!-- Chat Templates -->
+<template id="userMessageTemplate">
+
+    <article class="message user-message">
+
+        <div class="message-wrapper">
+
+            <div class="message-content">
+
+                <p class="message-text"></p>
+
+                <div class="message-attachments"></div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</template>
+
+<template id="assistantMessageTemplate">
+
+    <article class="message assistant-message">
+
+        <div class="assistant-avatar">
+
+            <img
+                src="assets/logo.png"
+                alt="DeepSINKY">
+
+        </div>
+
+        <div class="assistant-body">
+
+            <div class="message-content markdown-body"></div>
+
+            <!-- Code Block Area -->
+            <div class="code-container"></div>
+
+            <!-- Image Result -->
+            <div class="generated-image-container"></div>
+
+            <!-- Action Bar -->
+
+            <div class="message-actions">
+
+                <button
+                    class="action-btn copy-response-btn"
+                    title="Copy">
+
+                    <svg viewBox="0 0 24 24">
+                        <rect
+                            x="9"
+                            y="9"
+                            width="11"
+                            height="11"
+                            rx="2"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            fill="none"/>
+
+                        <rect
+                            x="4"
+                            y="4"
+                            width="11"
+                            height="11"
+                            rx="2"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            fill="none"/>
+                    </svg>
+
+                </button>
+
+                <button
+                    class="action-btn regenerate-btn"
+                    title="Regenerate">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M20 12A8 8 0 1 1 18 6"
+
+                            stroke="currentColor"
+                            stroke-width="2"
+                            fill="none"
+                            stroke-linecap="round"/>
+
+                        <path
+                            d="M20 4V10H14"
+
+                            stroke="currentColor"
+                            stroke-width="2"
+                            fill="none"
+                            stroke-linecap="round"/>
+
+                    </svg>
+
+                </button>
+
+                <button
+                    class="action-btn like-btn"
+                    title="Like">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M7 11V21H4V11H7ZM10 21H17C18.1 21 19 20.1 19 19V12C19 10.9 18.1 10 17 10H13L14 5L13 4L8 9V21H10Z"
+
+                            stroke="currentColor"
+                            stroke-width="2"
+                            fill="none"/>
+
+                    </svg>
+
+                </button>
+
+                <button
+                    class="action-btn dislike-btn"
+                    title="Dislike">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M17 13V3H20V13H17ZM14 3H7C5.9 3 5 3.9 5 5V12C5 13.1 5.9 14 7 14H11L10 19L11 20L16 15V3H14Z"
+
+                            stroke="currentColor"
+                            stroke-width="2"
+                            fill="none"/>
+
+                    </svg>
+
+                </button>
+
+                <button
+                    class="action-btn share-btn"
+                    title="Share">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="18"
+                            cy="5"
+                            r="3"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            fill="none"/>
+
+                        <circle
+                            cx="6"
+                            cy="12"
+                            r="3"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            fill="none"/>
+
+                        <circle
+                            cx="18"
+                            cy="19"
+                            r="3"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            fill="none"/>
+
+                        <path
+                            d="M8.5 11L15.5 7"
+
+                            stroke="currentColor"
+                            stroke-width="2"/>
+
+                        <path
+                            d="M8.5 13L15.5 17"
+
+                            stroke="currentColor"
+                            stroke-width="2"/>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</template>
+
+<!-- Streaming Template -->
+
+<template id="streamTemplate">
+
+    <article class="message assistant-message streaming">
+
+        <div class="assistant-avatar">
+
+            <img
+                src="assets/logo.png"
+                alt="DeepSINKY">
+
+        </div>
+
+        <div class="assistant-body">
+
+            <div
+                class="stream-output">
+
+            </div>
+
+            <div
+                class="stream-cursor">
+
+            </div>
+
+        </div>
+
+    </article>
+
+</template>
+
+<!-- Typing Loader -->
+
+<template id="typingTemplate">
+
+    <div class="typing-loader">
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+    </div>
+
+</template>
+
+<!-- End Part 6 -->
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 7 -->
+<!-- Professional Prompt Area -->
+<!-- ========================================= -->
 
 <footer id="prompt-area">
 
-    <div class="prompt-container">
+    <div id="prompt-container">
 
         <!-- Left Tools -->
 
-        <div class="prompt-tools">
+        <div id="prompt-tools-left">
 
-            <!-- File Upload -->
+            <!-- Add -->
 
-            <button class="tool-btn"
-                    id="upload-btn"
-                    title="Upload File">
+            <button
+                id="addAttachmentBtn"
+                class="tool-btn"
+                aria-label="Add">
 
-                📎
-
-            </button>
-
-            <input
-                type="file"
-                id="file-input"
-                hidden>
-
-            <!-- Image Generation -->
-
-            <button class="tool-btn"
-                    id="image-btn"
-                    title="Generate Image">
-
-                🖼️
-
-            </button>
-
-            <!-- Voice -->
-
-            <button class="tool-btn"
-                    id="voice-btn"
-                    title="Voice Input">
-
-                🎤
-
-            </button>
-
-            <!-- Web Search -->
-
-            <button class="tool-btn"
-                    id="web-btn"
-                    title="Web Search">
-
-                🌐
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12 5V19M5 12H19"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"/>
+                </svg>
 
             </button>
 
         </div>
 
-        <!-- Prompt Input -->
+        <!-- Input -->
 
-        <div class="prompt-box">
+        <div id="prompt-input-wrapper">
 
             <textarea
-                id="prompt-input"
+                id="promptInput"
                 rows="1"
-                placeholder="Message DeepSINKY AI..."></textarea>
+                placeholder="Message DeepSINKY..."
+                autocomplete="off"
+                spellcheck="false"></textarea>
 
         </div>
 
         <!-- Right Tools -->
 
-        <div class="prompt-actions">
+        <div id="prompt-tools-right">
 
-            <!-- Stop -->
+            <!-- Web Search -->
 
-            <button class="action-btn"
-                    id="stop-btn"
-                    hidden>
+            <button
+                id="webSearchBtn"
+                class="tool-btn"
+                title="Web Search">
 
-                ⏹
+                <svg viewBox="0 0 24 24">
+
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="8"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        fill="none"/>
+
+                    <path
+                        d="M4 12H20"
+                        stroke="currentColor"
+                        stroke-width="2"/>
+
+                    <path
+                        d="M12 4
+                           C15 7
+                           15 17
+                           12 20"
+
+                        stroke="currentColor"
+                        stroke-width="2"
+                        fill="none"/>
+
+                    <path
+                        d="M12 4
+                           C9 7
+                           9 17
+                           12 20"
+
+                        stroke="currentColor"
+                        stroke-width="2"
+                        fill="none"/>
+
+                </svg>
 
             </button>
 
-            <!-- Regenerate -->
+            <!-- Deep Research -->
 
-            <button class="action-btn"
-                    id="regenerate-btn">
+            <button
+                id="researchModeBtn"
+                class="tool-btn"
+                title="Deep Research">
 
-                🔄
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M12 3
+                           L19 7
+                           V17
+                           L12 21
+                           L5 17
+                           V7Z"
+
+                        stroke="currentColor"
+                        stroke-width="2"
+                        fill="none"/>
+
+                </svg>
+
+            </button>
+
+            <!-- Image -->
+
+            <button
+                id="imageModeBtn"
+                class="tool-btn"
+                title="Image Generation">
+
+                <svg viewBox="0 0 24 24">
+
+                    <rect
+                        x="4"
+                        y="4"
+                        width="16"
+                        height="16"
+                        rx="2"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        fill="none"/>
+
+                    <circle
+                        cx="9"
+                        cy="9"
+                        r="1.5"
+                        fill="currentColor"/>
+
+                    <path
+                        d="M4 16L9 11L13 15L16 12L20 16"
+
+                        stroke="currentColor"
+                        stroke-width="2"
+                        fill="none"/>
+
+                </svg>
+
+            </button>
+
+            <!-- Voice -->
+
+            <button
+                id="voiceBtn"
+                class="tool-btn"
+                title="Voice">
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M12 4
+                           A3 3 0 0 1
+                           15 7V12
+                           A3 3 0 0 1
+                           9 12V7
+                           A3 3 0 0 1
+                           12 4Z"
+
+                        stroke="currentColor"
+                        stroke-width="2"
+                        fill="none"/>
+
+                    <path
+                        d="M19 11
+                           A7 7 0 0 1
+                           5 11"
+
+                        stroke="currentColor"
+                        stroke-width="2"
+                        fill="none"/>
+
+                    <path
+                        d="M12 18V21"
+
+                        stroke="currentColor"
+                        stroke-width="2"/>
+
+                </svg>
 
             </button>
 
             <!-- Send -->
 
-            <button class="action-btn send-btn"
-                    id="send-btn">
+            <button
+                id="sendBtn"
+                aria-label="Send">
 
-                ➤
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M5 12L19 5L15 19L11 13L5 12Z"
+                        fill="currentColor"/>
+
+                </svg>
 
             </button>
 
@@ -545,79 +1318,112 @@
 
     </div>
 
-    <!-- Prompt Footer -->
-
-    <div class="prompt-footer">
-
-        <small>
-
-            DeepSINKY AI can make mistakes.
-            Verify important information.
-
-        </small>
-
-    </div>
-
 </footer>
 
-<!-- ========================================================= -->
-<!-- Prompt Area End -->
-<!-- ========================================================= -->
-<!-- ========================================================= -->
-<!-- Settings Modal -->
-<!-- ========================================================= -->
+<!-- Attachment Menu -->
 
-<div id="settings-modal" class="modal hidden">
+<div id="attachmentMenu">
 
-    <div class="modal-content">
+    <button id="cameraBtn">Camera</button>
+
+    <button id="photosBtn">Photos</button>
+
+    <button id="filesBtn">Files</button>
+
+</div>
+
+<!-- End Part 7 -->
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 8 -->
+<!-- Menus • Popups • Modals -->
+<!-- ========================================= -->
+
+<!-- MODEL MENU -->
+
+<div id="modelMenu" class="popup-menu">
+
+    <button class="model-item active" data-model="deepsinky-pro">
+        <div>
+            <h4>DeepSINKY Pro</h4>
+            <p>Best quality responses</p>
+        </div>
+    </button>
+
+    <button class="model-item" data-model="deepsinky-fast">
+        <div>
+            <h4>DeepSINKY Fast</h4>
+            <p>Fast everyday assistant</p>
+        </div>
+    </button>
+
+    <button class="model-item" data-model="deepsinky-reasoning">
+        <div>
+            <h4>DeepSINKY Reasoning</h4>
+            <p>Advanced thinking model</p>
+        </div>
+    </button>
+
+</div>
+
+<!-- PROFILE MENU -->
+
+<div id="profileMenu" class="popup-menu">
+
+    <button id="myAccountBtn">
+        My Account
+    </button>
+
+    <button id="appearanceBtn">
+        Appearance
+    </button>
+
+    <button id="manageMemoryBtn">
+        Memory
+    </button>
+
+    <button id="upgradeBtn">
+        Upgrade
+    </button>
+
+    <button id="logoutAccountBtn">
+        Log Out
+    </button>
+
+</div>
+
+<!-- SETTINGS MODAL -->
+
+<div id="settingsModal" class="modal">
+
+    <div class="modal-card">
 
         <div class="modal-header">
+
             <h2>Settings</h2>
-            <button class="close-modal">&times;</button>
+
+            <button id="closeSettingsBtn">
+                ✕
+            </button>
+
         </div>
 
         <div class="modal-body">
 
-            <div class="setting-item">
-                <label>Theme</label>
+            <button id="themeSettingBtn">
+                Theme
+            </button>
 
-                <select id="theme-select">
-                    <option value="dark">Dark</option>
-                    <option value="light">Light</option>
-                    <option value="glass">Glass</option>
-                    <option value="system">System</option>
-                </select>
-            </div>
+            <button id="languageSettingBtn">
+                Language
+            </button>
 
-            <div class="setting-item">
-                <label>Language</label>
+            <button id="voiceSettingBtn">
+                Voice
+            </button>
 
-                <select id="language-select">
-                    <option>English</option>
-                    <option>Hindi</option>
-                    <option>Spanish</option>
-                </select>
-            </div>
-
-            <div class="setting-item">
-                <label>
-
-                    <input type="checkbox" id="stream-toggle">
-
-                    Enable Streaming Response
-
-                </label>
-            </div>
-
-            <div class="setting-item">
-                <label>
-
-                    <input type="checkbox" id="sound-toggle">
-
-                    Notification Sound
-
-                </label>
-            </div>
+            <button id="dataSettingBtn">
+                Data Controls
+            </button>
 
         </div>
 
@@ -625,28 +1431,51 @@
 
 </div>
 
-<!-- ========================================================= -->
-<!-- Profile Modal -->
-<!-- ========================================================= -->
+<!-- SHARE MODAL -->
 
-<div id="profile-modal" class="modal hidden">
+<div id="shareModal" class="modal">
 
-    <div class="modal-content">
+    <div class="modal-card">
 
-        <div class="modal-header">
-            <h2>Profile</h2>
-            <button class="close-modal">&times;</button>
-        </div>
+        <h2>Share Chat</h2>
 
-        <div class="modal-body">
+        <input
+            id="shareLink"
+            readonly>
 
-            <img src="assets/default-user.png"
-                 class="profile-image"
-                 alt="User">
+        <button id="copyShareLinkBtn">
+            Copy Link
+        </button>
 
-            <h3>Guest User</h3>
+    </div>
 
-            <p>Welcome to DeepSINKY AI</p>
+</div>
+
+<!-- DELETE CHAT -->
+
+<div id="deleteChatModal" class="modal">
+
+    <div class="modal-card">
+
+        <h2>Delete Chat?</h2>
+
+        <p>
+            This action cannot be undone.
+        </p>
+
+        <div class="modal-actions">
+
+            <button id="cancelDeleteBtn">
+
+                Cancel
+
+            </button>
+
+            <button id="confirmDeleteBtn">
+
+                Delete
+
+            </button>
 
         </div>
 
@@ -654,25 +1483,61 @@
 
 </div>
 
-<!-- ========================================================= -->
-<!-- AI Model Modal -->
-<!-- ========================================================= -->
+<!-- TOAST -->
 
-<div id="model-modal" class="modal hidden">
+<div id="toast"></div>
 
-    <div class="modal-content">
+<!-- LOADING -->
 
-        <div class="modal-header">
-            <h2>Select AI Model</h2>
-            <button class="close-modal">&times;</button>
+<div id="fullscreenLoading">
+
+    <div class="loader-circle"></div>
+
+    <p>
+
+        Please wait...
+
+    </p>
+
+</div>
+
+<!-- End Part 8 -->
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 9 -->
+<!-- Account • Search • History • Memory -->
+<!-- ========================================= -->
+
+<!-- SEARCH DIALOG -->
+
+<div id="searchDialog" class="dialog">
+
+    <div class="dialog-card">
+
+        <div class="dialog-header">
+
+            <h2>Search Chats</h2>
+
+            <button id="closeSearchDialogBtn" class="dialog-close">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 6L18 18M18 6L6 18"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"/>
+                </svg>
+
+            </button>
+
         </div>
 
-        <div class="modal-body">
+        <div class="dialog-body">
 
-            <button class="model-card">GPT</button>
-            <button class="model-card">Claude</button>
-            <button class="model-card">Gemini</button>
-            <button class="model-card">DeepSeek</button>
+            <input
+                id="chatSearchInput"
+                type="text"
+                placeholder="Search conversations...">
+
+            <div id="chatSearchResults"></div>
 
         </div>
 
@@ -680,26 +1545,47 @@
 
 </div>
 
-<!-- ========================================================= -->
-<!-- File Preview Modal -->
-<!-- ========================================================= -->
+<!-- LOGIN MODAL -->
 
-<div id="preview-modal" class="modal hidden">
+<div id="loginModal" class="modal">
 
-    <div class="modal-content large">
+    <div class="modal-card">
 
         <div class="modal-header">
-            <h2>File Preview</h2>
-            <button class="close-modal">&times;</button>
+
+            <h2>Welcome to DeepSINKY</h2>
+
+            <button id="closeLoginModalBtn">
+
+                ✕
+
+            </button>
+
         </div>
 
         <div class="modal-body">
 
-            <div id="preview-content">
+            <input
+                id="loginEmail"
+                type="email"
+                placeholder="Email Address">
 
-                File Preview Area
+            <input
+                id="loginPassword"
+                type="password"
+                placeholder="Password">
 
-            </div>
+            <button id="loginSubmitBtn">
+
+                Continue
+
+            </button>
+
+            <button id="googleLoginBtn">
+
+                Continue with Google
+
+            </button>
 
         </div>
 
@@ -707,219 +1593,1215 @@
 
 </div>
 
-<!-- ========================================================= -->
-<!-- Keyboard Shortcuts Panel -->
-<!-- ========================================================= -->
+<!-- ACCOUNT PANEL -->
 
-<div id="shortcut-panel" class="modal hidden">
+<div id="accountPanel">
 
-    <div class="modal-content">
+    <div class="account-header">
 
-        <div class="modal-header">
-            <h2>Keyboard Shortcuts</h2>
-            <button class="close-modal">&times;</button>
-        </div>
+        <img
+            src="assets/avatar.png"
+            id="accountAvatar">
 
-        <div class="modal-body">
+        <div>
 
-            <ul>
+            <h3 id="accountName">
 
-                <li><b>Enter</b> → Send Message</li>
+                Guest User
 
-                <li><b>Shift + Enter</b> → New Line</li>
+            </h3>
 
-                <li><b>Ctrl + K</b> → Search</li>
+            <p id="accountEmail">
 
-                <li><b>Ctrl + /</b> → Shortcuts</li>
+                Not Signed In
 
-            </ul>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- ========================================================= -->
-<!-- About Modal -->
-<!-- ========================================================= -->
-
-<div id="about-modal" class="modal hidden">
-
-    <div class="modal-content">
-
-        <div class="modal-header">
-            <h2>About DeepSINKY</h2>
-            <button class="close-modal">&times;</button>
-        </div>
-
-        <div class="modal-body">
-
-            <h3>DeepSINKY AI</h3>
-
-            <p>
-                Next-generation AI platform designed for chat,
-                coding, image generation, web search, document
-                analysis, and productivity.
             </p>
 
-            <p>Version: 1.0.0</p>
-
         </div>
 
     </div>
 
-</div>
-<!-- ========================================================= -->
-<!-- Loading Screen -->
-<!-- ========================================================= -->
+    <div class="account-menu">
 
-<div id="loading-screen">
+        <button id="manageAccountBtn">
 
-    <div class="loader">
+            Manage Account
 
-        <div class="loader-ring"></div>
+        </button>
 
-        <h2>DeepSINKY AI</h2>
+        <button id="subscriptionBtn">
 
-        <p>Loading...</p>
+            Subscription
 
-    </div>
+        </button>
 
-</div>
+        <button id="billingBtn">
 
-<!-- ========================================================= -->
-<!-- Toast Notification -->
-<!-- ========================================================= -->
+            Billing
 
-<div id="toast-container">
+        </button>
 
-    <div class="toast success hidden">
+        <button id="privacyBtn">
 
-        <span>✅</span>
+            Privacy
 
-        <span id="toast-message">
-
-            Success
-
-        </span>
+        </button>
 
     </div>
 
 </div>
 
-<!-- ========================================================= -->
-<!-- Context Menu -->
-<!-- ========================================================= -->
+<!-- MEMORY PANEL -->
 
-<div id="context-menu" class="hidden">
+<div id="memoryPanel">
 
-    <button class="context-item">
+    <div class="panel-header">
 
-        📋 Copy
+        <h2>Memory</h2>
 
-    </button>
+        <button id="closeMemoryBtn">
 
-    <button class="context-item">
+            ✕
 
-        ✏ Edit
+        </button>
 
-    </button>
+    </div>
 
-    <button class="context-item">
+    <div id="memoryList">
 
-        🔄 Regenerate
+    </div>
 
-    </button>
+</div>
 
-    <button class="context-item">
+<!-- CHAT HISTORY PANEL -->
 
-        🗑 Delete
+<div id="historyPanel">
+
+    <div class="panel-header">
+
+        <h2>Recent Chats</h2>
+
+        <button id="closeHistoryBtn">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <div id="historyList">
+
+    </div>
+
+</div>
+
+<!-- EMPTY CHAT -->
+
+<div id="emptyState" hidden>
+
+    <img
+        src="assets/logo.png"
+        alt="DeepSINKY">
+
+    <h2>
+
+        No conversations yet
+
+    </h2>
+
+    <p>
+
+        Start a new conversation to begin.
+
+    </p>
+
+</div>
+
+<!-- End Part 9 -->
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 10 -->
+<!-- AI Tools & Floating Panels -->
+<!-- ========================================= -->
+
+<!-- IMAGE GENERATION PANEL -->
+
+<div id="imageGeneratorPanel" class="tool-panel">
+
+    <div class="panel-header">
+
+        <h2>Create Image</h2>
+
+        <button id="closeImagePanelBtn" class="close-btn">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <div class="panel-body">
+
+        <textarea
+            id="imagePrompt"
+            placeholder="Describe the image you want to generate..."></textarea>
+
+        <div class="image-options">
+
+            <select id="imageStyle">
+
+                <option value="realistic">Realistic</option>
+
+                <option value="anime">Anime</option>
+
+                <option value="cinematic">Cinematic</option>
+
+                <option value="digital-art">Digital Art</option>
+
+            </select>
+
+            <select id="imageSize">
+
+                <option value="1024x1024">1024 × 1024</option>
+
+                <option value="1024x1536">Portrait</option>
+
+                <option value="1536x1024">Landscape</option>
+
+            </select>
+
+        </div>
+
+        <button id="generateImageBtn">
+
+            Generate Image
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- IMAGE RESULT -->
+
+<div id="imageResultPanel">
+
+    <img
+        id="generatedImage"
+        alt="Generated Image">
+
+</div>
+
+<!-- VOICE PANEL -->
+
+<div id="voicePanel">
+
+    <div class="voice-animation">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+    <p id="voiceStatus">
+
+        Listening...
+
+    </p>
+
+    <button id="stopVoiceBtn">
+
+        Stop
 
     </button>
 
 </div>
 
-<!-- ========================================================= -->
-<!-- Right Sidebar -->
-<!-- ========================================================= -->
+<!-- WEB SEARCH -->
 
-<aside id="right-sidebar">
+<div id="webSearchPanel">
 
-    <h3>Quick Access</h3>
+    <h2>Web Search</h2>
 
-    <button class="quick-btn">
+    <div id="webResults">
 
-        💬 Recent Chats
+    </div>
+
+</div>
+
+<!-- DEEP RESEARCH -->
+
+<div id="researchPanel">
+
+    <h2>Deep Research</h2>
+
+    <div id="researchContent">
+
+    </div>
+
+</div>
+
+<!-- COMMAND PALETTE -->
+
+<div id="commandPalette">
+
+    <input
+        id="commandInput"
+        type="text"
+        placeholder="Type a command...">
+
+    <div id="commandResults">
+
+    </div>
+
+</div>
+
+<!-- FLOATING NOTIFICATIONS -->
+
+<div id="floatingNotifications">
+
+</div>
+
+<!-- CONNECTION STATUS -->
+
+<div id="connectionStatus">
+
+    <span id="connectionDot"></span>
+
+    <span id="connectionText">
+
+        Connected
+
+    </span>
+
+</div>
+
+<!-- UPDATE BANNER -->
+
+<div id="updateBanner">
+
+    <span>
+
+        New update available.
+
+    </span>
+
+    <button id="updateNowBtn">
+
+        Update
 
     </button>
 
-    <button class="quick-btn">
+</div>
 
-        ⭐ Favorites
+<!-- END PART 10 -->
+
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 11 -->
+<!-- Plugins • Workspace • AI Apps -->
+<!-- ========================================= -->
+
+<!-- WORKSPACE PANEL -->
+
+<div id="workspacePanel" class="tool-panel">
+
+    <div class="panel-header">
+
+        <h2>Workspace</h2>
+
+        <button id="closeWorkspaceBtn" class="close-btn">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <div class="panel-body">
+
+        <button id="newWorkspaceBtn" class="workspace-btn">
+
+            New Workspace
+
+        </button>
+
+        <button id="importWorkspaceBtn" class="workspace-btn">
+
+            Import Workspace
+
+        </button>
+
+        <button id="exportWorkspaceBtn" class="workspace-btn">
+
+            Export Workspace
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- PLUGINS PANEL -->
+
+<div id="pluginsPanel" class="tool-panel">
+
+    <div class="panel-header">
+
+        <h2>Plugins</h2>
+
+        <button id="closePluginsBtn">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <div id="pluginsList">
+
+        <button class="plugin-card">
+
+            Web Search
+
+        </button>
+
+        <button class="plugin-card">
+
+            Image Generator
+
+        </button>
+
+        <button class="plugin-card">
+
+            Document Reader
+
+        </button>
+
+        <button class="plugin-card">
+
+            Translator
+
+        </button>
+
+        <button class="plugin-card">
+
+            Code Interpreter
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- AI APPS -->
+
+<div id="appsPanel">
+
+    <div class="panel-header">
+
+        <h2>AI Apps</h2>
+
+        <button id="closeAppsBtn">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <div id="appsGrid">
+
+        <button class="app-card">
+
+            AI Chat
+
+        </button>
+
+        <button class="app-card">
+
+            AI Image
+
+        </button>
+
+        <button class="app-card">
+
+            AI Video
+
+        </button>
+
+        <button class="app-card">
+
+            AI Music
+
+        </button>
+
+        <button class="app-card">
+
+            AI Coding
+
+        </button>
+
+        <button class="app-card">
+
+            AI Research
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- DOWNLOADS -->
+
+<div id="downloadsPanel">
+
+    <div class="panel-header">
+
+        <h2>Downloads</h2>
+
+        <button id="closeDownloadsBtn">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <div id="downloadsList">
+
+    </div>
+
+</div>
+
+<!-- RECENT FILES -->
+
+<div id="recentFilesPanel">
+
+    <div class="panel-header">
+
+        <h2>Recent Files</h2>
+
+    </div>
+
+    <div id="recentFilesList">
+
+    </div>
+
+</div>
+
+<!-- ACTIVITY -->
+
+<div id="activityPanel">
+
+    <div class="panel-header">
+
+        <h2>Activity</h2>
+
+    </div>
+
+    <div id="activityFeed">
+
+    </div>
+
+</div>
+
+<!-- SHORTCUTS -->
+
+<div id="shortcutsPanel">
+
+    <div class="panel-header">
+
+        <h2>Keyboard Shortcuts</h2>
+
+    </div>
+
+    <div class="shortcut-list">
+
+        <div>Ctrl + K</div>
+
+        <div>Search</div>
+
+        <div>Ctrl + N</div>
+
+        <div>New Chat</div>
+
+        <div>Ctrl + /</div>
+
+        <div>Settings</div>
+
+    </div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- END PART 11 -->
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 12 -->
+<!-- Floating UI • Context Menu • Quick Actions -->
+<!-- ========================================= -->
+
+<!-- FLOATING ACTION BUTTON -->
+
+<div id="floatingActionButton">
+
+    <button id="fabButton">
+
+        <svg viewBox="0 0 24 24">
+
+            <path
+                d="M12 5V19M5 12H19"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"/>
+
+        </svg>
 
     </button>
 
-    <button class="quick-btn">
+</div>
 
-        📁 Files
+<!-- QUICK ACTIONS -->
+
+<div id="quickActionsMenu">
+
+    <button id="quickNewChat">
+
+        New Chat
 
     </button>
 
-    <button class="quick-btn">
+    <button id="quickImage">
 
-        🧠 Memory
+        Create Image
 
     </button>
+
+    <button id="quickResearch">
+
+        Research
+
+    </button>
+
+    <button id="quickVoice">
+
+        Voice Chat
+
+    </button>
+
+</div>
+
+<!-- CONTEXT MENU -->
+
+<div id="contextMenu">
+
+    <button id="copyMessageBtn">
+
+        Copy
+
+    </button>
+
+    <button id="editMessageBtn">
+
+        Edit
+
+    </button>
+
+    <button id="deleteMessageBtn">
+
+        Delete
+
+    </button>
+
+    <button id="pinMessageBtn">
+
+        Pin
+
+    </button>
+
+    <button id="shareMessageBtn">
+
+        Share
+
+    </button>
+
+</div>
+
+<!-- COMMAND BAR -->
+
+<div id="commandBar">
+
+    <input
+        id="commandBarInput"
+        type="text"
+        placeholder="Search commands...">
+
+    <div id="commandSuggestions">
+
+    </div>
+
+</div>
+
+<!-- NETWORK STATUS -->
+
+<div id="networkStatus">
+
+    <span class="status-dot"></span>
+
+    <span id="networkLabel">
+
+        Online
+
+    </span>
+
+</div>
+
+<!-- SERVER STATUS -->
+
+<div id="serverStatus">
+
+    <span class="status-dot"></span>
+
+    <span id="serverLabel">
+
+        AI Ready
+
+    </span>
+
+</div>
+
+<!-- STREAM STATUS -->
+
+<div id="streamStatus">
+
+    Streaming...
+
+</div>
+
+<!-- FLOATING PROGRESS -->
+
+<div id="floatingProgress">
+
+    <div id="progressBar">
+
+    </div>
+
+</div>
+
+<!-- MINI PLAYER -->
+
+<div id="voiceMiniPlayer">
+
+    <button id="pauseVoiceBtn">
+
+        Pause
+
+    </button>
+
+    <button id="resumeVoiceBtn">
+
+        Resume
+
+    </button>
+
+    <button id="closeVoicePlayerBtn">
+
+        Close
+
+    </button>
+
+</div>
+
+<!-- KEYBOARD SHORTCUT HINT -->
+
+<div id="shortcutHint">
+
+    Press Ctrl + K to search
+
+</div>
+
+<!-- DEBUG PANEL -->
+
+<div id="debugPanel">
+
+    <div id="debugContent">
+
+    </div>
+
+</div>
+
+<!-- BACKGROUND TASKS -->
+
+<div id="backgroundTasks">
+
+</div>
+
+<!-- CACHE CONTAINER -->
+
+<div id="cacheContainer" hidden>
+
+</div>
+
+<!-- SERVICE WORKER ROOT -->
+
+<div id="serviceWorkerRoot" hidden>
+
+</div>
+
+<!-- PERFORMANCE ROOT -->
+
+<div id="performanceRoot" hidden>
+
+</div>
+
+<!-- ========================================= -->
+<!-- END PART 12 -->
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 13 -->
+<!-- Responsive Layout & Utility Containers -->
+<!-- ========================================= -->
+
+<!-- MOBILE NAVIGATION -->
+
+<nav id="mobileNavigation">
+
+    <button id="mobileHomeBtn" class="mobile-nav-btn">
+
+        <svg viewBox="0 0 24 24">
+            <path d="M4 11L12 4L20 11V20H4Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"/>
+        </svg>
+
+        <span>Home</span>
+
+    </button>
+
+    <button id="mobileHistoryBtn" class="mobile-nav-btn">
+
+        <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="8"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"/>
+            <path d="M12 8V12L15 15"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"/>
+        </svg>
+
+        <span>History</span>
+
+    </button>
+
+    <button id="mobileAppsBtn" class="mobile-nav-btn">
+
+        <svg viewBox="0 0 24 24">
+            <rect x="5" y="5" width="5" height="5"/>
+            <rect x="14" y="5" width="5" height="5"/>
+            <rect x="5" y="14" width="5" height="5"/>
+            <rect x="14" y="14" width="5" height="5"/>
+        </svg>
+
+        <span>Apps</span>
+
+    </button>
+
+    <button id="mobileProfileBtn" class="mobile-nav-btn">
+
+        <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"/>
+            <path d="M5 20C5 16 8 14 12 14C16 14 19 16 19 20"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"/>
+        </svg>
+
+        <span>Profile</span>
+
+    </button>
+
+</nav>
+
+<!-- TABLET SIDEBAR -->
+
+<aside id="tabletSidebar">
 
 </aside>
 
-<!-- ========================================================= -->
-<!-- Floating Action Buttons -->
-<!-- ========================================================= -->
+<!-- DESKTOP RIGHT PANEL -->
 
-<div id="floating-buttons">
+<aside id="desktopRightPanel">
 
-    <button id="scroll-top-btn"
-            title="Scroll Top">
+    <section id="conversationInfo"></section>
 
-        ⬆
+    <section id="tokenUsagePanel"></section>
 
-    </button>
+    <section id="recentActivityPanel"></section>
 
-    <button id="help-btn"
-            title="Help">
+</aside>
 
-        ❓
+<!-- RESPONSIVE ROOTS -->
+
+<div id="mobileRoot"></div>
+
+<div id="tabletRoot"></div>
+
+<div id="desktopRoot"></div>
+
+<!-- CHAT HELPERS -->
+
+<div id="messageTemplateContainer" hidden></div>
+
+<div id="markdownRendererRoot" hidden></div>
+
+<div id="syntaxHighlightRoot" hidden></div>
+
+<div id="imagePreviewRoot" hidden></div>
+
+<div id="audioRecorderRoot" hidden></div>
+
+<div id="cameraPreviewRoot" hidden></div>
+
+<div id="clipboardRoot" hidden></div>
+
+<div id="downloadRoot" hidden></div>
+
+<div id="uploadRoot" hidden></div>
+
+<div id="dragDropOverlay">
+
+    <div id="dragDropBox">
+
+        <h2>Drop files here</h2>
+
+        <p>Upload images, PDFs, documents and more.</p>
+
+    </div>
+
+</div>
+
+<!-- SAFE AREA -->
+
+<div id="safeAreaTop"></div>
+
+<div id="safeAreaBottom"></div>
+
+<!-- END PART 13 -->
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 14 -->
+<!-- Templates • SVG Library • Hidden Components -->
+<!-- ========================================= -->
+
+<!-- ================= SVG ICON LIBRARY ================= -->
+
+<svg width="0" height="0" style="display:none">
+
+    <symbol id="icon-send" viewBox="0 0 24 24">
+        <path d="M3 12L21 3L15 21L11 13L3 12Z"
+              fill="currentColor"/>
+    </symbol>
+
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 7H20M4 12H16M4 17H20"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="11"
+                cy="11"
+                r="7"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"/>
+        <path d="M20 20L17 17"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="icon-copy" viewBox="0 0 24 24">
+        <rect x="8"
+              y="8"
+              width="11"
+              height="11"
+              rx="2"
+              stroke="currentColor"
+              stroke-width="2"
+              fill="none"/>
+        <rect x="5"
+              y="5"
+              width="11"
+              height="11"
+              rx="2"
+              stroke="currentColor"
+              stroke-width="2"
+              fill="none"/>
+    </symbol>
+
+</svg>
+
+<!-- ================= CHAT TEMPLATE ================= -->
+
+<template id="chatMessageTemplate">
+
+    <article class="chat-message">
+
+        <div class="chat-avatar">
+
+            <img
+                src="assets/logo.png"
+                alt="DeepSINKY">
+
+        </div>
+
+        <div class="chat-content">
+
+            <div class="chat-markdown"></div>
+
+            <div class="chat-actions">
+
+                <button class="copy-btn">
+
+                    Copy
+
+                </button>
+
+                <button class="retry-btn">
+
+                    Retry
+
+                </button>
+
+                <button class="share-btn">
+
+                    Share
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</template>
+
+<!-- ================= IMAGE TEMPLATE ================= -->
+
+<template id="imageCardTemplate">
+
+    <div class="generated-image-card">
+
+        <img
+            class="generated-image"
+            alt="Generated Image">
+
+        <div class="image-actions">
+
+            <button class="download-image-btn">
+
+                Download
+
+            </button>
+
+            <button class="copy-image-btn">
+
+                Copy
+
+            </button>
+
+        </div>
+
+    </div>
+
+</template>
+
+<!-- ================= FILE TEMPLATE ================= -->
+
+<template id="fileTemplate">
+
+    <div class="uploaded-file">
+
+        <span class="file-name"></span>
+
+        <span class="file-size"></span>
+
+    </div>
+
+</template>
+
+<!-- ================= EMPTY STATES ================= -->
+
+<div id="emptyHistory" hidden>
+
+    No chat history
+
+</div>
+
+<div id="emptySearch" hidden>
+
+    No results found
+
+</div>
+
+<div id="emptyPlugins" hidden>
+
+    No plugins installed
+
+</div>
+
+<!-- ================= APP ROOTS ================= -->
+
+<div id="modalRoot"></div>
+
+<div id="overlayRoot"></div>
+
+<div id="notificationRoot"></div>
+
+<div id="tooltipRoot"></div>
+
+<div id="dropdownRoot"></div>
+
+<div id="floatingMenuRoot"></div>
+
+<div id="popupRoot"></div>
+
+<div id="animationRoot"></div>
+
+<div id="canvasRoot"></div>
+
+<div id="backgroundEffects"></div>
+
+<div id="particleRoot"></div>
+
+<div id="themeRoot"></div>
+
+<div id="settingsRoot"></div>
+
+<div id="routerRoot"></div>
+
+<div id="storageRoot" hidden></div>
+
+<div id="workerRoot" hidden></div>
+
+<!-- ========================================= -->
+<!-- END PART 14 -->
+<!-- ========================================= -->
+<!-- DeepSINKY AI - PART 15 -->
+<!-- Final Production Structure -->
+<!-- ========================================= -->
+
+<!-- Global Loader -->
+
+<div id="globalLoader" hidden>
+
+    <div class="loader-ring"></div>
+
+    <p>Loading DeepSINKY...</p>
+
+</div>
+
+<!-- Offline Banner -->
+
+<div id="offlineBanner" hidden>
+
+    <span>
+
+        You're offline. Some features may not work.
+
+    </span>
+
+</div>
+
+<!-- Update Available -->
+
+<div id="updateToast" hidden>
+
+    <span>
+
+        New version available.
+
+    </span>
+
+    <button id="reloadAppBtn">
+
+        Reload
 
     </button>
 
 </div>
 
-<!-- ========================================================= -->
-<!-- JavaScript Libraries -->
-<!-- ========================================================= -->
+<!-- Keyboard Shortcut Layer -->
+
+<div id="shortcutOverlay" hidden></div>
+
+<!-- Screen Reader -->
+
+<div
+    id="liveRegion"
+    aria-live="polite"
+    aria-atomic="true"
+    class="sr-only">
+
+</div>
+
+<!-- ========================= -->
+<!-- External Libraries -->
+<!-- ========================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/15.0.7/marked.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    if(window.hljs){
+
+        hljs.highlightAll();
+
+    }
+
+    document.documentElement.classList.add("app-ready");
+
+});
+
+if("serviceWorker" in navigator){
+
+    window.addEventListener("load", () => {
+
+        navigator.serviceWorker
+            .register("sw.js")
+            .catch(() => {});
+
+    });
+
+}
+
+window.DeepSINKY = {
+
+    version: "1.0.0",
+
+    build: "Production",
+
+    theme: "dark",
+
+    initialized: false
+
+};
+
+</script>
+
+<!-- Main Application -->
 
 <script src="script.js"></script>
-
-<script src="components/chat.js"></script>
-<script src="components/sidebar.js"></script>
-<script src="components/header.js"></script>
-<script src="components/modal.js"></script>
-
-<script src="themes/theme.js"></script>
-
-<script src="animations/loader.js"></script>
-<script src="animations/typing.js"></script>
-
-<script src="responsive/mobile.js"></script>
-
-<script src="utils/storage.js"></script>
-<script src="utils/helpers.js"></script>
-
-<!-- ========================================================= -->
-<!-- End Body -->
-<!-- ========================================================= -->
 
 </body>
 
