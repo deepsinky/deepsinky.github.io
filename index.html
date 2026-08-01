@@ -3,1000 +3,4058 @@
 <html lang="en">
 
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DeepSINKY</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<style>
-
-/* ===== BODY ===== */
-body{
-  margin:0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
-  font-size:16px;
-  line-height:1.7;
-  letter-spacing:0.1px;
-  background:#0f0f0f;
-  color:white;
-  height:100vh;
-}
- b{
-  font-size:16px;
-  font-weight:600;
-  color:#ffffff;
- }
-
-/* ===== SIDEBAR ===== */
-.sidebar{
-  width:260px;
-  background:#202123;
-  padding:10px;
-  overflow-y:auto;
-
-  position:fixed;
-  top:0;
-  left:0;
-
-  transform:translateX(-100%);   /* 🔥 MAIN FIX */
-  transition:0.3s;
-}
-.sidebar.open{ left:0; }
-
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.5);
-  display:none;
-}
-.overlay.show{ display:block; }
-
-/* ===== MAIN ===== */
-.main{
-  display:flex;
-  flex-direction:column;
-  height:100vh;   /* 🔥 FINAL FIX */
-}
-
-/* ===== HEADER ===== */
-.header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px;
-  border-bottom:1px solid #333;
-}
-/* MENU */
-.menu{
-  cursor:pointer;
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-}
-
-.line{
-  height:2px;
-  background:white;
-  border-radius:2px;
-}
-
-/* FULL LINE */
-.line.full{
-  width:22px;
-}
-
-/* HALF LINE */
-.line.half{
-  width:12px;
-}
-
-/* BRAND (LOGO + TEXT) */
-.brand{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.logo-img{
-  width:28px;
-  height:28px;
-  object-fit:contain;
-}
-
-.title{
-  font-weight:bold;
-  font-size:18px;
-}
-
-/* LOGIN */
-.login-btn{
-  background:#19c37d;
-  border:none;
-  padding:6px 12px;
-  border-radius:6px;
-  cursor:pointer;
-}
-
-/* ===== CHAT ===== */
- .chat{
-  flex:1;
-  overflow-y:auto;
-  padding:20px;
-  }
-  .message{
-  margin:8px 0;
-  }
-  .message{
-  margin:10px 0;
-  padding:10px 14px;
-  border-radius:18px;
-  max-width:fit-content;   /* 🔥 auto size */
-  width:auto;
-  word-wrap:break-word;
-  line-height:1.4;
-}
-
-/* 👤 USER BUBBLE */
-.user{
-  background:#2a2b32;
-  color:#fff;
-  margin-left:auto;
-  border-radius:18px;
-  padding:10px 14px;
-  max-width:75%;
-
-  /* 👇 ADD ये */
-  width:fit-content;
-  word-wrap:break-word;
-  line-height:1.5;
-}
-
-/* 🤖 BOT (no bubble clean text) */
-.bot{
-  background:transparent;
-  color:#e5e5e5;
-  padding:0;
-  margin-left:0;
-  margin-right:auto;
-  max-width:85%;
-}
-  pre{
-  background:#0d1117;
-  padding:14px;
-  border-radius:10px;
-  overflow:auto;
-}
-
-code{
-  font-family:Consolas, monospace;
-  font-size:13px;
-}
-
-  .bot{
-  line-height:1.6;
-  }
-  /* =========================
-   🔥 CODE BLOCK STYLE
-========================= */
-
-pre {
-  background: #0d1117;
-  color: #c9d1d9;
-  padding: 14px;
-  border-radius: 10px;
-  overflow: auto;
-  margin: 12px 0;
-  position: relative;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-code {
-  font-family: "Fira Code", monospace;
-  font-size: 13px;
-}
-
-pre code {
-  background: none !important;
-  padding: 0 !important;
-}
-
-/* 🎨 COLORS */
-.hljs-keyword { color: #ff7b72; }
-.hljs-string { color: #a5d6ff; }
-.hljs-number { color: #79c0ff; }
-.hljs-title { color: #d2a8ff; }
-.hljs-variable { color: #ffa657; }
-.hljs-comment { color: #8b949e; font-style: italic; }
-
-/* 📋 COPY BUTTON */
-.copy-btn {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  background: #21262d;
-  color: #c9d1d9;
-  border: none;
-  padding: 4px 8px;
-  font-size: 12px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.copy-btn:hover {
-  background: #30363d;
-}
-
-/* ===== INPUT ===== */
-.input-area{
-  padding:10px;
-  display:flex;
-  justify-content:center;
-  position:sticky;   /* ✅ ADD */
-  bottom:0;          /* ✅ ADD */
-  background:#0f0f0f; /* ✅ ADD */
-}
-
-.input-box{
-  width:95%;
-  max-width:700px;
-  display:flex;
-  align-items:center;
-  background:#2a2b32;
-  border-radius:30px;
-  padding:10px;
-  gap:10px;
-}
-  .input-box input{
-  flex:1;
-  background:transparent;
-  border:none;
-
-  color:#ffffff;
-  font-size:15px;
-  font-weight:500;
-
-  outline:none;
-  }
-  .input-box input::placeholder{
-  color:#b5b5b5;   /* 🔥 visible grey */
-  font-weight:500;
-  }
-  .input-container{
-  backdrop-filter: blur(10px);
-  }
-  /* 🔥 PLUS MENU FIX (BOTTOM POPUP) */
-.plus-menu{
-  position: fixed;
-  bottom: 80px; /* input ke upar */
-  left: 50%;
-  transform: translateX(-50%) scale(0.9);
-
-  width: 90%;
-  max-width: 420px;
-
-  background: #1e1f23;
-  border-radius: 18px;
-
-  padding: 16px;
-  display: none;
-
-  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-  z-index: 999;
-
-  opacity: 0;
-  transition: 0.25s ease;
-}
-
-/* 🔥 open state */
-.plus-menu.active{
-  display: block;
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-}
-  .plus-menu{
-  transform: translateX(-50%) translateY(20px) scale(0.95);
-}
-
-/* 🔥 GPT STYLE OPEN */
-.plus-menu.active{
-  display: block;
-  opacity: 1;
-
-  transform: translateX(-50%) translateY(0) scale(1);
-
-  animation: popupBounce 0.35s ease;
-}
-
-/* 🔥 BOUNCE KEYFRAMES */
-@keyframes popupBounce{
-  0%{
-    transform: translateX(-50%) translateY(40px) scale(0.9);
-    opacity:0;
-  }
-  60%{
-    transform: translateX(-50%) translateY(-5px) scale(1.03);
-  }
-  100%{
-    transform: translateX(-50%) translateY(0) scale(1);
-    opacity:1;
-  }
-}
-  .overlay{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(6px);
-
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.3s;
-  z-index: 998;
-}
-
-.overlay.active{
-  opacity: 1;
-  pointer-events: all;
-}
-  /* ===== GPT STYLE CONTAINER ===== */
-
-.input-container{
-  display:flex;
-  align-items:center;
-  gap:8px;
-
-  max-width:750px;
-  margin:auto;
-
-  background:#1e1f23;
-  border-radius:28px;
-
-  padding:10px 14px;
-
-  border:1px solid #2f2f2f;
-
-  box-shadow:
-    0 4px 20px rgba(0,0,0,0.3),
-    inset 0 1px 0 rgba(255,255,255,0.02);
-
-  transition:0.25s ease;
-}
-.menu-grid{
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 12px;
-}
-
-.menu-item{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:6px;
-  color:#ccc;
-  font-size:12px;
-}
-  .input-container input{
-  flex:1;
-  background:transparent;   /* 🔥 white हट गया */
-  border:none;
-  outline:none;
-  color:#e5e5e5;
-  font-size:15px;
-  }
-.icon-btn{
-  background:transparent;
-  border:none;
-
-  color:#ffffff;        /* 🔥 bright white */
-  font-size:20px;       /* 🔥 bada + clear */
-  font-weight:600;
-
-  width:36px;
-  height:36px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:50%;
-  cursor:pointer;
-  transition:0.2s;
-}
-
-.icon-btn:hover{
-  background:#2a2b32;
-  color:#ffffff;
-}
-#sendBtn{
-  width:40px;
-  height:40px;
-  border:none;
-  border-radius:50%;
-
-  background:#2a2b32;   /* 🔥 dark grey */
-  color:#ffffff;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  cursor:pointer;
-  transition:0.2s;
-}
-
-/* LOADING */
-.dot{
-  display:flex;
-  gap:5px;
-}
-
-.dot span{
-  width:6px;
-  height:6px;
-  background:#aaa;
-  border-radius:50%;
-  animation: blink 1s infinite;
-}
-
-.dot span:nth-child(2){
-  animation-delay:0.3s;
-}
-
-@keyframes blink{
-  0%,100%{ opacity:0.3; }
-  50%{ opacity:1; }
-}
-.icon-btn svg{
-  width:18px;
-  height:18px;
-} 
-  .icon-btn:active{
-  transform:scale(0.9);
-  }
-  
-  .icon-btn:hover{
-  background:#2a2b32;
-  color:#fff;
-  }
-  /* ===== CHATGPT PERFECT STYLE ===== */
-
-.bot{
-  max-width:680px;
-  margin:auto;
-  color:#e5e5e5;
-  font-size:15px;
-  line-height:1.75;
-}
-
-/* HEADINGS */
-.bot h1{
-  font-size:34px;
-  font-weight:800;
-  margin:32px 0 14px;
-}
-
-.bot h2{
-  font-size:26px;
-  font-weight:700;
-  margin:28px 0 12px;
-}
-
-.bot h3{
-  font-size:20px;
-  font-weight:600;
-  margin:22px 0 10px;
-}
-
-/* PARAGRAPH */
-.bot p{
-  margin:12px 0;
-  color:#d1d1d1;
-}
-
-/* LIST */
-.bot ul{
-  margin:14px 0;
-  padding-left:22px;
-}
-
-.bot li{
-  margin:10px 0;
-}
-
-/* EMOJI */
-.bot .emoji{
-  font-size:1.5em;
-  margin-right:8px;
-}
-.message{
-  position: relative;
-  padding-bottom: 14px;
-}
- 
-.action-bar{
-  display:flex;
-  flex-direction:row;
-
-  flex-wrap:nowrap;        /* ❌ wrap बंद */
-  align-items:center;
-
-  gap:14px;
-  margin-top:8px;
-
-  width:100%;              /* 🔥 FULL WIDTH */
-}
-pre .copy-btn {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-}
-  .copy-action-btn {
-  position: static;
-  }
-/* 🔥 BUTTON FIX */
-.icon-btn{
-  flex:0 0 auto;           /* ❌ shrink बंद */
-  width:32px;
-  height:32px;
-  }
-
-/* 🔥 HOVER = GPT STYLE */
-.icon-btn:hover{
-  background:rgba(255,255,255,0.05);
-  border-color:rgba(255,255,255,0.15);
-  color:#ffffff;
-}
-
-/* 🔥 ACTIVE STATES */
-.like-btn.active{
-  color:#19c37d;
-  border-color:#19c37d55;
-}
-
-.dislike-btn.active{
-  color:#ef4444;
-  border-color:#ef444455;
-}
-
-/* 🔥 SEGMENTED DIVIDER (message-wise break) */
-.message::after{
-  content: "";
-  position: absolute;
-  left: 0;      /* ❌ no full width */
-  right: 0;     /* ✅ message ke width tak */
-  bottom: 0;
-
-  height: 1px;
-
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255,255,255,0.08),
-    transparent
-  );
-}
-
-/* last message clean */
-.message:last-child::after{
-  display: none;
-}
-
-
-</style>
+
+    <!-- ====================================================== -->
+    <!--                 DeepSINKY AI - Part 01                 -->
+    <!--               Foundation + Meta + Assets              -->
+    <!-- ====================================================== -->
+
+    <!-- Character Encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- Browser -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- ================= SEO ================= -->
+
+    <title>DeepSINKY AI</title>
+
+    <meta name="description"
+          content="DeepSINKY AI - Next Generation Artificial Intelligence Platform.">
+
+    <meta name="keywords"
+          content="DeepSINKY, AI, ChatGPT, Claude, DeepSeek, Artificial Intelligence">
+
+    <meta name="author"
+          content="DeepSINKY">
+
+    <meta name="robots"
+          content="index, follow">
+
+    <!-- ================= Theme ================= -->
+
+    <meta name="theme-color"
+          content="#0f1117">
+
+    <meta name="color-scheme"
+          content="dark">
+
+    <!-- ================= Mobile ================= -->
+
+    <meta name="mobile-web-app-capable"
+          content="yes">
+
+    <meta name="apple-mobile-web-app-capable"
+          content="yes">
+
+    <meta name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent">
+
+    <!-- ================= Icons ================= -->
+
+    <link rel="icon"
+          href="assets/icons/favicon.ico">
+
+    <link rel="apple-touch-icon"
+          href="assets/icons/icon-192.png">
+
+    <!-- ================= Manifest ================= -->
+
+    <link rel="manifest"
+          href="manifest.json">
+
+    <!-- ================= Fonts ================= -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- ================= Icons Library ================= -->
+
+    <!-- Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+
+    <script defer
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- ================= CSS ================= -->
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/input.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
 
 </head>
-
 <body>
-<input type="file" id="cameraInput" accept="image/*" capture hidden>
-<input type="file" id="photoInput" accept="image/*" hidden>
-<input type="file" id="fileInput" hidden>
-  
-<!-- SIDEBAR -->
-<div class="sidebar" id="sidebar">
-  <h3>Chats</h3>
-  <div>New Chat</div>
+
+<!-- ====================================================== -->
+<!--                PART 02 : APP FOUNDATION                -->
+<!-- ====================================================== -->
+
+<!-- ================= APP LOADER ================= -->
+
+<div id="appLoader" class="app-loader">
+
+    <div class="loader-content">
+
+        <img
+            src="assets/images/logo.png"
+            alt="DeepSINKY Logo"
+            class="loader-logo">
+
+        <h1 class="loader-title">
+            DeepSINKY
+        </h1>
+
+        <p class="loader-subtitle">
+            Initializing Artificial Intelligence...
+        </p>
+
+        <div class="loader-progress">
+
+            <div
+                id="loaderBar"
+                class="loader-progress-bar">
+            </div>
+
+        </div>
+
+        <span
+            id="loaderPercent"
+            class="loader-percent">
+            0%
+        </span>
+
+    </div>
+
 </div>
 
-<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+<!-- ================= BACKGROUND ================= -->
 
-<!-- MAIN -->
-<div class="main">
+<div
+    id="backgroundEffects"
+    class="background-effects">
+</div>
 
-  <!-- HEADER -->
-  <div class="header">
+<!-- ================= OVERLAY ================= -->
 
-    <div class="menu" onclick="toggleSidebar()">
-  <span class="line full"></span>
-  <span class="line half"></span>
+<div
+    id="overlay"
+    class="overlay">
+</div>
+
+<!-- ================= TOAST CONTAINER ================= -->
+
+<div
+    id="toastContainer"
+    class="toast-container">
+</div>
+
+<!-- ================= MODAL ROOT ================= -->
+
+<div
+    id="modalRoot"
+    class="modal-root">
+</div>
+
+<!-- ================= TOOLTIP ROOT ================= -->
+
+<div
+    id="tooltipRoot"
+    class="tooltip-root">
+</div>
+
+<!-- ================= DROPDOWN ROOT ================= -->
+
+<div
+    id="dropdownRoot"
+    class="dropdown-root">
+</div>
+
+<!-- ================= CONTEXT MENU ROOT ================= -->
+
+<div
+    id="contextMenuRoot"
+    class="context-menu-root">
+</div>
+
+<!-- ================= FLOATING UI ================= -->
+
+<div
+    id="floatingUI"
+    class="floating-ui">
+</div>
+
+  <!-- ====================================================== -->
+<!--             PART 03 : PROFESSIONAL SIDEBAR             -->
+<!-- ====================================================== -->
+
+<aside id="sidebar" class="sidebar">
+
+    <!-- ========== Sidebar Header ========== -->
+
+    <div class="sidebar-header">
+
+        <div class="brand">
+
+            <img
+                src="assets/images/logo.png"
+                alt="DeepSINKY"
+                class="brand-logo">
+
+            <div class="brand-info">
+
+                <h2 class="brand-title">
+                    DeepSINKY
+                </h2>
+
+                <span class="brand-version">
+                    Ultra
+                </span>
+
+            </div>
+
+        </div>
+
+        <button
+            id="closeSidebarBtn"
+            class="icon-btn"
+            aria-label="Close Sidebar">
+
+            <i data-lucide="panel-left-close"></i>
+
+        </button>
+
     </div>
 
-    <!-- ✅ FIXED LOGO -->
-    <div class="brand">
-      <img src="logo.png" class="logo-img">
-      <span class="title">DeepSINKY</span>
-    </div>
+    <!-- ========== New Chat ========== -->
 
-    <button class="login-btn">Login</button>
+    <button
+        id="newChatBtn"
+        class="primary-btn">
 
-  </div>
+        <i data-lucide="square-pen"></i>
 
-  <!-- CHAT -->
-<div class="chat" id="chat"></div>
+        <span>New Chat</span>
 
-  <!-- INPUT -->
-  <div class="input-area">
-  <div class="input-container">
-    
-   <button class="icon-btn">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-    <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2"/>
-    <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2"/>
-  </svg>
-</button>
-
-    <input id="input" placeholder="Ask DeepSINKY">
-
-    <button class="icon-btn">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-    <path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3z" stroke="currentColor" stroke-width="2"/>
-    <path d="M19 11a7 7 0 0 1-14 0" stroke="currentColor" stroke-width="2"/>
-    <line x1="12" y1="18" x2="12" y2="22" stroke="currentColor" stroke-width="2"/>
-  </svg>
     </button>
 
-    <button id="sendBtn">➤</button>
-<div id="plusMenu" class="plus-menu">
+    <!-- ========== Search ========== -->
 
-  <!-- 🔥 YAHAN PASTE KARNA HAI 👇 -->
-  <div class="menu-grid">
+    <div class="sidebar-search">
 
-    <div class="menu-item">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M4 7h3l2-2h6l2 2h3v12H4z" stroke="white" stroke-width="1.5"/>
-        <circle cx="12" cy="13" r="3" stroke="white" stroke-width="1.5"/>
-      </svg>
-      <span>Camera</span>
+        <i data-lucide="search"></i>
+
+        <input
+            id="chatSearch"
+            type="text"
+            placeholder="Search chats">
+
     </div>
 
-    <div class="menu-item">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <rect x="4" y="4" width="16" height="16" stroke="white" stroke-width="1.5"/>
-        <path d="M4 15l4-4 4 4 4-6 4 6" stroke="white" stroke-width="1.5"/>
-      </svg>
-      <span>Photos</span>
-    </div>
+    <!-- ========== Navigation ========== -->
 
-    <div class="menu-item">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M6 2h9l5 5v15H6z" stroke="white" stroke-width="1.5"/>
-        <path d="M14 2v6h6" stroke="white" stroke-width="1.5"/>
-      </svg>
-      <span>Files</span>
-    </div>
+    <nav class="sidebar-nav">
 
-  </div>
-  <!-- 🔥 YAHAN TAK -->
+        <button class="nav-item active">
+            <i data-lucide="message-square"></i>
+            <span>Chats</span>
+        </button>
 
-  <hr>
+        <button class="nav-item">
+            <i data-lucide="folder"></i>
+            <span>Collections</span>
+        </button>
 
-  <div class="menu-list">
-    <div>Create image</div>
-    <div>Thinking</div>
-    <div>Deep research</div>
-    <div>Web search</div>
-    <div>Study and learn</div>
-    <div>Quizzes</div>
-    <div>Explore apps</div>
-  </div>
-</div>
+        <button class="nav-item">
+            <i data-lucide="brain"></i>
+            <span>Memory</span>
+        </button>
 
-</div>
+        <button class="nav-item">
+            <i data-lucide="compass"></i>
+            <span>Explore</span>
+        </button>
 
-<script>
-let emojiCount = 0;
-let usedEmojis = new Set();
-/* CORE */
-const chat = document.getElementById("chat");
-const input = document.getElementById("input");
-const sendBtn = document.getElementById("sendBtn");
-const plusBtn = document.querySelector(".icon-btn:first-child");
-const menu = document.getElementById("plusMenu");
-const overlay = document.getElementById("overlay");
+        <button class="nav-item">
+            <i data-lucide="settings-2"></i>
+            <span>Settings</span>
+        </button>
 
-// 📷 Camera
-document.querySelector(".menu-item:nth-child(1)").onclick = () => {
-  document.getElementById("cameraInput").click();
-};
+    </nav>
 
-// 🖼️ Photos
-document.querySelector(".menu-item:nth-child(2)").onclick = () => {
-  document.getElementById("photoInput").click();
-};
+    <!-- ========== Chat History ========== -->
 
-// 📎 Files
-document.querySelector(".menu-item:nth-child(3)").onclick = () => {
-  document.getElementById("fileInput").click();
-};
-plusBtn.onclick = () => {
-  menu.classList.toggle("active");
-  overlay.classList.toggle("active");
-};
+    <section
+        id="historyContainer"
+        class="history-container">
 
-// 🔥 outside click close
-overlay.onclick = () => {
-  menu.classList.remove("active");
-  overlay.classList.remove("active");
-};
-sendBtn.onclick = send;
+    </section>
 
-input.addEventListener("keypress", e=>{
-  if(e.key === "Enter") send();
-});
+    <!-- ========== Storage Info ========== -->
 
-/* SEND */
-let selectedFile = null;
+    <div class="storage-card">
 
-document.getElementById("cameraInput").onchange = (e) => {
-  selectedFile = e.target.files[0];
-};
+        <span>Memory Usage</span>
 
-document.getElementById("photoInput").onchange = (e) => {
-  selectedFile = e.target.files[0];
-};
+        <div class="storage-bar">
 
-document.getElementById("fileInput").onchange = (e) => {
-  selectedFile = e.target.files[0];
-};
+            <div id="storageProgress"></div>
 
-async function send(){
-
-  let text = input.value.trim();
-
-  if(!text && !selectedFile) return;
-
-  // text
-  if(text){
-    chat.innerHTML += `<div class="message user">${text}</div>`;
-  }
-
-  // file
-  if(selectedFile){
-    let url = URL.createObjectURL(selectedFile);
-
-    if(selectedFile.type.startsWith("image")){
-      chat.innerHTML += `
-        <div class="message user">
-          <img src="${url}" style="max-width:150px;border-radius:10px;">
         </div>
-      `;
-    }else{
-      chat.innerHTML += `
-        <div class="message user">
-          📎 ${selectedFile.name}
+
+    </div>
+
+    <!-- ========== Profile ========== -->
+
+    <div class="sidebar-footer">
+
+        <button
+            id="profileBtn"
+            class="profile-button">
+
+            <img
+                src="assets/images/avatar.png"
+                alt="Profile"
+                class="profile-avatar">
+
+            <div>
+
+                <strong>User</strong>
+
+                <small>Free Plan</small>
+
+            </div>
+
+        </button>
+
+    </div>
+
+</aside>
+<!-- ====================================================== -->
+<!--              PART 04 : PROFESSIONAL HEADER             -->
+<!-- ====================================================== -->
+
+<header id="header" class="header">
+
+    <!-- ========== Left Section ========== -->
+
+    <div class="header-left">
+
+        <button
+            id="menuBtn"
+            class="icon-btn"
+            aria-label="Open Sidebar">
+
+            <i data-lucide="panel-left"></i>
+
+        </button>
+
+        <div class="header-logo">
+
+            <img
+                src="assets/images/logo.png"
+                alt="DeepSINKY"
+                class="logo">
+
+            <div>
+
+                <h1>DeepSINKY</h1>
+
+                <span>Ultra AI</span>
+
+            </div>
+
         </div>
-      `;
-    }
 
-    selectedFile = null;
-  }
-
-input.value = "";
-
-// 🎨 IMAGE MODE (यहीं डाल)
-if(
-  text.toLowerCase().includes("draw") ||
-  text.toLowerCase().includes("image") ||
-  text.toLowerCase().includes("generate")
-){
-
-  chat.innerHTML += `<div class="message bot">🎨 Generating image...</div>`;
-
-  let imgRes = await fetch("https://deepsinky-server-1.onrender.com/image",{
-    method:"POST",
-    headers:{ "Content-Type":"application/json" },
-    body: JSON.stringify({ prompt: text })
-  });
-
-  let imgData = await imgRes.json();
-
-  chat.innerHTML += `
-    <div class="message bot">
-      <img src="${imgData.image}" style="max-width:100%; border-radius:10px;">
     </div>
-  `;
 
-  return;
-}
-  // 🔥 YEH ANDAR HI RAHEGA
-  let loading = document.createElement("div");
-  loading.className = "message bot";
-  loading.innerHTML = `
-    <div class="dot">
-      <span></span>
-      <span></span>
+    <!-- ========== Center Section ========== -->
+
+    <div class="header-center">
+
+        <button
+            id="modelSelector"
+            class="header-button">
+
+            <i data-lucide="brain-circuit"></i>
+
+            <span>DeepSINKY Ultra</span>
+
+            <i data-lucide="chevron-down"></i>
+
+        </button>
+
     </div>
-  `;
-  chat.appendChild(loading);
- 
-  try{
-    let res = await fetch("https://deepsinky-server-1.onrender.com/chat",{
-      method:"POST",
-      headers:{ "Content-Type":"application/json" },
-      body: JSON.stringify({ message:text })
-    });
-   
-    let data = await res.json();
-    loading.remove();
 
-    let reply = data.reply || "No response";
+    <!-- ========== Right Section ========== -->
 
-    // ================= SMART TRIM (SAFE INLINE) =================
-    reply = (function(t){
-      if(t.length < 80) return t;
-      if(t.length < 300) return t;
-      return t.replace(/\n{2,}/g, "\n\n");
-    })(reply);
+    <div class="header-right">
 
-    // ================= GPT STYLE FORMAT =================
-    
-    reply = formatText(reply);
-    streamText(reply);
+        <button
+            id="searchBtn"
+            class="icon-btn"
+            aria-label="Search">
 
-  }catch{
-    loading.innerText = "Error ❌";
-  }
-}
-  function getEmoji(text){
+            <i data-lucide="search"></i>
 
-  text = text.toLowerCase();
+        </button>
 
-  const emojiMap = [
-    { keywords: ["ai","artificial intelligence","ml","neural","brain"], emoji: "🧠", priority: 5 },
-    { keywords: ["code","coding","program","function","developer"], emoji: "💻", priority: 5 },
-    { keywords: ["robot","bot","automation"], emoji: "🤖", priority: 4 },
+        <button
+            id="notificationBtn"
+            class="icon-btn"
+            aria-label="Notifications">
 
-    { keywords: ["money","earn","income","profit","cash"], emoji: "💰", priority: 5 },
-    { keywords: ["business","startup","company"], emoji: "🏢", priority: 4 },
-    { keywords: ["success","growth","win"], emoji: "📈", priority: 3 },
+            <i data-lucide="bell"></i>
 
-    { keywords: ["love","heart"], emoji: "❤️", priority: 5 },
-    { keywords: ["happy","smile","joy"], emoji: "😊", priority: 4 },
-    { keywords: ["sad","cry","depressed"], emoji: "😢", priority: 4 },
-    { keywords: ["angry","mad"], emoji: "😡", priority: 4 },
+        </button>
 
-    { keywords: ["warning","alert","danger"], emoji: "⚠️", priority: 6 },
-    { keywords: ["error","fail","wrong"], emoji: "❌", priority: 6 },
-    { keywords: ["success","done","complete"], emoji: "✅", priority: 6 },
+        <button
+            id="themeBtn"
+            class="icon-btn"
+            aria-label="Theme">
 
-    { keywords: ["goal","target","aim"], emoji: "🎯", priority: 4 },
-    { keywords: ["time","deadline","clock"], emoji: "⏰", priority: 4 },
-    { keywords: ["fast","speed","quick"], emoji: "⚡", priority: 3 },
+            <i data-lucide="moon-star"></i>
 
-    { keywords: ["study","learn","education","book"], emoji: "📚", priority: 5 },
-    { keywords: ["exam","test"], emoji: "📝", priority: 5 },
+        </button>
 
-    { keywords: ["health","doctor","medicine","ill","pain"], emoji: "💊", priority: 6 },
-    { keywords: ["gym","fitness","workout"], emoji: "🏋️", priority: 4 },
+        <button
+            id="profileMenuBtn"
+            class="profile-btn">
 
-    { keywords: ["game","play"], emoji: "🎮", priority: 3 },
-    { keywords: ["music","song"], emoji: "🎵", priority: 3 },
-    { keywords: ["party","fun","dance"], emoji: "🎉", priority: 3 },
+            <img
+                src="assets/images/avatar.png"
+                alt="Profile"
+                class="avatar">
 
-    { keywords: ["idea","tip","suggest"], emoji: "💡", priority: 5 },
+        </button>
 
-    { keywords: ["awesome","fire","lit"], emoji: "🔥", priority: 2 }
-  ];
+    </div>
 
-  let bestMatch = null;
+</header>
+<!-- ====================================================== -->
+<!--              PART 05 : WELCOME SCREEN                  -->
+<!-- ====================================================== -->
 
-  for (let item of emojiMap){
-    for (let word of item.keywords){
-      if(text.includes(word)){
-        if(!bestMatch || item.priority > bestMatch.priority){
-          bestMatch = item;
-        }
-      }
-    }
-  }
+<section id="welcomeScreen" class="welcome-screen">
 
-  return bestMatch ? bestMatch.emoji : "👉";
-  }
+    <!-- ========== Hero ========== -->
 
+    <div class="welcome-hero">
+
+        <img
+            src="assets/images/logo.png"
+            alt="DeepSINKY"
+            class="welcome-logo">
+
+        <h1 class="welcome-title">
+            Welcome to
+            <span>DeepSINKY AI</span>
+        </h1>
+
+        <p class="welcome-description">
+            Think. Create. Research. Build.
+        </p>
+
+    </div>
+
+    <!-- ========== Prompt Suggestions ========== -->
+
+    <div class="prompt-grid">
+
+        <button class="prompt-card" data-prompt="Explain quantum computing in simple words.">
+
+            <i data-lucide="brain"></i>
+
+            <h3>Learn</h3>
+
+            <p>Understand difficult topics easily.</p>
+
+        </button>
+
+        <button class="prompt-card" data-prompt="Write production-ready JavaScript code.">
+
+            <i data-lucide="code-2"></i>
+
+            <h3>Code</h3>
+
+            <p>Generate professional code.</p>
+
+        </button>
+
+        <button class="prompt-card" data-prompt="Research the latest AI technologies.">
+
+            <i data-lucide="search"></i>
+
+            <h3>Research</h3>
+
+            <p>Find detailed information.</p>
+
+        </button>
+
+        <button class="prompt-card" data-prompt="Generate a beautiful image.">
+
+            <i data-lucide="image"></i>
+
+            <h3>Create</h3>
+
+            <p>Create AI images and designs.</p>
+
+        </button>
+
+    </div>
+
+    <!-- ========== Quick Actions ========== -->
+
+    <div class="quick-actions">
+
+        <button id="newChatWelcome" class="primary-btn">
+
+            <i data-lucide="square-pen"></i>
+
+            <span>New Chat</span>
+
+        </button>
+
+        <button id="exploreBtn" class="secondary-btn">
+
+            <i data-lucide="compass"></i>
+
+            <span>Explore Features</span>
+
+        </button>
+
+    </div>
+
+</section>
+
+  <!-- ====================================================== -->
+<!--              PART 06 : CHAT WORKSPACE                  -->
+<!-- ====================================================== -->
+
+<main id="app" class="app">
+
+    <!-- ========== Chat Workspace ========== -->
+
+    <section id="chatWorkspace" class="chat-workspace">
+
+        <!-- Empty State -->
+
+        <div id="emptyState" class="empty-state">
+
+            <div class="empty-icon">
+
+                <i data-lucide="message-square-more"></i>
+
+            </div>
+
+            <h2>Start a new conversation</h2>
+
+            <p>
+                Ask anything. Write code. Solve problems.
+                Research deeply. Create images.
+            </p>
+
+        </div>
+
+        <!-- Chat Messages -->
+
+        <div
+            id="chatContainer"
+            class="chat-container">
+
+        </div>
+
+        <!-- AI Thinking -->
+
+        <div
+            id="thinkingContainer"
+            class="thinking-container"
+            hidden>
+
+        </div>
+
+        <!-- Typing Indicator -->
+
+        <div
+            id="typingIndicator"
+            class="typing-indicator"
+            hidden>
+
+        </div>
+
+        <!-- Scroll Button -->
+
+        <button
+            id="scrollBottomBtn"
+            class="scroll-bottom-btn"
+            hidden>
+
+            <i data-lucide="arrow-down"></i>
+
+        </button>
+
+    </section>
+
+</main>
+
+  <!-- ====================================================== -->
+<!--          PART 07 : ULTRA AI INPUT CONTAINER            -->
+<!-- ====================================================== -->
+
+<section id="inputSection" class="input-section">
+
+    <!-- File Preview -->
+
+    <div id="previewContainer"
+         class="preview-container">
+    </div>
+
+    <!-- Main Input Box -->
+
+    <div class="input-wrapper">
+
+        <!-- Left Tools -->
+
+        <div class="input-left">
+
+            <button
+                id="plusBtn"
+                class="icon-btn"
+                aria-label="More">
+
+                <i data-lucide="plus"></i>
+
+            </button>
+
+            <button
+                id="attachBtn"
+                class="icon-btn"
+                aria-label="Attach">
+
+                <i data-lucide="paperclip"></i>
+
+            </button>
+
+        </div>
+
+        <!-- Prompt Input -->
+
+        <div class="input-center">
+
+            <textarea
+                id="promptInput"
+                rows="1"
+                spellcheck="true"
+                autocomplete="off"
+                placeholder="Message DeepSINKY...">
+            </textarea>
+
+        </div>
+
+        <!-- Right Tools -->
+
+        <div class="input-right">
+
+            <button
+                id="cameraBtn"
+                class="icon-btn"
+                aria-label="Camera">
+
+                <i data-lucide="camera"></i>
+
+            </button>
+
+            <button
+                id="galleryBtn"
+                class="icon-btn"
+                aria-label="Gallery">
+
+                <i data-lucide="image"></i>
+
+            </button>
+
+            <button
+                id="voiceBtn"
+                class="icon-btn"
+                aria-label="Voice">
+
+                <i data-lucide="mic"></i>
+
+            </button>
+
+            <button
+                id="sendBtn"
+                class="send-btn"
+                aria-label="Send">
+
+                <i data-lucide="arrow-up"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Bottom Feature Bar -->
+
+    <div class="feature-bar">
+
+        <button id="reasoningBtn" class="feature-btn">
+            <i data-lucide="brain"></i>
+            <span>Reasoning</span>
+        </button>
+
+        <button id="searchBtn" class="feature-btn">
+            <i data-lucide="globe"></i>
+            <span>Web Search</span>
+        </button>
+
+        <button id="researchBtn" class="feature-btn">
+            <i data-lucide="search-code"></i>
+            <span>Deep Research</span>
+        </button>
+
+        <button id="imageBtn" class="feature-btn">
+            <i data-lucide="sparkles"></i>
+            <span>Create Image</span>
+        </button>
+
+    </div>
+
+</section>
+<!-- ====================================================== -->
+<!--             PART 08 : AI TOOLS PANEL                   -->
+<!-- ====================================================== -->
+
+<section id="toolsPanel" class="tools-panel" hidden>
+
+    <!-- Panel Header -->
+
+    <div class="tools-header">
+
+        <h2>AI Tools</h2>
+
+        <button
+            id="closeToolsBtn"
+            class="icon-btn"
+            aria-label="Close">
+
+            <i data-lucide="x"></i>
+
+        </button>
+
+    </div>
+
+    <!-- Quick Tools -->
+
+    <div class="tools-grid">
+
+        <button id="cameraTool" class="tool-card">
+            <i data-lucide="camera"></i>
+            <span>Camera</span>
+        </button>
+
+        <button id="galleryTool" class="tool-card">
+            <i data-lucide="image"></i>
+            <span>Gallery</span>
+        </button>
+
+        <button id="fileTool" class="tool-card">
+            <i data-lucide="folder-open"></i>
+            <span>Files</span>
+        </button>
+
+        <button id="pdfTool" class="tool-card">
+            <i data-lucide="file-text"></i>
+            <span>PDF</span>
+        </button>
+
+        <button id="voiceTool" class="tool-card">
+            <i data-lucide="mic"></i>
+            <span>Voice</span>
+        </button>
+
+        <button id="codeTool" class="tool-card">
+            <i data-lucide="code-2"></i>
+            <span>Code</span>
+        </button>
+
+        <button id="imageGenTool" class="tool-card">
+            <i data-lucide="sparkles"></i>
+            <span>Image AI</span>
+        </button>
+
+        <button id="visionTool" class="tool-card">
+            <i data-lucide="scan-eye"></i>
+            <span>Vision</span>
+        </button>
+
+    </div>
+
+    <!-- AI Modes -->
+
+    <div class="tools-section">
+
+        <h3>AI Modes</h3>
+
+        <div class="mode-list">
+
+            <button class="mode-btn">
+                <i data-lucide="brain"></i>
+                Reasoning
+            </button>
+
+            <button class="mode-btn">
+                <i data-lucide="globe"></i>
+                Web Search
+            </button>
+
+            <button class="mode-btn">
+                <i data-lucide="search-code"></i>
+                Deep Research
+            </button>
+
+            <button class="mode-btn">
+                <i data-lucide="languages"></i>
+                Translate
+            </button>
+
+            <button class="mode-btn">
+                <i data-lucide="file-pen-line"></i>
+                Summarize
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+  <!-- ====================================================== -->
+<!--         PART 09 : PREVIEW & UPLOAD HUB                 -->
+<!-- ====================================================== -->
+
+<section id="uploadHub" class="upload-hub" hidden>
+
+    <!-- Upload Header -->
+
+    <div class="upload-header">
+
+        <h2>Attachments</h2>
+
+        <button
+            id="closeUploadHub"
+            class="icon-btn"
+            aria-label="Close">
+
+            <i data-lucide="x"></i>
+
+        </button>
+
+    </div>
+
+    <!-- Preview Area -->
+
+    <div
+        id="previewArea"
+        class="preview-area">
+
+        <!-- Image Preview -->
+        <div
+            id="imagePreview"
+            class="preview-card"
+            hidden>
+
+            <img
+                id="previewImage"
+                src=""
+                alt="Preview">
+
+        </div>
+
+        <!-- PDF Preview -->
+        <div
+            id="pdfPreview"
+            class="preview-card"
+            hidden>
+
+            <i data-lucide="file-text"></i>
+
+            <span id="pdfName">
+                Document.pdf
+            </span>
+
+        </div>
+
+        <!-- Audio Preview -->
+        <div
+            id="audioPreview"
+            class="preview-card"
+            hidden>
+
+            <audio
+                id="audioPlayer"
+                controls>
+            </audio>
+
+        </div>
+
+        <!-- Video Preview -->
+        <div
+            id="videoPreview"
+            class="preview-card"
+            hidden>
+
+            <video
+                id="videoPlayer"
+                controls>
+            </video>
+
+        </div>
+
+        <!-- Generic File -->
+
+        <div
+            id="filePreview"
+            class="preview-card"
+            hidden>
+
+            <i data-lucide="file"></i>
+
+            <span id="fileName">
+                File
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- Upload Actions -->
+
+    <div class="upload-actions">
+
+        <button
+            id="replaceFileBtn"
+            class="secondary-btn">
+
+            <i data-lucide="refresh-cw"></i>
+
+            Replace
+
+        </button>
+
+        <button
+            id="removeFileBtn"
+            class="secondary-btn">
+
+            <i data-lucide="trash-2"></i>
+
+            Remove
+
+        </button>
+
+        <button
+            id="sendAttachmentBtn"
+            class="primary-btn">
+
+            <i data-lucide="arrow-up"></i>
+
+            Send
+
+        </button>
+
+    </div>
+
+</section>
+  <!-- ====================================================== -->
+<!--             PART 10 : AI MODEL HUB                     -->
+<!-- ====================================================== -->
+
+<section id="modelHub" class="model-hub" hidden>
+
+    <!-- Header -->
+
+    <div class="model-header">
+
+        <h2>Select AI Model</h2>
+
+        <button
+            id="closeModelHub"
+            class="icon-btn"
+            aria-label="Close">
+
+            <i data-lucide="x"></i>
+
+        </button>
+
+    </div>
+
+    <!-- Search -->
+
+    <div class="model-search">
+
+        <i data-lucide="search"></i>
+
+        <input
+            id="modelSearch"
+            type="search"
+            placeholder="Search AI Models">
+
+    </div>
+
+    <!-- Recommended -->
+
+    <div class="model-section">
+
+        <h3>Recommended</h3>
+
+        <div class="model-list">
+
+            <button class="model-card active">
+
+                <i data-lucide="brain-circuit"></i>
+
+                <div>
+
+                    <strong>DeepSINKY Ultra</strong>
+
+                    <small>Best overall model</small>
+
+                </div>
+
+            </button>
+
+            <button class="model-card">
+
+                <i data-lucide="zap"></i>
+
+                <div>
+
+                    <strong>DeepSINKY Fast</strong>
+
+                    <small>Fast responses</small>
+
+                </div>
+
+            </button>
+
+            <button class="model-card">
+
+                <i data-lucide="sparkles"></i>
+
+                <div>
+
+                    <strong>DeepSINKY Reasoning</strong>
+
+                    <small>Complex thinking</small>
+
+                </div>
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- External Models -->
+
+    <div class="model-section">
+
+        <h3>Available Models</h3>
+
+        <div id="availableModels" class="model-list">
+
+            <!-- Models will be added dynamically -->
+
+        </div>
+
+    </div>
+
+    <!-- Model Information -->
+
+    <div class="model-info">
+
+        <div class="info-row">
+
+            <span>Speed</span>
+
+            <span id="modelSpeed">★★★★★</span>
+
+        </div>
+
+        <div class="info-row">
+
+            <span>Reasoning</span>
+
+            <span id="modelReasoning">★★★★★</span>
+
+        </div>
+
+        <div class="info-row">
+
+            <span>Context</span>
+
+            <span id="modelContext">128K</span>
+
+        </div>
+
+    </div>
+
+</section>
+  <!-- ====================================================== -->
+<!--         PART 11 : MESSAGE TEMPLATE SYSTEM              -->
+<!-- ====================================================== -->
+
+<section id="messageTemplates" hidden>
+
+    <!-- ================= USER MESSAGE ================= -->
+
+    <template id="userMessageTemplate">
+
+        <article class="message user-message">
+
+            <div class="message-avatar">
+
+                <img
+                    src="assets/images/user-avatar.png"
+                    alt="User">
+
+            </div>
+
+            <div class="message-body">
+
+                <div class="message-content"></div>
+
+                <div class="message-footer">
+
+                    <time class="message-time"></time>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </template>
+
+    <!-- ================= AI MESSAGE ================= -->
+
+    <template id="assistantMessageTemplate">
+
+        <article class="message assistant-message">
+
+            <div class="message-avatar">
+
+                <img
+                    src="assets/images/logo.png"
+                    alt="DeepSINKY">
+
+            </div>
+
+            <div class="message-body">
+
+                <div class="message-header">
+
+                    <span class="assistant-name">
+                        DeepSINKY
+                    </span>
+
+                    <span class="assistant-model">
+                        Ultra
+                    </span>
+
+                </div>
+
+                <div class="message-content"></div>
+
+                <!-- Code Block -->
+
+                <div class="code-container"></div>
+
+                <!-- Image -->
+
+                <div class="image-container"></div>
+
+                <!-- Table -->
+
+                <div class="table-container"></div>
+
+                <!-- Charts -->
+
+                <div class="chart-container"></div>
+
+                <!-- Citations -->
+
+                <div class="citation-container"></div>
+
+                <!-- Action Bar -->
+
+                <div class="message-actions">
+
+                    <button class="action-btn copy-btn">
+                        <i data-lucide="copy"></i>
+                    </button>
+
+                    <button class="action-btn regenerate-btn">
+                        <i data-lucide="refresh-cw"></i>
+                    </button>
+
+                    <button class="action-btn speak-btn">
+                        <i data-lucide="volume-2"></i>
+                    </button>
+
+                    <button class="action-btn share-btn">
+                        <i data-lucide="share-2"></i>
+                    </button>
+
+                    <button class="action-btn like-btn">
+                        <i data-lucide="thumbs-up"></i>
+                    </button>
+
+                    <button class="action-btn dislike-btn">
+                        <i data-lucide="thumbs-down"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </template>
+
+</section>
   
-  function getHeadingEmoji(text){
-  text = text.toLowerCase();
+<!-- ====================================================== -->
+<!--         PART 12 : THINKING & STREAMING UI              -->
+<!-- ====================================================== -->
 
-  if(text.includes("ai")) return "🧠";
-  if(text.includes("money")) return "💰";
-  if(text.includes("health")) return "💊";
-  if(text.includes("study")) return "📚";
-  if(text.includes("warning")) return "⚠️";
+<section id="thinkingSection" class="thinking-section" hidden>
 
-  return "🔥";
-  }
+    <div class="thinking-container">
+
+        <div class="thinking-header">
+
+            <div class="thinking-avatar">
+
+                <img
+                    src="assets/images/logo.png"
+                    alt="DeepSINKY">
+
+            </div>
+
+            <div class="thinking-info">
+
+                <h3>DeepSINKY</h3>
+
+                <span>Thinking...</span>
+
+            </div>
+
+        </div>
+
+        <div class="thinking-animation">
+
+            <div class="thinking-dot"></div>
+            <div class="thinking-dot"></div>
+            <div class="thinking-dot"></div>
+
+        </div>
+
+        <div class="thinking-status">
+
+            <span id="thinkingStatus">
+
+                Processing your request...
+
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+  <!-- ====================================================== -->
+<!--          PART 13 : MESSAGE ACTION PANEL                -->
+<!-- ====================================================== -->
+
+<section id="messageActionPanel" hidden>
+
+    <div class="action-container">
+
+        <button
+            id="copyMessageBtn"
+            class="action-btn">
+
+            <i data-lucide="copy"></i>
+
+            <span>Copy</span>
+
+        </button>
+
+        <button
+            id="regenerateBtn"
+            class="action-btn">
+
+            <i data-lucide="rotate-ccw"></i>
+
+            <span>Regenerate</span>
+
+        </button>
+
+        <button
+            id="editMessageBtn"
+            class="action-btn">
+
+            <i data-lucide="square-pen"></i>
+
+            <span>Edit</span>
+
+        </button>
+
+        <button
+            id="shareMessageBtn"
+            class="action-btn">
+
+            <i data-lucide="share-2"></i>
+
+            <span>Share</span>
+
+        </button>
+
+        <button
+            id="voiceReadBtn"
+            class="action-btn">
+
+            <i data-lucide="volume-2"></i>
+
+            <span>Read</span>
+
+        </button>
+
+        <button
+            id="likeBtn"
+            class="action-btn">
+
+            <i data-lucide="thumbs-up"></i>
+
+        </button>
+
+        <button
+            id="dislikeBtn"
+            class="action-btn">
+
+            <i data-lucide="thumbs-down"></i>
+
+        </button>
+
+    </div>
+
+</section>
+
+  <!-- ====================================================== -->
+<!--              PART 14 : SETTINGS PANEL                  -->
+<!-- ====================================================== -->
+
+<aside id="settingsPanel" class="settings-panel" hidden>
+
+    <!-- Header -->
+
+    <div class="settings-header">
+
+        <h2>Settings</h2>
+
+        <button
+            id="closeSettingsBtn"
+            class="icon-btn"
+            aria-label="Close">
+
+            <i data-lucide="x"></i>
+
+        </button>
+
+    </div>
+
+    <!-- Appearance -->
+
+    <section class="settings-section">
+
+        <h3>Appearance</h3>
+
+        <button class="settings-item">
+            <i data-lucide="moon-star"></i>
+            <span>Theme</span>
+        </button>
+
+        <button class="settings-item">
+            <i data-lucide="palette"></i>
+            <span>Accent Color</span>
+        </button>
+
+        <button class="settings-item">
+            <i data-lucide="type"></i>
+            <span>Font Size</span>
+        </button>
+
+    </section>
+
+    <!-- AI -->
+
+    <section class="settings-section">
+
+        <h3>Artificial Intelligence</h3>
+
+        <button class="settings-item">
+            <i data-lucide="brain"></i>
+            <span>Default Model</span>
+        </button>
+
+        <button class="settings-item">
+            <i data-lucide="cpu"></i>
+            <span>Reasoning Mode</span>
+        </button>
+
+        <button class="settings-item">
+            <i data-lucide="memory-stick"></i>
+            <span>Memory</span>
+        </button>
+
+    </section>
+
+    <!-- Privacy -->
+
+    <section class="settings-section">
+
+        <h3>Privacy & Security</h3>
+
+        <button class="settings-item">
+            <i data-lucide="shield-check"></i>
+            <span>Privacy</span>
+        </button>
+
+        <button class="settings-item">
+            <i data-lucide="lock"></i>
+            <span>Security</span>
+        </button>
+
+        <button class="settings-item">
+            <i data-lucide="trash-2"></i>
+            <span>Clear Chat History</span>
+        </button>
+
+    </section>
+
+    <!-- General -->
+
+    <section class="settings-section">
+
+        <h3>General</h3>
+
+        <button class="settings-item">
+            <i data-lucide="languages"></i>
+            <span>Language</span>
+        </button>
+
+        <button class="settings-item">
+            <i data-lucide="keyboard"></i>
+            <span>Keyboard Shortcuts</span>
+        </button>
+
+        <button class="settings-item">
+            <i data-lucide="circle-help"></i>
+            <span>Help Center</span>
+        </button>
+
+        <button class="settings-item">
+            <i data-lucide="info"></i>
+            <span>About DeepSINKY</span>
+        </button>
+
+    </section>
+
+</aside>
+  <!-- ====================================================== -->
+<!--              PART 15 : UNIVERSAL SEARCH                -->
+<!-- ====================================================== -->
+
+<aside id="searchPanel" class="search-panel" hidden>
+
+    <!-- Search Header -->
+
+    <div class="search-header">
+
+        <h2>Search</h2>
+
+        <button
+            id="closeSearchPanel"
+            class="icon-btn"
+            aria-label="Close">
+
+            <i data-lucide="x"></i>
+
+        </button>
+
+    </div>
+
+    <!-- Search Box -->
+
+    <div class="search-box">
+
+        <i data-lucide="search"></i>
+
+        <input
+            id="globalSearchInput"
+            type="search"
+            autocomplete="off"
+            placeholder="Search chats, files, memories...">
+
+    </div>
+
+    <!-- Quick Filters -->
+
+    <div class="search-filters">
+
+        <button class="filter-chip active">
+
+            <i data-lucide="message-square"></i>
+
+            <span>Chats</span>
+
+        </button>
+
+        <button class="filter-chip">
+
+            <i data-lucide="file-text"></i>
+
+            <span>Files</span>
+
+        </button>
+
+        <button class="filter-chip">
+
+            <i data-lucide="brain"></i>
+
+            <span>Memory</span>
+
+        </button>
+
+        <button class="filter-chip">
+
+            <i data-lucide="image"></i>
+
+            <span>Images</span>
+
+        </button>
+
+        <button class="filter-chip">
+
+            <i data-lucide="history"></i>
+
+            <span>History</span>
+
+        </button>
+
+    </div>
+
+    <!-- Recent Searches -->
+
+    <section class="search-section">
+
+        <h3>Recent Searches</h3>
+
+        <div id="recentSearches"
+             class="recent-searches">
+
+        </div>
+
+    </section>
+
+    <!-- Search Results -->
+
+    <section class="search-section">
+
+        <h3>Results</h3>
+
+        <div id="searchResults"
+             class="search-results">
+
+        </div>
+
+    </section>
+
+    <!-- Empty State -->
+
+    <section
+        id="searchEmpty"
+        class="search-empty">
+
+        <i data-lucide="search-x"></i>
+
+        <h3>No Results</h3>
+
+        <p>
+
+            Search chats, uploaded files,
+            memories, prompts and more.
+
+        </p>
+
+    </section>
+
+</aside>
+  <!-- ====================================================== -->
+<!--               PART 16 : MEMORY CENTER                  -->
+<!-- ====================================================== -->
+
+<aside id="memoryCenter" class="memory-center" hidden>
+
+    <!-- ================= Header ================= -->
+
+    <div class="memory-header">
+
+        <h2>Memory Center</h2>
+
+        <button
+            id="closeMemoryBtn"
+            class="icon-btn"
+            aria-label="Close">
+
+            <i data-lucide="x"></i>
+
+        </button>
+
+    </div>
+
+    <!-- ================= Search ================= -->
+
+    <div class="memory-search">
+
+        <i data-lucide="search"></i>
+
+        <input
+            id="memorySearch"
+            type="search"
+            placeholder="Search memories">
+
+    </div>
+
+    <!-- ================= Statistics ================= -->
+
+    <section class="memory-stats">
+
+        <div class="memory-card">
+
+            <span class="memory-number"
+                  id="totalMemoryCount">
+                0
+            </span>
+
+            <small>Total Memories</small>
+
+        </div>
+
+        <div class="memory-card">
+
+            <span class="memory-number"
+                  id="pinnedMemoryCount">
+                0
+            </span>
+
+            <small>Pinned</small>
+
+        </div>
+
+        <div class="memory-card">
+
+            <span class="memory-number"
+                  id="recentMemoryCount">
+                0
+            </span>
+
+            <small>Recent</small>
+
+        </div>
+
+    </section>
+
+    <!-- ================= Categories ================= -->
+
+    <section class="memory-categories">
+
+        <button class="memory-category active">
+            <i data-lucide="brain"></i>
+            <span>All</span>
+        </button>
+
+        <button class="memory-category">
+            <i data-lucide="pin"></i>
+            <span>Pinned</span>
+        </button>
+
+        <button class="memory-category">
+            <i data-lucide="clock-3"></i>
+            <span>Recent</span>
+        </button>
+
+        <button class="memory-category">
+            <i data-lucide="star"></i>
+            <span>Important</span>
+        </button>
+
+    </section>
+
+    <!-- ================= Memory List ================= -->
+
+    <section
+        id="memoryList"
+        class="memory-list">
+
+    </section>
+
+    <!-- ================= Empty ================= -->
+
+    <section
+        id="memoryEmpty"
+        class="memory-empty">
+
+        <i data-lucide="brain-circuit"></i>
+
+        <h3>No Memories Found</h3>
+
+        <p>
+
+            Your saved memories will appear here.
+
+        </p>
+
+    </section>
+
+    <!-- ================= Footer ================= -->
+
+    <div class="memory-footer">
+
+        <button
+            id="exportMemoryBtn"
+            class="secondary-btn">
+
+            <i data-lucide="download"></i>
+
+            <span>Export</span>
+
+        </button>
+
+        <button
+            id="clearMemoryBtn"
+            class="danger-btn">
+
+            <i data-lucide="trash-2"></i>
+
+            <span>Clear</span>
+
+        </button>
+
+    </div>
+
+</aside>
+  <!-- ====================================================== -->
+<!--            PART 17 : NOTIFICATION CENTER               -->
+<!-- ====================================================== -->
+
+<aside id="notificationCenter"
+       class="notification-center"
+       hidden>
+
+    <!-- Header -->
+
+    <div class="notification-header">
+
+        <h2>Notifications</h2>
+
+        <button
+            id="closeNotificationBtn"
+            class="icon-btn"
+            aria-label="Close Notifications">
+
+            <i data-lucide="x"></i>
+
+        </button>
+
+    </div>
+
+    <!-- Tabs -->
+
+    <nav class="notification-tabs">
+
+        <button class="notification-tab active">
+            All
+        </button>
+
+        <button class="notification-tab">
+            AI
+        </button>
+
+        <button class="notification-tab">
+            System
+        </button>
+
+        <button class="notification-tab">
+            Updates
+        </button>
+
+    </nav>
+
+    <!-- Notification List -->
+
+    <section id="notificationList"
+             class="notification-list">
+
+        <!-- Dynamic Notifications -->
+
+    </section>
+
+    <!-- Empty State -->
+
+    <section id="notificationEmpty"
+             class="notification-empty">
+
+        <i data-lucide="bell-off"></i>
+
+        <h3>No Notifications</h3>
+
+        <p>
+
+            You're all caught up.
+
+        </p>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="notification-footer">
+
+        <button
+            id="markAllReadBtn"
+            class="secondary-btn">
+
+            <i data-lucide="check-check"></i>
+
+            <span>Mark All Read</span>
+
+        </button>
+
+        <button
+            id="clearNotificationsBtn"
+            class="danger-btn">
+
+            <i data-lucide="trash-2"></i>
+
+            <span>Clear All</span>
+
+        </button>
+
+    </footer>
+
+</aside>
+  <!-- ====================================================== -->
+<!--               PART 18 : PROFILE CENTER                 -->
+<!-- ====================================================== -->
+
+<aside id="profileCenter"
+       class="profile-center"
+       hidden>
+
+    <!-- ================= Header ================= -->
+
+    <div class="profile-header">
+
+        <button
+            id="closeProfileBtn"
+            class="icon-btn"
+            aria-label="Close">
+
+            <i data-lucide="x"></i>
+
+        </button>
+
+        <div class="profile-cover"></div>
+
+        <div class="profile-avatar-wrapper">
+
+            <img
+                id="profileAvatar"
+                src="assets/images/avatar.png"
+                alt="Profile Avatar"
+                class="profile-avatar">
+
+            <button
+                id="changeAvatarBtn"
+                class="edit-avatar-btn">
+
+                <i data-lucide="camera"></i>
+
+            </button>
+
+        </div>
+
+        <h2 id="profileName">
+
+            User
+
+        </h2>
+
+        <p id="profileEmail">
+
+            user@example.com
+
+        </p>
+
+    </div>
+
+    <!-- ================= Account ================= -->
+
+    <section class="profile-section">
+
+        <h3>Account</h3>
+
+        <button class="profile-item">
+
+            <i data-lucide="user-round"></i>
+
+            <span>Edit Profile</span>
+
+        </button>
+
+        <button class="profile-item">
+
+            <i data-lucide="badge-check"></i>
+
+            <span>Account Status</span>
+
+        </button>
+
+        <button class="profile-item">
+
+            <i data-lucide="key-round"></i>
+
+            <span>Password & Security</span>
+
+        </button>
+
+    </section>
+
+    <!-- ================= AI ================= -->
+
+    <section class="profile-section">
+
+        <h3>AI Preferences</h3>
+
+        <button class="profile-item">
+
+            <i data-lucide="brain"></i>
+
+            <span>Default AI Model</span>
+
+        </button>
+
+        <button class="profile-item">
+
+            <i data-lucide="languages"></i>
+
+            <span>Language</span>
+
+        </button>
+
+        <button class="profile-item">
+
+            <i data-lucide="history"></i>
+
+            <span>Conversation History</span>
+
+        </button>
+
+    </section>
+
+    <!-- ================= Storage ================= -->
+
+    <section class="profile-section">
+
+        <h3>Usage</h3>
+
+        <div class="usage-card">
+
+            <div class="usage-item">
+
+                <span>Messages</span>
+
+                <strong id="messageUsage">
+
+                    0
+
+                </strong>
+
+            </div>
+
+            <div class="usage-item">
+
+                <span>Uploads</span>
+
+                <strong id="uploadUsage">
+
+                    0
+
+                </strong>
+
+            </div>
+
+            <div class="usage-item">
+
+                <span>Memory</span>
+
+                <strong id="memoryUsage">
+
+                    0%
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= Actions ================= -->
+
+    <section class="profile-section">
+
+        <button
+            id="exportProfileBtn"
+            class="secondary-btn">
+
+            <i data-lucide="download"></i>
+
+            <span>Export Data</span>
+
+        </button>
+
+        <button
+            id="logoutBtn"
+            class="danger-btn">
+
+            <i data-lucide="log-out"></i>
+
+            <span>Log Out</span>
+
+        </button>
+
+    </section>
+
+</aside>
+
+  <!-- ====================================================== -->
+<!--             PART 19 : COMMAND PALETTE                  -->
+<!-- ====================================================== -->
+
+<section id="commandPalette"
+         class="command-palette"
+         hidden>
+
+    <!-- Header -->
+
+    <div class="command-header">
+
+        <div class="command-search">
+
+            <i data-lucide="search"></i>
+
+            <input
+                id="commandInput"
+                type="text"
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="Search commands, models, chats, settings...">
+
+        </div>
+
+        <button
+            id="closeCommandPalette"
+            class="icon-btn"
+            aria-label="Close">
+
+            <i data-lucide="x"></i>
+
+        </button>
+
+    </div>
+
+    <!-- Quick Actions -->
+
+    <section class="command-section">
+
+        <h3>Quick Actions</h3>
+
+        <div id="quickActionList"
+             class="command-list">
+
+        </div>
+
+    </section>
+
+    <!-- AI Commands -->
+
+    <section class="command-section">
+
+        <h3>AI Commands</h3>
+
+        <div id="aiCommandList"
+             class="command-list">
+
+        </div>
+
+    </section>
+
+    <!-- Recent -->
+
+    <section class="command-section">
+
+        <h3>Recent</h3>
+
+        <div id="recentCommandList"
+             class="command-list">
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="command-footer">
+
+        <span>
+
+            ↑ ↓ Navigate
+
+        </span>
+
+        <span>
+
+            Enter Select
+
+        </span>
+
+        <span>
+
+            Esc Close
+
+        </span>
+
+    </footer>
+
+</section>
   
-function formatText(text){
+<!-- ====================================================== -->
+<!--              PART 20 : PROMPT LIBRARY                  -->
+<!-- ====================================================== -->
 
-  // ===== HEADINGS =====
-  text = text.replace(/^(👋|🧠|🚀|🎯|🔥|📌|💡)\s(.+)/gm,
-    (m,e,t)=> `<h1><span class="emoji">${e}</span>${t}</h1>`);
+<section id="promptLibrary"
+         class="prompt-library"
+         hidden>
 
-  text = text.replace(/^(👉|📌)\s(.+)/gm,
-    (m,e,t)=> `<h2><span class="emoji">${e}</span>${t}</h2>`);
+    <!-- Header -->
 
-  text = text.replace(/^(✔|➤)\s(.+)/gm,
-    (m,e,t)=> `<h3><span class="emoji">${e}</span>${t}</h3>`);
+    <div class="prompt-header">
 
-  // Markdown
-  text = text.replace(/^### (.*$)/gm,
-    (m,t)=> `<h3>${t}</h3>`);
+        <h2>Prompt Library</h2>
 
-  text = text.replace(/^## (.*$)/gm,
-    (m,t)=> `<h2>${t}</h2>`);
+        <button
+            id="closePromptLibrary"
+            class="icon-btn"
+            aria-label="Close">
 
-  text = text.replace(/^# (.*$)/gm,
-    (m,t)=> `<h1>${t}</h1>`);
+            <i data-lucide="x"></i>
 
-  // Bold
-  text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+        </button>
 
-  // Code
-  text = text.replace(/```([\s\S]*?)```/g,
-    (m,c)=> `<pre><code>${c}</code></pre>`);
+    </div>
 
-  text = text.replace(/`(.*?)`/g, "<code>$1</code>");
+    <!-- Search -->
 
-  // Divider
+    <div class="prompt-search">
+
+        <i data-lucide="search"></i>
+
+        <input
+            id="promptSearch"
+            type="search"
+            placeholder="Search prompts...">
+
+    </div>
+
+    <!-- Categories -->
+
+    <div class="prompt-categories">
+
+        <button class="prompt-category active">
+            All
+        </button>
+
+        <button class="prompt-category">
+            Writing
+        </button>
+
+        <button class="prompt-category">
+            Coding
+        </button>
+
+        <button class="prompt-category">
+            Study
+        </button>
+
+        <button class="prompt-category">
+            Business
+        </button>
+
+        <button class="prompt-category">
+            Research
+        </button>
+
+        <button class="prompt-category">
+            Image
+        </button>
+
+        <button class="prompt-category">
+            Translation
+        </button>
+
+    </div>
+
+    <!-- Prompt Grid -->
+
+    <div
+        id="promptGrid"
+        class="prompt-grid">
+
+    </div>
+
+    <!-- Favorite Prompts -->
+
+    <section class="favorite-prompts">
+
+        <h3>Favorites</h3>
+
+        <div
+            id="favoritePromptList"
+            class="favorite-prompt-list">
+
+        </div>
+
+    </section>
+
+    <!-- Recent Prompts -->
+
+    <section class="recent-prompts">
+
+        <h3>Recently Used</h3>
+
+        <div
+            id="recentPromptList"
+            class="recent-prompt-list">
+
+        </div>
+
+    </section>
+
+</section>
+  <!-- ====================================================== -->
+<!--            PART 21 : AI WORKSPACE DASHBOARD            -->
+<!-- ====================================================== -->
+
+<section id="workspaceDashboard"
+         class="workspace-dashboard"
+         hidden>
+
+    <!-- Workspace Header -->
+
+    <div class="workspace-header">
+
+        <div class="workspace-title">
+
+            <h2>Workspace</h2>
+
+            <p>Your current AI session</p>
+
+        </div>
+
+        <button
+            id="workspaceMenuBtn"
+            class="icon-btn"
+            aria-label="Workspace Menu">
+
+            <i data-lucide="ellipsis"></i>
+
+        </button>
+
+    </div>
+
+    <!-- AI Status -->
+
+    <div class="workspace-status">
+
+        <div class="status-card">
+
+            <i data-lucide="brain-circuit"></i>
+
+            <div>
+
+                <strong>AI Model</strong>
+
+                <span id="workspaceModel">
+                    DeepSINKY Ultra
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="status-card">
+
+            <i data-lucide="activity"></i>
+
+            <div>
+
+                <strong>Status</strong>
+
+                <span id="workspaceStatus">
+                    Ready
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="status-card">
+
+            <i data-lucide="clock-3"></i>
+
+            <div>
+
+                <strong>Session</strong>
+
+                <span id="workspaceTime">
+                    Active
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Active Tools -->
+
+    <section class="workspace-tools">
+
+        <h3>Active Tools</h3>
+
+        <div class="tool-list">
+
+            <button class="tool-chip">
+                Web Search
+            </button>
+
+            <button class="tool-chip">
+                Vision
+            </button>
+
+            <button class="tool-chip">
+                Memory
+            </button>
+
+            <button class="tool-chip">
+                Voice
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- Session Information -->
+
+    <section class="workspace-info">
+
+        <div class="info-card">
+
+            <span>Conversation</span>
+
+            <strong id="conversationId">
+                Current Chat
+            </strong>
+
+        </div>
+
+        <div class="info-card">
+
+            <span>Language</span>
+
+            <strong id="workspaceLanguage">
+                English
+            </strong>
+
+        </div>
+
+        <div class="info-card">
+
+            <span>Mode</span>
+
+            <strong id="workspaceMode">
+                Chat
+            </strong>
+
+        </div>
+
+    </section>
+
+</section>
   
-text = text.replace(/\n?---\n?/g, "<hr>");
-  // ===== LINE ENGINE =====
-  let lines = text.split("\n");
-  let html = "";
-  let inList = false;
+<!-- ====================================================== -->
+<!--          PART 22 : QUICK SETTINGS DRAWER               -->
+<!-- ====================================================== -->
 
-  for(let line of lines){
+<aside id="quickSettingsDrawer"
+       class="quick-settings-drawer"
+       hidden>
 
-    line = line.trim();
+    <!-- Header -->
 
-    // HEADINGS SAFE
-    if(/^<h[1-3]/.test(line)){
-      html += `<div style="margin-top:18px">${line}</div>`;
-      continue;
-    }
+    <div class="drawer-header">
 
-    // BULLETS
-    if(line.startsWith("- ") || line.startsWith("• ")){
-      if(!inList){
-        html += "<ul>";
-        inList = true;
-      }
+        <h2>Quick Settings</h2>
 
-      let item = line.replace(/^[-•]\s/, "");
-      html += `<li>${getEmoji(item)} ${item}</li>`;
-    }
+        <button
+            id="closeQuickSettingsBtn"
+            class="icon-btn"
+            aria-label="Close">
 
-    else{
-      if(inList){
-        html += "</ul>";
-        inList = false;
-      }
+            <i data-lucide="x"></i>
 
-      if(line !== ""){
-        html += `<p>${line}</p>`;
-      }
-    }
-  }
+        </button>
 
-  if(inList) html += "</ul>";
+    </div>
 
-  return html;
-}
+    <!-- Appearance -->
+
+    <section class="drawer-section">
+
+        <h3>Appearance</h3>
+
+        <button class="drawer-item">
+
+            <i data-lucide="moon-star"></i>
+
+            <span>Dark Mode</span>
+
+        </button>
+
+        <button class="drawer-item">
+
+            <i data-lucide="palette"></i>
+
+            <span>Accent Color</span>
+
+        </button>
+
+        <button class="drawer-item">
+
+            <i data-lucide="type"></i>
+
+            <span>Font Size</span>
+
+        </button>
+
+    </section>
+
+    <!-- AI -->
+
+    <section class="drawer-section">
+
+        <h3>Artificial Intelligence</h3>
+
+        <button class="drawer-item">
+
+            <i data-lucide="brain"></i>
+
+            <span>AI Model</span>
+
+        </button>
+
+        <button class="drawer-item">
+
+            <i data-lucide="globe"></i>
+
+            <span>Web Search</span>
+
+        </button>
+
+        <button class="drawer-item">
+
+            <i data-lucide="cpu"></i>
+
+            <span>Reasoning</span>
+
+        </button>
+
+    </section>
+
+    <!-- Chat -->
+
+    <section class="drawer-section">
+
+        <h3>Chat</h3>
+
+        <button class="drawer-item">
+
+            <i data-lucide="message-square"></i>
+
+            <span>Chat Style</span>
+
+        </button>
+
+        <button class="drawer-item">
+
+            <i data-lucide="languages"></i>
+
+            <span>Language</span>
+
+        </button>
+
+    </section>
+
+    <!-- Accessibility -->
+
+    <section class="drawer-section">
+
+        <h3>Accessibility</h3>
+
+        <button class="drawer-item">
+
+            <i data-lucide="volume-2"></i>
+
+            <span>Read Responses</span>
+
+        </button>
+
+        <button class="drawer-item">
+
+            <i data-lucide="keyboard"></i>
+
+            <span>Keyboard Shortcuts</span>
+
+        </button>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="drawer-footer">
+
+        <button
+            id="openFullSettingsBtn"
+            class="primary-btn">
+
+            <i data-lucide="settings-2"></i>
+
+            <span>Open Full Settings</span>
+
+        </button>
+
+    </footer>
+
+</aside>
+  <!-- ====================================================== -->
+<!--            PART 23 : UNIVERSAL MODAL SYSTEM            -->
+<!-- ====================================================== -->
+
+<section id="modalSystem"
+         class="modal-system"
+         hidden>
+
+    <!-- Overlay -->
+
+    <div id="modalOverlay"
+         class="modal-overlay"></div>
+
+    <!-- Modal -->
+
+    <div id="modalWindow"
+         class="modal-window">
+
+        <!-- Header -->
+
+        <header class="modal-header">
+
+            <div class="modal-title-group">
+
+                <i id="modalIcon"
+                   data-lucide="layout-panel-top"></i>
+
+                <div>
+
+                    <h2 id="modalTitle">
+
+                        Modal Title
+
+                    </h2>
+
+                    <p id="modalSubtitle">
+
+                        Modal description
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <button
+                id="closeModalBtn"
+                class="icon-btn"
+                aria-label="Close">
+
+                <i data-lucide="x"></i>
+
+            </button>
+
+        </header>
+
+        <!-- Body -->
+
+        <main id="modalBody"
+              class="modal-body">
+
+        </main>
+
+        <!-- Divider -->
+
+        <hr class="modal-divider">
+
+        <!-- Footer -->
+
+        <footer class="modal-footer">
+
+            <button
+                id="modalSecondaryBtn"
+                class="secondary-btn">
+
+                Cancel
+
+            </button>
+
+            <button
+                id="modalPrimaryBtn"
+                class="primary-btn">
+
+                Continue
+
+            </button>
+
+        </footer>
+
+    </div>
+
+</section>
+
+<!-- ====================================================== -->
+<!--          MODAL CONTENT CONTAINER (Dynamic)             -->
+<!-- ====================================================== -->
+
+<section id="modalTemplates"
+         hidden>
+
+    <template id="loginModalTemplate"></template>
+
+    <template id="signupModalTemplate"></template>
+
+    <template id="renameChatTemplate"></template>
+
+    <template id="deleteChatTemplate"></template>
+
+    <template id="shareChatTemplate"></template>
+
+    <template id="exportChatTemplate"></template>
+
+    <template id="importChatTemplate"></template>
+
+    <template id="createFolderTemplate"></template>
+
+    <template id="moveChatTemplate"></template>
+
+    <template id="deleteFolderTemplate"></template>
+
+    <template id="profileTemplate"></template>
+
+    <template id="subscriptionTemplate"></template>
+
+    <template id="feedbackTemplate"></template>
+
+    <template id="bugReportTemplate"></template>
+
+    <template id="keyboardShortcutTemplate"></template>
+
+    <template id="aboutTemplate"></template>
+
+    <template id="privacyTemplate"></template>
+
+    <template id="termsTemplate"></template>
+
+    <template id="memoryTemplate"></template>
+
+    <template id="aiModelTemplate"></template>
+
+</section>
+  <!-- ====================================================== -->
+<!--         PART 24 : GLOBAL TOAST & ALERT SYSTEM          -->
+<!-- ====================================================== -->
+
+<section id="toastSystem"
+         class="toast-system"
+         aria-live="polite"
+         aria-atomic="true">
+
+    <!-- Toast Container -->
+
+    <div id="toastContainer"
+         class="toast-container">
+
+    </div>
+
+</section>
+
+<!-- ====================================================== -->
+<!--                 TOAST TEMPLATES                        -->
+<!-- ====================================================== -->
+
+<section id="toastTemplates"
+         hidden>
+
+    <!-- Success -->
+
+    <template id="successToastTemplate">
+
+        <article class="toast toast-success">
+
+            <div class="toast-icon">
+
+                <i data-lucide="badge-check"></i>
+
+            </div>
+
+            <div class="toast-content">
+
+                <h4 class="toast-title">
+
+                    Success
+
+                </h4>
+
+                <p class="toast-message">
+
+                </p>
+
+            </div>
+
+            <button
+                class="toast-close-btn">
+
+                <i data-lucide="x"></i>
+
+            </button>
+
+        </article>
+
+    </template>
+
+    <!-- Error -->
+
+    <template id="errorToastTemplate">
+
+        <article class="toast toast-error">
+
+            <div class="toast-icon">
+
+                <i data-lucide="circle-alert"></i>
+
+            </div>
+
+            <div class="toast-content">
+
+                <h4 class="toast-title">
+
+                    Error
+
+                </h4>
+
+                <p class="toast-message">
+
+                </p>
+
+            </div>
+
+            <button
+                class="toast-close-btn">
+
+                <i data-lucide="x"></i>
+
+            </button>
+
+        </article>
+
+    </template>
+
+    <!-- Warning -->
+
+    <template id="warningToastTemplate">
+
+        <article class="toast toast-warning">
+
+            <div class="toast-icon">
+
+                <i data-lucide="triangle-alert"></i>
+
+            </div>
+
+            <div class="toast-content">
+
+                <h4 class="toast-title">
+
+                    Warning
+
+                </h4>
+
+                <p class="toast-message">
+
+                </p>
+
+            </div>
+
+            <button
+                class="toast-close-btn">
+
+                <i data-lucide="x"></i>
+
+            </button>
+
+        </article>
+
+    </template>
+
+    <!-- Info -->
+
+    <template id="infoToastTemplate">
+
+        <article class="toast toast-info">
+
+            <div class="toast-icon">
+
+                <i data-lucide="info"></i>
+
+            </div>
+
+            <div class="toast-content">
+
+                <h4 class="toast-title">
+
+                    Information
+
+                </h4>
+
+                <p class="toast-message">
+
+                </p>
+
+            </div>
+
+            <button
+                class="toast-close-btn">
+
+                <i data-lucide="x"></i>
+
+            </button>
+
+        </article>
+
+    </template>
+
+    <!-- Loading -->
+
+    <template id="loadingToastTemplate">
+
+        <article class="toast toast-loading">
+
+            <div class="toast-loader">
+
+            </div>
+
+            <div class="toast-content">
+
+                <h4 class="toast-title">
+
+                    Processing
+
+                </h4>
+
+                <p class="toast-message">
+
+                </p>
+
+            </div>
+
+        </article>
+
+    </template>
+
+</section>
+  <!-- ====================================================== -->
+<!--          PART 25 : FLOATING AI WIDGETS                 -->
+<!-- ====================================================== -->
+
+<section id="floatingWidgets"
+         class="floating-widgets">
+
+    <!-- Main Floating Button -->
+
+    <button
+        id="floatingActionButton"
+        class="floating-action-btn"
+        aria-label="AI Menu">
+
+        <i data-lucide="sparkles"></i>
+
+    </button>
+
+    <!-- Floating Menu -->
+
+    <div id="floatingMenu"
+         class="floating-menu"
+         hidden>
+
+        <button
+            id="floatingNewChat"
+            class="floating-item">
+
+            <i data-lucide="square-pen"></i>
+
+            <span>New Chat</span>
+
+        </button>
+
+        <button
+            id="floatingVoice"
+            class="floating-item">
+
+            <i data-lucide="mic"></i>
+
+            <span>Voice</span>
+
+        </button>
+
+        <button
+            id="floatingImage"
+            class="floating-item">
+
+            <i data-lucide="image-plus"></i>
+
+            <span>Create Image</span>
+
+        </button>
+
+        <button
+            id="floatingSearch"
+            class="floating-item">
+
+            <i data-lucide="search"></i>
+
+            <span>Search</span>
+
+        </button>
+
+        <button
+            id="floatingResearch"
+            class="floating-item">
+
+            <i data-lucide="brain"></i>
+
+            <span>Research</span>
+
+        </button>
+
+        <button
+            id="floatingTranslate"
+            class="floating-item">
+
+            <i data-lucide="languages"></i>
+
+            <span>Translate</span>
+
+        </button>
+
+        <button
+            id="floatingProjects"
+            class="floating-item">
+
+            <i data-lucide="folder-kanban"></i>
+
+            <span>Projects</span>
+
+        </button>
+
+        <button
+            id="floatingHistory"
+            class="floating-item">
+
+            <i data-lucide="history"></i>
+
+            <span>History</span>
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ====================================================== -->
+<!--            GLOBAL FLOATING INDICATORS                  -->
+<!-- ====================================================== -->
+
+<section id="floatingIndicators">
+
+    <div id="internetIndicator"
+         class="floating-indicator"
+         hidden>
+
+        <i data-lucide="wifi"></i>
+
+    </div>
+
+    <div id="syncIndicator"
+         class="floating-indicator"
+         hidden>
+
+        <i data-lucide="refresh-cw"></i>
+
+    </div>
+
+    <div id="recordingIndicator"
+         class="floating-indicator"
+         hidden>
+
+        <i data-lucide="mic"></i>
+
+    </div>
+
+    <div id="uploadIndicator"
+         class="floating-indicator"
+         hidden>
+
+        <i data-lucide="upload"></i>
+
+    </div>
+
+</section>
   
+<!-- ====================================================== -->
+<!--          PART 26 : AUTHENTICATION CENTER               -->
+<!-- ====================================================== -->
 
+<section id="authenticationCenter"
+         class="authentication-center"
+         hidden>
 
+    <!-- Logo -->
 
+    <div class="auth-brand">
+
+        <img
+            src="assets/images/logo.png"
+            alt="DeepSINKY Logo"
+            class="auth-logo">
+
+        <h1>DeepSINKY</h1>
+
+        <p>
+            Secure AI Workspace
+        </p>
+
+    </div>
+
+    <!-- Authentication Card -->
+
+    <div class="auth-card">
+
+        <!-- Tabs -->
+
+        <nav class="auth-tabs">
+
+            <button
+                id="loginTab"
+                class="auth-tab active">
+
+                Login
+
+            </button>
+
+            <button
+                id="signupTab"
+                class="auth-tab">
+
+                Sign Up
+
+            </button>
+
+        </nav>
+
+        <!-- Login Form -->
+
+        <section id="loginForm">
+
+            <div class="form-group">
+
+                <label>Email</label>
+
+                <input
+                    id="loginEmail"
+                    type="email"
+                    autocomplete="email">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Password</label>
+
+                <input
+                    id="loginPassword"
+                    type="password">
+
+            </div>
+
+            <button
+                id="loginButton"
+                class="primary-btn">
+
+                Login
+
+            </button>
+
+        </section>
+
+        <!-- Signup Form -->
+
+        <section
+            id="signupForm"
+            hidden>
+
+            <div class="form-group">
+
+                <label>Name</label>
+
+                <input
+                    id="signupName"
+                    type="text">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Email</label>
+
+                <input
+                    id="signupEmail"
+                    type="email">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Password</label>
+
+                <input
+                    id="signupPassword"
+                    type="password">
+
+            </div>
+
+            <button
+                id="signupButton"
+                class="primary-btn">
+
+                Create Account
+
+            </button>
+
+        </section>
+
+        <!-- Social Login -->
+
+        <section class="social-login">
+
+            <button
+                id="googleLoginBtn"
+                class="social-btn">
+
+                <i data-lucide="chrome"></i>
+
+                <span>Continue with Google</span>
+
+            </button>
+
+            <button
+                id="githubLoginBtn"
+                class="social-btn">
+
+                <i data-lucide="github"></i>
+
+                <span>Continue with GitHub</span>
+
+            </button>
+
+            <button
+                id="microsoftLoginBtn"
+                class="social-btn">
+
+                <i data-lucide="monitor-smartphone"></i>
+
+                <span>Continue with Microsoft</span>
+
+            </button>
+
+        </section>
+
+        <!-- Guest Access -->
+
+        <footer class="auth-footer">
+
+            <button
+                id="guestModeBtn"
+                class="secondary-btn">
+
+                Continue as Guest
+
+            </button>
+
+        </footer>
+
+    </div>
+
+</section>
+  <!-- ====================================================== -->
+<!--         PART 27 : SUBSCRIPTION & BILLING CENTER        -->
+<!-- ====================================================== -->
+
+<section id="subscriptionCenter"
+         class="subscription-center"
+         hidden>
+
+    <!-- Header -->
+
+    <header class="subscription-header">
+
+        <div>
+
+            <h2>Subscription</h2>
+
+            <p>Manage your DeepSINKY plan</p>
+
+        </div>
+
+        <button
+            id="closeSubscriptionBtn"
+            class="icon-btn"
+            aria-label="Close">
+
+            <i data-lucide="x"></i>
+
+        </button>
+
+    </header>
+
+    <!-- Current Plan -->
+
+    <section class="current-plan-card">
+
+        <div class="plan-icon">
+
+            <i data-lucide="crown"></i>
+
+        </div>
+
+        <div class="plan-details">
+
+            <h3 id="currentPlanName">
+
+                Free Plan
+
+            </h3>
+
+            <p id="planDescription">
+
+                Basic AI features available
+
+            </p>
+
+        </div>
+
+        <button
+            id="upgradePlanBtn"
+            class="primary-btn">
+
+            Upgrade
+
+        </button>
+
+    </section>
+
+    <!-- Usage -->
+
+    <section class="usage-section">
+
+        <h3>Usage</h3>
+
+        <div class="usage-grid">
+
+            <div class="usage-card">
+
+                <span>Messages</span>
+
+                <strong id="usageMessages">
+
+                    0
+
+                </strong>
+
+            </div>
+
+            <div class="usage-card">
+
+                <span>Images</span>
+
+                <strong id="usageImages">
+
+                    0
+
+                </strong>
+
+            </div>
+
+            <div class="usage-card">
+
+                <span>Storage</span>
+
+                <strong id="usageStorage">
+
+                    0 MB
+
+                </strong>
+
+            </div>
+
+            <div class="usage-card">
+
+                <span>Projects</span>
+
+                <strong id="usageProjects">
+
+                    0
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Available Plans -->
+
+    <section class="plans-section">
+
+        <h3>Available Plans</h3>
+
+        <div id="planList"
+             class="plan-list">
+
+        </div>
+
+    </section>
+
+    <!-- Payment Methods -->
+
+    <section class="payment-section">
+
+        <h3>Payment Methods</h3>
+
+        <div id="paymentMethodList"
+             class="payment-method-list">
+
+        </div>
+
+        <button
+            id="addPaymentMethodBtn"
+            class="secondary-btn">
+
+            Add Payment Method
+
+        </button>
+
+    </section>
+
+    <!-- Billing History -->
+
+    <section class="billing-history">
+
+        <h3>Billing History</h3>
+
+        <div id="billingHistoryList"
+             class="billing-history-list">
+
+        </div>
+
+    </section>
+
+    <!-- API -->
+
+    <section class="api-section">
+
+        <h3>Developer</h3>
+
+        <button
+            id="manageApiKeysBtn"
+            class="secondary-btn">
+
+            API Keys
+
+        </button>
+
+        <button
+            id="developerUsageBtn"
+            class="secondary-btn">
+
+            Usage Statistics
+
+        </button>
+
+    </section>
+
+</section>
   
-/* STREAM */
-function streamText(text){
+<!-- ====================================================== -->
+<!--             PART 28 : DEVELOPER CENTER                 -->
+<!-- ====================================================== -->
 
-  let div = document.createElement("div");
-  div.className = "message bot";
+<section id="developerCenter"
+         class="developer-center"
+         hidden>
+
+    <!-- Header -->
+
+    <header class="developer-header">
+
+        <div>
+
+            <h2>Developer Center</h2>
+
+            <p>Advanced tools for developers</p>
+
+        </div>
+
+        <button
+            id="closeDeveloperCenterBtn"
+            class="icon-btn"
+            aria-label="Close">
+
+            <i data-lucide="x"></i>
+
+        </button>
+
+    </header>
+
+    <!-- Dashboard -->
+
+    <section class="developer-dashboard">
+
+        <div class="developer-card">
+
+            <i data-lucide="activity"></i>
+
+            <h3>System Status</h3>
+
+            <span id="systemStatus">
+                Online
+            </span>
+
+        </div>
+
+        <div class="developer-card">
+
+            <i data-lucide="cpu"></i>
+
+            <h3>Server</h3>
+
+            <span id="serverStatus">
+                Connected
+            </span>
+
+        </div>
+
+        <div class="developer-card">
+
+            <i data-lucide="database"></i>
+
+            <h3>Database</h3>
+
+            <span id="databaseStatus">
+                Connected
+            </span>
+
+        </div>
+
+        <div class="developer-card">
+
+            <i data-lucide="globe"></i>
+
+            <h3>API</h3>
+
+            <span id="apiStatus">
+                Active
+            </span>
+
+        </div>
+
+    </section>
+
+    <!-- API -->
+
+    <section class="developer-section">
+
+        <h3>API</h3>
+
+        <button id="apiKeysBtn"
+                class="developer-btn">
+
+            API Keys
+
+        </button>
+
+        <button id="apiLogsBtn"
+                class="developer-btn">
+
+            Request Logs
+
+        </button>
+
+        <button id="apiUsageBtn"
+                class="developer-btn">
+
+            API Usage
+
+        </button>
+
+    </section>
+
+    <!-- Extensions -->
+
+    <section class="developer-section">
+
+        <h3>Extensions</h3>
+
+        <button id="pluginsBtn"
+                class="developer-btn">
+
+            Plugin Manager
+
+        </button>
+
+        <button id="extensionsBtn"
+                class="developer-btn">
+
+            Extension Store
+
+        </button>
+
+    </section>
+
+    <!-- AI -->
+
+    <section class="developer-section">
+
+        <h3>Artificial Intelligence</h3>
+
+        <button id="modelsBtn"
+                class="developer-btn">
+
+            AI Models
+
+        </button>
+
+        <button id="routingBtn"
+                class="developer-btn">
+
+            Routing Engine
+
+        </button>
+
+        <button id="memoryEngineBtn"
+                class="developer-btn">
+
+            Memory Engine
+
+        </button>
+
+    </section>
+
+    <!-- Performance -->
+
+    <section class="developer-section">
+
+        <h3>Performance</h3>
+
+        <button id="performanceBtn"
+                class="developer-btn">
+
+            Performance Monitor
+
+        </button>
+
+        <button id="networkBtn"
+                class="developer-btn">
+
+            Network Monitor
+
+        </button>
+
+        <button id="storageBtn"
+                class="developer-btn">
+
+            Storage Usage
+
+        </button>
+
+    </section>
+
+    <!-- Debug -->
+
+    <section class="developer-section">
+
+        <h3>Debug</h3>
+
+        <button id="consoleBtn"
+                class="developer-btn">
+
+            Debug Console
+
+        </button>
+
+        <button id="errorLogsBtn"
+                class="developer-btn">
+
+            Error Logs
+
+        </button>
+
+        <button id="systemLogsBtn"
+                class="developer-btn">
+
+            System Logs
+
+        </button>
+
+    </section>
+
+</section>
+  <!-- ====================================================== -->
+<!--         PART 29 : AI AGENTS & WORKSPACE HUB            -->
+<!-- ====================================================== -->
+
+<section id="agentWorkspace"
+         class="agent-workspace"
+         hidden>
+
+    <!-- Header -->
+
+    <header class="workspace-header">
+
+        <div>
+
+            <h2>AI Agents</h2>
+
+            <p>Create and manage intelligent AI agents</p>
+
+        </div>
+
+        <button id="closeAgentWorkspace"
+                class="icon-btn">
+
+            <i data-lucide="x"></i>
+
+        </button>
+
+    </header>
+
+    <!-- Search -->
+
+    <section class="workspace-search">
+
+        <i data-lucide="search"></i>
+
+        <input
+            id="agentSearch"
+            type="search"
+            placeholder="Search agents">
+
+    </section>
+
+    <!-- Categories -->
+
+    <section class="agent-category-list">
+
+        <button class="agent-category active">
+
+            All
+
+        </button>
+
+        <button class="agent-category">
+
+            Writing
+
+        </button>
+
+        <button class="agent-category">
+
+            Coding
+
+        </button>
+
+        <button class="agent-category">
+
+            Research
+
+        </button>
+
+        <button class="agent-category">
+
+            Education
+
+        </button>
+
+        <button class="agent-category">
+
+            Business
+
+        </button>
+
+        <button class="agent-category">
+
+            Design
+
+        </button>
+
+        <button class="agent-category">
+
+            Personal
+
+        </button>
+
+    </section>
+
+    <!-- Agent Grid -->
+
+    <section id="agentGrid"
+             class="agent-grid">
+
+    </section>
+
+    <!-- My Agents -->
+
+    <section class="my-agent-section">
+
+        <h3>My Agents</h3>
+
+        <div id="myAgentList">
+
+        </div>
+
+    </section>
+
+    <!-- Agent Marketplace -->
+
+    <section class="marketplace-section">
+
+        <h3>Marketplace</h3>
+
+        <div id="marketplaceAgentList">
+
+        </div>
+
+    </section>
+
+    <!-- Recent -->
+
+    <section class="recent-agent-section">
+
+        <h3>Recently Used</h3>
+
+        <div id="recentAgentList">
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="workspace-footer">
+
+        <button
+            id="createAgentBtn"
+            class="primary-btn">
+
+            Create Agent
+
+        </button>
+
+    </footer>
+
+</section>
+  <!-- ====================================================== -->
+<!--            PART 30 : GLOBAL ROOT SYSTEM                -->
+<!-- ====================================================== -->
+
+<!-- ================= APP ROOT ================= -->
+
+<div id="appRoot"></div>
+
+<!-- ================= PAGE LOADER ================= -->
+
+<section id="appLoader"
+         class="app-loader"
+         hidden>
+
+    <div class="loader-logo">
+
+        <img
+            src="assets/images/logo.png"
+            alt="DeepSINKY">
+
+    </div>
+
+    <div class="loader-content">
+
+        <h2>
+
+            DeepSINKY
+
+        </h2>
+
+        <p>
+
+            Initializing AI Engine...
+
+        </p>
+
+    </div>
+
+    <div class="loader-progress">
+
+        <div id="loaderProgressBar"></div>
+
+    </div>
+
+</section>
+
+<!-- ================= SPLASH ================= -->
+
+<section id="splashScreen"
+         hidden>
+
+</section>
+
+<!-- ================= GLOBAL OVERLAY ================= -->
+
+<div id="globalOverlay"></div>
+
+<!-- ================= BLUR LAYER ================= -->
+
+<div id="blurLayer"></div>
+
+<!-- ================= DRAWER ROOT ================= -->
+
+<div id="drawerRoot"></div>
+
+<!-- ================= DROPDOWN ROOT ================= -->
+
+<div id="dropdownRoot"></div>
+
+<!-- ================= MODAL ROOT ================= -->
+
+<div id="modalRoot"></div>
+
+<!-- ================= TOOLTIP ROOT ================= -->
+
+<div id="tooltipRoot"></div>
+
+<!-- ================= CONTEXT MENU ROOT ================= -->
+
+<div id="contextMenuRoot"></div>
+
+<!-- ================= FLOATING ROOT ================= -->
+
+<div id="floatingRoot"></div>
+
+<!-- ================= TOAST ROOT ================= -->
+
+<div id="toastRoot"></div>
+
+<!-- ================= PORTAL ROOT ================= -->
+
+<div id="portalRoot"></div>
+
+<!-- ================= AI ROOT ================= -->
+
+<div id="aiRoot"></div>
+
+<!-- ================= STREAM ROOT ================= -->
+
+<div id="streamRoot"></div>
+
+<!-- ================= VOICE ROOT ================= -->
+
+<div id="voiceRoot"></div>
+
+<!-- ================= IMAGE ROOT ================= -->
+
+<div id="imageRoot"></div>
+
+<!-- ================= VIDEO ROOT ================= -->
+
+<div id="videoRoot"></div>
+
+<!-- ================= AUDIO ROOT ================= -->
+
+<div id="audioRoot"></div>
+
+<!-- ================= FILE ROOT ================= -->
+
+<div id="fileRoot"></div>
+
+<!-- ================= CANVAS ROOT ================= -->
+
+<div id="canvasRoot"></div>
+
+<!-- ================= WORKSPACE ROOT ================= -->
+
+<div id="workspaceRoot"></div>
+
+<!-- ================= AGENT ROOT ================= -->
+
+<div id="agentRoot"></div>
+
+<!-- ================= PLUGIN ROOT ================= -->
+
+<div id="pluginRoot"></div>
+
+<!-- ================= EXTENSION ROOT ================= -->
+
+<div id="extensionRoot"></div>
+
+<!-- ================= UPDATE ROOT ================= -->
+
+<div id="updateRoot"></div>
+
+<!-- ================= NETWORK STATUS ================= -->
+
+<section id="networkStatus"
+         hidden>
+
+</section>
+
+<!-- ================= OFFLINE SCREEN ================= -->
+
+<section id="offlineScreen"
+         hidden>
+
+</section>
+
+<!-- ================= INSTALL PROMPT ================= -->
+
+<section id="installPrompt"
+         hidden>
+
+</section>
+
+<!-- ================= GLOBAL SEARCH ROOT ================= -->
+
+<div id="searchRoot"></div>
+
+<!-- ================= UNIVERSAL INPUTS ================= -->
+
+<input
+    id="imagePicker"
+    type="file"
+    accept="image/*"
+    hidden>
+
+<input
+    id="cameraPicker"
+    type="file"
+    accept="image/*"
+    capture
+    hidden>
+
+<input
+    id="videoPicker"
+    type="file"
+    accept="video/*"
+    hidden>
+
+<input
+    id="audioPicker"
+    type="file"
+    accept="audio/*"
+    hidden>
+
+<input
+    id="documentPicker"
+    type="file"
+    accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt"
+    hidden>
+
+<input
+    id="folderPicker"
+    type="file"
+    webkitdirectory
+    directory
+    multiple
+    hidden>
+  
