@@ -3,2681 +3,1000 @@
 <html lang="en">
 
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepSINKY</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<style>
 
-    <!-- ========================================= -->
-    <!-- DeepSINKY AI -->
-    <!-- PART 1 : HTML Foundation -->
-    <!-- ========================================= -->
+/* ===== BODY ===== */
+body{
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+  font-size:16px;
+  line-height:1.7;
+  letter-spacing:0.1px;
+  background:#0f0f0f;
+  color:white;
+  height:100vh;
+}
+ b{
+  font-size:16px;
+  font-weight:600;
+  color:#ffffff;
+ }
 
-    <meta charset="UTF-8">
+/* ===== SIDEBAR ===== */
+.sidebar{
+  width:260px;
+  background:#202123;
+  padding:10px;
+  overflow-y:auto;
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  position:fixed;
+  top:0;
+  left:0;
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  transform:translateX(-100%);   /* 🔥 MAIN FIX */
+  transition:0.3s;
+}
+.sidebar.open{ left:0; }
 
-    <!-- Primary SEO -->
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+  display:none;
+}
+.overlay.show{ display:block; }
 
-    <title>DeepSINKY AI</title>
+/* ===== MAIN ===== */
+.main{
+  display:flex;
+  flex-direction:column;
+  height:100vh;   /* 🔥 FINAL FIX */
+}
 
-    <meta name="title" content="DeepSINKY AI">
+/* ===== HEADER ===== */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px;
+  border-bottom:1px solid #333;
+}
+/* MENU */
+.menu{
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
 
-    <meta name="description"
-          content="DeepSINKY AI - Advanced Artificial Intelligence Assistant">
+.line{
+  height:2px;
+  background:white;
+  border-radius:2px;
+}
 
-    <meta name="keywords"
-          content="AI, Artificial Intelligence, ChatGPT, DeepSINKY">
+/* FULL LINE */
+.line.full{
+  width:22px;
+}
 
-    <meta name="author"
-          content="DeepSINKY">
+/* HALF LINE */
+.line.half{
+  width:12px;
+}
 
-    <meta name="robots"
-          content="index,follow">
+/* BRAND (LOGO + TEXT) */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
 
-    <meta name="theme-color"
-          content="#0D0D0D">
+.logo-img{
+  width:28px;
+  height:28px;
+  object-fit:contain;
+}
 
-    <meta name="color-scheme"
-          content="dark">
+.title{
+  font-weight:bold;
+  font-size:18px;
+}
 
-    <!-- Open Graph -->
+/* LOGIN */
+.login-btn{
+  background:#19c37d;
+  border:none;
+  padding:6px 12px;
+  border-radius:6px;
+  cursor:pointer;
+}
 
-    <meta property="og:type" content="website">
+/* ===== CHAT ===== */
+ .chat{
+  flex:1;
+  overflow-y:auto;
+  padding:20px;
+  }
+  .message{
+  margin:8px 0;
+  }
+  .message{
+  margin:10px 0;
+  padding:10px 14px;
+  border-radius:18px;
+  max-width:fit-content;   /* 🔥 auto size */
+  width:auto;
+  word-wrap:break-word;
+  line-height:1.4;
+}
 
-    <meta property="og:title"
-          content="DeepSINKY AI">
+/* 👤 USER BUBBLE */
+.user{
+  background:#2a2b32;
+  color:#fff;
+  margin-left:auto;
+  border-radius:18px;
+  padding:10px 14px;
+  max-width:75%;
 
-    <meta property="og:description"
-          content="Professional AI Assistant">
+  /* 👇 ADD ये */
+  width:fit-content;
+  word-wrap:break-word;
+  line-height:1.5;
+}
 
-    <meta property="og:image"
-          content="assets/images/banner.png">
+/* 🤖 BOT (no bubble clean text) */
+.bot{
+  background:transparent;
+  color:#e5e5e5;
+  padding:0;
+  margin-left:0;
+  margin-right:auto;
+  max-width:85%;
+}
+  pre{
+  background:#0d1117;
+  padding:14px;
+  border-radius:10px;
+  overflow:auto;
+}
 
-    <!-- Apple -->
+code{
+  font-family:Consolas, monospace;
+  font-size:13px;
+}
 
-    <meta name="apple-mobile-web-app-capable"
-          content="yes">
+  .bot{
+  line-height:1.6;
+  }
+  /* =========================
+   🔥 CODE BLOCK STYLE
+========================= */
 
-    <meta name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent">
+pre {
+  background: #0d1117;
+  color: #c9d1d9;
+  padding: 14px;
+  border-radius: 10px;
+  overflow: auto;
+  margin: 12px 0;
+  position: relative;
+  font-size: 13px;
+  line-height: 1.5;
+}
 
-    <meta name="apple-mobile-web-app-title"
-          content="DeepSINKY">
+code {
+  font-family: "Fira Code", monospace;
+  font-size: 13px;
+}
 
-    <!-- Manifest -->
+pre code {
+  background: none !important;
+  padding: 0 !important;
+}
 
-    <link rel="manifest"
-          href="manifest.json">
+/* 🎨 COLORS */
+.hljs-keyword { color: #ff7b72; }
+.hljs-string { color: #a5d6ff; }
+.hljs-number { color: #79c0ff; }
+.hljs-title { color: #d2a8ff; }
+.hljs-variable { color: #ffa657; }
+.hljs-comment { color: #8b949e; font-style: italic; }
 
-    <!-- Icons -->
+/* 📋 COPY BUTTON */
+.copy-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: #21262d;
+  color: #c9d1d9;
+  border: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
-    <link rel="icon"
-          href="assets/icons/favicon.png">
+.copy-btn:hover {
+  background: #30363d;
+}
 
-    <link rel="apple-touch-icon"
-          href="assets/icons/icon-192.png">
+/* ===== INPUT ===== */
+.input-area{
+  padding:10px;
+  display:flex;
+  justify-content:center;
+  position:sticky;   /* ✅ ADD */
+  bottom:0;          /* ✅ ADD */
+  background:#0f0f0f; /* ✅ ADD */
+}
 
-    <!-- Google Fonts -->
+.input-box{
+  width:95%;
+  max-width:700px;
+  display:flex;
+  align-items:center;
+  background:#2a2b32;
+  border-radius:30px;
+  padding:10px;
+  gap:10px;
+}
+  .input-box input{
+  flex:1;
+  background:transparent;
+  border:none;
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+  color:#ffffff;
+  font-size:15px;
+  font-weight:500;
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+  outline:none;
+  }
+  .input-box input::placeholder{
+  color:#b5b5b5;   /* 🔥 visible grey */
+  font-weight:500;
+  }
+  .input-container{
+  backdrop-filter: blur(10px);
+  }
+  /* 🔥 PLUS MENU FIX (BOTTOM POPUP) */
+.plus-menu{
+  position: fixed;
+  bottom: 80px; /* input ke upar */
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet">
+  width: 90%;
+  max-width: 420px;
 
-    <!-- Font Awesome -->
+  background: #1e1f23;
+  border-radius: 18px;
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  padding: 16px;
+  display: none;
 
-    <!-- Highlight.js -->
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  z-index: 999;
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
+  opacity: 0;
+  transition: 0.25s ease;
+}
 
-    <script defer
-            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js">
-    </script>
+/* 🔥 open state */
+.plus-menu.active{
+  display: block;
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+  .plus-menu{
+  transform: translateX(-50%) translateY(20px) scale(0.95);
+}
 
-    <!-- Main CSS -->
+/* 🔥 GPT STYLE OPEN */
+.plus-menu.active{
+  display: block;
+  opacity: 1;
 
-    <link rel="stylesheet"
-          href="style.css">
+  transform: translateX(-50%) translateY(0) scale(1);
+
+  animation: popupBounce 0.35s ease;
+}
+
+/* 🔥 BOUNCE KEYFRAMES */
+@keyframes popupBounce{
+  0%{
+    transform: translateX(-50%) translateY(40px) scale(0.9);
+    opacity:0;
+  }
+  60%{
+    transform: translateX(-50%) translateY(-5px) scale(1.03);
+  }
+  100%{
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity:1;
+  }
+}
+  .overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  z-index: 998;
+}
+
+.overlay.active{
+  opacity: 1;
+  pointer-events: all;
+}
+  /* ===== GPT STYLE CONTAINER ===== */
+
+.input-container{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  max-width:750px;
+  margin:auto;
+
+  background:#1e1f23;
+  border-radius:28px;
+
+  padding:10px 14px;
+
+  border:1px solid #2f2f2f;
+
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.02);
+
+  transition:0.25s ease;
+}
+.menu-grid{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 12px;
+}
+
+.menu-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  color:#ccc;
+  font-size:12px;
+}
+  .input-container input{
+  flex:1;
+  background:transparent;   /* 🔥 white हट गया */
+  border:none;
+  outline:none;
+  color:#e5e5e5;
+  font-size:15px;
+  }
+.icon-btn{
+  background:transparent;
+  border:none;
+
+  color:#ffffff;        /* 🔥 bright white */
+  font-size:20px;       /* 🔥 bada + clear */
+  font-weight:600;
+
+  width:36px;
+  height:36px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.icon-btn:hover{
+  background:#2a2b32;
+  color:#ffffff;
+}
+#sendBtn{
+  width:40px;
+  height:40px;
+  border:none;
+  border-radius:50%;
+
+  background:#2a2b32;   /* 🔥 dark grey */
+  color:#ffffff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+  transition:0.2s;
+}
+
+/* LOADING */
+.dot{
+  display:flex;
+  gap:5px;
+}
+
+.dot span{
+  width:6px;
+  height:6px;
+  background:#aaa;
+  border-radius:50%;
+  animation: blink 1s infinite;
+}
+
+.dot span:nth-child(2){
+  animation-delay:0.3s;
+}
+
+@keyframes blink{
+  0%,100%{ opacity:0.3; }
+  50%{ opacity:1; }
+}
+.icon-btn svg{
+  width:18px;
+  height:18px;
+} 
+  .icon-btn:active{
+  transform:scale(0.9);
+  }
+  
+  .icon-btn:hover{
+  background:#2a2b32;
+  color:#fff;
+  }
+  /* ===== CHATGPT PERFECT STYLE ===== */
+
+.bot{
+  max-width:680px;
+  margin:auto;
+  color:#e5e5e5;
+  font-size:15px;
+  line-height:1.75;
+}
+
+/* HEADINGS */
+.bot h1{
+  font-size:34px;
+  font-weight:800;
+  margin:32px 0 14px;
+}
+
+.bot h2{
+  font-size:26px;
+  font-weight:700;
+  margin:28px 0 12px;
+}
+
+.bot h3{
+  font-size:20px;
+  font-weight:600;
+  margin:22px 0 10px;
+}
+
+/* PARAGRAPH */
+.bot p{
+  margin:12px 0;
+  color:#d1d1d1;
+}
+
+/* LIST */
+.bot ul{
+  margin:14px 0;
+  padding-left:22px;
+}
+
+.bot li{
+  margin:10px 0;
+}
+
+/* EMOJI */
+.bot .emoji{
+  font-size:1.5em;
+  margin-right:8px;
+}
+.message{
+  position: relative;
+  padding-bottom: 14px;
+}
+ 
+.action-bar{
+  display:flex;
+  flex-direction:row;
+
+  flex-wrap:nowrap;        /* ❌ wrap बंद */
+  align-items:center;
+
+  gap:14px;
+  margin-top:8px;
+
+  width:100%;              /* 🔥 FULL WIDTH */
+}
+pre .copy-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+  .copy-action-btn {
+  position: static;
+  }
+/* 🔥 BUTTON FIX */
+.icon-btn{
+  flex:0 0 auto;           /* ❌ shrink बंद */
+  width:32px;
+  height:32px;
+  }
+
+/* 🔥 HOVER = GPT STYLE */
+.icon-btn:hover{
+  background:rgba(255,255,255,0.05);
+  border-color:rgba(255,255,255,0.15);
+  color:#ffffff;
+}
+
+/* 🔥 ACTIVE STATES */
+.like-btn.active{
+  color:#19c37d;
+  border-color:#19c37d55;
+}
+
+.dislike-btn.active{
+  color:#ef4444;
+  border-color:#ef444455;
+}
+
+/* 🔥 SEGMENTED DIVIDER (message-wise break) */
+.message::after{
+  content: "";
+  position: absolute;
+  left: 0;      /* ❌ no full width */
+  right: 0;     /* ✅ message ke width tak */
+  bottom: 0;
+
+  height: 1px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,0.08),
+    transparent
+  );
+}
+
+/* last message clean */
+.message:last-child::after{
+  display: none;
+}
+
+
+</style>
 
 </head>
 
 <body>
-
-    <!-- ========================================= -->
-<!-- DeepSINKY AI - PART 2 -->
-<!-- App Container + Loader + Layout -->
-<!-- ========================================= -->
-
-<div id="app">
-
-    <!-- Splash Loader -->
-
-    <div id="app-loader">
-
-        <div class="loader-content">
-
-            <img
-                id="loader-logo"
-                src="assets/logo.png"
-                alt="DeepSINKY Logo">
-
-            <h1 id="loader-title">
-                DeepSINKY
-            </h1>
-
-            <p id="loader-subtitle">
-                Initializing AI Engine...
-            </p>
-
-            <div class="loader-progress">
-
-                <div id="loader-bar"></div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Overlay -->
-
-    <div id="global-overlay"></div>
-
-    <div id="blur-overlay"></div>
-
-    <!-- Containers -->
-
-    <div id="toast-container"></div>
-
-    <div id="notification-container"></div>
-
-    <div id="modal-root"></div>
-
-    <div id="floating-root"></div>
-
-    <!-- Main App Layout -->
-
-    <div id="app-layout">
-
-        <!-- Part 3 (Header) yahan se start hoga -->
-
-        <!-- Part 4 (Sidebar) yahan add hoga -->
-
-        <!-- Main Content -->
-
-        <main id="main-content">
-
-            <!-- Part 5 (Chat Screen) yahan add hoga -->
-
-            <!-- Part 8 me Prompt Area add hoga -->
-
-        </main>
-
-    </div>
-
+<input type="file" id="cameraInput" accept="image/*" capture hidden>
+<input type="file" id="photoInput" accept="image/*" hidden>
+<input type="file" id="fileInput" hidden>
+  
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <h3>Chats</h3>
+  <div>New Chat</div>
 </div>
 
-<!-- Hidden Inputs -->
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
-<input
-    id="cameraInput"
-    type="file"
-    accept="image/*"
-    capture
-    hidden>
+<!-- MAIN -->
+<div class="main">
 
-<input
-    id="photoInput"
-    type="file"
-    accept="image/*"
-    hidden>
+  <!-- HEADER -->
+  <div class="header">
 
-<input
-    id="fileInput"
-    type="file"
-    hidden>
-
-<!-- End Part 2 -->
-
-    <!-- ========================================= -->
-<!-- DeepSINKY AI - PART 3 -->
-<!-- Professional Header -->
-<!-- ========================================= -->
-
-<header id="header">
-
-    <!-- Left -->
-
-    <div class="header-left">
-
-        <button
-            id="menuBtn"
-            class="header-btn"
-            aria-label="Open Sidebar">
-
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M4 7H20M4 12H16M4 17H20"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"/>
-            </svg>
-
-        </button>
-
-        <div id="brand">
-
-            <img
-                id="logo"
-                src="assets/logo.png"
-                alt="DeepSINKY">
-
-            <div id="brand-text">
-
-                <span id="brand-name">
-                    DeepSINKY
-                </span>
-
-                <span id="brand-version">
-                    AI
-                </span>
-
-            </div>
-
-        </div>
-
+    <div class="menu" onclick="toggleSidebar()">
+  <span class="line full"></span>
+  <span class="line half"></span>
     </div>
 
-    <!-- Center -->
-
-    <div class="header-center">
-
-        <button
-            id="modelSelector"
-            class="header-pill">
-
-            <span id="selected-model">
-
-                DeepSINKY Pro
-
-            </span>
-
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M7 10L12 15L17 10"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    fill="none"/>
-            </svg>
-
-        </button>
-
+    <!-- ✅ FIXED LOGO -->
+    <div class="brand">
+      <img src="logo.png" class="logo-img">
+      <span class="title">DeepSINKY</span>
     </div>
 
-    <!-- Right -->
+    <button class="login-btn">Login</button>
 
-    <div class="header-right">
+  </div>
 
-        <button
-            id="searchBtn"
-            class="header-btn"
-            title="Search">
+  <!-- CHAT -->
+<div class="chat" id="chat"></div>
 
-            <svg viewBox="0 0 24 24">
-                <circle
-                    cx="11"
-                    cy="11"
-                    r="6"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"/>
-                <path
-                    d="M20 20L16.5 16.5"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"/>
-            </svg>
-
-        </button>
-
-        <button
-            id="newChatBtn"
-            class="header-btn"
-            title="New Chat">
-
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M12 5V19"
-                    stroke="currentColor"
-                    stroke-width="2"/>
-                <path
-                    d="M5 12H19"
-                    stroke="currentColor"
-                    stroke-width="2"/>
-            </svg>
-
-        </button>
-
-        <button
-            id="notificationBtn"
-            class="header-btn"
-            title="Notifications">
-
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M12 4C9 4 7 6 7 9V13L5 16H19L17 13V9C17 6 15 4 12 4Z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"/>
-                <circle
-                    cx="12"
-                    cy="19"
-                    r="1.5"
-                    fill="currentColor"/>
-            </svg>
-
-        </button>
-
-        <button
-            id="settingsBtn"
-            class="header-btn"
-            title="Settings">
-
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M12 8A4 4 0 1 0 12 16A4 4 0 1 0 12 8"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"/>
-            </svg>
-
-        </button>
-
-        <button id="profileBtn">
-
-            <img
-                src="assets/avatar.png"
-                alt="Profile">
-
-        </button>
-
-    </div>
-
-</header>
-
-<!-- End Part 3 -->
-    <!-- ========================================= -->
-<!-- DeepSINKY AI - PART 4 -->
-<!-- Professional Sidebar -->
-<!-- ========================================= -->
-
-<aside id="sidebar">
-
-    <!-- Sidebar Header -->
-
-    <div id="sidebar-header">
-
-        <button
-            id="closeSidebarBtn"
-            class="sidebar-icon-btn"
-            aria-label="Close Sidebar">
-
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M6 6L18 18M18 6L6 18"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"/>
-            </svg>
-
-        </button>
-
-        <button
-            id="sidebarNewChatBtn"
-            class="primary-sidebar-btn">
-
-            <svg viewBox="0 0 24 24">
-                <path
-                    d="M12 5V19M5 12H19"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"/>
-            </svg>
-
-            <span>New Chat</span>
-
-        </button>
-
-    </div>
-
-    <!-- Search -->
-
-    <div id="sidebar-search">
-
-        <button id="searchChatsBtn">
-
-            <svg viewBox="0 0 24 24">
-                <circle
-                    cx="11"
-                    cy="11"
-                    r="6"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"/>
-
-                <path
-                    d="M20 20L16.5 16.5"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"/>
-            </svg>
-
-            <span>Search Chats</span>
-
-        </button>
-
-    </div>
-
-    <!-- Navigation -->
-
-    <nav id="sidebar-navigation">
-
-        <button
-            id="libraryBtn"
-            class="sidebar-nav-btn">
-            Library
-        </button>
-
-        <button
-            id="exploreBtn"
-            class="sidebar-nav-btn">
-            Explore AI
-        </button>
-
-        <button
-            id="imageStudioBtn"
-            class="sidebar-nav-btn">
-            Image Studio
-        </button>
-
-        <button
-            id="researchBtn"
-            class="sidebar-nav-btn">
-            Deep Research
-        </button>
-
-    </nav>
-
-    <!-- Chat History -->
-
-    <section id="history-section">
-
-        <h3 class="history-title">
-            Today
-        </h3>
-
-        <div
-            id="today-history"
-            class="history-list"></div>
-
-        <h3 class="history-title">
-            Yesterday
-        </h3>
-
-        <div
-            id="yesterday-history"
-            class="history-list"></div>
-
-        <h3 class="history-title">
-            Older
-        </h3>
-
-        <div
-            id="older-history"
-            class="history-list"></div>
-
-    </section>
-
-    <!-- Footer -->
-
-    <div id="sidebar-footer">
-
-        <button
-            id="memoryBtn"
-            class="sidebar-footer-btn">
-            Memory
-        </button>
-
-        <button
-            id="settingsSidebarBtn"
-            class="sidebar-footer-btn">
-            Settings
-        </button>
-
-        <button
-            id="helpBtn"
-            class="sidebar-footer-btn">
-            Help
-        </button>
-
-        <button
-            id="logoutBtn"
-            class="sidebar-footer-btn danger">
-            Log Out
-        </button>
-
-    </div>
-
-</aside>
-
-<!-- Sidebar Backdrop -->
-
-<div id="sidebar-backdrop"></div>
-
-<!-- End Part 4 -->
-    <!-- ========================================= -->
-<!-- DeepSINKY AI - PART 5 -->
-<!-- Welcome Screen + Chat Window -->
-<!-- ========================================= -->
-
-<section id="chat-screen">
-
-    <!-- Welcome Screen -->
-
-    <section id="welcome-screen">
-
-        <div id="welcome-container">
-
-            <img
-                id="welcome-logo"
-                src="assets/logo.png"
-                alt="DeepSINKY">
-
-            <h1 id="welcome-title">
-                How can I help you today?
-            </h1>
-
-            <p id="welcome-description">
-                DeepSINKY can answer questions, generate code,
-                create images, explain concepts, summarize files,
-                search the web and help with your daily work.
-            </p>
-
-        </div>
-
-        <!-- Suggestion Grid -->
-
-        <div id="suggestion-grid">
-
-            <button
-                class="suggestion-card"
-                data-prompt="Explain quantum computing in simple language">
-
-                <div class="card-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M12 3a5 5 0 0 0-5 5v8a5 5 0 0 0 10 0V8a5 5 0 0 0-5-5z"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"/>
-                    </svg>
-
-                </div>
-
-                <div class="card-content">
-                    <h3>Explain</h3>
-                    <p>Learn difficult topics easily.</p>
-                </div>
-
-            </button>
-
-            <button
-                class="suggestion-card"
-                data-prompt="Write a professional JavaScript project">
-
-                <div class="card-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M5 4h14v16H5z"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"/>
-                    </svg>
-
-                </div>
-
-                <div class="card-content">
-                    <h3>Code</h3>
-                    <p>Generate production-quality code.</p>
-                </div>
-
-            </button>
-
-            <button
-                class="suggestion-card"
-                data-prompt="Create a realistic futuristic city image">
-
-                <div class="card-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <rect
-                            x="4"
-                            y="4"
-                            width="16"
-                            height="16"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"/>
-                    </svg>
-
-                </div>
-
-                <div class="card-content">
-                    <h3>Create</h3>
-                    <p>Generate stunning AI images.</p>
-                </div>
-
-            </button>
-
-            <button
-                class="suggestion-card"
-                data-prompt="Search latest AI news">
-
-                <div class="card-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="8"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"/>
-                    </svg>
-
-                </div>
-
-                <div class="card-content">
-                    <h3>Search</h3>
-                    <p>Find information from the web.</p>
-                </div>
-
-            </button>
-
-        </div>
-
-    </section>
-
-    <!-- Chat Messages -->
-
-    <section id="chat-window">
-
-        <!-- Messages will be added by JavaScript -->
-
-    </section>
-
-    <!-- Typing Indicator -->
-
-    <div id="typing-indicator" hidden>
-
-        <div class="typing-avatar">
-
-            <img
-                src="assets/logo.png"
-                alt="AI">
-
-        </div>
-
-        <div class="typing-dots">
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-    </div>
-
-    <!-- Scroll Button -->
-
-    <button
-        id="scrollBottomBtn"
-        aria-label="Scroll to Bottom">
-
-        <svg viewBox="0 0 24 24">
-
-            <path
-                d="M7 10L12 15L17 10"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                fill="none"/>
-
-        </svg>
-
-    </button>
-
-</section>
-
-<!-- End Part 5 -->
+  <!-- INPUT -->
+  <div class="input-area">
+  <div class="input-container">
     
-<!-- ========================================= -->
-<!-- DeepSINKY AI - PART 6 -->
-<!-- Professional Chat Templates -->
-<!-- ========================================= -->
-
-<!-- Chat Templates -->
-<template id="userMessageTemplate">
-
-    <article class="message user-message">
-
-        <div class="message-wrapper">
-
-            <div class="message-content">
-
-                <p class="message-text"></p>
-
-                <div class="message-attachments"></div>
-
-            </div>
-
-        </div>
-
-    </article>
-
-</template>
-
-<template id="assistantMessageTemplate">
-
-    <article class="message assistant-message">
-
-        <div class="assistant-avatar">
-
-            <img
-                src="assets/logo.png"
-                alt="DeepSINKY">
-
-        </div>
-
-        <div class="assistant-body">
-
-            <div class="message-content markdown-body"></div>
-
-            <!-- Code Block Area -->
-            <div class="code-container"></div>
-
-            <!-- Image Result -->
-            <div class="generated-image-container"></div>
-
-            <!-- Action Bar -->
-
-            <div class="message-actions">
-
-                <button
-                    class="action-btn copy-response-btn"
-                    title="Copy">
-
-                    <svg viewBox="0 0 24 24">
-                        <rect
-                            x="9"
-                            y="9"
-                            width="11"
-                            height="11"
-                            rx="2"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"/>
-
-                        <rect
-                            x="4"
-                            y="4"
-                            width="11"
-                            height="11"
-                            rx="2"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"/>
-                    </svg>
-
-                </button>
-
-                <button
-                    class="action-btn regenerate-btn"
-                    title="Regenerate">
-
-                    <svg viewBox="0 0 24 24">
-
-                        <path
-                            d="M20 12A8 8 0 1 1 18 6"
-
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"/>
-
-                        <path
-                            d="M20 4V10H14"
-
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"
-                            stroke-linecap="round"/>
-
-                    </svg>
-
-                </button>
-
-                <button
-                    class="action-btn like-btn"
-                    title="Like">
-
-                    <svg viewBox="0 0 24 24">
-
-                        <path
-                            d="M7 11V21H4V11H7ZM10 21H17C18.1 21 19 20.1 19 19V12C19 10.9 18.1 10 17 10H13L14 5L13 4L8 9V21H10Z"
-
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"/>
-
-                    </svg>
-
-                </button>
-
-                <button
-                    class="action-btn dislike-btn"
-                    title="Dislike">
-
-                    <svg viewBox="0 0 24 24">
-
-                        <path
-                            d="M17 13V3H20V13H17ZM14 3H7C5.9 3 5 3.9 5 5V12C5 13.1 5.9 14 7 14H11L10 19L11 20L16 15V3H14Z"
-
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"/>
-
-                    </svg>
-
-                </button>
-
-                <button
-                    class="action-btn share-btn"
-                    title="Share">
-
-                    <svg viewBox="0 0 24 24">
-
-                        <circle
-                            cx="18"
-                            cy="5"
-                            r="3"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"/>
-
-                        <circle
-                            cx="6"
-                            cy="12"
-                            r="3"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"/>
-
-                        <circle
-                            cx="18"
-                            cy="19"
-                            r="3"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            fill="none"/>
-
-                        <path
-                            d="M8.5 11L15.5 7"
-
-                            stroke="currentColor"
-                            stroke-width="2"/>
-
-                        <path
-                            d="M8.5 13L15.5 17"
-
-                            stroke="currentColor"
-                            stroke-width="2"/>
-
-                    </svg>
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </article>
-
-</template>
-
-<!-- Streaming Template -->
-
-<template id="streamTemplate">
-
-    <article class="message assistant-message streaming">
-
-        <div class="assistant-avatar">
-
-            <img
-                src="assets/logo.png"
-                alt="DeepSINKY">
-
-        </div>
-
-        <div class="assistant-body">
-
-            <div
-                class="stream-output">
-
-            </div>
-
-            <div
-                class="stream-cursor">
-
-            </div>
-
-        </div>
-
-    </article>
-
-</template>
-
-<!-- Typing Loader -->
-
-<template id="typingTemplate">
-
-    <div class="typing-loader">
-
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-
-    </div>
-
-</template>
-
-<!-- End Part 6 -->
-<!-- ========================================= -->
-<!-- DeepSINKY AI - PART 7 -->
-<!-- Professional Prompt Area -->
-<!-- ========================================= -->
-
-<footer id="prompt-area">
-
-    <div id="prompt-container">
-
-        <!-- Left Tools -->
-
-        <div id="prompt-tools-left">
-
-            <!-- Add -->
-
-            <button
-                id="addAttachmentBtn"
-                class="tool-btn"
-                aria-label="Add">
-
-                <svg viewBox="0 0 24 24">
-                    <path
-                        d="M12 5V19M5 12H19"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"/>
-                </svg>
-
-            </button>
-
-        </div>
-
-        <!-- Input -->
-
-        <div id="prompt-input-wrapper">
-
-            <textarea
-                id="promptInput"
-                rows="1"
-                placeholder="Message DeepSINKY..."
-                autocomplete="off"
-                spellcheck="false"></textarea>
-
-        </div>
-
-        <!-- Right Tools -->
-
-        <div id="prompt-tools-right">
-
-            <!-- Web Search -->
-
-            <button
-                id="webSearchBtn"
-                class="tool-btn"
-                title="Web Search">
-
-                <svg viewBox="0 0 24 24">
-
-                    <circle
-                        cx="12"
-                        cy="12"
-                        r="8"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        fill="none"/>
-
-                    <path
-                        d="M4 12H20"
-                        stroke="currentColor"
-                        stroke-width="2"/>
-
-                    <path
-                        d="M12 4
-                           C15 7
-                           15 17
-                           12 20"
-
-                        stroke="currentColor"
-                        stroke-width="2"
-                        fill="none"/>
-
-                    <path
-                        d="M12 4
-                           C9 7
-                           9 17
-                           12 20"
-
-                        stroke="currentColor"
-                        stroke-width="2"
-                        fill="none"/>
-
-                </svg>
-
-            </button>
-
-            <!-- Deep Research -->
-
-            <button
-                id="researchModeBtn"
-                class="tool-btn"
-                title="Deep Research">
-
-                <svg viewBox="0 0 24 24">
-
-                    <path
-                        d="M12 3
-                           L19 7
-                           V17
-                           L12 21
-                           L5 17
-                           V7Z"
-
-                        stroke="currentColor"
-                        stroke-width="2"
-                        fill="none"/>
-
-                </svg>
-
-            </button>
-
-            <!-- Image -->
-
-            <button
-                id="imageModeBtn"
-                class="tool-btn"
-                title="Image Generation">
-
-                <svg viewBox="0 0 24 24">
-
-                    <rect
-                        x="4"
-                        y="4"
-                        width="16"
-                        height="16"
-                        rx="2"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        fill="none"/>
-
-                    <circle
-                        cx="9"
-                        cy="9"
-                        r="1.5"
-                        fill="currentColor"/>
-
-                    <path
-                        d="M4 16L9 11L13 15L16 12L20 16"
-
-                        stroke="currentColor"
-                        stroke-width="2"
-                        fill="none"/>
-
-                </svg>
-
-            </button>
-
-            <!-- Voice -->
-
-            <button
-                id="voiceBtn"
-                class="tool-btn"
-                title="Voice">
-
-                <svg viewBox="0 0 24 24">
-
-                    <path
-                        d="M12 4
-                           A3 3 0 0 1
-                           15 7V12
-                           A3 3 0 0 1
-                           9 12V7
-                           A3 3 0 0 1
-                           12 4Z"
-
-                        stroke="currentColor"
-                        stroke-width="2"
-                        fill="none"/>
-
-                    <path
-                        d="M19 11
-                           A7 7 0 0 1
-                           5 11"
-
-                        stroke="currentColor"
-                        stroke-width="2"
-                        fill="none"/>
-
-                    <path
-                        d="M12 18V21"
-
-                        stroke="currentColor"
-                        stroke-width="2"/>
-
-                </svg>
-
-            </button>
-
-            <!-- Send -->
-
-            <button
-                id="sendBtn"
-                aria-label="Send">
-
-                <svg viewBox="0 0 24 24">
-
-                    <path
-                        d="M5 12L19 5L15 19L11 13L5 12Z"
-                        fill="currentColor"/>
-
-                </svg>
-
-            </button>
-
-        </div>
-
-    </div>
-
-</footer>
-
-<!-- Attachment Menu -->
-
-<div id="attachmentMenu">
-
-    <button id="cameraBtn">Camera</button>
-
-    <button id="photosBtn">Photos</button>
-
-    <button id="filesBtn">Files</button>
-
-</div>
-
-<!-- End Part 7 -->
-<!-- ========================================= -->
-<!-- DeepSINKY AI - PART 8 -->
-<!-- Menus • Popups • Modals -->
-<!-- ========================================= -->
-
-<!-- MODEL MENU -->
-
-<div id="modelMenu" class="popup-menu">
-
-    <button class="model-item active" data-model="deepsinky-pro">
-        <div>
-            <h4>DeepSINKY Pro</h4>
-            <p>Best quality responses</p>
-        </div>
+   <button class="icon-btn">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+    <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2"/>
+    <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2"/>
+  </svg>
+</button>
+
+    <input id="input" placeholder="Ask DeepSINKY">
+
+    <button class="icon-btn">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+    <path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3z" stroke="currentColor" stroke-width="2"/>
+    <path d="M19 11a7 7 0 0 1-14 0" stroke="currentColor" stroke-width="2"/>
+    <line x1="12" y1="18" x2="12" y2="22" stroke="currentColor" stroke-width="2"/>
+  </svg>
     </button>
 
-    <button class="model-item" data-model="deepsinky-fast">
-        <div>
-            <h4>DeepSINKY Fast</h4>
-            <p>Fast everyday assistant</p>
-        </div>
-    </button>
+    <button id="sendBtn">➤</button>
+<div id="plusMenu" class="plus-menu">
 
-    <button class="model-item" data-model="deepsinky-reasoning">
-        <div>
-            <h4>DeepSINKY Reasoning</h4>
-            <p>Advanced thinking model</p>
-        </div>
-    </button>
+  <!-- 🔥 YAHAN PASTE KARNA HAI 👇 -->
+  <div class="menu-grid">
 
-</div>
-
-<!-- PROFILE MENU -->
-
-<div id="profileMenu" class="popup-menu">
-
-    <button id="myAccountBtn">
-        My Account
-    </button>
-
-    <button id="appearanceBtn">
-        Appearance
-    </button>
-
-    <button id="manageMemoryBtn">
-        Memory
-    </button>
-
-    <button id="upgradeBtn">
-        Upgrade
-    </button>
-
-    <button id="logoutAccountBtn">
-        Log Out
-    </button>
-
-</div>
-
-<!-- SETTINGS MODAL -->
-
-<div id="settingsModal" class="modal">
-
-    <div class="modal-card">
-
-        <div class="modal-header">
-
-            <h2>Settings</h2>
-
-            <button id="closeSettingsBtn">
-                ✕
-            </button>
-
-        </div>
-
-        <div class="modal-body">
-
-            <button id="themeSettingBtn">
-                Theme
-            </button>
-
-            <button id="languageSettingBtn">
-                Language
-            </button>
-
-            <button id="voiceSettingBtn">
-                Voice
-            </button>
-
-            <button id="dataSettingBtn">
-                Data Controls
-            </button>
-
-        </div>
-
+    <div class="menu-item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M4 7h3l2-2h6l2 2h3v12H4z" stroke="white" stroke-width="1.5"/>
+        <circle cx="12" cy="13" r="3" stroke="white" stroke-width="1.5"/>
+      </svg>
+      <span>Camera</span>
     </div>
 
-</div>
-
-<!-- SHARE MODAL -->
-
-<div id="shareModal" class="modal">
-
-    <div class="modal-card">
-
-        <h2>Share Chat</h2>
-
-        <input
-            id="shareLink"
-            readonly>
-
-        <button id="copyShareLinkBtn">
-            Copy Link
-        </button>
-
+    <div class="menu-item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <rect x="4" y="4" width="16" height="16" stroke="white" stroke-width="1.5"/>
+        <path d="M4 15l4-4 4 4 4-6 4 6" stroke="white" stroke-width="1.5"/>
+      </svg>
+      <span>Photos</span>
     </div>
 
-</div>
-
-<!-- DELETE CHAT -->
-
-<div id="deleteChatModal" class="modal">
-
-    <div class="modal-card">
-
-        <h2>Delete Chat?</h2>
-
-        <p>
-            This action cannot be undone.
-        </p>
-
-        <div class="modal-actions">
-
-            <button id="cancelDeleteBtn">
-
-                Cancel
-
-            </button>
-
-            <button id="confirmDeleteBtn">
-
-                Delete
-
-            </button>
-
-        </div>
-
+    <div class="menu-item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M6 2h9l5 5v15H6z" stroke="white" stroke-width="1.5"/>
+        <path d="M14 2v6h6" stroke="white" stroke-width="1.5"/>
+      </svg>
+      <span>Files</span>
     </div>
 
+  </div>
+  <!-- 🔥 YAHAN TAK -->
+
+  <hr>
+
+  <div class="menu-list">
+    <div>Create image</div>
+    <div>Thinking</div>
+    <div>Deep research</div>
+    <div>Web search</div>
+    <div>Study and learn</div>
+    <div>Quizzes</div>
+    <div>Explore apps</div>
+  </div>
 </div>
 
-<!-- TOAST -->
-
-<div id="toast"></div>
-
-<!-- LOADING -->
-
-<div id="fullscreenLoading">
-
-    <div class="loader-circle"></div>
-
-    <p>
-
-        Please wait...
-
-    </p>
-
 </div>
-
-<!-- End Part 8 -->
-<!-- ========================================= -->
-<!-- DeepSINKY AI - PART 9 -->
-<!-- Account • Search • History • Memory -->
-<!-- ========================================= -->
-
-<!-- SEARCH DIALOG -->
-
-<div id="searchDialog" class="dialog">
-
-    <div class="dialog-card">
-
-        <div class="dialog-header">
-
-            <h2>Search Chats</h2>
-
-            <button id="closeSearchDialogBtn" class="dialog-close">
-
-                <svg viewBox="0 0 24 24">
-                    <path d="M6 6L18 18M18 6L6 18"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"/>
-                </svg>
-
-            </button>
-
-        </div>
-
-        <div class="dialog-body">
-
-            <input
-                id="chatSearchInput"
-                type="text"
-                placeholder="Search conversations...">
-
-            <div id="chatSearchResults"></div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- LOGIN MODAL -->
-
-<div id="loginModal" class="modal">
-
-    <div class="modal-card">
-
-        <div class="modal-header">
-
-            <h2>Welcome to DeepSINKY</h2>
-
-            <button id="closeLoginModalBtn">
-
-                ✕
-
-            </button>
-
-        </div>
-
-        <div class="modal-body">
-
-            <input
-                id="loginEmail"
-                type="email"
-                placeholder="Email Address">
-
-            <input
-                id="loginPassword"
-                type="password"
-                placeholder="Password">
-
-            <button id="loginSubmitBtn">
-
-                Continue
-
-            </button>
-
-            <button id="googleLoginBtn">
-
-                Continue with Google
-
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- ACCOUNT PANEL -->
-
-<div id="accountPanel">
-
-    <div class="account-header">
-
-        <img
-            src="assets/avatar.png"
-            id="accountAvatar">
-
-        <div>
-
-            <h3 id="accountName">
-
-                Guest User
-
-            </h3>
-
-            <p id="accountEmail">
-
-                Not Signed In
-
-            </p>
-
-        </div>
-
-    </div>
-
-    <div class="account-menu">
-
-        <button id="manageAccountBtn">
-
-            Manage Account
-
-        </button>
-
-        <button id="subscriptionBtn">
-
-            Subscription
-
-        </button>
-
-        <button id="billingBtn">
-
-            Billing
-
-        </button>
-
-        <button id="privacyBtn">
-
-            Privacy
-
-        </button>
-
-    </div>
-
-</div>
-
-<!-- MEMORY PANEL -->
-
-<div id="memoryPanel">
-
-    <div class="panel-header">
-
-        <h2>Memory</h2>
-
-        <button id="closeMemoryBtn">
-
-            ✕
-
-        </button>
-
-    </div>
-
-    <div id="memoryList">
-
-    </div>
-
-</div>
-
-<!-- CHAT HISTORY PANEL -->
-
-<div id="historyPanel">
-
-    <div class="panel-header">
-
-        <h2>Recent Chats</h2>
-
-        <button id="closeHistoryBtn">
-
-            ✕
-
-        </button>
-
-    </div>
-
-    <div id="historyList">
-
-    </div>
-
-</div>
-
-<!-- EMPTY CHAT -->
-
-<div id="emptyState" hidden>
-
-    <img
-        src="assets/logo.png"
-        alt="DeepSINKY">
-
-    <h2>
-
-        No conversations yet
-
-    </h2>
-
-    <p>
-
-        Start a new conversation to begin.
-
-    </p>
-
-</div>
-
-<!-- End Part 9 -->
-<!-- ========================================= -->
-<!-- DeepSINKY AI - PART 10 -->
-<!-- AI Tools & Floating Panels -->
-<!-- ========================================= -->
-
-<!-- IMAGE GENERATION PANEL -->
-
-<div id="imageGeneratorPanel" class="tool-panel">
-
-    <div class="panel-header">
-
-        <h2>Create Image</h2>
-
-        <button id="closeImagePanelBtn" class="close-btn">
-
-            ✕
-
-        </button>
-
-    </div>
-
-    <div class="panel-body">
-
-        <textarea
-            id="imagePrompt"
-            placeholder="Describe the image you want to generate..."></textarea>
-
-        <div class="image-options">
-
-            <select id="imageStyle">
-
-                <option value="realistic">Realistic</option>
-
-                <option value="anime">Anime</option>
-
-                <option value="cinematic">Cinematic</option>
-
-                <option value="digital-art">Digital Art</option>
-
-            </select>
-
-            <select id="imageSize">
-
-                <option value="1024x1024">1024 × 1024</option>
-
-                <option value="1024x1536">Portrait</option>
-
-                <option value="1536x1024">Landscape</option>
-
-            </select>
-
-        </div>
-
-        <button id="generateImageBtn">
-
-            Generate Image
-
-        </button>
-
-    </div>
-
-</div>
-
-<!-- IMAGE RESULT -->
-
-<div id="imageResultPanel">
-
-    <img
-        id="generatedImage"
-        alt="Generated Image">
-
-</div>
-
-<!-- VOICE PANEL -->
-
-<div id="voicePanel">
-
-    <div class="voice-animation">
-
-        <span></span>
-        <span></span>
-        <span></span>
-
-    </div>
-
-    <p id="voiceStatus">
-
-        Listening...
-
-    </p>
-
-    <button id="stopVoiceBtn">
-
-        Stop
-
-    </button>
-
-</div>
-
-<!-- WEB SEARCH -->
-
-<div id="webSearchPanel">
-
-    <h2>Web Search</h2>
-
-    <div id="webResults">
-
-    </div>
-
-</div>
-
-<!-- DEEP RESEARCH -->
-
-<div id="researchPanel">
-
-    <h2>Deep Research</h2>
-
-    <div id="researchContent">
-
-    </div>
-
-</div>
-
-<!-- COMMAND PALETTE -->
-
-<div id="commandPalette">
-
-    <input
-        id="commandInput"
-        type="text"
-        placeholder="Type a command...">
-
-    <div id="commandResults">
-
-    </div>
-
-</div>
-
-<!-- FLOATING NOTIFICATIONS -->
-
-<div id="floatingNotifications">
-
-</div>
-
-<!-- CONNECTION STATUS -->
-
-<div id="connectionStatus">
-
-    <span id="connectionDot"></span>
-
-    <span id="connectionText">
-
-        Connected
-
-    </span>
-
-</div>
-
-<!-- UPDATE BANNER -->
-
-<div id="updateBanner">
-
-    <span>
-
-        New update available.
-
-    </span>
-
-    <button id="updateNowBtn">
-
-        Update
-
-    </button>
-
-</div>
-
-<!-- END PART 10 -->
-
-<!-- ========================================= -->
-<!-- DeepSINKY AI - PART 11 -->
-<!-- Plugins • Workspace • AI Apps -->
-<!-- ========================================= -->
-
-<!-- WORKSPACE PANEL -->
-
-<div id="workspacePanel" class="tool-panel">
-
-    <div class="panel-header">
-
-        <h2>Workspace</h2>
-
-        <button id="closeWorkspaceBtn" class="close-btn">
-
-            ✕
-
-        </button>
-
-    </div>
-
-    <div class="panel-body">
-
-        <button id="newWorkspaceBtn" class="workspace-btn">
-
-            New Workspace
-
-        </button>
-
-        <button id="importWorkspaceBtn" class="workspace-btn">
-
-            Import Workspace
-
-        </button>
-
-        <button id="exportWorkspaceBtn" class="workspace-btn">
-
-            Export Workspace
-
-        </button>
-
-    </div>
-
-</div>
-
-<!-- PLUGINS PANEL -->
-
-<div id="pluginsPanel" class="tool-panel">
-
-    <div class="panel-header">
-
-        <h2>Plugins</h2>
-
-        <button id="closePluginsBtn">
-
-            ✕
-
-        </button>
-
-    </div>
-
-    <div id="pluginsList">
-
-        <button class="plugin-card">
-
-            Web Search
-
-        </button>
-
-        <button class="plugin-card">
-
-            Image Generator
-
-        </button>
-
-        <button class="plugin-card">
-
-            Document Reader
-
-        </button>
-
-        <button class="plugin-card">
-
-            Translator
-
-        </button>
-
-        <button class="plugin-card">
-
-            Code Interpreter
-
-        </button>
-
-    </div>
-
-</div>
-
-<!-- AI APPS -->
-
-<div id="appsPanel">
-
-    <div class="panel-header">
-
-        <h2>AI Apps</h2>
-
-        <button id="closeAppsBtn">
-
-            ✕
-
-        </button>
-
-    </div>
-
-    <div id="appsGrid">
-
-        <button class="app-card">
-
-            AI Chat
-
-        </button>
-
-        <button class="app-card">
-
-            AI Image
-
-        </button>
-
-        <button class="app-card">
-
-            AI Video
-
-        </button>
-
-        <button class="app-card">
-
-            AI Music
-
-        </button>
-
-        <button class="app-card">
-
-            AI Coding
-
-        </button>
-
-        <button class="app-card">
-
-            AI Research
-
-        </button>
-
-    </div>
-
-</div>
-
-<!-- DOWNLOADS -->
-
-<div id="downloadsPanel">
-
-    <div class="panel-header">
-
-        <h2>Downloads</h2>
-
-        <button id="closeDownloadsBtn">
-
-            ✕
-
-        </button>
-
-    </div>
-
-    <div id="downloadsList">
-
-    </div>
-
-</div>
-
-<!-- RECENT FILES -->
-
-<div id="recentFilesPanel">
-
-    <div class="panel-header">
-
-        <h2>Recent Files</h2>
-
-    </div>
-
-    <div id="recentFilesList">
-
-    </div>
-
-</div>
-
-<!-- ACTIVITY -->
-
-<div id="activityPanel">
-
-    <div class="panel-header">
-
-        <h2>Activity</h2>
-
-    </div>
-
-    <div id="activityFeed">
-
-    </div>
-
-</div>
-
-<!-- SHORTCUTS -->
-
-<div id="shortcutsPanel">
-
-    <div class="panel-header">
-
-        <h2>Keyboard Shortcuts</h2>
-
-    </div>
-
-    <div class="shortcut-list">
-
-        <div>Ctrl + K</div>
-
-        <div>Search</div>
-
-        <div>Ctrl + N</div>
-
-        <div>New Chat</div>
-
-        <div>Ctrl + /</div>
-
-        <div>Settings</div>
-
-    </div>
-
-</div>
-
-<!-- ========================================= -->
-<!-- END PART 11 -->
-<!-- ========================================= -->
-<!-- DeepSINKY AI - PART 12 -->
-<!-- Floating UI • Context Menu • Quick Actions -->
-<!-- ========================================= -->
-
-<!-- FLOATING ACTION BUTTON -->
-
-<div id="floatingActionButton">
-
-    <button id="fabButton">
-
-        <svg viewBox="0 0 24 24">
-
-            <path
-                d="M12 5V19M5 12H19"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"/>
-
-        </svg>
-
-    </button>
-
-</div>
-
-<!-- QUICK ACTIONS -->
-
-<div id="quickActionsMenu">
-
-    <button id="quickNewChat">
-
-        New Chat
-
-    </button>
-
-    <button id="quickImage">
-
-        Create Image
-
-    </button>
-
-    <button id="quickResearch">
-
-        Research
-
-    </button>
-
-    <button id="quickVoice">
-
-        Voice Chat
-
-    </button>
-
-</div>
-
-<!-- CONTEXT MENU -->
-
-<div id="contextMenu">
-
-    <button id="copyMessageBtn">
-
-        Copy
-
-    </button>
-
-    <button id="editMessageBtn">
-
-        Edit
-
-    </button>
-
-    <button id="deleteMessageBtn">
-
-        Delete
-
-    </button>
-
-    <button id="pinMessageBtn">
-
-        Pin
-
-    </button>
-
-    <button id="shareMessageBtn">
-
-        Share
-
-    </button>
-
-</div>
-
-<!-- COMMAND BAR -->
-
-<div id="commandBar">
-
-    <input
-        id="commandBarInput"
-        type="text"
-        placeholder="Search commands...">
-
-    <div id="commandSuggestions">
-
-    </div>
-
-</div>
-
-<!-- NETWORK STATUS -->
-
-<div id="networkStatus">
-
-    <span class="status-dot"></span>
-
-    <span id="networkLabel">
-
-        Online
-
-    </span>
-
-</div>
-
-<!-- SERVER STATUS -->
-
-<div id="serverStatus">
-
-    <span class="status-dot"></span>
-
-    <span id="serverLabel">
-
-        AI Ready
-
-    </span>
-
-</div>
-
-<!-- STREAM STATUS -->
-
-<div id="streamStatus">
-
-    Streaming...
-
-</div>
-
-<!-- FLOATING PROGRESS -->
-
-<div id="floatingProgress">
-
-    <div id="progressBar">
-
-    </div>
-
-</div>
-
-<!-- MINI PLAYER -->
-
-<div id="voiceMiniPlayer">
-
-    <button id="pauseVoiceBtn">
-
-        Pause
-
-    </button>
-
-    <button id="resumeVoiceBtn">
-
-        Resume
-
-    </button>
-
-    <button id="closeVoicePlayerBtn">
-
-        Close
-
-    </button>
-
-</div>
-
-<!-- KEYBOARD SHORTCUT HINT -->
-
-<div id="shortcutHint">
-
-    Press Ctrl + K to search
-
-</div>
-
-<!-- DEBUG PANEL -->
-
-<div id="debugPanel">
-
-    <div id="debugContent">
-
-    </div>
-
-</div>
-
-<!-- BACKGROUND TASKS -->
-
-<div id="backgroundTasks">
-
-</div>
-
-<!-- CACHE CONTAINER -->
-
-<div id="cacheContainer" hidden>
-
-</div>
-
-<!-- SERVICE WORKER ROOT -->
-
-<div id="serviceWorkerRoot" hidden>
-
-</div>
-
-<!-- PERFORMANCE ROOT -->
-
-<div id="performanceRoot" hidden>
-
-</div>
-
-<!-- ========================================= -->
-<!-- END PART 12 -->
-<!-- ========================================= -->
-<!-- DeepSINKY AI - PART 13 -->
-<!-- Responsive Layout & Utility Containers -->
-<!-- ========================================= -->
-
-<!-- MOBILE NAVIGATION -->
-
-<nav id="mobileNavigation">
-
-    <button id="mobileHomeBtn" class="mobile-nav-btn">
-
-        <svg viewBox="0 0 24 24">
-            <path d="M4 11L12 4L20 11V20H4Z"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  fill="none"/>
-        </svg>
-
-        <span>Home</span>
-
-    </button>
-
-    <button id="mobileHistoryBtn" class="mobile-nav-btn">
-
-        <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="8"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"/>
-            <path d="M12 8V12L15 15"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"/>
-        </svg>
-
-        <span>History</span>
-
-    </button>
-
-    <button id="mobileAppsBtn" class="mobile-nav-btn">
-
-        <svg viewBox="0 0 24 24">
-            <rect x="5" y="5" width="5" height="5"/>
-            <rect x="14" y="5" width="5" height="5"/>
-            <rect x="5" y="14" width="5" height="5"/>
-            <rect x="14" y="14" width="5" height="5"/>
-        </svg>
-
-        <span>Apps</span>
-
-    </button>
-
-    <button id="mobileProfileBtn" class="mobile-nav-btn">
-
-        <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="8" r="4"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"/>
-            <path d="M5 20C5 16 8 14 12 14C16 14 19 16 19 20"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  fill="none"/>
-        </svg>
-
-        <span>Profile</span>
-
-    </button>
-
-</nav>
-
-<!-- TABLET SIDEBAR -->
-
-<aside id="tabletSidebar">
-
-</aside>
-
-<!-- DESKTOP RIGHT PANEL -->
-
-<aside id="desktopRightPanel">
-
-    <section id="conversationInfo"></section>
-
-    <section id="tokenUsagePanel"></section>
-
-    <section id="recentActivityPanel"></section>
-
-</aside>
-
-<!-- RESPONSIVE ROOTS -->
-
-<div id="mobileRoot"></div>
-
-<div id="tabletRoot"></div>
-
-<div id="desktopRoot"></div>
-
-<!-- CHAT HELPERS -->
-
-<div id="messageTemplateContainer" hidden></div>
-
-<div id="markdownRendererRoot" hidden></div>
-
-<div id="syntaxHighlightRoot" hidden></div>
-
-<div id="imagePreviewRoot" hidden></div>
-
-<div id="audioRecorderRoot" hidden></div>
-
-<div id="cameraPreviewRoot" hidden></div>
-
-<div id="clipboardRoot" hidden></div>
-
-<div id="downloadRoot" hidden></div>
-
-<div id="uploadRoot" hidden></div>
-
-<div id="dragDropOverlay">
-
-    <div id="dragDropBox">
-
-        <h2>Drop files here</h2>
-
-        <p>Upload images, PDFs, documents and more.</p>
-
-    </div>
-
-</div>
-
-<!-- SAFE AREA -->
-
-<div id="safeAreaTop"></div>
-
-<div id="safeAreaBottom"></div>
-
-<!-- END PART 13 -->
-<!-- ========================================= -->
-<!-- DeepSINKY AI - PART 14 -->
-<!-- Templates • SVG Library • Hidden Components -->
-<!-- ========================================= -->
-
-<!-- ================= SVG ICON LIBRARY ================= -->
-
-<svg width="0" height="0" style="display:none">
-
-    <symbol id="icon-send" viewBox="0 0 24 24">
-        <path d="M3 12L21 3L15 21L11 13L3 12Z"
-              fill="currentColor"/>
-    </symbol>
-
-    <symbol id="icon-menu" viewBox="0 0 24 24">
-        <path d="M4 7H20M4 12H16M4 17H20"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"/>
-    </symbol>
-
-    <symbol id="icon-search" viewBox="0 0 24 24">
-        <circle cx="11"
-                cy="11"
-                r="7"
-                stroke="currentColor"
-                stroke-width="2"
-                fill="none"/>
-        <path d="M20 20L17 17"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"/>
-    </symbol>
-
-    <symbol id="icon-copy" viewBox="0 0 24 24">
-        <rect x="8"
-              y="8"
-              width="11"
-              height="11"
-              rx="2"
-              stroke="currentColor"
-              stroke-width="2"
-              fill="none"/>
-        <rect x="5"
-              y="5"
-              width="11"
-              height="11"
-              rx="2"
-              stroke="currentColor"
-              stroke-width="2"
-              fill="none"/>
-    </symbol>
-
-</svg>
-
-<!-- ================= CHAT TEMPLATE ================= -->
-
-<template id="chatMessageTemplate">
-
-    <article class="chat-message">
-
-        <div class="chat-avatar">
-
-            <img
-                src="assets/logo.png"
-                alt="DeepSINKY">
-
-        </div>
-
-        <div class="chat-content">
-
-            <div class="chat-markdown"></div>
-
-            <div class="chat-actions">
-
-                <button class="copy-btn">
-
-                    Copy
-
-                </button>
-
-                <button class="retry-btn">
-
-                    Retry
-
-                </button>
-
-                <button class="share-btn">
-
-                    Share
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </article>
-
-</template>
-
-<!-- ================= IMAGE TEMPLATE ================= -->
-
-<template id="imageCardTemplate">
-
-    <div class="generated-image-card">
-
-        <img
-            class="generated-image"
-            alt="Generated Image">
-
-        <div class="image-actions">
-
-            <button class="download-image-btn">
-
-                Download
-
-            </button>
-
-            <button class="copy-image-btn">
-
-                Copy
-
-            </button>
-
-        </div>
-
-    </div>
-
-</template>
-
-<!-- ================= FILE TEMPLATE ================= -->
-
-<template id="fileTemplate">
-
-    <div class="uploaded-file">
-
-        <span class="file-name"></span>
-
-        <span class="file-size"></span>
-
-    </div>
-
-</template>
-
-<!-- ================= EMPTY STATES ================= -->
-
-<div id="emptyHistory" hidden>
-
-    No chat history
-
-</div>
-
-<div id="emptySearch" hidden>
-
-    No results found
-
-</div>
-
-<div id="emptyPlugins" hidden>
-
-    No plugins installed
-
-</div>
-
-<!-- ================= APP ROOTS ================= -->
-
-<div id="modalRoot"></div>
-
-<div id="overlayRoot"></div>
-
-<div id="notificationRoot"></div>
-
-<div id="tooltipRoot"></div>
-
-<div id="dropdownRoot"></div>
-
-<div id="floatingMenuRoot"></div>
-
-<div id="popupRoot"></div>
-
-<div id="animationRoot"></div>
-
-<div id="canvasRoot"></div>
-
-<div id="backgroundEffects"></div>
-
-<div id="particleRoot"></div>
-
-<div id="themeRoot"></div>
-
-<div id="settingsRoot"></div>
-
-<div id="routerRoot"></div>
-
-<div id="storageRoot" hidden></div>
-
-<div id="workerRoot" hidden></div>
-
-<!-- ========================================= -->
-<!-- END PART 14 -->
-<!-- ========================================= -->
-<!-- DeepSINKY AI - PART 15 -->
-<!-- Final Production Structure -->
-<!-- ========================================= -->
-
-<!-- Global Loader -->
-
-<div id="globalLoader" hidden>
-
-    <div class="loader-ring"></div>
-
-    <p>Loading DeepSINKY...</p>
-
-</div>
-
-<!-- Offline Banner -->
-
-<div id="offlineBanner" hidden>
-
-    <span>
-
-        You're offline. Some features may not work.
-
-    </span>
-
-</div>
-
-<!-- Update Available -->
-
-<div id="updateToast" hidden>
-
-    <span>
-
-        New version available.
-
-    </span>
-
-    <button id="reloadAppBtn">
-
-        Reload
-
-    </button>
-
-</div>
-
-<!-- Keyboard Shortcut Layer -->
-
-<div id="shortcutOverlay" hidden></div>
-
-<!-- Screen Reader -->
-
-<div
-    id="liveRegion"
-    aria-live="polite"
-    aria-atomic="true"
-    class="sr-only">
-
-</div>
-
-<!-- ========================= -->
-<!-- External Libraries -->
-<!-- ========================= -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/15.0.7/marked.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
 <script>
+let emojiCount = 0;
+let usedEmojis = new Set();
+/* CORE */
+const chat = document.getElementById("chat");
+const input = document.getElementById("input");
+const sendBtn = document.getElementById("sendBtn");
+const plusBtn = document.querySelector(".icon-btn:first-child");
+const menu = document.getElementById("plusMenu");
+const overlay = document.getElementById("overlay");
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    if(window.hljs){
-
-        hljs.highlightAll();
-
-    }
-
-    document.documentElement.classList.add("app-ready");
-
-});
-
-if("serviceWorker" in navigator){
-
-    window.addEventListener("load", () => {
-
-        navigator.serviceWorker
-            .register("sw.js")
-            .catch(() => {});
-
-    });
-
-}
-
-window.DeepSINKY = {
-
-    version: "1.0.0",
-
-    build: "Production",
-
-    theme: "dark",
-
-    initialized: false
-
+// 📷 Camera
+document.querySelector(".menu-item:nth-child(1)").onclick = () => {
+  document.getElementById("cameraInput").click();
 };
 
-</script>
+// 🖼️ Photos
+document.querySelector(".menu-item:nth-child(2)").onclick = () => {
+  document.getElementById("photoInput").click();
+};
 
-<!-- Main Application -->
+// 📎 Files
+document.querySelector(".menu-item:nth-child(3)").onclick = () => {
+  document.getElementById("fileInput").click();
+};
+plusBtn.onclick = () => {
+  menu.classList.toggle("active");
+  overlay.classList.toggle("active");
+};
 
-<script src="script.js"></script>
+// 🔥 outside click close
+overlay.onclick = () => {
+  menu.classList.remove("active");
+  overlay.classList.remove("active");
+};
+sendBtn.onclick = send;
 
-</body>
+input.addEventListener("keypress", e=>{
+  if(e.key === "Enter") send();
+});
 
-</html>
+/* SEND */
+let selectedFile = null;
+
+document.getElementById("cameraInput").onchange = (e) => {
+  selectedFile = e.target.files[0];
+};
+
+document.getElementById("photoInput").onchange = (e) => {
+  selectedFile = e.target.files[0];
+};
+
+document.getElementById("fileInput").onchange = (e) => {
+  selectedFile = e.target.files[0];
+};
+
+async function send(){
+
+  let text = input.value.trim();
+
+  if(!text && !selectedFile) return;
+
+  // text
+  if(text){
+    chat.innerHTML += `<div class="message user">${text}</div>`;
+  }
+
+  // file
+  if(selectedFile){
+    let url = URL.createObjectURL(selectedFile);
+
+    if(selectedFile.type.startsWith("image")){
+      chat.innerHTML += `
+        <div class="message user">
+          <img src="${url}" style="max-width:150px;border-radius:10px;">
+        </div>
+      `;
+    }else{
+      chat.innerHTML += `
+        <div class="message user">
+          📎 ${selectedFile.name}
+        </div>
+      `;
+    }
+
+    selectedFile = null;
+  }
+
+input.value = "";
+
+// 🎨 IMAGE MODE (यहीं डाल)
+if(
+  text.toLowerCase().includes("draw") ||
+  text.toLowerCase().includes("image") ||
+  text.toLowerCase().includes("generate")
+){
+
+  chat.innerHTML += `<div class="message bot">🎨 Generating image...</div>`;
+
+  let imgRes = await fetch("https://deepsinky-server-1.onrender.com/image",{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({ prompt: text })
+  });
+
+  let imgData = await imgRes.json();
+
+  chat.innerHTML += `
+    <div class="message bot">
+      <img src="${imgData.image}" style="max-width:100%; border-radius:10px;">
+    </div>
+  `;
+
+  return;
+}
+  // 🔥 YEH ANDAR HI RAHEGA
+  let loading = document.createElement("div");
+  loading.className = "message bot";
+  loading.innerHTML = `
+    <div class="dot">
+      <span></span>
+      <span></span>
+    </div>
+  `;
+  chat.appendChild(loading);
+ 
+  try{
+    let res = await fetch("https://deepsinky-server-1.onrender.com/chat",{
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify({ message:text })
+    });
+   
+    let data = await res.json();
+    loading.remove();
+
+    let reply = data.reply || "No response";
+
+    // ================= SMART TRIM (SAFE INLINE) =================
+    reply = (function(t){
+      if(t.length < 80) return t;
+      if(t.length < 300) return t;
+      return t.replace(/\n{2,}/g, "\n\n");
+    })(reply);
+
+    // ================= GPT STYLE FORMAT =================
+    
+    reply = formatText(reply);
+    streamText(reply);
+
+  }catch{
+    loading.innerText = "Error ❌";
+  }
+}
+  function getEmoji(text){
+
+  text = text.toLowerCase();
+
+  const emojiMap = [
+    { keywords: ["ai","artificial intelligence","ml","neural","brain"], emoji: "🧠", priority: 5 },
+    { keywords: ["code","coding","program","function","developer"], emoji: "💻", priority: 5 },
+    { keywords: ["robot","bot","automation"], emoji: "🤖", priority: 4 },
+
+    { keywords: ["money","earn","income","profit","cash"], emoji: "💰", priority: 5 },
+    { keywords: ["business","startup","company"], emoji: "🏢", priority: 4 },
+    { keywords: ["success","growth","win"], emoji: "📈", priority: 3 },
+
+    { keywords: ["love","heart"], emoji: "❤️", priority: 5 },
+    { keywords: ["happy","smile","joy"], emoji: "😊", priority: 4 },
+    { keywords: ["sad","cry","depressed"], emoji: "😢", priority: 4 },
+    { keywords: ["angry","mad"], emoji: "😡", priority: 4 },
+
+    { keywords: ["warning","alert","danger"], emoji: "⚠️", priority: 6 },
+    { keywords: ["error","fail","wrong"], emoji: "❌", priority: 6 },
+    { keywords: ["success","done","complete"], emoji: "✅", priority: 6 },
+
+    { keywords: ["goal","target","aim"], emoji: "🎯", priority: 4 },
+    { keywords: ["time","deadline","clock"], emoji: "⏰", priority: 4 },
+    { keywords: ["fast","speed","quick"], emoji: "⚡", priority: 3 },
+
+    { keywords: ["study","learn","education","book"], emoji: "📚", priority: 5 },
+    { keywords: ["exam","test"], emoji: "📝", priority: 5 },
+
+    { keywords: ["health","doctor","medicine","ill","pain"], emoji: "💊", priority: 6 },
+    { keywords: ["gym","fitness","workout"], emoji: "🏋️", priority: 4 },
+
+    { keywords: ["game","play"], emoji: "🎮", priority: 3 },
+    { keywords: ["music","song"], emoji: "🎵", priority: 3 },
+    { keywords: ["party","fun","dance"], emoji: "🎉", priority: 3 },
+
+    { keywords: ["idea","tip","suggest"], emoji: "💡", priority: 5 },
+
+    { keywords: ["awesome","fire","lit"], emoji: "🔥", priority: 2 }
+  ];
+
+  let bestMatch = null;
+
+  for (let item of emojiMap){
+    for (let word of item.keywords){
+      if(text.includes(word)){
+        if(!bestMatch || item.priority > bestMatch.priority){
+          bestMatch = item;
+        }
+      }
+    }
+  }
+
+  return bestMatch ? bestMatch.emoji : "👉";
+  }
+
+  
+  function getHeadingEmoji(text){
+  text = text.toLowerCase();
+
+  if(text.includes("ai")) return "🧠";
+  if(text.includes("money")) return "💰";
+  if(text.includes("health")) return "💊";
+  if(text.includes("study")) return "📚";
+  if(text.includes("warning")) return "⚠️";
+
+  return "🔥";
+  }
+  
+function formatText(text){
+
+  // ===== HEADINGS =====
+  text = text.replace(/^(👋|🧠|🚀|🎯|🔥|📌|💡)\s(.+)/gm,
+    (m,e,t)=> `<h1><span class="emoji">${e}</span>${t}</h1>`);
+
+  text = text.replace(/^(👉|📌)\s(.+)/gm,
+    (m,e,t)=> `<h2><span class="emoji">${e}</span>${t}</h2>`);
+
+  text = text.replace(/^(✔|➤)\s(.+)/gm,
+    (m,e,t)=> `<h3><span class="emoji">${e}</span>${t}</h3>`);
+
+  // Markdown
+  text = text.replace(/^### (.*$)/gm,
+    (m,t)=> `<h3>${t}</h3>`);
+
+  text = text.replace(/^## (.*$)/gm,
+    (m,t)=> `<h2>${t}</h2>`);
+
+  text = text.replace(/^# (.*$)/gm,
+    (m,t)=> `<h1>${t}</h1>`);
+
+  // Bold
+  text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+
+  // Code
+  text = text.replace(/```([\s\S]*?)```/g,
+    (m,c)=> `<pre><code>${c}</code></pre>`);
+
+  text = text.replace(/`(.*?)`/g, "<code>$1</code>");
+
+  // Divider
+  
+text = text.replace(/\n?---\n?/g, "<hr>");
+  // ===== LINE ENGINE =====
+  let lines = text.split("\n");
+  let html = "";
+  let inList = false;
+
+  for(let line of lines){
+
+    line = line.trim();
+
+    // HEADINGS SAFE
+    if(/^<h[1-3]/.test(line)){
+      html += `<div style="margin-top:18px">${line}</div>`;
+      continue;
+    }
+
+    // BULLETS
+    if(line.startsWith("- ") || line.startsWith("• ")){
+      if(!inList){
+        html += "<ul>";
+        inList = true;
+      }
+
+      let item = line.replace(/^[-•]\s/, "");
+      html += `<li>${getEmoji(item)} ${item}</li>`;
+    }
+
+    else{
+      if(inList){
+        html += "</ul>";
+        inList = false;
+      }
+
+      if(line !== ""){
+        html += `<p>${line}</p>`;
+      }
+    }
+  }
+
+  if(inList) html += "</ul>";
+
+  return html;
+}
+  
+
+
+
+  
+/* STREAM */
+function streamText(text){
+
+  let div = document.createElement("div");
+  div.className = "message bot";
