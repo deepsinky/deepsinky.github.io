@@ -273,3 +273,4629 @@
 /* ==========================
    END PART 1
 ========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   chat.css
+   PART 2
+   User Message Bubble + AI Message Bubble
+========================================================== */
+
+/* ==========================
+   USER MESSAGE
+========================== */
+
+.user-message{
+
+    flex-direction:row-reverse;
+
+}
+
+.user-message .message-body{
+
+    align-items:flex-end;
+
+}
+
+/* ==========================
+   USER BUBBLE
+========================== */
+
+.user-message .message-content{
+
+    padding:18px 20px;
+
+    border-radius:24px 24px 8px 24px;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #7c8cff
+    );
+
+    color:#fff;
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/* ==========================
+   USER FOOTER
+========================== */
+
+.user-message .message-footer{
+
+    justify-content:flex-end;
+
+}
+
+/* ==========================
+   AI MESSAGE
+========================== */
+
+.assistant-message{
+
+    flex-direction:row;
+
+}
+
+.assistant-message .message-body{
+
+    align-items:flex-start;
+
+}
+
+/* ==========================
+   AI BUBBLE
+========================== */
+
+.assistant-message .message-content{
+
+    width:100%;
+
+    padding:18px 20px;
+
+    border-radius:24px 24px 24px 8px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+/* ==========================
+   AI HEADER
+========================== */
+
+.assistant-message .message-header{
+
+    margin-bottom:8px;
+
+}
+
+/* ==========================
+   USER AVATAR
+========================== */
+
+.user-message .message-avatar{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #8b5cf6
+    );
+
+    color:#fff;
+
+}
+
+/* ==========================
+   AI AVATAR
+========================== */
+
+.assistant-message .message-avatar{
+
+    background:var(--surface);
+
+}
+
+/* ==========================
+   LONG TEXT
+========================== */
+
+.message-content p{
+
+    margin-bottom:14px;
+
+}
+
+.message-content p:last-child{
+
+    margin-bottom:0;
+
+}
+
+/* ==========================
+   LINKS
+========================== */
+
+.message-content a{
+
+    color:var(--primary);
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.message-content a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ==========================
+   INLINE CODE
+========================== */
+
+.message-content code{
+
+    padding:2px 6px;
+
+    border-radius:6px;
+
+    background:var(--bg-secondary);
+
+    font-family:Consolas,monospace;
+
+    font-size:.9em;
+
+}
+
+/* ==========================
+   BLOCKQUOTE
+========================== */
+
+.message-content blockquote{
+
+    margin:18px 0;
+
+    padding:12px 18px;
+
+    border-left:4px solid var(--primary);
+
+    background:var(--bg-secondary);
+
+    border-radius:10px;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================
+   MESSAGE HOVER
+========================== */
+
+.message:hover .message-avatar{
+
+    transform:scale(1.05);
+
+}
+
+.message-avatar{
+
+    transition:transform .25s ease;
+
+}
+
+/* ==========================
+   MESSAGE SELECT
+========================== */
+
+.message.selected .message-content{
+
+    outline:2px solid var(--primary);
+
+}
+
+/* ==========================
+   END PART 2
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   chat.css
+   PART 3
+   Markdown + Typography + Lists + Tables
+========================================================== */
+
+/* ==========================
+   MARKDOWN
+========================== */
+
+.message-content{
+
+    font-size:1rem;
+
+    line-height:1.85;
+
+    color:var(--text);
+
+    word-wrap:break-word;
+
+    overflow-wrap:anywhere;
+
+}
+
+/* ==========================
+   HEADINGS
+========================== */
+
+.message-content h1{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    margin:24px 0 18px;
+
+    color:var(--text);
+
+}
+
+.message-content h2{
+
+    font-size:1.7rem;
+
+    font-weight:700;
+
+    margin:22px 0 16px;
+
+    color:var(--text);
+
+}
+
+.message-content h3{
+
+    font-size:1.45rem;
+
+    font-weight:700;
+
+    margin:20px 0 14px;
+
+    color:var(--text);
+
+}
+
+.message-content h4{
+
+    font-size:1.2rem;
+
+    font-weight:700;
+
+    margin:18px 0 12px;
+
+}
+
+.message-content h5{
+
+    font-size:1.05rem;
+
+    font-weight:700;
+
+    margin:16px 0 10px;
+
+}
+
+.message-content h6{
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    margin:14px 0 8px;
+
+}
+
+/* ==========================
+   PARAGRAPH
+========================== */
+
+.message-content p{
+
+    margin:0 0 16px;
+
+}
+
+/* ==========================
+   STRONG
+========================== */
+
+.message-content strong{
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+/* ==========================
+   EMPHASIS
+========================== */
+
+.message-content em{
+
+    font-style:italic;
+
+}
+
+/* ==========================
+   HORIZONTAL RULE
+========================== */
+
+.message-content hr{
+
+    margin:24px 0;
+
+    height:1px;
+
+    background:var(--border);
+
+}
+
+/* ==========================
+   UNORDERED LIST
+========================== */
+
+.message-content ul{
+
+    margin:16px 0 20px 24px;
+
+    list-style:disc;
+
+}
+
+.message-content ul li{
+
+    margin:8px 0;
+
+}
+
+/* ==========================
+   ORDERED LIST
+========================== */
+
+.message-content ol{
+
+    margin:16px 0 20px 24px;
+
+    list-style:decimal;
+
+}
+
+.message-content ol li{
+
+    margin:8px 0;
+
+}
+
+/* ==========================
+   NESTED LIST
+========================== */
+
+.message-content li ul,
+.message-content li ol{
+
+    margin-top:8px;
+
+}
+
+/* ==========================
+   TABLE
+========================== */
+
+.message-content table{
+
+    width:100%;
+
+    margin:24px 0;
+
+    border-collapse:collapse;
+
+    overflow:hidden;
+
+    border-radius:14px;
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   TABLE HEAD
+========================== */
+
+.message-content thead{
+
+    background:var(--bg-secondary);
+
+}
+
+.message-content th{
+
+    padding:14px 18px;
+
+    text-align:left;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   TABLE BODY
+========================== */
+
+.message-content td{
+
+    padding:14px 18px;
+
+    border-top:1px solid var(--border);
+
+}
+
+.message-content tbody tr:hover{
+
+    background:var(--surface-hover);
+
+}
+
+/* ==========================
+   IMAGE
+========================== */
+
+.message-content img{
+
+    display:block;
+
+    max-width:100%;
+
+    margin:20px auto;
+
+    border-radius:16px;
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/* ==========================
+   SELECTION
+========================== */
+
+.message-content ::selection{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/* ==========================
+   END PART 3
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   chat.css
+   PART 4
+   Code Blocks + Syntax Highlight + Copy Button
+========================================================== */
+
+/* ==========================
+   CODE CONTAINER
+========================== */
+
+.code-container{
+
+    width:100%;
+
+    margin:22px 0;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    background:#0f172a;
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/* ==========================
+   CODE HEADER
+========================== */
+
+.code-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:14px 18px;
+
+    background:#111827;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+/* ==========================
+   LANGUAGE
+========================== */
+
+.code-language{
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:.06em;
+
+    color:#d1d5db;
+
+}
+
+/* ==========================
+   COPY BUTTON
+========================== */
+
+.copy-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 14px;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.08);
+
+    color:#fff;
+
+    transition:all .25s ease;
+
+}
+
+.copy-btn:hover{
+
+    background:var(--primary);
+
+}
+
+.copy-btn i{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+/* ==========================
+   PRE BLOCK
+========================== */
+
+.code-container pre{
+
+    margin:0;
+
+    padding:22px;
+
+    overflow:auto;
+
+    background:#0f172a;
+
+}
+
+/* ==========================
+   CODE
+========================== */
+
+.code-container code{
+
+    display:block;
+
+    color:#e5e7eb;
+
+    font-size:.92rem;
+
+    line-height:1.8;
+
+    font-family:
+
+        "JetBrains Mono",
+
+        "Fira Code",
+
+        Consolas,
+
+        monospace;
+
+}
+
+/* ==========================
+   INLINE CODE
+========================== */
+
+.message-content :not(pre)>code{
+
+    padding:3px 8px;
+
+    border-radius:8px;
+
+    background:var(--bg-secondary);
+
+    color:var(--primary);
+
+    font-size:.9em;
+
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+.code-container pre::-webkit-scrollbar{
+
+    height:10px;
+
+}
+
+.code-container pre::-webkit-scrollbar-thumb{
+
+    background:#475569;
+
+    border-radius:999px;
+
+}
+
+.code-container pre::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* ==========================
+   CODE FOOTER
+========================== */
+
+.code-footer{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:12px 18px;
+
+    background:#111827;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+.code-info{
+
+    color:#94a3b8;
+
+    font-size:.78rem;
+
+}
+
+/* ==========================
+   EXPAND BUTTON
+========================== */
+
+.expand-code-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:#fff;
+
+    transition:.25s ease;
+
+}
+
+.expand-code-btn:hover{
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   HIGHLIGHT.JS
+========================== */
+
+.hljs{
+
+    background:transparent !important;
+
+    padding:0 !important;
+
+}
+
+/* ==========================
+   CODE ANIMATION
+========================== */
+
+.code-container{
+
+    animation:codeFade .35s ease;
+
+}
+
+@keyframes codeFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(16px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   END PART 4
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   chat.css
+   PART 5
+   Thinking UI + Streaming + Typing Indicator
+========================================================== */
+
+/* ==========================
+   THINKING SECTION
+========================== */
+
+.thinking-section{
+
+    width:100%;
+
+    max-width:980px;
+
+    margin:0 auto;
+
+    padding:18px 24px;
+
+}
+
+/* ==========================
+   THINKING CONTAINER
+========================== */
+
+.thinking-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    padding:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+/* ==========================
+   THINKING HEADER
+========================== */
+
+.thinking-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+/* ==========================
+   THINKING AVATAR
+========================== */
+
+.thinking-avatar{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    background:var(--surface-hover);
+
+    border:1px solid var(--border);
+
+}
+
+.thinking-avatar img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+/* ==========================
+   THINKING INFO
+========================== */
+
+.thinking-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:4px;
+
+}
+
+.thinking-info h3{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.thinking-info span{
+
+    font-size:.82rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   THINKING DOTS
+========================== */
+
+.thinking-animation{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.thinking-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    animation:thinkingBounce 1.2s infinite ease-in-out;
+
+}
+
+.thinking-dot:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+.thinking-dot:nth-child(3){
+
+    animation-delay:.4s;
+
+}
+
+@keyframes thinkingBounce{
+
+    0%,80%,100%{
+
+        transform:scale(.6);
+
+        opacity:.4;
+
+    }
+
+    40%{
+
+        transform:scale(1.2);
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   THINKING STATUS
+========================== */
+
+.thinking-status{
+
+    font-size:.95rem;
+
+    color:var(--text-secondary);
+
+    line-height:1.7;
+
+}
+
+/* ==========================
+   TYPING INDICATOR
+========================== */
+
+.typing-indicator{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:16px 20px;
+
+    width:max-content;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:999px;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+/* ==========================
+   TYPING DOT
+========================== */
+
+.typing-indicator::before,
+.typing-indicator::after{
+
+    content:"";
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    animation:typingPulse 1.2s infinite;
+
+}
+
+.typing-indicator span{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    animation:typingPulse 1.2s infinite;
+
+    animation-delay:.2s;
+
+}
+
+.typing-indicator::after{
+
+    animation-delay:.4s;
+
+}
+
+@keyframes typingPulse{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+        opacity:.35;
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   STREAMING TEXT
+========================== */
+
+.streaming{
+
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+    animation:streamAppear .25s ease;
+
+}
+
+@keyframes streamAppear{
+
+    from{
+
+        opacity:.5;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   STREAM CURSOR
+========================== */
+
+.streaming::after{
+
+    content:"▋";
+
+    color:var(--primary);
+
+    animation:cursorBlink .8s infinite;
+
+}
+
+@keyframes cursorBlink{
+
+    0%,50%{
+
+        opacity:1;
+
+    }
+
+    51%,100%{
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==========================
+   END PART 5
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   chat.css
+   PART 6
+   Message Actions + Feedback + Share + Voice
+========================================================== */
+
+/* ==========================
+   MESSAGE ACTIONS
+========================== */
+
+.message-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:12px;
+
+    opacity:0;
+
+    transform:translateY(8px);
+
+    transition:all .25s ease;
+
+}
+
+.message:hover .message-actions{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/* ==========================
+   ACTION BUTTON
+========================== */
+
+.action-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:12px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    color:var(--text-secondary);
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+}
+
+.action-btn:hover{
+
+    background:var(--primary);
+
+    border-color:var(--primary);
+
+    color:#fff;
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.action-btn:active{
+
+    transform:scale(.95);
+
+}
+
+.action-btn i{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+/* ==========================
+   COPY BUTTON
+========================== */
+
+.copy-btn.copied{
+
+    background:#22c55e;
+
+    border-color:#22c55e;
+
+    color:#fff;
+
+}
+
+/* ==========================
+   REGENERATE
+========================== */
+
+.regenerate-btn:hover{
+
+    background:#6366f1;
+
+}
+
+/* ==========================
+   SPEAK
+========================== */
+
+.speak-btn:hover{
+
+    background:#06b6d4;
+
+}
+
+/* ==========================
+   SHARE
+========================== */
+
+.share-btn:hover{
+
+    background:#8b5cf6;
+
+}
+
+/* ==========================
+   LIKE
+========================== */
+
+.like-btn.active{
+
+    background:#22c55e;
+
+    border-color:#22c55e;
+
+    color:#fff;
+
+}
+
+/* ==========================
+   DISLIKE
+========================== */
+
+.dislike-btn.active{
+
+    background:#ef4444;
+
+    border-color:#ef4444;
+
+    color:#fff;
+
+}
+
+/* ==========================
+   ACTION DIVIDER
+========================== */
+
+.action-divider{
+
+    width:1px;
+
+    height:24px;
+
+    background:var(--border);
+
+    margin:0 4px;
+
+}
+
+/* ==========================
+   ACTION TOOLTIP
+========================== */
+
+.action-btn{
+
+    position:relative;
+
+}
+
+.action-btn::before{
+
+    content:attr(data-tooltip);
+
+    position:absolute;
+
+    bottom:48px;
+
+    left:50%;
+
+    transform:translateX(-50%) scale(.9);
+
+    background:rgba(15,23,42,.96);
+
+    color:#fff;
+
+    padding:6px 10px;
+
+    border-radius:8px;
+
+    font-size:.72rem;
+
+    white-space:nowrap;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.2s ease;
+
+}
+
+.action-btn:hover::before{
+
+    opacity:1;
+
+    transform:translateX(-50%) scale(1);
+
+}
+
+/* ==========================
+   STREAM ACTIONS
+========================== */
+
+.message.streaming .message-actions{
+
+    opacity:.45;
+
+    pointer-events:none;
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .message-actions{
+
+        opacity:1;
+
+        flex-wrap:wrap;
+
+        gap:8px;
+
+    }
+
+    .action-btn{
+
+        width:36px;
+
+        height:36px;
+
+    }
+
+}
+
+/* ==========================
+   END PART 6
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   chat.css
+   PART 7
+   Images + Attachments + Rich Media + Tables
+========================================================== */
+
+/* ==========================
+   IMAGE CONTAINER
+========================== */
+
+.image-container{
+
+    width:100%;
+
+    display:grid;
+
+    gap:16px;
+
+    margin:20px 0;
+
+}
+
+/* ==========================
+   CHAT IMAGE
+========================== */
+
+.image-container img{
+
+    width:100%;
+
+    max-width:720px;
+
+    border-radius:18px;
+
+    border:1px solid var(--border);
+
+    cursor:pointer;
+
+    object-fit:cover;
+
+    transition:all .30s ease;
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.image-container img:hover{
+
+    transform:scale(1.02);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+/* ==========================
+   IMAGE CAPTION
+========================== */
+
+.image-caption{
+
+    margin-top:8px;
+
+    font-size:.85rem;
+
+    color:var(--text-muted);
+
+    text-align:center;
+
+}
+
+/* ==========================
+   ATTACHMENT CARD
+========================== */
+
+.attachment-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    width:100%;
+
+    padding:16px;
+
+    margin:14px 0;
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    background:var(--surface);
+
+    transition:.25s ease;
+
+}
+
+.attachment-card:hover{
+
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   FILE ICON
+========================== */
+
+.file-icon{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:14px;
+
+    background:var(--primary-soft);
+
+    color:var(--primary);
+
+}
+
+.file-icon i{
+
+    width:26px;
+
+    height:26px;
+
+}
+
+/* ==========================
+   FILE INFO
+========================== */
+
+.file-info{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+.file-name{
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+.file-size{
+
+    margin-top:4px;
+
+    font-size:.78rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   DOWNLOAD BUTTON
+========================== */
+
+.download-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:12px;
+
+    background:var(--surface-hover);
+
+    transition:.25s ease;
+
+}
+
+.download-btn:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/* ==========================
+   TABLE CONTAINER
+========================== */
+
+.table-container{
+
+    width:100%;
+
+    overflow-x:auto;
+
+    margin:20px 0;
+
+    border-radius:16px;
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   AUDIO PLAYER
+========================== */
+
+.audio-container{
+
+    width:100%;
+
+    margin:18px 0;
+
+}
+
+.audio-container audio{
+
+    width:100%;
+
+}
+
+/* ==========================
+   VIDEO PLAYER
+========================== */
+
+.video-container{
+
+    width:100%;
+
+    margin:20px 0;
+
+}
+
+.video-container video{
+
+    width:100%;
+
+    border-radius:16px;
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   PDF CARD
+========================== */
+
+.pdf-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:18px;
+
+    margin:18px 0;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+}
+
+/* ==========================
+   MEDIA GRID
+========================== */
+
+.media-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:18px;
+
+}
+
+/* ==========================
+   IMAGE LOADING
+========================== */
+
+.image-loading{
+
+    width:100%;
+
+    height:280px;
+
+    border-radius:16px;
+
+    background:var(--surface-hover);
+
+    animation:imagePulse 1.5s infinite;
+
+}
+
+@keyframes imagePulse{
+
+    0%,100%{
+
+        opacity:.45;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   END PART 7
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   chat.css
+   PART 8
+   Citations + Charts + AI Cards + Rich Response Blocks
+========================================================== */
+
+/* ==========================
+   CITATION CONTAINER
+========================== */
+
+.citation-container{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:18px;
+
+}
+
+/* ==========================
+   CITATION CHIP
+========================== */
+
+.citation-chip{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    color:var(--text-secondary);
+
+    font-size:.82rem;
+
+    transition:.25s ease;
+
+}
+
+.citation-chip:hover{
+
+    background:var(--primary);
+
+    border-color:var(--primary);
+
+    color:#fff;
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   CHART CONTAINER
+========================== */
+
+.chart-container{
+
+    width:100%;
+
+    margin:24px 0;
+
+    padding:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   CHART TITLE
+========================== */
+
+.chart-title{
+
+    margin-bottom:18px;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+/* ==========================
+   AI RESPONSE CARD
+========================== */
+
+.ai-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    padding:20px;
+
+    margin:18px 0;
+
+    background:linear-gradient(
+        135deg,
+        rgba(99,102,241,.08),
+        rgba(139,92,246,.06)
+    );
+
+    border:1px solid var(--primary);
+
+    border-radius:18px;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+/* ==========================
+   AI CARD HEADER
+========================== */
+
+.ai-card-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.ai-card-header i{
+
+    width:22px;
+
+    height:22px;
+
+    color:var(--primary);
+
+}
+
+.ai-card-title{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+/* ==========================
+   INFO CARD
+========================== */
+
+.info-card{
+
+    padding:18px;
+
+    margin:16px 0;
+
+    border-left:4px solid var(--primary);
+
+    background:var(--surface);
+
+    border-radius:14px;
+
+}
+
+/* ==========================
+   WARNING CARD
+========================== */
+
+.warning-card{
+
+    padding:18px;
+
+    margin:16px 0;
+
+    border-left:4px solid #f59e0b;
+
+    background:rgba(245,158,11,.08);
+
+    border-radius:14px;
+
+}
+
+/* ==========================
+   SUCCESS CARD
+========================== */
+
+.success-card{
+
+    padding:18px;
+
+    margin:16px 0;
+
+    border-left:4px solid #22c55e;
+
+    background:rgba(34,197,94,.08);
+
+    border-radius:14px;
+
+}
+
+/* ==========================
+   ERROR CARD
+========================== */
+
+.error-card{
+
+    padding:18px;
+
+    margin:16px 0;
+
+    border-left:4px solid #ef4444;
+
+    background:rgba(239,68,68,.08);
+
+    border-radius:14px;
+
+}
+
+/* ==========================
+   SEARCH RESULT
+========================== */
+
+.search-result{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+    padding:18px;
+
+    margin:14px 0;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    transition:.25s ease;
+
+}
+
+.search-result:hover{
+
+    transform:translateY(-3px);
+
+    border-color:var(--primary);
+
+}
+
+/* ==========================
+   SEARCH TITLE
+========================== */
+
+.search-result h4{
+
+    color:var(--primary);
+
+    font-size:1rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   SEARCH URL
+========================== */
+
+.search-url{
+
+    font-size:.78rem;
+
+    color:var(--text-muted);
+
+    word-break:break-all;
+
+}
+
+/* ==========================
+   SEARCH DESCRIPTION
+========================== */
+
+.search-description{
+
+    line-height:1.7;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================
+   AI THINKING CARD
+========================== */
+
+.reasoning-card{
+
+    padding:20px;
+
+    margin:20px 0;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px dashed var(--primary);
+
+}
+
+/* ==========================
+   BADGE
+========================== */
+
+.response-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:5px 10px;
+
+    border-radius:999px;
+
+    background:var(--primary-soft);
+
+    color:var(--primary);
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   FADE ANIMATION
+========================== */
+
+.ai-card,
+.search-result,
+.chart-container{
+
+    animation:richFade .35s ease;
+
+}
+
+@keyframes richFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(16px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   END PART 8
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   chat.css
+   PART 9
+   Streaming Animation + Cursor + Skeleton + Live Response
+========================================================== */
+
+/* ==========================
+   STREAMING MESSAGE
+========================== */
+
+.streaming-message{
+
+    position:relative;
+
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+    animation:streamFade .25s linear;
+
+}
+
+/* ==========================
+   STREAM CURSOR
+========================== */
+
+.streaming-message::after{
+
+    content:"▋";
+
+    display:inline-block;
+
+    margin-left:2px;
+
+    color:var(--primary);
+
+    animation:cursorBlink .8s infinite;
+
+}
+
+@keyframes cursorBlink{
+
+    0%,50%{
+
+        opacity:1;
+
+    }
+
+    51%,100%{
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==========================
+   STREAM FADE
+========================== */
+
+@keyframes streamFade{
+
+    from{
+
+        opacity:.5;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   TOKEN ANIMATION
+========================== */
+
+.token{
+
+    display:inline-block;
+
+    opacity:0;
+
+    animation:tokenReveal .18s forwards;
+
+}
+
+@keyframes tokenReveal{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(2px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   AI GENERATING
+========================== */
+
+.assistant-message.generating{
+
+    opacity:.96;
+
+}
+
+.assistant-message.generating .message-content{
+
+    user-select:none;
+
+}
+
+/* ==========================
+   SKELETON MESSAGE
+========================== */
+
+.message-skeleton{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    width:100%;
+
+}
+
+.skeleton-line{
+
+    height:14px;
+
+    border-radius:999px;
+
+    background:var(--surface-hover);
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.skeleton-line:nth-child(1){
+
+    width:100%;
+
+}
+
+.skeleton-line:nth-child(2){
+
+    width:92%;
+
+}
+
+.skeleton-line:nth-child(3){
+
+    width:74%;
+
+}
+
+.skeleton-line::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.15),
+
+        transparent
+
+    );
+
+    transform:translateX(-100%);
+
+    animation:skeletonMove 1.2s linear infinite;
+
+}
+
+@keyframes skeletonMove{
+
+    from{
+
+        transform:translateX(-100%);
+
+    }
+
+    to{
+
+        transform:translateX(100%);
+
+    }
+
+}
+
+/* ==========================
+   IMAGE SKELETON
+========================== */
+
+.image-skeleton{
+
+    width:100%;
+
+    height:260px;
+
+    border-radius:18px;
+
+    background:var(--surface-hover);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.image-skeleton::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.14),
+
+        transparent
+
+    );
+
+    animation:skeletonMove 1.4s linear infinite;
+
+}
+
+/* ==========================
+   LIVE RESPONSE
+========================== */
+
+.live-response{
+
+    animation:liveResponse .28s ease;
+
+}
+
+@keyframes liveResponse{
+
+    from{
+
+        transform:translateY(10px);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:translateY(0);
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   MESSAGE LOADING
+========================== */
+
+.message.loading{
+
+    pointer-events:none;
+
+}
+
+/* ==========================
+   THINKING GLOW
+========================== */
+
+.thinking-container{
+
+    position:relative;
+
+}
+
+.thinking-container::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-1px;
+
+    border-radius:22px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(99,102,241,.18),
+
+        transparent
+
+    );
+
+    animation:thinkingGlow 2.5s linear infinite;
+
+    z-index:-1;
+
+}
+
+@keyframes thinkingGlow{
+
+    from{
+
+        transform:translateX(-100%);
+
+    }
+
+    to{
+
+        transform:translateX(100%);
+
+    }
+
+}
+
+/* ==========================
+   STOP BUTTON
+========================== */
+
+.stop-generating{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:#ef4444;
+
+    color:#fff;
+
+    transition:.25s ease;
+
+}
+
+.stop-generating:hover{
+
+    filter:brightness(1.08);
+
+}
+
+/* ==========================
+   END PART 9
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   chat.css
+   PART 10
+   Advanced Chat Components + Message States + Scroll Button
+========================================================== */
+
+/* ==========================
+   MESSAGE GROUP
+========================== */
+
+.message-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+    width:100%;
+
+}
+
+/* ==========================
+   MESSAGE EDITING
+========================== */
+
+.message.editing .message-content{
+
+    outline:2px solid var(--primary);
+
+    background:var(--surface-hover);
+
+}
+
+/* ==========================
+   MESSAGE PINNED
+========================== */
+
+.message.pinned{
+
+    border-left:4px solid var(--primary);
+
+    padding-left:14px;
+
+}
+
+/* ==========================
+   MESSAGE ERROR
+========================== */
+
+.message.error .message-content{
+
+    border:1px solid #ef4444;
+
+    background:rgba(239,68,68,.08);
+
+}
+
+/* ==========================
+   MESSAGE SUCCESS
+========================== */
+
+.message.success .message-content{
+
+    border:1px solid #22c55e;
+
+    background:rgba(34,197,94,.08);
+
+}
+
+/* ==========================
+   MESSAGE WARNING
+========================== */
+
+.message.warning .message-content{
+
+    border:1px solid #f59e0b;
+
+    background:rgba(245,158,11,.08);
+
+}
+
+/* ==========================
+   REACTION BAR
+========================== */
+
+.reaction-bar{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:12px;
+
+}
+
+.reaction-chip{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:7px 12px;
+
+    border-radius:999px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+    transition:.25s ease;
+
+}
+
+.reaction-chip:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/* ==========================
+   SCROLL BUTTON
+========================== */
+
+.scroll-bottom-btn{
+
+    position:fixed;
+
+    right:26px;
+
+    bottom:120px;
+
+    width:52px;
+
+    height:52px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    box-shadow:var(--shadow-lg);
+
+    transition:all .3s ease;
+
+    z-index:500;
+
+}
+
+.scroll-bottom-btn:hover{
+
+    transform:translateY(-4px) scale(1.05);
+
+}
+
+.scroll-bottom-btn i{
+
+    width:22px;
+
+    height:22px;
+
+}
+
+/* ==========================
+   SCROLL UNREAD BADGE
+========================== */
+
+.scroll-bottom-btn .badge{
+
+    position:absolute;
+
+    top:-5px;
+
+    right:-5px;
+
+    min-width:22px;
+
+    height:22px;
+
+    border-radius:50%;
+
+    background:#ef4444;
+
+    color:#fff;
+
+    font-size:.72rem;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+/* ==========================
+   DATE DIVIDER
+========================== */
+
+.chat-date-divider{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin:18px 0;
+
+}
+
+.chat-date-divider span{
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    font-size:.78rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   NEW MESSAGE BADGE
+========================== */
+
+.new-message-badge{
+
+    align-self:center;
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-size:.82rem;
+
+    font-weight:600;
+
+    animation:newMessagePulse 1.5s infinite;
+
+}
+
+@keyframes newMessagePulse{
+
+    0%,100%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.06);
+
+    }
+
+}
+
+/* ==========================
+   CHAT EMPTY
+========================== */
+
+.chat-empty{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:60px 20px;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   CHAT EMPTY ICON
+========================== */
+
+.chat-empty i{
+
+    width:60px;
+
+    height:60px;
+
+    margin-bottom:18px;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .scroll-bottom-btn{
+
+        right:18px;
+
+        bottom:105px;
+
+        width:46px;
+
+        height:46px;
+
+    }
+
+}
+
+/* ==========================
+   END PART 10
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   chat.css
+   PART 11
+   Attachments + File Preview + Upload Cards
+========================================================== */
+
+/* ==========================
+   ATTACHMENT CONTAINER
+========================== */
+
+.attachment-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    width:100%;
+
+    margin:18px 0;
+
+}
+
+/* ==========================
+   FILE CARD
+========================== */
+
+.file-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:16px 18px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    transition:all .3s ease;
+
+}
+
+.file-card:hover{
+
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/* ==========================
+   FILE ICON
+========================== */
+
+.file-card-icon{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:54px;
+
+    height:54px;
+
+    border-radius:16px;
+
+    background:var(--primary-soft);
+
+}
+
+.file-card-icon i{
+
+    width:26px;
+
+    height:26px;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   FILE DETAILS
+========================== */
+
+.file-card-info{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+.file-card-title{
+
+    font-size:.96rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+.file-card-meta{
+
+    margin-top:5px;
+
+    font-size:.8rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   FILE ACTIONS
+========================== */
+
+.file-card-actions{
+
+    display:flex;
+
+    gap:8px;
+
+}
+
+/* ==========================
+   PREVIEW CONTAINER
+========================== */
+
+.preview-container{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:14px;
+
+    width:100%;
+
+    margin-bottom:16px;
+
+}
+
+/* ==========================
+   PREVIEW CARD
+========================== */
+
+.preview-item{
+
+    position:relative;
+
+    width:110px;
+
+    height:110px;
+
+    overflow:hidden;
+
+    border-radius:16px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+}
+
+.preview-item img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+/* ==========================
+   REMOVE PREVIEW
+========================== */
+
+.preview-remove{
+
+    position:absolute;
+
+    top:8px;
+
+    right:8px;
+
+    width:28px;
+
+    height:28px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(0,0,0,.65);
+
+    color:#fff;
+
+    transition:.25s ease;
+
+}
+
+.preview-remove:hover{
+
+    background:#ef4444;
+
+}
+
+/* ==========================
+   PDF PREVIEW
+========================== */
+
+.pdf-preview{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   AUDIO PREVIEW
+========================== */
+
+.audio-preview{
+
+    width:100%;
+
+    margin:18px 0;
+
+}
+
+.audio-preview audio{
+
+    width:100%;
+
+}
+
+/* ==========================
+   VIDEO PREVIEW
+========================== */
+
+.video-preview video{
+
+    width:100%;
+
+    border-radius:18px;
+
+}
+
+/* ==========================
+   DRAG & DROP
+========================== */
+
+.drop-zone{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    min-height:180px;
+
+    border:2px dashed var(--border);
+
+    border-radius:18px;
+
+    transition:.3s ease;
+
+}
+
+.drop-zone.dragover{
+
+    border-color:var(--primary);
+
+    background:rgba(99,102,241,.08);
+
+}
+
+/* ==========================
+   UPLOADING
+========================== */
+
+.upload-progress{
+
+    width:100%;
+
+    height:8px;
+
+    overflow:hidden;
+
+    border-radius:999px;
+
+    background:var(--surface-hover);
+
+}
+
+.upload-progress-bar{
+
+    width:0;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        var(--primary),
+        #8b5cf6
+    );
+
+    transition:width .3s linear;
+
+}
+
+/* ==========================
+   END PART 11
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   chat.css
+   PART 12
+   Citations + References + AI Sources + Link Cards
+========================================================== */
+
+/* ==========================
+   CITATION CONTAINER
+========================== */
+
+.citation-container{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:14px;
+
+    margin-top:22px;
+
+}
+
+/* ==========================
+   CITATION CARD
+========================== */
+
+.citation-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+    width:100%;
+
+    padding:18px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    transition:all .30s ease;
+
+}
+
+.citation-card:hover{
+
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/* ==========================
+   SOURCE HEADER
+========================== */
+
+.citation-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.citation-header i{
+
+    width:20px;
+
+    height:20px;
+
+    color:var(--primary);
+
+}
+
+.citation-title{
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+/* ==========================
+   URL
+========================== */
+
+.citation-url{
+
+    font-size:.78rem;
+
+    color:var(--primary);
+
+    word-break:break-all;
+
+}
+
+.citation-url:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ==========================
+   DESCRIPTION
+========================== */
+
+.citation-description{
+
+    font-size:.88rem;
+
+    line-height:1.7;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================
+   SOURCE TAG
+========================== */
+
+.source-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:5px 12px;
+
+    border-radius:999px;
+
+    background:var(--primary-soft);
+
+    color:var(--primary);
+
+    font-size:.72rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   WEB RESULT
+========================== */
+
+.web-result{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+    padding:18px;
+
+    margin-top:18px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+}
+
+.web-result:hover{
+
+    border-color:var(--primary);
+
+}
+
+/* ==========================
+   RESULT TITLE
+========================== */
+
+.web-result-title{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   RESULT URL
+========================== */
+
+.web-result-link{
+
+    font-size:.78rem;
+
+    color:var(--text-muted);
+
+    word-break:break-all;
+
+}
+
+/* ==========================
+   RESULT TEXT
+========================== */
+
+.web-result-text{
+
+    font-size:.92rem;
+
+    line-height:1.8;
+
+    color:var(--text);
+
+}
+
+/* ==========================
+   REFERENCE LIST
+========================== */
+
+.reference-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-top:18px;
+
+}
+
+/* ==========================
+   REFERENCE ITEM
+========================== */
+
+.reference-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    background:var(--bg-secondary);
+
+}
+
+.reference-number{
+
+    width:28px;
+
+    height:28px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   LINK PREVIEW
+========================== */
+
+.link-preview{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-top:18px;
+
+    padding:18px;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    background:var(--surface);
+
+    transition:.30s ease;
+
+}
+
+.link-preview:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/* ==========================
+   LINK IMAGE
+========================== */
+
+.link-preview img{
+
+    width:100%;
+
+    max-height:220px;
+
+    object-fit:cover;
+
+    border-radius:14px;
+
+}
+
+/* ==========================
+   LINK TITLE
+========================== */
+
+.link-preview h4{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+/* ==========================
+   LINK DESCRIPTION
+========================== */
+
+.link-preview p{
+
+    font-size:.88rem;
+
+    color:var(--text-secondary);
+
+    line-height:1.7;
+
+}
+
+/* ==========================
+   END PART 12
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   chat.css
+   PART 13
+   Dashboard Cards + Statistics + Timeline + Comparison
+========================================================== */
+
+/* ==========================
+   STATS GRID
+========================== */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:18px;
+
+    margin:22px 0;
+
+}
+
+/* ==========================
+   STAT CARD
+========================== */
+
+.stat-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    padding:20px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    transition:all .30s ease;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.stat-card i{
+
+    width:28px;
+
+    height:28px;
+
+    color:var(--primary);
+
+}
+
+.stat-title{
+
+    font-size:.88rem;
+
+    color:var(--text-muted);
+
+}
+
+.stat-value{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.stat-change{
+
+    font-size:.82rem;
+
+    font-weight:600;
+
+    color:#22c55e;
+
+}
+
+/* ==========================
+   DASHBOARD CARD
+========================== */
+
+.dashboard-card{
+
+    padding:22px;
+
+    margin:22px 0;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+}
+
+.dashboard-card h3{
+
+    margin-bottom:18px;
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   COMPARISON TABLE
+========================== */
+
+.comparison-table{
+
+    width:100%;
+
+    overflow-x:auto;
+
+    margin:20px 0;
+
+}
+
+.comparison-table table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.comparison-table th{
+
+    background:var(--bg-secondary);
+
+    padding:16px;
+
+    text-align:left;
+
+    font-weight:700;
+
+}
+
+.comparison-table td{
+
+    padding:16px;
+
+    border-top:1px solid var(--border);
+
+}
+
+.comparison-table tr:hover{
+
+    background:var(--surface-hover);
+
+}
+
+/* ==========================
+   TIMELINE
+========================== */
+
+.timeline{
+
+    position:relative;
+
+    margin:26px 0;
+
+    padding-left:32px;
+
+}
+
+.timeline::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:10px;
+
+    top:0;
+
+    bottom:0;
+
+    width:2px;
+
+    background:var(--border);
+
+}
+
+/* ==========================
+   TIMELINE ITEM
+========================== */
+
+.timeline-item{
+
+    position:relative;
+
+    margin-bottom:26px;
+
+}
+
+.timeline-item::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-28px;
+
+    top:4px;
+
+    width:14px;
+
+    height:14px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(99,102,241,.15);
+
+}
+
+.timeline-title{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.timeline-time{
+
+    margin-top:4px;
+
+    font-size:.8rem;
+
+    color:var(--text-muted);
+
+}
+
+.timeline-content{
+
+    margin-top:10px;
+
+    line-height:1.7;
+
+}
+
+/* ==========================
+   PROGRESS CARD
+========================== */
+
+.progress-card{
+
+    margin:20px 0;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+.progress-title{
+
+    margin-bottom:12px;
+
+    font-weight:700;
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:10px;
+
+    overflow:hidden;
+
+    border-radius:999px;
+
+    background:var(--surface-hover);
+
+}
+
+.progress-fill{
+
+    height:100%;
+
+    width:65%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+}
+
+/* ==========================
+   AI WIDGET
+========================== */
+
+.ai-widget{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:20px;
+
+    margin:20px 0;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(99,102,241,.08),
+
+        rgba(139,92,246,.05)
+
+    );
+
+    border:1px solid var(--primary);
+
+    border-radius:20px;
+
+}
+
+.ai-widget h4{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+}
+
+.ai-widget p{
+
+    margin-top:8px;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================
+   KPI GRID
+========================== */
+
+.kpi-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:16px;
+
+}
+
+/* ==========================
+   KPI CARD
+========================== */
+
+.kpi-card{
+
+    padding:18px;
+
+    border-radius:16px;
+
+    background:var(--bg-secondary);
+
+    text-align:center;
+
+}
+
+.kpi-card strong{
+
+    display:block;
+
+    font-size:1.8rem;
+
+    margin-bottom:6px;
+
+}
+
+/* ==========================
+   END PART 13
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   chat.css
+   PART 14
+   Mobile Responsive + Accessibility + Print Support
+========================================================== */
+
+/* ==========================
+   LARGE TABLET
+========================== */
+
+@media (max-width:1200px){
+
+    .chat-container{
+
+        max-width:900px;
+
+    }
+
+    .message-body{
+
+        max-width:88%;
+
+    }
+
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width:992px){
+
+    .chat-container{
+
+        padding:24px 20px 170px;
+
+    }
+
+    .message{
+
+        gap:14px;
+
+    }
+
+    .message-avatar{
+
+        width:42px;
+
+        height:42px;
+
+    }
+
+    .message-body{
+
+        max-width:92%;
+
+    }
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .chat-container{
+
+        padding:18px 14px 165px;
+
+        gap:22px;
+
+    }
+
+    .message{
+
+        gap:12px;
+
+    }
+
+    .message-avatar{
+
+        width:38px;
+
+        height:38px;
+
+    }
+
+    .message-body{
+
+        max-width:100%;
+
+    }
+
+    .message-content{
+
+        padding:16px;
+
+        font-size:.95rem;
+
+        line-height:1.75;
+
+    }
+
+    .message-actions{
+
+        gap:6px;
+
+    }
+
+    .action-btn{
+
+        width:34px;
+
+        height:34px;
+
+    }
+
+    .action-btn i{
+
+        width:16px;
+
+        height:16px;
+
+    }
+
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width:480px){
+
+    .chat-container{
+
+        padding:14px 10px 155px;
+
+    }
+
+    .message{
+
+        gap:10px;
+
+    }
+
+    .message-avatar{
+
+        width:34px;
+
+        height:34px;
+
+    }
+
+    .assistant-model{
+
+        display:none;
+
+    }
+
+    .message-content{
+
+        border-radius:18px;
+
+        padding:14px;
+
+    }
+
+    .thinking-container{
+
+        padding:16px;
+
+    }
+
+    .code-container pre{
+
+        padding:16px;
+
+    }
+
+}
+
+/* ==========================
+   LANDSCAPE
+========================== */
+
+@media (orientation:landscape) and (max-height:600px){
+
+    .chat-container{
+
+        padding-bottom:130px;
+
+    }
+
+}
+
+/* ==========================
+   HIGH CONTRAST
+========================== */
+
+@media (prefers-contrast:more){
+
+    .message-content{
+
+        border-width:2px;
+
+    }
+
+    .action-btn{
+
+        border-width:2px;
+
+    }
+
+}
+
+/* ==========================
+   REDUCED MOTION
+========================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    .message,
+    .message *,
+    .thinking-dot,
+    .streaming-message,
+    .scroll-bottom-btn{
+
+        animation:none !important;
+
+        transition:none !important;
+
+    }
+
+}
+
+/* ==========================
+   PRINT MODE
+========================== */
+
+@media print{
+
+    .message-actions,
+    .scroll-bottom-btn,
+    .typing-indicator,
+    .thinking-section{
+
+        display:none !important;
+
+    }
+
+    .chat-container{
+
+        max-width:100%;
+
+        padding:0;
+
+    }
+
+    .message-content{
+
+        border:1px solid #ccc;
+
+        box-shadow:none;
+
+    }
+
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+.chat-container::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.chat-container::-webkit-scrollbar-thumb{
+
+    background:var(--border);
+
+    border-radius:999px;
+
+}
+
+.chat-container::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary);
+
+}
+
+.chat-container::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* ==========================
+   END PART 14
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   chat.css
+   PART 15 (FINAL)
+   Premium Polish + Glass Effects + Performance
+========================================================== */
+
+/* ==========================
+   GLASS MESSAGE
+========================== */
+
+.message-content{
+
+    backdrop-filter:blur(16px);
+
+    -webkit-backdrop-filter:blur(16px);
+
+}
+
+/* ==========================
+   MESSAGE HOVER
+========================== */
+
+.message{
+
+    transition:
+        transform .30s ease,
+        opacity .30s ease;
+
+}
+
+.message:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   AI GLOW
+========================== */
+
+.assistant-message .message-avatar{
+
+    position:relative;
+
+}
+
+.assistant-message .message-avatar::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-3px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+
+        rgba(99,102,241,.35),
+
+        transparent 70%
+
+    );
+
+    z-index:-1;
+
+    animation:avatarGlow 3s linear infinite;
+
+}
+
+@keyframes avatarGlow{
+
+    0%{
+
+        transform:scale(.95);
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        transform:scale(1.1);
+
+        opacity:.8;
+
+    }
+
+    100%{
+
+        transform:scale(.95);
+
+        opacity:.4;
+
+    }
+
+}
+
+/* ==========================
+   MESSAGE SHADOW
+========================== */
+
+.user-message .message-content{
+
+    box-shadow:
+
+        0 10px 30px rgba(99,102,241,.25);
+
+}
+
+.assistant-message .message-content{
+
+    box-shadow:
+
+        0 8px 24px rgba(0,0,0,.08);
+
+}
+
+/* ==========================
+   FADE-IN DELAY
+========================== */
+
+.message:nth-child(odd){
+
+    animation-duration:.32s;
+
+}
+
+.message:nth-child(even){
+
+    animation-duration:.42s;
+
+}
+
+/* ==========================
+   HOVER LINKS
+========================== */
+
+.message-content a{
+
+    transition:color .25s ease;
+
+}
+
+.message-content a:hover{
+
+    color:#8b5cf6;
+
+}
+
+/* ==========================
+   SELECTION
+========================== */
+
+.message-content::selection,
+
+.message-content *::selection{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/* ==========================
+   IMAGE ZOOM
+========================== */
+
+.image-container img{
+
+    will-change:transform;
+
+}
+
+/* ==========================
+   GPU OPTIMIZATION
+========================== */
+
+.message,
+
+.message-content,
+
+.action-btn,
+
+.image-container img{
+
+    transform:translateZ(0);
+
+    backface-visibility:hidden;
+
+}
+
+/* ==========================
+   SMOOTH SCROLL
+========================== */
+
+.chat-container{
+
+    scroll-padding-bottom:180px;
+
+}
+
+/* ==========================
+   PERFORMANCE
+========================== */
+
+.chat-container{
+
+    contain:layout style;
+
+}
+
+/* ==========================
+   LOADING CURSOR
+========================== */
+
+.generating::after{
+
+    animation:cursorBlink .8s infinite;
+
+}
+
+/* ==========================
+   FOCUS
+========================== */
+
+.message-content:focus-visible{
+
+    outline:2px solid var(--primary);
+
+    outline-offset:4px;
+
+    border-radius:16px;
+
+}
+
+/* ==========================
+   FINAL RESPONSIVE FIX
+========================== */
+
+@media (max-width:768px){
+
+    .message:hover{
+
+        transform:none;
+
+    }
+
+    .assistant-message .message-avatar::after{
+
+        display:none;
+
+    }
+
+}
+
+/* ==========================
+   FINAL DARK MODE
+========================== */
+
+html.dark .assistant-message .message-content{
+
+    border-color:rgba(255,255,255,.06);
+
+}
+
+html.dark .user-message .message-content{
+
+    background:linear-gradient(
+
+        135deg,
+
+        #4f46e5,
+
+        #7c3aed
+
+    );
+
+}
+
+/* ==========================
+   FINAL LIGHT MODE
+========================== */
+
+html:not(.dark) .assistant-message .message-content{
+
+    background:#ffffff;
+
+}
+
+/* ==========================
+   END OF chat.css
+   DeepSINKY AI Chat System
+========================================================== */
