@@ -1,1 +1,1822 @@
+/* ==========================================================
+   DeepSINKY AI
+   sidebar.css
+   PART 1
+   Sidebar Foundation + Header
+========================================================== */
+
+/* ==========================
+   SIDEBAR
+========================== */
+
+.sidebar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:var(--sidebar-width);
+
+    height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:var(--surface);
+
+    border-right:1px solid var(--border);
+
+    box-shadow:var(--shadow-md);
+
+    overflow:hidden;
+
+    z-index:6000;
+
+    transition:
+        transform .30s ease,
+        width .30s ease,
+        background .30s ease;
+
+}
+
+/* ==========================
+   COLLAPSED
+========================== */
+
+.sidebar.collapsed{
+
+    transform:translateX(-100%);
+
+}
+
+/* ==========================
+   SIDEBAR HEADER
+========================== */
+
+.sidebar-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+    padding:20px;
+
+    min-height:80px;
+
+    border-bottom:1px solid var(--border);
+
+    background:var(--surface);
+
+}
+
+/* ==========================
+   BRAND
+========================== */
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+/* ==========================
+   LOGO
+========================== */
+
+.brand-logo{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:14px;
+
+    object-fit:cover;
+
+    flex-shrink:0;
+
+}
+
+/* ==========================
+   BRAND INFO
+========================== */
+
+.brand-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    min-width:0;
+
+}
+
+/* ==========================
+   TITLE
+========================== */
+
+.brand-title{
+
+    font-size:1.15rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+/* ==========================
+   VERSION
+========================== */
+
+.brand-version{
+
+    margin-top:4px;
+
+    font-size:.78rem;
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+/* ==========================
+   CLOSE BUTTON
+========================== */
+
+#closeSidebarBtn{
+
+    flex-shrink:0;
+
+}
+
+/* ==========================
+   SIDEBAR BODY
+========================== */
+
+.sidebar > *{
+
+    flex-shrink:0;
+
+}
+
+.history-container{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    padding:14px;
+
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+.history-container::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.history-container::-webkit-scrollbar-thumb{
+
+    background:var(--border);
+
+    border-radius:999px;
+
+}
+
+.history-container::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary);
+
+}
+
+/* ==========================
+   END PART 1
+========================== */
+/* ==========================================================
+   DeepSINKY AI
+   sidebar.css
+   PART 2
+   New Chat + Search + Navigation
+========================================================== */
+
+/* ==========================
+   NEW CHAT BUTTON
+========================== */
+
+#newChatBtn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    width:calc(100% - 24px);
+
+    margin:16px auto;
+
+}
+
+/* ==========================
+   SIDEBAR SEARCH
+========================== */
+
+.sidebar-search{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin:0 12px 18px;
+
+    padding:12px 16px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-md);
+
+    transition:.25s ease;
+
+}
+
+.sidebar-search:focus-within{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 3px rgba(79,70,229,.15);
+
+}
+
+.sidebar-search i{
+
+    width:18px;
+
+    height:18px;
+
+    color:var(--text-muted);
+
+}
+
+.sidebar-search input{
+
+    flex:1;
+
+    font-size:.95rem;
+
+    color:var(--text);
+
+}
+
+.sidebar-search input::placeholder{
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   NAVIGATION
+========================== */
+
+.sidebar-nav{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+    padding:0 12px 16px;
+
+}
+
+/* ==========================
+   NAV ITEM
+========================== */
+
+.nav-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border-radius:var(--radius-md);
+
+    color:var(--text-secondary);
+
+    transition:all .25s ease;
+
+}
+
+.nav-item:hover{
+
+    background:var(--surface-hover);
+
+    color:var(--text);
+
+}
+
+.nav-item.active{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.nav-item i{
+
+    width:20px;
+
+    height:20px;
+
+    flex-shrink:0;
+
+}
+
+.nav-item span{
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+}
+
+/* ==========================
+   NAV DIVIDER
+========================== */
+
+.sidebar-nav::after{
+
+    content:"";
+
+    display:block;
+
+    height:1px;
+
+    margin-top:10px;
+
+    background:var(--border);
+
+}
+
+/* ==========================
+   END PART 2
+========================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   sidebar.css
+   PART 3
+   Chat History + History Items
+========================================================== */
+
+/* ==========================
+   HISTORY CONTAINER
+========================== */
+
+.history-container{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    padding:14px;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+}
+
+/* ==========================
+   HISTORY GROUP
+========================== */
+
+.history-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+/* ==========================
+   HISTORY TITLE
+========================== */
+
+.history-title{
+
+    padding:8px 12px;
+
+    font-size:.78rem;
+
+    font-weight:700;
+
+    color:var(--text-muted);
+
+    text-transform:uppercase;
+
+    letter-spacing:.08em;
+
+}
+
+/* ==========================
+   HISTORY ITEM
+========================== */
+
+.history-item{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border-radius:var(--radius-md);
+
+    background:transparent;
+
+    transition:all .25s ease;
+
+    cursor:pointer;
+
+}
+
+/* ==========================
+   HOVER
+========================== */
+
+.history-item:hover{
+
+    background:var(--surface-hover);
+
+}
+
+/* ==========================
+   ACTIVE
+========================== */
+
+.history-item.active{
+
+    background:var(--primary-soft);
+
+    border:1px solid var(--primary);
+
+}
+
+/* ==========================
+   ICON
+========================== */
+
+.history-item i{
+
+    width:18px;
+
+    height:18px;
+
+    color:var(--text-secondary);
+
+    flex-shrink:0;
+
+}
+
+/* ==========================
+   CONTENT
+========================== */
+
+.history-content{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+/* ==========================
+   TITLE
+========================== */
+
+.history-name{
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    color:var(--text);
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+/* ==========================
+   SUBTITLE
+========================== */
+
+.history-date{
+
+    margin-top:4px;
+
+    font-size:.75rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   MENU BUTTON
+========================== */
+
+.history-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+    opacity:0;
+
+    transition:.25s ease;
+
+}
+
+.history-item:hover .history-menu{
+
+    opacity:1;
+
+}
+
+.history-menu:hover{
+
+    background:var(--surface-hover);
+
+}
+
+/* ==========================
+   PINNED CHAT
+========================== */
+
+.history-item.pinned::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:10px;
+
+    bottom:10px;
+
+    width:4px;
+
+    border-radius:999px;
+
+    background:var(--primary);
+
+}
+
+/* ==========================
+   EMPTY HISTORY
+========================== */
+
+.history-empty{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:40px 20px;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   END PART 3
+========================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   sidebar.css
+   PART 4
+   Storage Card + Footer + Profile
+========================================================== */
+
+/* ==========================
+   STORAGE CARD
+========================== */
+
+.storage-card{
+
+    margin:16px;
+
+    padding:18px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.storage-card span{
+
+    display:block;
+
+    margin-bottom:12px;
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+/* ==========================
+   STORAGE BAR
+========================== */
+
+.storage-bar{
+
+    position:relative;
+
+    width:100%;
+
+    height:8px;
+
+    overflow:hidden;
+
+    background:var(--bg-secondary);
+
+    border-radius:999px;
+
+}
+
+/* ==========================
+   STORAGE PROGRESS
+========================== */
+
+#storageProgress{
+
+    width:35%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        var(--primary),
+        #7c8cff
+    );
+
+    border-radius:999px;
+
+    transition:width .35s ease;
+
+}
+
+/* ==========================
+   SIDEBAR FOOTER
+========================== */
+
+.sidebar-footer{
+
+    padding:16px;
+
+    border-top:1px solid var(--border);
+
+    background:var(--surface);
+
+}
+
+/* ==========================
+   PROFILE BUTTON
+========================== */
+
+.profile-button{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:12px;
+
+    border-radius:var(--radius-md);
+
+    transition:all .25s ease;
+
+}
+
+.profile-button:hover{
+
+    background:var(--surface-hover);
+
+}
+
+/* ==========================
+   PROFILE AVATAR
+========================== */
+
+.profile-avatar{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    flex-shrink:0;
+
+    border:2px solid var(--border);
+
+}
+
+/* ==========================
+   PROFILE INFO
+========================== */
+
+.profile-button div{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+.profile-button strong{
+
+    display:block;
+
+    font-size:.95rem;
+
+    color:var(--text);
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+.profile-button small{
+
+    display:block;
+
+    margin-top:3px;
+
+    font-size:.8rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   FOOTER HOVER
+========================== */
+
+.sidebar-footer:hover{
+
+    background:var(--surface-hover);
+
+}
+
+/* ==========================
+   END PART 4
+========================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   sidebar.css
+   PART 5
+   Sidebar Footer Menu + User Account + Storage Details
+========================================================== */
+
+/* ==========================
+   FOOTER ACTIONS
+========================== */
+
+.sidebar-actions{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    padding:16px;
+
+}
+
+/* ==========================
+   ACTION BUTTON
+========================== */
+
+.sidebar-action{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border-radius:var(--radius-md);
+
+    color:var(--text-secondary);
+
+    transition:all .25s ease;
+
+}
+
+.sidebar-action:hover{
+
+    background:var(--surface-hover);
+
+    color:var(--text);
+
+}
+
+.sidebar-action i{
+
+    width:20px;
+
+    height:20px;
+
+    flex-shrink:0;
+
+}
+
+.sidebar-action span{
+
+    font-size:.94rem;
+
+    font-weight:600;
+
+}
+
+/* ==========================
+   STORAGE DETAILS
+========================== */
+
+.storage-details{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:12px;
+
+    font-size:.80rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   USER CARD
+========================== */
+
+.user-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:16px;
+
+    margin:16px;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    background:var(--surface);
+
+    transition:all .25s ease;
+
+}
+
+.user-card:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.user-avatar{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    flex-shrink:0;
+
+}
+
+.user-info{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+.user-name{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+.user-plan{
+
+    margin-top:4px;
+
+    font-size:.82rem;
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+/* ==========================
+   ONLINE STATUS
+========================== */
+
+.user-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    margin-top:6px;
+
+    font-size:.75rem;
+
+    color:var(--success);
+
+}
+
+.user-status::before{
+
+    content:"";
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--success);
+
+}
+
+/* ==========================
+   SIDEBAR VERSION
+========================== */
+
+.sidebar-version{
+
+    text-align:center;
+
+    padding:14px;
+
+    font-size:.75rem;
+
+    color:var(--text-muted);
+
+    border-top:1px solid var(--border);
+
+}
+
+/* ==========================
+   END PART 5
+========================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   sidebar.css
+   PART 6
+   Mobile Sidebar + Animation + Overlay
+========================================================== */
+
+/* ==========================
+   SIDEBAR OPEN
+========================== */
+
+.sidebar.open{
+
+    transform:translateX(0);
+
+}
+
+/* ==========================
+   SIDEBAR CLOSED
+========================== */
+
+.sidebar.closed{
+
+    transform:translateX(-100%);
+
+}
+
+/* ==========================
+   MOBILE OVERLAY
+========================== */
+
+.sidebar-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(6px);
+
+    -webkit-backdrop-filter:blur(6px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:all .30s ease;
+
+    z-index:5900;
+
+}
+
+.sidebar-overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/* ==========================
+   SIDEBAR ANIMATION
+========================== */
+
+.sidebar{
+
+    animation:sidebarFade .30s ease;
+
+}
+
+/* ==========================
+   HOVER EFFECT
+========================== */
+
+.sidebar *{
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        transform .25s ease,
+        opacity .25s ease;
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:992px){
+
+    .sidebar{
+
+        width:320px;
+
+        transform:translateX(-100%);
+
+    }
+
+    .sidebar.open{
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .sidebar{
+
+        width:290px;
+
+    }
+
+}
+
+/* ==========================
+   EXTRA SMALL
+========================== */
+
+@media (max-width:480px){
+
+    .sidebar{
+
+        width:100%;
+
+        max-width:320px;
+
+    }
+
+}
+
+/* ==========================
+   LARGE SCREEN
+========================== */
+
+@media (min-width:1400px){
+
+    .sidebar{
+
+        width:330px;
+
+    }
+
+}
+
+/* ==========================
+   COLLAPSED MODE
+========================== */
+
+.sidebar.mini{
+
+    width:90px;
+
+}
+
+.sidebar.mini .brand-info,
+.sidebar.mini .nav-item span,
+.sidebar.mini .profile-button div,
+.sidebar.mini .storage-card{
+
+    display:none;
+
+}
+
+.sidebar.mini .nav-item{
+
+    justify-content:center;
+
+}
+
+/* ==========================
+   ACTIVE GLOW
+========================== */
+
+.nav-item.active{
+
+    position:relative;
+
+}
+
+.nav-item.active::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:12px;
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+}
+
+/* ==========================
+   END PART 6
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   sidebar.css
+   PART 7
+   Premium Effects + Scroll + States
+========================================================== */
+
+/* ==========================
+   PREMIUM GLASS EFFECT
+========================== */
+
+.sidebar{
+
+    backdrop-filter:blur(20px);
+
+    -webkit-backdrop-filter:blur(20px);
+
+    background:rgba(20,25,35,.92);
+
+}
+
+html:not(.dark) .sidebar{
+
+    background:rgba(255,255,255,.90);
+
+}
+
+/* ==========================
+   CUSTOM SCROLLBAR
+========================== */
+
+.sidebar::-webkit-scrollbar,
+.history-container::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.sidebar::-webkit-scrollbar-track,
+.history-container::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.history-container::-webkit-scrollbar-thumb{
+
+    background:var(--border);
+
+    border-radius:999px;
+
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+.history-container::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary);
+
+}
+
+/* ==========================
+   BUTTON ACTIVE
+========================== */
+
+.icon-btn:active,
+.nav-item:active,
+.profile-button:active{
+
+    transform:scale(.97);
+
+}
+
+/* ==========================
+   HISTORY ANIMATION
+========================== */
+
+.history-item{
+
+    animation:historyFade .35s ease;
+
+}
+
+@keyframes historyFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/* ==========================
+   NEW CHAT GLOW
+========================== */
+
+#newChatBtn{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+#newChatBtn::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.15),
+        transparent
+    );
+
+    transform:translateX(-100%);
+
+    transition:transform .8s ease;
+
+}
+
+#newChatBtn:hover::before{
+
+    transform:translateX(100%);
+
+}
+
+/* ==========================
+   STORAGE ANIMATION
+========================== */
+
+#storageProgress{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+#storageProgress::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.35),
+        transparent
+    );
+
+    animation:progressShine 2s linear infinite;
+
+}
+
+@keyframes progressShine{
+
+    from{
+
+        transform:translateX(-100%);
+
+    }
+
+    to{
+
+        transform:translateX(100%);
+
+    }
+
+}
+
+/* ==========================
+   PROFILE HOVER
+========================== */
+
+.profile-button:hover .profile-avatar{
+
+    transform:rotate(5deg) scale(1.06);
+
+}
+
+/* ==========================
+   BRAND LOGO
+========================== */
+
+.brand-logo{
+
+    transition:.35s ease;
+
+}
+
+.brand:hover .brand-logo{
+
+    transform:rotate(-8deg) scale(1.08);
+
+}
+
+/* ==========================
+   SIDEBAR LOADING
+========================== */
+
+.sidebar.loading{
+
+    pointer-events:none;
+
+    opacity:.7;
+
+}
+
+/* ==========================
+   SIDEBAR HIDDEN
+========================== */
+
+.sidebar.hidden{
+
+    visibility:hidden;
+
+    opacity:0;
+
+}
+
+/* ==========================
+   END PART 7
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   sidebar.css
+   PART 8 (FINAL)
+   Final Polish + Accessibility + Responsive
+========================================================== */
+
+/* ==========================
+   SIDEBAR RESIZE
+========================== */
+
+.sidebar.compact{
+
+    width:240px;
+
+}
+
+.sidebar.expanded{
+
+    width:360px;
+
+}
+
+/* ==========================
+   KEYBOARD FOCUS
+========================== */
+
+.sidebar button:focus-visible,
+.sidebar input:focus-visible{
+
+    outline:2px solid var(--primary);
+
+    outline-offset:2px;
+
+    border-radius:var(--radius-sm);
+
+}
+
+/* ==========================
+   BRAND TEXT
+========================== */
+
+.brand-title{
+
+    letter-spacing:.3px;
+
+}
+
+.brand-version{
+
+    text-transform:uppercase;
+
+    letter-spacing:.08em;
+
+}
+
+/* ==========================
+   SEARCH PLACEHOLDER
+========================== */
+
+.sidebar-search input::placeholder{
+
+    transition:color .25s ease;
+
+}
+
+.sidebar-search:focus-within input::placeholder{
+
+    color:transparent;
+
+}
+
+/* ==========================
+   NAV BADGE
+========================== */
+
+.nav-badge{
+
+    margin-left:auto;
+
+    min-width:22px;
+
+    height:22px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:0 8px;
+
+    border-radius:999px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-size:.72rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   HISTORY SEPARATOR
+========================== */
+
+.history-divider{
+
+    width:100%;
+
+    height:1px;
+
+    margin:10px 0;
+
+    background:var(--border);
+
+}
+
+/* ==========================
+   PROFILE STATUS
+========================== */
+
+.profile-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    margin-top:5px;
+
+    font-size:.75rem;
+
+    color:var(--success);
+
+}
+
+.profile-status::before{
+
+    content:"";
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--success);
+
+}
+
+/* ==========================
+   REDUCED MOTION
+========================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    .sidebar,
+    .sidebar *,
+    .history-item,
+    .brand-logo,
+    .profile-avatar{
+
+        animation:none !important;
+
+        transition:none !important;
+
+    }
+
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width:1024px){
+
+    .history-container{
+
+        padding:10px;
+
+    }
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .sidebar-header{
+
+        padding:16px;
+
+    }
+
+    .brand-logo{
+
+        width:42px;
+
+        height:42px;
+
+    }
+
+    .history-item{
+
+        padding:12px;
+
+    }
+
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width:480px){
+
+    .sidebar{
+
+        width:100%;
+
+        max-width:320px;
+
+    }
+
+    .sidebar-search{
+
+        margin:12px;
+
+    }
+
+    #newChatBtn{
+
+        width:calc(100% - 24px);
+
+    }
+
+}
+
+/* ==========================
+   DARK THEME BORDER
+========================== */
+
+html.dark .sidebar{
+
+    border-right:1px solid rgba(255,255,255,.06);
+
+}
+
+/* ==========================
+   LIGHT THEME BORDER
+========================== */
+
+html:not(.dark) .sidebar{
+
+    border-right:1px solid rgba(0,0,0,.08);
+
+}
+
+/* ==========================================================
+   END OF sidebar.css
+========================================================== */
 
