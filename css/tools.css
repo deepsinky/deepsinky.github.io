@@ -1,0 +1,1926 @@
+/* ==========================================================
+   DeepSINKY AI
+   tools.css
+   PART 1
+   AI Tools Panel Foundation
+========================================================== */
+
+/* ==========================
+   TOOLS PANEL
+========================== */
+
+.tools-panel{
+
+    position:fixed;
+
+    top:80px;
+
+    right:24px;
+
+    width:400px;
+
+    max-height:calc(100vh - 120px);
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    background:rgba(20,25,35,.92);
+
+    backdrop-filter:blur(24px);
+
+    -webkit-backdrop-filter:blur(24px);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.30);
+
+    z-index:5000;
+
+    animation:toolsPanelOpen .35s ease;
+
+}
+
+/* ==========================
+   PANEL HEADER
+========================== */
+
+.tools-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:20px 22px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.tools-header h2{
+
+    font-size:1.2rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+/* ==========================
+   CLOSE BUTTON
+========================== */
+
+#closeToolsBtn{
+
+    width:42px;
+
+    height:42px;
+
+}
+
+/* ==========================
+   TOOLS CONTENT
+========================== */
+
+.tools-panel>*:not(.tools-header){
+
+    padding-left:20px;
+
+    padding-right:20px;
+
+}
+
+/* ==========================
+   SCROLL
+========================== */
+
+.tools-panel{
+
+    overflow-y:auto;
+
+    scrollbar-width:thin;
+
+    scrollbar-color:var(--border) transparent;
+
+}
+
+.tools-panel::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.tools-panel::-webkit-scrollbar-thumb{
+
+    background:var(--border);
+
+    border-radius:999px;
+
+}
+
+.tools-panel::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary);
+
+}
+
+/* ==========================
+   SECTION
+========================== */
+
+.tools-section{
+
+    margin-top:24px;
+
+}
+
+.tools-section h3{
+
+    margin-bottom:16px;
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+/* ==========================
+   PANEL OPEN
+========================== */
+
+@keyframes toolsPanelOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px) scale(.96);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+/* ==========================
+   END PART 1
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   tools.css
+   PART 2
+   Tools Grid + Tool Cards
+========================================================== */
+
+/* ==========================
+   TOOLS GRID
+========================== */
+
+.tools-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+    margin-top:20px;
+
+}
+
+/* ==========================
+   TOOL CARD
+========================== */
+
+.tool-card{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:14px;
+
+    min-height:130px;
+
+    padding:20px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    transition:all .30s ease;
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   TOOL ICON
+========================== */
+
+.tool-card i{
+
+    width:34px;
+
+    height:34px;
+
+    color:var(--primary);
+
+    transition:all .30s ease;
+
+}
+
+/* ==========================
+   TOOL TITLE
+========================== */
+
+.tool-card span{
+
+    font-size:.92rem;
+
+    font-weight:600;
+
+    color:var(--text);
+
+    text-align:center;
+
+}
+
+/* ==========================
+   HOVER
+========================== */
+
+.tool-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:var(--primary);
+
+    box-shadow:
+
+        0 18px 40px rgba(99,102,241,.18);
+
+}
+
+.tool-card:hover i{
+
+    transform:scale(1.15) rotate(6deg);
+
+}
+
+/* ==========================
+   ACTIVE
+========================== */
+
+.tool-card.active{
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(99,102,241,.12),
+
+        rgba(139,92,246,.08)
+
+    );
+
+    border-color:var(--primary);
+
+}
+
+.tool-card.active i,
+
+.tool-card.active span{
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   SHINE EFFECT
+========================== */
+
+.tool-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.15),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.tool-card:hover::before{
+
+    animation:toolShine .8s linear;
+
+}
+
+@keyframes toolShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   DISABLED
+========================== */
+
+.tool-card.disabled{
+
+    opacity:.45;
+
+    pointer-events:none;
+
+}
+
+/* ==========================
+   END PART 2
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   tools.css
+   PART 3
+   AI Modes + Mode Buttons
+========================================================== */
+
+/* ==========================
+   MODE LIST
+========================== */
+
+.mode-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    margin:18px 0 24px;
+
+}
+
+/* ==========================
+   MODE BUTTON
+========================== */
+
+.mode-btn{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    width:100%;
+
+    padding:16px 18px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    color:var(--text);
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:all .30s ease;
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   MODE ICON
+========================== */
+
+.mode-btn i{
+
+    width:22px;
+
+    height:22px;
+
+    color:var(--primary);
+
+    transition:all .30s ease;
+
+}
+
+/* ==========================
+   HOVER
+========================== */
+
+.mode-btn:hover{
+
+    transform:translateX(6px);
+
+    border-color:var(--primary);
+
+    background:rgba(99,102,241,.08);
+
+    box-shadow:0 12px 30px rgba(99,102,241,.12);
+
+}
+
+.mode-btn:hover i{
+
+    transform:rotate(10deg) scale(1.15);
+
+}
+
+/* ==========================
+   ACTIVE
+========================== */
+
+.mode-btn.active{
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+    border-color:transparent;
+
+}
+
+.mode-btn.active i{
+
+    color:#fff;
+
+}
+
+/* ==========================
+   SELECTED BORDER
+========================== */
+
+.mode-btn.active::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+
+    right:18px;
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+    transform:translateY(-50%);
+
+    box-shadow:0 0 10px rgba(34,197,94,.5);
+
+}
+
+/* ==========================
+   PREMIUM SHINE
+========================== */
+
+.mode-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.15),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.mode-btn:hover::before{
+
+    animation:modeShine .8s linear;
+
+}
+
+@keyframes modeShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   DISABLED
+========================== */
+
+.mode-btn:disabled{
+
+    opacity:.45;
+
+    cursor:not-allowed;
+
+    pointer-events:none;
+
+}
+
+/* ==========================
+   END PART 3
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   tools.css
+   PART 4
+   Camera + Gallery + File + PDF Tools
+========================================================== */
+
+/* ==========================
+   CAMERA TOOL
+========================== */
+
+#cameraTool{
+
+    position:relative;
+
+}
+
+#cameraTool.active{
+
+    background:linear-gradient(
+        135deg,
+        #06b6d4,
+        #0891b2
+    );
+
+    color:#fff;
+
+}
+
+#cameraTool.active i{
+
+    color:#fff;
+
+}
+
+/* ==========================
+   GALLERY TOOL
+========================== */
+
+#galleryTool.active{
+
+    background:linear-gradient(
+        135deg,
+        #8b5cf6,
+        #7c3aed
+    );
+
+    color:#fff;
+
+}
+
+#galleryTool.active i{
+
+    color:#fff;
+
+}
+
+/* ==========================
+   FILE TOOL
+========================== */
+
+#fileTool.active{
+
+    background:linear-gradient(
+        135deg,
+        #10b981,
+        #059669
+    );
+
+    color:#fff;
+
+}
+
+#fileTool.active i{
+
+    color:#fff;
+
+}
+
+/* ==========================
+   PDF TOOL
+========================== */
+
+#pdfTool.active{
+
+    background:linear-gradient(
+        135deg,
+        #ef4444,
+        #dc2626
+    );
+
+    color:#fff;
+
+}
+
+#pdfTool.active i{
+
+    color:#fff;
+
+}
+
+/* ==========================
+   TOOL STATUS BADGE
+========================== */
+
+.tool-status{
+
+    position:absolute;
+
+    top:12px;
+
+    right:12px;
+
+    min-width:20px;
+
+    height:20px;
+
+    padding:0 6px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:999px;
+
+    background:#22c55e;
+
+    color:#fff;
+
+    font-size:.68rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   TOOL DESCRIPTION
+========================== */
+
+.tool-description{
+
+    margin-top:8px;
+
+    font-size:.78rem;
+
+    text-align:center;
+
+    color:var(--text-muted);
+
+    line-height:1.5;
+
+}
+
+/* ==========================
+   TOOL LOADING
+========================== */
+
+.tool-card.loading{
+
+    pointer-events:none;
+
+}
+
+.tool-card.loading i{
+
+    animation:toolRotate 1s linear infinite;
+
+}
+
+@keyframes toolRotate{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* ==========================
+   TOOL SUCCESS
+========================== */
+
+.tool-card.success{
+
+    border-color:#22c55e;
+
+    box-shadow:0 0 20px rgba(34,197,94,.20);
+
+}
+
+/* ==========================
+   TOOL ERROR
+========================== */
+
+.tool-card.error{
+
+    border-color:#ef4444;
+
+    box-shadow:0 0 20px rgba(239,68,68,.20);
+
+}
+
+/* ==========================
+   TOOL FOOTER
+========================== */
+
+.tool-footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:14px;
+
+    font-size:.75rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .tools-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .tool-card{
+
+        min-height:110px;
+
+    }
+
+}
+
+/* ==========================
+   END PART 4
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   tools.css
+   PART 5
+   Voice + Code + Vision + Image AI Tools
+========================================================== */
+
+/* ==========================
+   VOICE TOOL
+========================== */
+
+#voiceTool.active{
+
+    background:linear-gradient(
+        135deg,
+        #ef4444,
+        #dc2626
+    );
+
+    color:#fff;
+
+}
+
+#voiceTool.active i{
+
+    color:#fff;
+
+}
+
+#voiceTool.recording{
+
+    animation:voicePulse 1.4s infinite;
+
+}
+
+@keyframes voicePulse{
+
+    0%{
+
+        box-shadow:0 0 0 0 rgba(239,68,68,.45);
+
+    }
+
+    70%{
+
+        box-shadow:0 0 0 16px rgba(239,68,68,0);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 0 0 rgba(239,68,68,0);
+
+    }
+
+}
+
+/* ==========================
+   CODE TOOL
+========================== */
+
+#codeTool.active{
+
+    background:linear-gradient(
+        135deg,
+        #3b82f6,
+        #2563eb
+    );
+
+    color:#fff;
+
+}
+
+#codeTool.active i{
+
+    color:#fff;
+
+}
+
+/* ==========================
+   IMAGE AI TOOL
+========================== */
+
+#imageGenTool.active{
+
+    background:linear-gradient(
+        135deg,
+        #ec4899,
+        #db2777
+    );
+
+    color:#fff;
+
+}
+
+#imageGenTool.active i{
+
+    color:#fff;
+
+}
+
+/* ==========================
+   VISION TOOL
+========================== */
+
+#visionTool.active{
+
+    background:linear-gradient(
+        135deg,
+        #8b5cf6,
+        #7c3aed
+    );
+
+    color:#fff;
+
+}
+
+#visionTool.active i{
+
+    color:#fff;
+
+}
+
+/* ==========================
+   TOOL INDICATOR
+========================== */
+
+.tool-indicator{
+
+    position:absolute;
+
+    top:12px;
+
+    left:12px;
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+    box-shadow:0 0 10px rgba(34,197,94,.5);
+
+}
+
+/* ==========================
+   TOOL LABEL
+========================== */
+
+.tool-label{
+
+    margin-top:6px;
+
+    font-size:.75rem;
+
+    font-weight:600;
+
+    color:var(--text-muted);
+
+    text-transform:uppercase;
+
+    letter-spacing:.08em;
+
+}
+
+/* ==========================
+   TOOL VERSION
+========================== */
+
+.tool-version{
+
+    margin-top:4px;
+
+    font-size:.72rem;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================
+   PREMIUM GLOW
+========================== */
+
+.tool-card.active{
+
+    box-shadow:
+        0 18px 40px rgba(99,102,241,.20),
+        0 0 25px rgba(99,102,241,.15);
+
+}
+
+/* ==========================
+   RIPPLE EFFECT
+========================== */
+
+.tool-card{
+
+    overflow:hidden;
+
+}
+
+.tool-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:0;
+
+    height:0;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.15);
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    transition:width .45s ease,
+               height .45s ease;
+
+}
+
+.tool-card:active::after{
+
+    width:220px;
+
+    height:220px;
+
+}
+
+/* ==========================
+   TOOL AVAILABLE
+========================== */
+
+.tool-card.available{
+
+    border-color:#22c55e;
+
+}
+
+/* ==========================
+   TOOL OFFLINE
+========================== */
+
+.tool-card.offline{
+
+    opacity:.55;
+
+    filter:grayscale(.4);
+
+}
+
+/* ==========================
+   END PART 5
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   tools.css
+   PART 6
+   Tool States + Loading + Empty + Error + Success
+========================================================== */
+
+/* ==========================
+   TOOL LOADING
+========================== */
+
+.tool-loading{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:16px;
+
+    padding:40px 20px;
+
+}
+
+.tool-spinner{
+
+    width:48px;
+
+    height:48px;
+
+    border:4px solid var(--border);
+
+    border-top-color:var(--primary);
+
+    border-radius:50%;
+
+    animation:toolSpin .8s linear infinite;
+
+}
+
+@keyframes toolSpin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* ==========================
+   EMPTY STATE
+========================== */
+
+.tool-empty{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    gap:14px;
+
+    padding:42px 24px;
+
+    color:var(--text-muted);
+
+}
+
+.tool-empty i{
+
+    width:56px;
+
+    height:56px;
+
+    color:var(--primary);
+
+}
+
+.tool-empty h3{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.tool-empty p{
+
+    line-height:1.7;
+
+}
+
+/* ==========================
+   SUCCESS STATE
+========================== */
+
+.tool-success{
+
+    padding:18px;
+
+    border-radius:18px;
+
+    border:1px solid #22c55e;
+
+    background:rgba(34,197,94,.08);
+
+}
+
+.tool-success h4{
+
+    color:#22c55e;
+
+    margin-bottom:8px;
+
+}
+
+/* ==========================
+   ERROR STATE
+========================== */
+
+.tool-error{
+
+    padding:18px;
+
+    border-radius:18px;
+
+    border:1px solid #ef4444;
+
+    background:rgba(239,68,68,.08);
+
+}
+
+.tool-error h4{
+
+    color:#ef4444;
+
+    margin-bottom:8px;
+
+}
+
+/* ==========================
+   WARNING STATE
+========================== */
+
+.tool-warning{
+
+    padding:18px;
+
+    border-radius:18px;
+
+    border:1px solid #f59e0b;
+
+    background:rgba(245,158,11,.08);
+
+}
+
+.tool-warning h4{
+
+    color:#f59e0b;
+
+}
+
+/* ==========================
+   TOOL STATUS BAR
+========================== */
+
+.tool-status-bar{
+
+    width:100%;
+
+    height:8px;
+
+    overflow:hidden;
+
+    border-radius:999px;
+
+    background:var(--surface-hover);
+
+    margin-top:14px;
+
+}
+
+.tool-status-fill{
+
+    width:0;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    transition:width .35s ease;
+
+}
+
+/* ==========================
+   TOOL LOG
+========================== */
+
+.tool-log{
+
+    margin-top:18px;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    font-family:Consolas,monospace;
+
+    font-size:.82rem;
+
+    line-height:1.7;
+
+    color:var(--text-secondary);
+
+    max-height:220px;
+
+    overflow:auto;
+
+}
+
+/* ==========================
+   TOOL FOOTER
+========================== */
+
+.tools-footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:24px;
+
+    padding-top:18px;
+
+    border-top:1px solid var(--border);
+
+}
+
+/* ==========================
+   FOOTER BUTTONS
+========================== */
+
+.tools-footer button{
+
+    flex:1;
+
+}
+
+/* ==========================
+   END PART 6
+========================================================== */
+
+
+
+/* ==========================================================
+   DeepSINKY AI
+   tools.css
+   PART 7
+   Responsive + Accessibility + Premium Effects
+========================================================== */
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width:992px){
+
+    .tools-panel{
+
+        width:360px;
+
+        right:18px;
+
+        top:72px;
+
+        max-height:calc(100vh - 95px);
+
+    }
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .tools-panel{
+
+        top:0;
+
+        right:0;
+
+        left:0;
+
+        bottom:0;
+
+        width:100%;
+
+        max-height:100%;
+
+        border-radius:0;
+
+        border:none;
+
+        animation:toolsMobileOpen .30s ease;
+
+    }
+
+    .tools-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:14px;
+
+    }
+
+    .tool-card{
+
+        min-height:120px;
+
+    }
+
+    .mode-btn{
+
+        padding:14px 16px;
+
+    }
+
+}
+
+@keyframes toolsMobileOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(100%);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width:480px){
+
+    .tools-header{
+
+        padding:18px 16px;
+
+    }
+
+    .tools-panel>*:not(.tools-header){
+
+        padding-left:16px;
+
+        padding-right:16px;
+
+    }
+
+    .tools-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .tool-card{
+
+        min-height:100px;
+
+    }
+
+    .tool-card i{
+
+        width:30px;
+
+        height:30px;
+
+    }
+
+}
+
+/* ==========================
+   FOCUS ACCESSIBILITY
+========================== */
+
+.tool-card:focus-visible,
+
+.mode-btn:focus-visible,
+
+#closeToolsBtn:focus-visible{
+
+    outline:2px solid var(--primary);
+
+    outline-offset:3px;
+
+}
+
+/* ==========================
+   REDUCED MOTION
+========================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    .tools-panel,
+
+    .tool-card,
+
+    .mode-btn,
+
+    .tool-card *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+    }
+
+}
+
+/* ==========================
+   HIGH CONTRAST
+========================== */
+
+@media (prefers-contrast:more){
+
+    .tool-card,
+
+    .mode-btn{
+
+        border-width:2px;
+
+    }
+
+}
+
+/* ==========================
+   GLASS EFFECT
+========================== */
+
+.tool-card{
+
+    backdrop-filter:blur(12px);
+
+    -webkit-backdrop-filter:blur(12px);
+
+}
+
+/* ==========================
+   GPU OPTIMIZATION
+========================== */
+
+.tool-card,
+
+.mode-btn,
+
+.tools-panel{
+
+    transform:translateZ(0);
+
+    backface-visibility:hidden;
+
+    will-change:transform;
+
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+
+html.dark .tools-panel{
+
+    border-color:rgba(255,255,255,.06);
+
+}
+
+/* ==========================
+   LIGHT MODE
+========================== */
+
+html:not(.dark) .tools-panel{
+
+    background:rgba(255,255,255,.95);
+
+}
+
+/* ==========================
+   END PART 7
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   tools.css
+   PART 8 (FINAL)
+   Premium Polish + Glass UI + Final Animations
+========================================================== */
+
+/* ==========================
+   PANEL GLASS EFFECT
+========================== */
+
+.tools-panel{
+
+    backdrop-filter:blur(28px);
+
+    -webkit-backdrop-filter:blur(28px);
+
+    transition:
+
+        transform .35s ease,
+
+        opacity .35s ease,
+
+        box-shadow .35s ease;
+
+}
+
+/* ==========================
+   PANEL SHADOW
+========================== */
+
+.tools-panel:hover{
+
+    box-shadow:
+
+        0 30px 80px rgba(0,0,0,.35),
+
+        0 0 40px rgba(99,102,241,.08);
+
+}
+
+/* ==========================
+   PANEL STATES
+========================== */
+
+.tools-panel.hidden{
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    pointer-events:none;
+
+}
+
+.tools-panel.visible{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/* ==========================
+   HEADER ICON
+========================== */
+
+.tools-header h2{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.tools-header h2::before{
+
+    content:"🧠";
+
+    font-size:1.15rem;
+
+}
+
+/* ==========================
+   TOOL CARD FLOAT
+========================== */
+
+.tool-card{
+
+    transform:translateZ(0);
+
+    will-change:transform;
+
+}
+
+.tool-card:hover{
+
+    transform:
+
+        translateY(-6px)
+
+        scale(1.02);
+
+}
+
+/* ==========================
+   ICON ANIMATION
+========================== */
+
+.tool-card:hover i{
+
+    animation:toolIconFloat .7s ease;
+
+}
+
+@keyframes toolIconFloat{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    40%{
+
+        transform:translateY(-6px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   ACTIVE GLOW
+========================== */
+
+.tool-card.active{
+
+    box-shadow:
+
+        0 18px 45px rgba(99,102,241,.25),
+
+        0 0 24px rgba(99,102,241,.18);
+
+}
+
+/* ==========================
+   MODE BUTTON GLOW
+========================== */
+
+.mode-btn.active{
+
+    box-shadow:
+
+        0 12px 35px rgba(99,102,241,.30);
+
+}
+
+/* ==========================
+   CUSTOM SCROLLBAR
+========================== */
+
+.tools-panel::-webkit-scrollbar{
+
+    width:7px;
+
+}
+
+.tools-panel::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    border-radius:999px;
+
+}
+
+/* ==========================
+   PERFORMANCE
+========================== */
+
+.tools-panel{
+
+    contain:layout style paint;
+
+}
+
+.tool-card,
+
+.mode-btn{
+
+    backface-visibility:hidden;
+
+}
+
+/* ==========================
+   FOCUS RING
+========================== */
+
+.tool-card:focus-visible,
+
+.mode-btn:focus-visible{
+
+    outline:2px solid var(--primary);
+
+    outline-offset:3px;
+
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+
+html.dark .tool-card{
+
+    border-color:rgba(255,255,255,.06);
+
+}
+
+/* ==========================
+   LIGHT MODE
+========================== */
+
+html:not(.dark) .tool-card{
+
+    background:#ffffff;
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .tool-card:hover{
+
+        transform:none;
+
+    }
+
+}
+
+/* ==========================
+   END OF tools.css
+========================================================== */
+
+
+
+
+
