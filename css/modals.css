@@ -1,0 +1,2136 @@
+/* ==========================================================
+   DeepSINKY AI
+   10-modals.css
+   PART 1
+   Universal Modal Foundation
+========================================================== */
+
+/* ==========================
+   MODAL SYSTEM
+========================== */
+
+.modal-system{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:10000;
+
+    padding:24px;
+
+}
+
+/* ==========================
+   MODAL OVERLAY
+========================== */
+
+.modal-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.60);
+
+    backdrop-filter:blur(10px);
+
+    -webkit-backdrop-filter:blur(10px);
+
+    animation:modalOverlayFade .25s ease;
+
+}
+
+/* ==========================
+   MODAL WINDOW
+========================== */
+
+.modal-window{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:640px;
+
+    max-height:90vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    background:rgba(20,25,35,.95);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    box-shadow:
+
+        0 24px 70px rgba(0,0,0,.35);
+
+    backdrop-filter:blur(24px);
+
+    -webkit-backdrop-filter:blur(24px);
+
+    animation:modalOpen .35s ease;
+
+    z-index:2;
+
+}
+
+/* ==========================
+   MODAL HEADER
+========================== */
+
+.modal-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+    padding:22px 24px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+/* ==========================
+   TITLE GROUP
+========================== */
+
+.modal-title-group{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    flex:1;
+
+}
+
+.modal-title-group i{
+
+    width:34px;
+
+    height:34px;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   TITLE
+========================== */
+
+#modalTitle{
+
+    font-size:1.3rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+#modalSubtitle{
+
+    margin-top:4px;
+
+    font-size:.88rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   CLOSE BUTTON
+========================== */
+
+#closeModalBtn{
+
+    width:44px;
+
+    height:44px;
+
+    flex-shrink:0;
+
+}
+
+/* ==========================
+   ANIMATIONS
+========================== */
+
+@keyframes modalOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(24px) scale(.95);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+@keyframes modalOverlayFade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   END PART 1
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   10-modals.css
+   PART 2
+   Modal Body + Footer + Divider
+========================================================== */
+
+/* ==========================
+   MODAL BODY
+========================== */
+
+.modal-body{
+
+    flex:1;
+
+    padding:24px;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    scrollbar-width:thin;
+
+    scrollbar-color:var(--border) transparent;
+
+}
+
+.modal-body::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.modal-body::-webkit-scrollbar-thumb{
+
+    background:var(--border);
+
+    border-radius:999px;
+
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary);
+
+}
+
+/* ==========================
+   MODAL DIVIDER
+========================== */
+
+.modal-divider{
+
+    width:100%;
+
+    height:1px;
+
+    border:none;
+
+    background:var(--border);
+
+    margin:0;
+
+}
+
+/* ==========================
+   MODAL FOOTER
+========================== */
+
+.modal-footer{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:14px;
+
+    padding:20px 24px;
+
+    border-top:1px solid var(--border);
+
+    background:rgba(255,255,255,.02);
+
+}
+
+/* ==========================
+   FOOTER BUTTONS
+========================== */
+
+.modal-footer .primary-btn,
+
+.modal-footer .secondary-btn{
+
+    min-width:130px;
+
+}
+
+/* ==========================
+   MODAL CONTENT
+========================== */
+
+.modal-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+/* ==========================
+   MODAL SECTION
+========================== */
+
+.modal-section{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.modal-section h3{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.modal-section p{
+
+    font-size:.92rem;
+
+    line-height:1.7;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================
+   MODAL CARD
+========================== */
+
+.modal-card{
+
+    padding:18px;
+
+    border-radius:18px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+    transition:all .30s ease;
+
+}
+
+.modal-card:hover{
+
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   MODAL LOADING
+========================== */
+
+.modal-loading{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:220px;
+
+}
+
+/* ==========================
+   MODAL SPINNER
+========================== */
+
+.modal-spinner{
+
+    width:48px;
+
+    height:48px;
+
+    border:4px solid var(--border);
+
+    border-top-color:var(--primary);
+
+    border-radius:50%;
+
+    animation:modalSpin .8s linear infinite;
+
+}
+
+@keyframes modalSpin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* ==========================
+   END PART 2
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   10-modals.css
+   PART 3
+   Forms + Inputs + Authentication UI
+========================================================== */
+
+/* ==========================
+   AUTH CONTAINER
+========================== */
+
+.auth-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/* ==========================
+   FORM GROUP
+========================== */
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+/* ==========================
+   LABEL
+========================== */
+
+.form-group label{
+
+    font-size:.90rem;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+/* ==========================
+   INPUT
+========================== */
+
+.form-group input,
+
+.form-group textarea,
+
+.form-group select{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    font-size:.95rem;
+
+    transition:all .25s ease;
+
+    outline:none;
+
+}
+
+/* ==========================
+   INPUT PLACEHOLDER
+========================== */
+
+.form-group input::placeholder,
+
+.form-group textarea::placeholder{
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   INPUT FOCUS
+========================== */
+
+.form-group input:focus,
+
+.form-group textarea:focus,
+
+.form-group select:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:
+
+        0 0 0 4px rgba(99,102,241,.12);
+
+}
+
+/* ==========================
+   TEXTAREA
+========================== */
+
+.form-group textarea{
+
+    min-height:120px;
+
+    resize:vertical;
+
+}
+
+/* ==========================
+   LOGIN / SIGNUP
+========================== */
+
+#loginForm,
+
+#signupForm{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ==========================
+   AUTH BUTTONS
+========================== */
+
+#loginButton,
+
+#signupButton{
+
+    width:100%;
+
+    margin-top:6px;
+
+}
+
+/* ==========================
+   FORM HELP
+========================== */
+
+.form-help{
+
+    font-size:.80rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   ERROR
+========================== */
+
+.input-error{
+
+    border-color:#ef4444 !important;
+
+}
+
+.error-text{
+
+    color:#ef4444;
+
+    font-size:.80rem;
+
+}
+
+/* ==========================
+   SUCCESS
+========================== */
+
+.input-success{
+
+    border-color:#22c55e !important;
+
+}
+
+/* ==========================
+   PASSWORD TOGGLE
+========================== */
+
+.password-wrapper{
+
+    position:relative;
+
+}
+
+.password-toggle{
+
+    position:absolute;
+
+    top:50%;
+
+    right:14px;
+
+    transform:translateY(-50%);
+
+    cursor:pointer;
+
+    color:var(--text-muted);
+
+    transition:.25s ease;
+
+}
+
+.password-toggle:hover{
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   END PART 3
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   10-modals.css
+   PART 4
+   Social Login + Auth Footer + Profile Cards
+========================================================== */
+
+/* ==========================
+   SOCIAL LOGIN
+========================== */
+
+.social-login{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    margin-top:24px;
+
+}
+
+/* ==========================
+   SOCIAL BUTTON
+========================== */
+
+.social-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:14px;
+
+    width:100%;
+
+    padding:15px 18px;
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:all .30s ease;
+
+}
+
+.social-btn:hover{
+
+    transform:translateY(-2px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 12px 28px rgba(99,102,241,.12);
+
+}
+
+.social-btn i{
+
+    width:22px;
+
+    height:22px;
+
+}
+
+/* ==========================
+   GOOGLE
+========================== */
+
+#googleLoginBtn:hover{
+
+    color:#4285F4;
+
+}
+
+/* ==========================
+   GITHUB
+========================== */
+
+#githubLoginBtn:hover{
+
+    color:#7c3aed;
+
+}
+
+/* ==========================
+   MICROSOFT
+========================== */
+
+#microsoftLoginBtn:hover{
+
+    color:#2563eb;
+
+}
+
+/* ==========================
+   AUTH FOOTER
+========================== */
+
+.auth-footer{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:24px;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--border);
+
+}
+
+/* ==========================
+   GUEST BUTTON
+========================== */
+
+#guestModeBtn{
+
+    min-width:220px;
+
+}
+
+/* ==========================
+   PROFILE CARD
+========================== */
+
+.profile-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:20px;
+
+    margin-bottom:22px;
+
+    border-radius:20px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   PROFILE AVATAR
+========================== */
+
+.profile-avatar{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:3px solid var(--primary);
+
+    flex-shrink:0;
+
+}
+
+.profile-avatar img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+/* ==========================
+   PROFILE INFO
+========================== */
+
+.profile-info{
+
+    flex:1;
+
+}
+
+.profile-info h3{
+
+    font-size:1.15rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.profile-info p{
+
+    margin-top:6px;
+
+    font-size:.88rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   VERIFIED BADGE
+========================== */
+
+.verified-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    margin-top:10px;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   PREMIUM BADGE
+========================== */
+
+.premium-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    margin-top:8px;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        #f59e0b,
+
+        #fbbf24
+
+    );
+
+    color:#fff;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   END PART 4
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   10-modals.css
+   PART 5
+   Settings + Lists + Toggle + Tabs + Preferences
+========================================================== */
+
+/* ==========================
+   SETTINGS GROUP
+========================== */
+
+.settings-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ==========================
+   SETTINGS ITEM
+========================== */
+
+.settings-item{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:18px 20px;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    background:var(--surface);
+
+    transition:all .30s ease;
+
+}
+
+.settings-item:hover{
+
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   SETTINGS INFO
+========================== */
+
+.settings-info{
+
+    flex:1;
+
+}
+
+.settings-info h4{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.settings-info p{
+
+    margin-top:6px;
+
+    font-size:.84rem;
+
+    color:var(--text-muted);
+
+    line-height:1.6;
+
+}
+
+/* ==========================
+   TOGGLE SWITCH
+========================== */
+
+.toggle-switch{
+
+    position:relative;
+
+    width:54px;
+
+    height:30px;
+
+    border-radius:999px;
+
+    background:var(--border);
+
+    cursor:pointer;
+
+    transition:.30s ease;
+
+}
+
+.toggle-switch::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:3px;
+
+    left:3px;
+
+    width:24px;
+
+    height:24px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    transition:.30s ease;
+
+}
+
+.toggle-switch.active{
+
+    background:var(--primary);
+
+}
+
+.toggle-switch.active::after{
+
+    transform:translateX(24px);
+
+}
+
+/* ==========================
+   MODAL TABS
+========================== */
+
+.modal-tabs{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:24px;
+
+    overflow-x:auto;
+
+}
+
+.modal-tab{
+
+    padding:12px 18px;
+
+    border-radius:999px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+    color:var(--text-secondary);
+
+    white-space:nowrap;
+
+    cursor:pointer;
+
+    transition:.30s ease;
+
+}
+
+.modal-tab:hover{
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+}
+
+.modal-tab.active{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    border-color:transparent;
+
+}
+
+/* ==========================
+   OPTION LIST
+========================== */
+
+.option-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.option-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:.30s ease;
+
+}
+
+.option-item:hover{
+
+    border-color:var(--primary);
+
+}
+
+.option-item i{
+
+    width:22px;
+
+    height:22px;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   DROPDOWN
+========================== */
+
+.modal-select{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border-radius:14px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    outline:none;
+
+}
+
+.modal-select:focus{
+
+    border-color:var(--primary);
+
+}
+
+/* ==========================
+   END PART 5
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   10-modals.css
+   PART 6
+   Alerts + Progress + Timeline + Import / Export
+========================================================== */
+
+/* ==========================
+   ALERT BOX
+========================== */
+
+.modal-alert{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:16px;
+
+    padding:18px;
+
+    margin-bottom:20px;
+
+    border-radius:18px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+}
+
+.modal-alert i{
+
+    width:24px;
+
+    height:24px;
+
+    flex-shrink:0;
+
+}
+
+/* SUCCESS */
+
+.modal-alert.success{
+
+    border-color:#22c55e;
+
+    background:rgba(34,197,94,.08);
+
+}
+
+.modal-alert.success i{
+
+    color:#22c55e;
+
+}
+
+/* WARNING */
+
+.modal-alert.warning{
+
+    border-color:#f59e0b;
+
+    background:rgba(245,158,11,.08);
+
+}
+
+.modal-alert.warning i{
+
+    color:#f59e0b;
+
+}
+
+/* ERROR */
+
+.modal-alert.error{
+
+    border-color:#ef4444;
+
+    background:rgba(239,68,68,.08);
+
+}
+
+.modal-alert.error i{
+
+    color:#ef4444;
+
+}
+
+/* INFO */
+
+.modal-alert.info{
+
+    border-color:var(--primary);
+
+    background:rgba(99,102,241,.08);
+
+}
+
+.modal-alert.info i{
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   PROGRESS
+========================== */
+
+.modal-progress{
+
+    margin:20px 0;
+
+}
+
+.modal-progress-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+    font-size:.88rem;
+
+    color:var(--text-secondary);
+
+}
+
+.modal-progress-track{
+
+    width:100%;
+
+    height:10px;
+
+    overflow:hidden;
+
+    border-radius:999px;
+
+    background:var(--border);
+
+}
+
+.modal-progress-fill{
+
+    width:0;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    transition:width .35s ease;
+
+}
+
+/* ==========================
+   IMPORT / EXPORT
+========================== */
+
+.import-export-box{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    border:2px dashed var(--border);
+
+    background:var(--surface);
+
+    text-align:center;
+
+    transition:.30s ease;
+
+}
+
+.import-export-box:hover{
+
+    border-color:var(--primary);
+
+}
+
+.import-export-box i{
+
+    width:46px;
+
+    height:46px;
+
+    margin:auto;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   TIMELINE
+========================== */
+
+.modal-timeline{
+
+    position:relative;
+
+    margin-top:24px;
+
+    padding-left:28px;
+
+}
+
+.modal-timeline::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:10px;
+
+    top:0;
+
+    bottom:0;
+
+    width:2px;
+
+    background:var(--border);
+
+}
+
+.timeline-event{
+
+    position:relative;
+
+    margin-bottom:24px;
+
+}
+
+.timeline-event::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-23px;
+
+    top:4px;
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+}
+
+.timeline-event h4{
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.timeline-event p{
+
+    margin-top:6px;
+
+    color:var(--text-muted);
+
+    line-height:1.6;
+
+}
+
+/* ==========================
+   LOG VIEWER
+========================== */
+
+.modal-log{
+
+    max-height:240px;
+
+    overflow:auto;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    font-family:Consolas,monospace;
+
+    font-size:.82rem;
+
+    line-height:1.7;
+
+}
+
+/* ==========================
+   END PART 6
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   10-modals.css
+   PART 7
+   Responsive + Accessibility + States
+========================================================== */
+
+/* ==========================
+   LARGE TABLET
+========================== */
+
+@media (max-width:1200px){
+
+    .modal-window{
+
+        max-width:560px;
+
+    }
+
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width:992px){
+
+    .modal-system{
+
+        padding:18px;
+
+    }
+
+    .modal-window{
+
+        max-width:100%;
+
+        max-height:92vh;
+
+    }
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .modal-system{
+
+        padding:0;
+
+        align-items:flex-end;
+
+    }
+
+    .modal-window{
+
+        width:100%;
+
+        max-width:100%;
+
+        max-height:100vh;
+
+        height:auto;
+
+        border-radius:24px 24px 0 0;
+
+        animation:mobileModalOpen .28s ease;
+
+    }
+
+    .modal-header{
+
+        padding:18px;
+
+    }
+
+    .modal-body{
+
+        padding:18px;
+
+    }
+
+    .modal-footer{
+
+        padding:18px;
+
+        flex-direction:column;
+
+    }
+
+    .modal-footer button{
+
+        width:100%;
+
+    }
+
+}
+
+@keyframes mobileModalOpen{
+
+    from{
+
+        transform:translateY(100%);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:translateY(0);
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width:480px){
+
+    #modalTitle{
+
+        font-size:1.1rem;
+
+    }
+
+    #modalSubtitle{
+
+        font-size:.80rem;
+
+    }
+
+    .modal-title-group i{
+
+        width:28px;
+
+        height:28px;
+
+    }
+
+    .profile-card{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+}
+
+/* ==========================
+   MODAL HIDDEN
+========================== */
+
+.modal-system.hidden{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+}
+
+.modal-system.visible{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/* ==========================
+   FOCUS
+========================== */
+
+.modal-window button:focus-visible,
+
+.modal-window input:focus-visible,
+
+.modal-window textarea:focus-visible,
+
+.modal-window select:focus-visible{
+
+    outline:2px solid var(--primary);
+
+    outline-offset:2px;
+
+}
+
+/* ==========================
+   REDUCED MOTION
+========================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    .modal-system,
+
+    .modal-window,
+
+    .modal-window *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+    }
+
+}
+
+/* ==========================
+   HIGH CONTRAST
+========================== */
+
+@media (prefers-contrast:more){
+
+    .modal-window,
+
+    .modal-card,
+
+    .settings-item{
+
+        border-width:2px;
+
+    }
+
+}
+
+/* ==========================
+   GPU
+========================== */
+
+.modal-window{
+
+    transform:translateZ(0);
+
+    backface-visibility:hidden;
+
+    will-change:transform;
+
+}
+
+/* ==========================
+   END PART 7
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   10-modals.css
+   PART 8 (FINAL)
+   Premium Glass UI + Final Polish + Performance
+========================================================== */
+
+/* ==========================
+   PREMIUM GLASS
+========================== */
+
+.modal-window{
+
+    backdrop-filter:blur(32px);
+
+    -webkit-backdrop-filter:blur(32px);
+
+    background:rgba(18,22,30,.94);
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease,
+        box-shadow .35s ease;
+
+}
+
+/* ==========================
+   WINDOW SHADOW
+========================== */
+
+.modal-window:hover{
+
+    box-shadow:
+
+        0 32px 90px rgba(0,0,0,.40),
+
+        0 0 35px rgba(99,102,241,.12);
+
+}
+
+/* ==========================
+   PREMIUM BORDER
+========================== */
+
+.modal-window::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    border-radius:inherit;
+
+    padding:1px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(255,255,255,.08),
+
+        transparent,
+
+        rgba(99,102,241,.15)
+
+    );
+
+    -webkit-mask:
+
+        linear-gradient(#fff 0 0) content-box,
+
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+            mask-composite:exclude;
+
+}
+
+/* ==========================
+   HEADER GLOW
+========================== */
+
+.modal-header{
+
+    position:relative;
+
+}
+
+.modal-header::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:24px;
+
+    right:24px;
+
+    bottom:0;
+
+    height:1px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        var(--primary),
+
+        transparent
+
+    );
+
+    opacity:.35;
+
+}
+
+/* ==========================
+   BUTTON POLISH
+========================== */
+
+.modal-footer button{
+
+    transition:all .25s ease;
+
+}
+
+.modal-footer button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.modal-footer button:active{
+
+    transform:scale(.97);
+
+}
+
+/* ==========================
+   CARD EFFECT
+========================== */
+
+.modal-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.modal-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.modal-card:hover::after{
+
+    animation:modalCardShine .9s linear;
+
+}
+
+@keyframes modalCardShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   PROFILE AVATAR
+========================== */
+
+.profile-avatar{
+
+    transition:transform .30s ease;
+
+}
+
+.profile-avatar:hover{
+
+    transform:scale(1.06);
+
+}
+
+/* ==========================
+   CUSTOM SCROLLBAR
+========================== */
+
+.modal-body::-webkit-scrollbar{
+
+    width:7px;
+
+}
+
+.modal-body::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    border-radius:999px;
+
+}
+
+/* ==========================
+   GPU OPTIMIZATION
+========================== */
+
+.modal-window,
+
+.modal-card,
+
+.settings-item,
+
+.social-btn{
+
+    transform:translateZ(0);
+
+    backface-visibility:hidden;
+
+    will-change:transform;
+
+}
+
+/* ==========================
+   PERFORMANCE
+========================== */
+
+.modal-window{
+
+    contain:layout style paint;
+
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+
+html.dark .modal-window{
+
+    border-color:rgba(255,255,255,.06);
+
+}
+
+/* ==========================
+   LIGHT MODE
+========================== */
+
+html:not(.dark) .modal-window{
+
+    background:rgba(255,255,255,.96);
+
+}
+
+/* ==========================
+   PRINT
+========================== */
+
+@media print{
+
+    .modal-system{
+
+        display:none !important;
+
+    }
+
+}
+
+/* ==========================
+   MOBILE POLISH
+========================== */
+
+@media (max-width:768px){
+
+    .modal-window:hover{
+
+        box-shadow:0 20px 50px rgba(0,0,0,.25);
+
+    }
+
+}
+
+/* ==========================
+   END OF 10-modals.css
+   DeepSINKY AI Modal System
+========================================================== */
+
+
