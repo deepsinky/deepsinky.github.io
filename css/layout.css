@@ -1,1 +1,1808 @@
 
+/* ==========================================================
+   DeepSINKY AI
+   layout.css
+   PART 1
+   Core Application Layout
+========================================================== */
+
+/* ==========================
+   APP
+========================== */
+
+.app{
+
+    position:relative;
+
+    display:flex;
+
+    width:100%;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   MAIN CONTENT
+========================== */
+
+.main-content{
+
+    position:relative;
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    width:100%;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   CONTENT WRAPPER
+========================== */
+
+.content-wrapper{
+
+    position:relative;
+
+    flex:1;
+
+    width:100%;
+
+    max-width:1800px;
+
+    margin:0 auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/* ==========================
+   PAGE LAYOUT
+========================== */
+
+.page-layout{
+
+    display:flex;
+
+    flex:1;
+
+    width:100%;
+
+    min-height:100vh;
+
+}
+
+/* ==========================
+   CHAT WORKSPACE
+========================== */
+
+.chat-workspace{
+
+    position:relative;
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-start;
+
+    width:100%;
+
+    height:100%;
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   CHAT CONTAINER
+========================== */
+
+.chat-container{
+
+    flex:1;
+
+    width:100%;
+
+    max-width:980px;
+
+    margin:0 auto;
+
+    padding:30px 24px 180px;
+
+    overflow-y:auto;
+
+    scroll-behavior:smooth;
+
+}
+
+/* ==========================
+   WELCOME SCREEN
+========================== */
+
+.welcome-screen{
+
+    width:100%;
+
+    min-height:calc(100vh - var(--header-height));
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px 20px;
+
+}
+
+/* ==========================
+   INPUT SECTION
+========================== */
+
+.input-section{
+
+    position:sticky;
+
+    bottom:0;
+
+    width:100%;
+
+    background:var(--bg);
+
+    padding:18px 20px;
+
+    border-top:1px solid var(--border);
+
+    z-index:100;
+
+}
+
+/* ==========================
+   WORKSPACE
+========================== */
+
+.workspace{
+
+    display:flex;
+
+    flex:1;
+
+    gap:24px;
+
+}
+
+/* ==========================
+   SPLIT LAYOUT
+========================== */
+
+.split-layout{
+
+    display:grid;
+
+    grid-template-columns:1fr 380px;
+
+    gap:24px;
+
+    width:100%;
+
+}
+
+/* ==========================
+   PANEL
+========================== */
+
+.panel{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-sm);
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   LEFT PANEL
+========================== */
+
+.left-panel{
+
+    flex:1;
+
+}
+
+/* ==========================
+   RIGHT PANEL
+========================== */
+
+.right-panel{
+
+    width:380px;
+
+}
+
+/* ==========================
+   TOP PANEL
+========================== */
+
+.top-panel{
+
+    margin-bottom:20px;
+
+}
+
+/* ==========================
+   BOTTOM PANEL
+========================== */
+
+.bottom-panel{
+
+    margin-top:20px;
+
+}
+
+/* ==========================
+   STICKY
+========================== */
+
+.sticky{
+
+    position:sticky;
+
+    top:var(--header-height);
+
+}
+
+/* ==========================
+   FULLSCREEN
+========================== */
+
+.fullscreen{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+
+    height:100vh;
+
+    z-index:9999;
+
+}
+
+/* ==========================
+   END PART 1
+========================== */
+/* ==========================================================
+   DeepSINKY AI
+   layout.css
+   PART 2
+   Global Layers + Overlay + Floating UI
+========================================================== */
+
+/* ==========================
+   BACKGROUND EFFECTS
+========================== */
+
+.background-effects{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:-10;
+
+}
+
+/* ==========================
+   BACKGROUND CANVAS
+========================== */
+
+.background-effects canvas{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+}
+
+/* ==========================
+   APP OVERLAY
+========================== */
+
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(8px);
+
+    -webkit-backdrop-filter:blur(8px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.30s ease;
+
+    z-index:5000;
+
+}
+
+.overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/* ==========================
+   TOAST ROOT
+========================== */
+
+.toast-container{
+
+    position:fixed;
+
+    top:24px;
+
+    right:24px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    pointer-events:none;
+
+    z-index:9000;
+
+}
+
+/* ==========================
+   MODAL ROOT
+========================== */
+
+.modal-root{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    pointer-events:none;
+
+    z-index:8000;
+
+}
+
+/* ==========================
+   TOOLTIP ROOT
+========================== */
+
+.tooltip-root{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:9500;
+
+}
+
+/* ==========================
+   DROPDOWN ROOT
+========================== */
+
+.dropdown-root{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:7600;
+
+}
+
+/* ==========================
+   CONTEXT MENU ROOT
+========================== */
+
+.context-menu-root{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:7700;
+
+}
+
+/* ==========================
+   FLOATING UI
+========================== */
+
+.floating-ui{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:7800;
+
+}
+
+/* ==========================
+   PREVIEW CONTAINER
+========================== */
+
+.preview-container{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:16px;
+
+}
+
+/* ==========================
+   THINKING SECTION
+========================== */
+
+.thinking-section{
+
+    width:100%;
+
+    padding:18px 22px;
+
+}
+
+/* ==========================
+   THINKING CONTAINER
+========================== */
+
+.thinking-container{
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:auto;
+
+}
+
+/* ==========================
+   TYPING INDICATOR
+========================== */
+
+.typing-indicator{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:flex-start;
+
+    padding:10px 20px;
+
+}
+
+/* ==========================
+   SCROLL AREA
+========================== */
+
+.scroll-area{
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+}
+
+/* ==========================
+   SAFE AREA
+========================== */
+
+.safe-area{
+
+    padding-bottom:env(safe-area-inset-bottom);
+
+    padding-left:env(safe-area-inset-left);
+
+    padding-right:env(safe-area-inset-right);
+
+}
+
+/* ==========================
+   CONTENT LIMIT
+========================== */
+
+.content-limit{
+
+    width:min(1500px,95%);
+
+    margin-inline:auto;
+
+}
+
+/* ==========================
+   FLEX HELPERS
+========================== */
+
+.row{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.column{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.space-between{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.wrap{
+
+    flex-wrap:wrap;
+
+}
+
+/* ==========================
+   END PART 2
+========================== */
+/* ==========================================================
+   DeepSINKY AI
+   layout.css
+   PART 3
+   Chat Workspace + Welcome Layout + Empty States
+========================================================== */
+
+/* ==========================
+   CHAT WORKSPACE
+========================== */
+
+.chat-workspace{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-start;
+
+    align-items:stretch;
+
+    flex:1;
+
+    width:100%;
+
+    min-height:100%;
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   CHAT CONTAINER
+========================== */
+
+.chat-container{
+
+    flex:1;
+
+    width:100%;
+
+    max-width:980px;
+
+    margin:0 auto;
+
+    padding:32px 24px 220px;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    scroll-behavior:smooth;
+
+}
+
+/* ==========================
+   EMPTY STATE
+========================== */
+
+.empty-state{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    flex:1;
+
+    width:100%;
+
+    padding:80px 24px;
+
+}
+
+/* ==========================
+   EMPTY ICON
+========================== */
+
+.empty-icon{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow-md);
+
+    margin-bottom:28px;
+
+}
+
+.empty-icon i{
+
+    width:42px;
+
+    height:42px;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   EMPTY TEXT
+========================== */
+
+.empty-state h2{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    margin-bottom:14px;
+
+}
+
+.empty-state p{
+
+    max-width:620px;
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+}
+
+/* ==========================
+   WELCOME AREA
+========================== */
+
+.welcome-screen{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    width:100%;
+
+    min-height:calc(100vh - var(--header-height));
+
+}
+
+/* ==========================
+   WELCOME HERO
+========================== */
+
+.welcome-hero{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    gap:18px;
+
+    margin-bottom:40px;
+
+}
+
+/* ==========================
+   PROMPT AREA
+========================== */
+
+.prompt-grid{
+
+    width:100%;
+
+    max-width:1100px;
+
+    margin-inline:auto;
+
+}
+
+/* ==========================
+   QUICK ACTIONS
+========================== */
+
+.quick-actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+    margin-top:38px;
+
+}
+
+/* ==========================
+   THINKING
+========================== */
+
+.thinking-container{
+
+    max-width:980px;
+
+    margin:24px auto;
+
+}
+
+/* ==========================
+   TYPING
+========================== */
+
+.typing-indicator{
+
+    max-width:980px;
+
+    width:100%;
+
+    margin:0 auto;
+
+    padding:12px 24px;
+
+}
+
+/* ==========================
+   SCROLL BUTTON
+========================== */
+
+.scroll-bottom-btn{
+
+    position:fixed;
+
+    right:28px;
+
+    bottom:130px;
+
+    z-index:150;
+
+}
+
+/* ==========================
+   CHAT SPACING
+========================== */
+
+.chat-spacing{
+
+    height:40px;
+
+}
+
+/* ==========================
+   CHAT WRAPPER
+========================== */
+
+.chat-wrapper{
+
+    width:100%;
+
+    max-width:980px;
+
+    margin-inline:auto;
+
+}
+
+/* ==========================
+   PAGE CENTER
+========================== */
+
+.page-center{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* ==========================
+   END PART 3
+========================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   layout.css
+   PART 4
+   Panels + Workspace + Utility Layout
+========================================================== */
+
+/* ==========================
+   WORKSPACE
+========================== */
+
+.workspace{
+
+    position:relative;
+
+    display:flex;
+
+    flex:1;
+
+    width:100%;
+
+    gap:24px;
+
+    align-items:stretch;
+
+}
+
+/* ==========================
+   SPLIT LAYOUT
+========================== */
+
+.split-layout{
+
+    display:grid;
+
+    grid-template-columns:minmax(0,1fr) 380px;
+
+    gap:24px;
+
+    width:100%;
+
+    align-items:start;
+
+}
+
+/* ==========================
+   PANEL
+========================== */
+
+.panel{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-sm);
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   PANEL HEADER
+========================== */
+
+.panel-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:18px 22px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+/* ==========================
+   PANEL BODY
+========================== */
+
+.panel-body{
+
+    flex:1;
+
+    padding:22px;
+
+    overflow:auto;
+
+}
+
+/* ==========================
+   PANEL FOOTER
+========================== */
+
+.panel-footer{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:14px;
+
+    padding:18px 22px;
+
+    border-top:1px solid var(--border);
+
+}
+
+/* ==========================
+   LEFT PANEL
+========================== */
+
+.left-panel{
+
+    min-width:0;
+
+    flex:1;
+
+}
+
+/* ==========================
+   RIGHT PANEL
+========================== */
+
+.right-panel{
+
+    width:380px;
+
+    flex-shrink:0;
+
+}
+
+/* ==========================
+   GRID LAYOUT
+========================== */
+
+.grid-layout{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:20px;
+
+}
+
+/* ==========================
+   TWO COLUMN
+========================== */
+
+.two-column{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+}
+
+/* ==========================
+   THREE COLUMN
+========================== */
+
+.three-column{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+/* ==========================
+   STACK
+========================== */
+
+.stack{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ==========================
+   AUTO HEIGHT
+========================== */
+
+.auto-height{
+
+    height:auto;
+
+}
+
+/* ==========================
+   FULL HEIGHT
+========================== */
+
+.full-height{
+
+    height:100%;
+
+}
+
+/* ==========================
+   FULL WIDTH
+========================== */
+
+.full-width{
+
+    width:100%;
+
+}
+
+/* ==========================
+   CENTER CONTENT
+========================== */
+
+.center-content{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+/* ==========================
+   HORIZONTAL SCROLL
+========================== */
+
+.horizontal-scroll{
+
+    display:flex;
+
+    gap:16px;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+    padding-bottom:8px;
+
+}
+
+/* ==========================
+   SECTION SPACING
+========================== */
+
+.section-spacing{
+
+    margin-top:30px;
+
+}
+
+/* ==========================
+   CONTENT SPACING
+========================== */
+
+.content-spacing{
+
+    padding:24px;
+
+}
+
+/* ==========================
+   END PART 4
+========================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   layout.css
+   PART 5
+   Modal Layout + Dashboard Layout + OS Layout
+========================================================== */
+
+/* ==========================
+   MODAL SYSTEM
+========================== */
+
+.modal-system{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:24px;
+
+    z-index:9000;
+
+}
+
+.modal-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    backdrop-filter:blur(12px);
+
+    -webkit-backdrop-filter:blur(12px);
+
+}
+
+.modal-window{
+
+    position:relative;
+
+    width:min(760px,96vw);
+
+    max-height:92vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   MODAL CONTENT
+========================== */
+
+.modal-header{
+
+    flex-shrink:0;
+
+}
+
+.modal-body{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    min-height:120px;
+
+}
+
+.modal-footer{
+
+    flex-shrink:0;
+
+}
+
+/* ==========================
+   DASHBOARD
+========================== */
+
+.dashboard-layout{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:22px;
+
+    width:100%;
+
+}
+
+.dashboard-card{
+
+    min-height:220px;
+
+}
+
+.dashboard-section{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ==========================
+   MEMORY LAYOUT
+========================== */
+
+.memory-layout{
+
+    display:grid;
+
+    grid-template-columns:300px 1fr;
+
+    gap:24px;
+
+}
+
+.memory-sidebar{
+
+    min-width:280px;
+
+}
+
+.memory-content{
+
+    min-width:0;
+
+}
+
+/* ==========================
+   KNOWLEDGE
+========================== */
+
+.knowledge-layout{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:24px;
+
+}
+
+/* ==========================
+   PROJECT
+========================== */
+
+.project-layout{
+
+    display:grid;
+
+    grid-template-columns:380px 1fr;
+
+    gap:24px;
+
+}
+
+/* ==========================
+   NOTES
+========================== */
+
+.notes-layout{
+
+    display:grid;
+
+    grid-template-columns:320px 1fr;
+
+    gap:22px;
+
+}
+
+/* ==========================
+   AGENTS
+========================== */
+
+.agent-layout{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:22px;
+
+}
+
+/* ==========================
+   PLATFORM
+========================== */
+
+.platform-layout{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:24px;
+
+}
+
+/* ==========================
+   OS LAYOUT
+========================== */
+
+.os-layout{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:24px;
+
+}
+
+.os-section{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+/* ==========================
+   SEARCH
+========================== */
+
+.search-layout{
+
+    display:grid;
+
+    gap:20px;
+
+}
+
+/* ==========================
+   COMMAND
+========================== */
+
+.command-layout{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ==========================
+   STRETCH
+========================== */
+
+.stretch{
+
+    flex:1;
+
+}
+
+/* ==========================
+   OVERFLOW
+========================== */
+
+.overflow-auto{
+
+    overflow:auto;
+
+}
+
+.overflow-hidden{
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   Z INDEX HELPERS
+========================== */
+
+.z-top{
+
+    z-index:9999;
+
+}
+
+.z-high{
+
+    z-index:1000;
+
+}
+
+.z-normal{
+
+    z-index:10;
+
+}
+
+/* ==========================
+   END PART 5
+========================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   layout.css
+   PART 6 (FINAL)
+   Responsive Layout + Safe Area + Final Utilities
+========================================================== */
+
+/* ==========================
+   SAFE AREA SUPPORT
+========================== */
+
+.safe-top{
+
+    padding-top:env(safe-area-inset-top);
+
+}
+
+.safe-bottom{
+
+    padding-bottom:env(safe-area-inset-bottom);
+
+}
+
+.safe-left{
+
+    padding-left:env(safe-area-inset-left);
+
+}
+
+.safe-right{
+
+    padding-right:env(safe-area-inset-right);
+
+}
+
+/* ==========================
+   MAX CONTENT
+========================== */
+
+.max-content{
+
+    width:min(1700px,96%);
+
+    margin-inline:auto;
+
+}
+
+/* ==========================
+   FLEX HELPERS
+========================== */
+
+.flex-center{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.flex-between{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.flex-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.flex-wrap{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+}
+
+/* ==========================
+   GRID HELPERS
+========================== */
+
+.grid-2{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:24px;
+
+}
+
+.grid-3{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:24px;
+
+}
+
+.grid-4{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:24px;
+
+}
+
+/* ==========================
+   SPACING HELPERS
+========================== */
+
+.mt-16{margin-top:16px;}
+.mt-24{margin-top:24px;}
+.mt-32{margin-top:32px;}
+.mt-40{margin-top:40px;}
+
+.mb-16{margin-bottom:16px;}
+.mb-24{margin-bottom:24px;}
+.mb-32{margin-bottom:32px;}
+.mb-40{margin-bottom:40px;}
+
+.p-16{padding:16px;}
+.p-24{padding:24px;}
+.p-32{padding:32px;}
+
+/* ==========================
+   WIDTH HELPERS
+========================== */
+
+.w-auto{width:auto;}
+
+.w-full{width:100%;}
+
+.h-full{height:100%;}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width:1200px){
+
+    .split-layout,
+    .project-layout,
+    .notes-layout,
+    .memory-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .right-panel{
+
+        width:100%;
+
+    }
+
+}
+
+@media (max-width:992px){
+
+    .workspace{
+
+        flex-direction:column;
+
+    }
+
+    .grid-4{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .grid-3{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .chat-container{
+
+        padding:20px 16px 170px;
+
+    }
+
+    .content-wrapper{
+
+        width:100%;
+
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .panel-body{
+
+        padding:18px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .welcome-screen{
+
+        padding:24px 14px;
+
+    }
+
+    .chat-container{
+
+        padding:18px 12px 160px;
+
+    }
+
+    .content-spacing{
+
+        padding:16px;
+
+    }
+
+}
+
+/* ==========================
+   PRINT
+========================== */
+
+@media print{
+
+    .sidebar,
+    .header,
+    .input-section,
+    .feature-bar{
+
+        display:none !important;
+
+    }
+
+    .chat-container{
+
+        max-width:100%;
+
+        padding:0;
+
+    }
+
+}
+
+/* ==========================================================
+   END OF layout.css
+========================================================== */
+
