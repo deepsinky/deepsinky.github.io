@@ -269,3 +269,592 @@ body{
     pointer-events:none;
 
 }
+
+/* ==========================================================
+   DeepSINKY AI
+   main.css
+   PART 3B
+   Welcome + Global UI
+========================================================== */
+
+/* ==========================
+   WELCOME SCREEN
+========================== */
+
+.welcome-screen{
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:80px 24px;
+
+    text-align:center;
+
+}
+
+/* ==========================
+   HERO
+========================== */
+
+.welcome-hero{
+
+    max-width:720px;
+
+    margin:0 auto;
+
+}
+
+/* ==========================
+   LOGO
+========================== */
+
+.welcome-logo{
+
+    width:120px;
+
+    height:120px;
+
+    margin:0 auto 30px;
+
+    object-fit:contain;
+
+}
+
+/* ==========================
+   TITLE
+========================== */
+
+.welcome-title{
+
+    font-size:clamp(2.4rem,5vw,4.2rem);
+
+    font-weight:800;
+
+    color:var(--text);
+
+    line-height:1.15;
+
+}
+
+.welcome-title span{
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   DESCRIPTION
+========================== */
+
+.welcome-description{
+
+    margin-top:18px;
+
+    font-size:1.1rem;
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+}
+
+/* ==========================
+   EMPTY STATE
+========================== */
+
+.empty-state{
+
+    width:100%;
+
+    max-width:700px;
+
+    margin:auto;
+
+    text-align:center;
+
+    padding:70px 25px;
+
+}
+
+.empty-state h2{
+
+    margin-top:22px;
+
+    font-size:2rem;
+
+    color:var(--text);
+
+}
+
+.empty-state p{
+
+    margin-top:12px;
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+}
+
+/* ==========================
+   EMPTY ICON
+========================== */
+
+.empty-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--surface);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.empty-icon i{
+
+    width:42px;
+
+    height:42px;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   GLOBAL SECTION
+========================== */
+
+section{
+
+    position:relative;
+
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.container{
+
+    width:min(1500px,94%);
+
+    margin:auto;
+
+}
+
+/* ==========================
+   CARD
+========================== */
+
+.card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-sm);
+
+    transition:.25s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+/* ==========================
+   GLASS
+========================== */
+
+.glass{
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+html.dark .glass{
+
+    background:rgba(20,28,43,.55);
+
+}
+
+/* ==========================
+   DIVIDER
+========================== */
+
+.divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:var(--border);
+
+}
+
+/* ==========================
+   SCROLL BUTTON
+========================== */
+
+.scroll-bottom-btn{
+
+    position:fixed;
+
+    right:24px;
+
+    bottom:120px;
+
+    width:52px;
+
+    height:52px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    box-shadow:var(--shadow-lg);
+
+    transition:.25s;
+
+    z-index:100;
+
+}
+
+.scroll-bottom-btn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.scroll-bottom-btn i{
+
+    width:22px;
+
+    height:22px;
+
+}
+
+/* ==========================================================
+   DeepSINKY AI
+   main.css
+   PART 3C
+   Prompt Cards + Quick Actions + Feature Bar
+========================================================== */
+
+/* ==========================
+   PROMPT GRID
+========================== */
+
+.prompt-grid{
+
+    width:100%;
+
+    max-width:1100px;
+
+    margin:50px auto 0;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:20px;
+
+}
+
+/* ==========================
+   PROMPT CARD
+========================== */
+
+.prompt-card{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:14px;
+
+    padding:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-sm);
+
+    transition:all .25s ease;
+
+}
+
+.prompt-card:hover{
+
+    transform:translateY(-5px);
+
+    background:var(--surface-hover);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.prompt-card i{
+
+    width:28px;
+
+    height:28px;
+
+    color:var(--primary);
+
+}
+
+.prompt-card h3{
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.prompt-card p{
+
+    font-size:.95rem;
+
+    color:var(--text-secondary);
+
+    line-height:1.6;
+
+}
+
+/* ==========================
+   QUICK ACTIONS
+========================== */
+
+.quick-actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+    margin-top:45px;
+
+}
+
+/* ==========================
+   FEATURE BAR
+========================== */
+
+.feature-bar{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:20px;
+
+}
+
+/* ==========================
+   FEATURE BUTTON
+========================== */
+
+.feature-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 18px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-round);
+
+    color:var(--text);
+
+    transition:all .25s ease;
+
+}
+
+.feature-btn:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    border-color:var(--primary);
+
+}
+
+.feature-btn i{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+/* ==========================
+   SKELETON LOADING
+========================== */
+
+.skeleton{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:var(--surface-hover);
+
+}
+
+.skeleton::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    transform:translateX(-100%);
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.15),
+        transparent
+    );
+
+    animation:skeletonLoading 1.3s linear infinite;
+
+}
+
+/* ==========================
+   LOADING
+========================== */
+
+.loading{
+
+    pointer-events:none;
+
+    opacity:.7;
+
+}
+
+/* ==========================
+   UTILITIES
+========================== */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+.flex{
+
+    display:flex;
+
+}
+
+.grid{
+
+    display:grid;
+
+}
+
+.center{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.w-100{
+
+    width:100%;
+
+}
+
+.h-100{
+
+    height:100%;
+
+}
+
+/* ==========================
+   END PART 3C
+========================== */
