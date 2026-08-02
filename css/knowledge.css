@@ -1,0 +1,3613 @@
+/* ==========================================================
+   DeepSINKY AI
+   13-knowledge.css
+   PART 1
+   Knowledge Dashboard + Layout Foundation
+========================================================== */
+
+/* ==========================
+   KNOWLEDGE PAGE
+========================== */
+
+.knowledge-page{
+
+    width:100%;
+
+    min-height:100vh;
+
+    padding:28px;
+
+    background:var(--bg);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.knowledge-container{
+
+    width:100%;
+
+    max-width:1700px;
+
+    margin:0 auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.knowledge-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:24px 28px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/* ==========================
+   HEADER LEFT
+========================== */
+
+.knowledge-header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.knowledge-header-icon{
+
+    width:64px;
+
+    height:64px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+}
+
+.knowledge-header-icon i{
+
+    width:32px;
+
+    height:32px;
+
+}
+
+/* ==========================
+   HEADER TEXT
+========================== */
+
+.knowledge-title{
+
+    font-size:1.6rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.knowledge-subtitle{
+
+    margin-top:6px;
+
+    font-size:.90rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   HEADER ACTIONS
+========================== */
+
+.knowledge-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+/* ==========================
+   DASHBOARD GRID
+========================== */
+
+.knowledge-dashboard{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(auto-fit,minmax(340px,1fr));
+
+    gap:22px;
+
+}
+
+/* ==========================
+   KNOWLEDGE SECTION
+========================== */
+
+.knowledge-section{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.knowledge-section:hover{
+
+    transform:translateY(-3px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 16px 40px rgba(99,102,241,.14);
+
+}
+
+/* ==========================
+   SECTION TITLE
+========================== */
+
+.knowledge-section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:1.05rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.knowledge-section-title i{
+
+    width:22px;
+
+    height:22px;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   CONTENT
+========================== */
+
+.knowledge-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ==========================
+   EMPTY STATE
+========================== */
+
+.knowledge-empty{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:220px;
+
+    gap:14px;
+
+    text-align:center;
+
+    color:var(--text-muted);
+
+}
+
+.knowledge-empty i{
+
+    width:56px;
+
+    height:56px;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+.knowledge-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:14px;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--border);
+
+}
+
+/* ==========================
+   PAGE ANIMATION
+========================== */
+
+.knowledge-page{
+
+    animation:knowledgeFade .35s ease;
+
+}
+
+@keyframes knowledgeFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(18px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   END PART 1
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   13-knowledge.css
+   PART 2
+   Knowledge Cards + Collections + Library
+========================================================== */
+
+/* ==========================
+   KNOWLEDGE GRID
+========================== */
+
+.knowledge-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:22px;
+
+}
+
+/* ==========================
+   KNOWLEDGE CARD
+========================== */
+
+.knowledge-card{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    overflow:hidden;
+
+    transition:all .30s ease;
+
+}
+
+.knowledge-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 18px 45px rgba(99,102,241,.15);
+
+}
+
+/* ==========================
+   CARD HEADER
+========================== */
+
+.knowledge-card-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+}
+
+.knowledge-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.knowledge-icon{
+
+    width:60px;
+
+    height:60px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+}
+
+.knowledge-icon i{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+/* ==========================
+   TITLE
+========================== */
+
+.knowledge-name{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.knowledge-type{
+
+    margin-top:5px;
+
+    font-size:.82rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   BADGE
+========================== */
+
+.knowledge-badge{
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(99,102,241,.12);
+
+    color:var(--primary);
+
+    font-size:.72rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   DESCRIPTION
+========================== */
+
+.knowledge-description{
+
+    font-size:.90rem;
+
+    line-height:1.75;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================
+   COLLECTION TAGS
+========================== */
+
+.knowledge-tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+}
+
+.knowledge-tag{
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:var(--bg-secondary);
+
+    color:var(--text-muted);
+
+    font-size:.75rem;
+
+    font-weight:600;
+
+}
+
+/* ==========================
+   KNOWLEDGE STATS
+========================== */
+
+.knowledge-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+
+}
+
+.knowledge-stat{
+
+    padding:14px;
+
+    text-align:center;
+
+    border-radius:16px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.knowledge-stat strong{
+
+    display:block;
+
+    font-size:1.2rem;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+.knowledge-stat span{
+
+    display:block;
+
+    margin-top:6px;
+
+    font-size:.75rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   ACTIONS
+========================== */
+
+.knowledge-actions-row{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.knowledge-actions-row button{
+
+    flex:1;
+
+}
+
+/* ==========================
+   PREMIUM SHINE
+========================== */
+
+.knowledge-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.knowledge-card:hover::before{
+
+    animation:knowledgeCardShine .9s linear;
+
+}
+
+@keyframes knowledgeCardShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 2
+========================================================== */
+
+
+
+/* ==========================================================
+   DeepSINKY AI
+   13-knowledge.css
+   PART 3
+   RAG Documents + Embeddings + Semantic Chunks
+========================================================== */
+
+/* ==========================
+   DOCUMENT LIST
+========================== */
+
+.document-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ==========================
+   DOCUMENT CARD
+========================== */
+
+.document-card{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.document-card:hover{
+
+    transform:translateY(-3px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 16px 38px rgba(99,102,241,.14);
+
+}
+
+/* ==========================
+   DOCUMENT ICON
+========================== */
+
+.document-icon{
+
+    width:58px;
+
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+    flex-shrink:0;
+
+}
+
+.document-icon i{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+/* ==========================
+   DOCUMENT CONTENT
+========================== */
+
+.document-content{
+
+    flex:1;
+
+}
+
+.document-title{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.document-meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:8px;
+
+}
+
+.document-meta span{
+
+    padding:5px 10px;
+
+    border-radius:999px;
+
+    background:var(--bg-secondary);
+
+    color:var(--text-muted);
+
+    font-size:.74rem;
+
+}
+
+.document-description{
+
+    margin-top:12px;
+
+    color:var(--text-secondary);
+
+    line-height:1.7;
+
+}
+
+/* ==========================
+   EMBEDDING PANEL
+========================== */
+
+.embedding-panel{
+
+    margin-top:26px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(99,102,241,.08),
+
+        rgba(139,92,246,.05)
+
+    );
+
+    border:1px solid rgba(99,102,241,.18);
+
+}
+
+.embedding-title{
+
+    margin-bottom:18px;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+/* ==========================
+   EMBEDDING ITEM
+========================== */
+
+.embedding-item{
+
+    margin-bottom:18px;
+
+}
+
+.embedding-item:last-child{
+
+    margin-bottom:0;
+
+}
+
+.embedding-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:8px;
+
+    font-size:.82rem;
+
+    color:var(--text-secondary);
+
+}
+
+.embedding-track{
+
+    width:100%;
+
+    height:10px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:var(--surface-hover);
+
+}
+
+.embedding-fill{
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+}
+
+/* ==========================
+   SEMANTIC CHUNKS
+========================== */
+
+.semantic-chunks{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:16px;
+
+    margin-top:24px;
+
+}
+
+.semantic-chunk{
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    transition:.30s ease;
+
+}
+
+.semantic-chunk:hover{
+
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+
+}
+
+.semantic-chunk h4{
+
+    margin-bottom:10px;
+
+    font-size:.90rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.semantic-chunk p{
+
+    font-size:.82rem;
+
+    line-height:1.65;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   VECTOR STATUS
+========================== */
+
+.vector-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:16px;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+}
+
+.vector-status::before{
+
+    content:"";
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+}
+
+/* ==========================
+   END PART 3
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   13-knowledge.css
+   PART 4
+   Semantic Search + AI Filters + Search Results
+========================================================== */
+
+/* ==========================
+   SEARCH CONTAINER
+========================== */
+
+.knowledge-search{
+
+    position:relative;
+
+    margin-bottom:24px;
+
+}
+
+.knowledge-search input{
+
+    width:100%;
+
+    padding:16px 18px 16px 54px;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    font-size:.95rem;
+
+    outline:none;
+
+    transition:all .30s ease;
+
+}
+
+.knowledge-search input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:
+
+        0 0 0 4px rgba(99,102,241,.12);
+
+}
+
+.knowledge-search i{
+
+    position:absolute;
+
+    top:50%;
+
+    left:18px;
+
+    transform:translateY(-50%);
+
+    width:22px;
+
+    height:22px;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   FILTER BAR
+========================== */
+
+.search-filters{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-bottom:24px;
+
+}
+
+.search-filter{
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    color:var(--text-secondary);
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:all .30s ease;
+
+}
+
+.search-filter:hover{
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+}
+
+.search-filter.active{
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    border-color:transparent;
+
+    color:#fff;
+
+}
+
+/* ==========================
+   SEARCH RESULTS
+========================== */
+
+.search-results{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.search-result{
+
+    padding:22px;
+
+    border-radius:20px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.search-result:hover{
+
+    transform:translateY(-3px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 16px 40px rgba(99,102,241,.14);
+
+}
+
+/* ==========================
+   RESULT TITLE
+========================== */
+
+.result-title{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:14px;
+
+}
+
+.result-title h3{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.result-score{
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+    font-size:.74rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   RESULT TEXT
+========================== */
+
+.result-snippet{
+
+    margin-top:12px;
+
+    line-height:1.8;
+
+    color:var(--text-secondary);
+
+}
+
+.result-snippet mark{
+
+    padding:2px 6px;
+
+    border-radius:6px;
+
+    background:rgba(245,158,11,.18);
+
+    color:#f59e0b;
+
+}
+
+/* ==========================
+   RESULT META
+========================== */
+
+.result-meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:16px;
+
+}
+
+.result-meta span{
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:var(--bg-secondary);
+
+    color:var(--text-muted);
+
+    font-size:.74rem;
+
+}
+
+/* ==========================
+   SEARCH SUGGESTIONS
+========================== */
+
+.search-suggestions{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:22px;
+
+}
+
+.search-suggestion{
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:rgba(99,102,241,.10);
+
+    color:var(--primary);
+
+    font-size:.78rem;
+
+    cursor:pointer;
+
+    transition:.30s ease;
+
+}
+
+.search-suggestion:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/* ==========================
+   AI SEARCH STATUS
+========================== */
+
+.ai-search-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:24px;
+
+    padding:16px 18px;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(99,102,241,.08),
+
+        rgba(139,92,246,.05)
+
+    );
+
+    border:1px solid rgba(99,102,241,.18);
+
+}
+
+.ai-search-status i{
+
+    width:22px;
+
+    height:22px;
+
+    color:var(--primary);
+
+}
+
+.ai-search-status span{
+
+    color:var(--text-secondary);
+
+    font-size:.88rem;
+
+}
+
+/* ==========================
+   END PART 4
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   13-knowledge.css
+   PART 5
+   Document Viewer + Citations + Preview + Notes
+========================================================== */
+
+/* ==========================
+   DOCUMENT VIEWER
+========================== */
+
+.document-viewer{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   VIEWER HEADER
+========================== */
+
+.viewer-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+    padding-bottom:18px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.viewer-title{
+
+    font-size:1.2rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.viewer-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+/* ==========================
+   DOCUMENT CONTENT
+========================== */
+
+.viewer-content{
+
+    max-height:650px;
+
+    overflow-y:auto;
+
+    padding-right:10px;
+
+    line-height:1.9;
+
+    color:var(--text-secondary);
+
+}
+
+.viewer-content h1,
+
+.viewer-content h2,
+
+.viewer-content h3{
+
+    margin:24px 0 12px;
+
+    color:var(--text);
+
+    font-weight:700;
+
+}
+
+.viewer-content p{
+
+    margin-bottom:16px;
+
+}
+
+.viewer-content blockquote{
+
+    margin:18px 0;
+
+    padding:16px 20px;
+
+    border-left:4px solid var(--primary);
+
+    border-radius:0 14px 14px 0;
+
+    background:rgba(99,102,241,.08);
+
+    color:var(--text);
+
+}
+
+.viewer-content code{
+
+    padding:2px 8px;
+
+    border-radius:6px;
+
+    background:var(--bg-secondary);
+
+    color:var(--primary);
+
+    font-family:Consolas,monospace;
+
+}
+
+.viewer-content pre{
+
+    overflow:auto;
+
+    margin:20px 0;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   CITATIONS
+========================== */
+
+.citation-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    margin-top:26px;
+
+}
+
+.citation-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:14px;
+
+    padding:16px 18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    transition:.30s ease;
+
+}
+
+.citation-item:hover{
+
+    border-color:var(--primary);
+
+}
+
+.citation-number{
+
+    width:34px;
+
+    height:34px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+    flex-shrink:0;
+
+}
+
+.citation-content{
+
+    flex:1;
+
+}
+
+.citation-title{
+
+    font-size:.92rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.citation-source{
+
+    margin-top:6px;
+
+    font-size:.80rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   NOTES PANEL
+========================== */
+
+.document-notes{
+
+    margin-top:26px;
+
+    padding:22px;
+
+    border-radius:20px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.document-notes textarea{
+
+    width:100%;
+
+    min-height:160px;
+
+    padding:16px;
+
+    border:none;
+
+    resize:vertical;
+
+    outline:none;
+
+    border-radius:16px;
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    line-height:1.7;
+
+}
+
+/* ==========================
+   PREVIEW PANEL
+========================== */
+
+.document-preview{
+
+    margin-top:26px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    border:1px dashed var(--border);
+
+    background:rgba(99,102,241,.05);
+
+}
+
+.document-preview img{
+
+    width:100%;
+
+    border-radius:16px;
+
+    display:block;
+
+}
+
+/* ==========================
+   CUSTOM SCROLLBAR
+========================== */
+
+.viewer-content::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.viewer-content::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    border-radius:999px;
+
+}
+
+/* ==========================
+   END PART 5
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   13-knowledge.css
+   PART 6
+   Import + Export + Cloud Sync + Backup
+========================================================== */
+
+/* ==========================
+   IMPORT / EXPORT
+========================== */
+
+.knowledge-transfer{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:22px;
+
+}
+
+/* ==========================
+   TRANSFER CARD
+========================== */
+
+.transfer-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    gap:16px;
+
+    padding:24px;
+
+    border:2px dashed var(--border);
+
+    border-radius:22px;
+
+    background:var(--surface);
+
+    transition:all .30s ease;
+
+}
+
+.transfer-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 18px 42px rgba(99,102,241,.14);
+
+}
+
+.transfer-card i{
+
+    width:48px;
+
+    height:48px;
+
+    color:var(--primary);
+
+}
+
+.transfer-card h3{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.transfer-card p{
+
+    font-size:.86rem;
+
+    line-height:1.7;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   UPLOAD ZONE
+========================== */
+
+.upload-zone{
+
+    padding:36px;
+
+    border:2px dashed var(--primary);
+
+    border-radius:22px;
+
+    background:rgba(99,102,241,.05);
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.30s ease;
+
+}
+
+.upload-zone:hover{
+
+    background:rgba(99,102,241,.10);
+
+}
+
+.upload-zone.dragover{
+
+    border-color:#22c55e;
+
+    background:rgba(34,197,94,.08);
+
+}
+
+/* ==========================
+   SYNC PANEL
+========================== */
+
+.sync-panel{
+
+    margin-top:28px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(99,102,241,.08),
+
+        rgba(139,92,246,.05)
+
+    );
+
+    border:1px solid rgba(99,102,241,.18);
+
+}
+
+.sync-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+
+}
+
+.sync-title{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.sync-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:#22c55e;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+}
+
+.sync-status::before{
+
+    content:"";
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+    animation:syncPulse 1.8s infinite;
+
+}
+
+@keyframes syncPulse{
+
+    0%,100%{
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        opacity:.4;
+
+    }
+
+}
+
+/* ==========================
+   STORAGE
+========================== */
+
+.storage-info{
+
+    margin-top:22px;
+
+}
+
+.storage-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+    font-size:.82rem;
+
+    color:var(--text-muted);
+
+}
+
+.storage-track{
+
+    width:100%;
+
+    height:10px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:var(--surface-hover);
+
+}
+
+.storage-fill{
+
+    width:74%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+}
+
+/* ==========================
+   BACKUP HISTORY
+========================== */
+
+.backup-history{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    margin-top:28px;
+
+}
+
+.backup-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:16px 18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.backup-date{
+
+    font-size:.84rem;
+
+    color:var(--text);
+
+    font-weight:600;
+
+}
+
+.backup-size{
+
+    font-size:.78rem;
+
+    color:var(--text-muted);
+
+}
+
+.backup-status{
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+    font-size:.72rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   AUTO BACKUP
+========================== */
+
+.auto-backup{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-top:24px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   END PART 6
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   13-knowledge.css
+   PART 7
+   Knowledge Analytics + AI Insights + Usage Dashboard
+========================================================== */
+
+/* ==========================
+   ANALYTICS GRID
+========================== */
+
+.knowledge-analytics{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:22px;
+
+}
+
+/* ==========================
+   ANALYTICS CARD
+========================== */
+
+.knowledge-analytics-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.knowledge-analytics-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 18px 42px rgba(99,102,241,.15);
+
+}
+
+/* ==========================
+   CARD HEADER
+========================== */
+
+.analytics-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.analytics-title{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.analytics-icon{
+
+    width:44px;
+
+    height:44px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:rgba(99,102,241,.12);
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   MAIN VALUE
+========================== */
+
+.analytics-value{
+
+    font-size:2.3rem;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+.analytics-label{
+
+    color:var(--text-muted);
+
+    font-size:.82rem;
+
+}
+
+/* ==========================
+   TREND
+========================== */
+
+.analytics-trend{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+}
+
+.analytics-trend.positive{
+
+    color:#22c55e;
+
+}
+
+.analytics-trend.negative{
+
+    color:#ef4444;
+
+}
+
+/* ==========================
+   KNOWLEDGE CHART
+========================== */
+
+.knowledge-chart{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:10px;
+
+    height:180px;
+
+    margin-top:20px;
+
+}
+
+.chart-bar{
+
+    flex:1;
+
+    min-height:20px;
+
+    border-radius:10px 10px 0 0;
+
+    background:linear-gradient(
+
+        to top,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    transition:all .30s ease;
+
+}
+
+.chart-bar:hover{
+
+    opacity:.85;
+
+    transform:scaleY(1.08);
+
+}
+
+/* ==========================
+   AI INSIGHTS
+========================== */
+
+.ai-insights{
+
+    margin-top:30px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(99,102,241,.08),
+
+        rgba(139,92,246,.05)
+
+    );
+
+    border:1px solid rgba(99,102,241,.18);
+
+}
+
+.ai-insights h3{
+
+    margin-bottom:18px;
+
+    font-size:1rem;
+
+    color:var(--text);
+
+}
+
+.ai-insight{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:14px;
+
+    margin-bottom:16px;
+
+}
+
+.ai-insight:last-child{
+
+    margin-bottom:0;
+
+}
+
+.ai-insight i{
+
+    width:22px;
+
+    height:22px;
+
+    color:var(--primary);
+
+    flex-shrink:0;
+
+}
+
+.ai-insight p{
+
+    line-height:1.7;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================
+   KNOWLEDGE SCORE
+========================== */
+
+.knowledge-score{
+
+    width:180px;
+
+    height:180px;
+
+    margin:32px auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:conic-gradient(
+
+        var(--primary) 0 315deg,
+
+        rgba(99,102,241,.10) 315deg
+
+    );
+
+    box-shadow:0 16px 40px rgba(99,102,241,.18);
+
+}
+
+.knowledge-score strong{
+
+    font-size:2rem;
+
+    color:#fff;
+
+}
+
+.knowledge-score span{
+
+    margin-top:8px;
+
+    font-size:.82rem;
+
+    color:#fff;
+
+}
+
+/* ==========================
+   SHINE EFFECT
+========================== */
+
+.knowledge-analytics-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.knowledge-analytics-card:hover::after{
+
+    animation:knowledgeAnalyticsShine .9s linear;
+
+}
+
+@keyframes knowledgeAnalyticsShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 7
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   13-knowledge.css
+   PART 8
+   Knowledge Graph + Semantic Network + Relationships
+========================================================== */
+
+/* ==========================
+   KNOWLEDGE GRAPH
+========================== */
+
+.knowledge-graph{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:560px;
+
+    padding:24px;
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   GRAPH CANVAS
+========================== */
+
+.knowledge-graph-canvas{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:500px;
+
+}
+
+/* ==========================
+   GRAPH NODE
+========================== */
+
+.knowledge-node{
+
+    position:absolute;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:90px;
+
+    min-height:90px;
+
+    padding:14px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    transition:all .30s ease;
+
+    box-shadow:
+
+        0 12px 30px rgba(99,102,241,.22);
+
+}
+
+.knowledge-node:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+
+        0 18px 42px rgba(99,102,241,.32);
+
+}
+
+.knowledge-node.active{
+
+    outline:4px solid rgba(255,255,255,.25);
+
+}
+
+/* ==========================
+   NODE TYPES
+========================== */
+
+.node-document{
+
+    background:linear-gradient(
+
+        135deg,
+
+        #3b82f6,
+
+        #2563eb
+
+    );
+
+}
+
+.node-topic{
+
+    background:linear-gradient(
+
+        135deg,
+
+        #10b981,
+
+        #059669
+
+    );
+
+}
+
+.node-reference{
+
+    background:linear-gradient(
+
+        135deg,
+
+        #f59e0b,
+
+        #fbbf24
+
+    );
+
+}
+
+.node-ai{
+
+    background:linear-gradient(
+
+        135deg,
+
+        #8b5cf6,
+
+        #7c3aed
+
+    );
+
+}
+
+/* ==========================
+   GRAPH EDGES
+========================== */
+
+.graph-edge{
+
+    position:absolute;
+
+    height:2px;
+
+    background:rgba(99,102,241,.35);
+
+    transform-origin:left center;
+
+    pointer-events:none;
+
+}
+
+.graph-edge.strong{
+
+    height:3px;
+
+    background:#8b5cf6;
+
+}
+
+.graph-edge.weak{
+
+    opacity:.35;
+
+}
+
+/* ==========================
+   GRAPH TOOLBAR
+========================== */
+
+.graph-toolbar{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-bottom:20px;
+
+}
+
+.graph-tool{
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+    font-size:.82rem;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:all .30s ease;
+
+}
+
+.graph-tool:hover{
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+}
+
+.graph-tool.active{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    border-color:transparent;
+
+}
+
+/* ==========================
+   NODE DETAILS
+========================== */
+
+.node-details{
+
+    margin-top:24px;
+
+    padding:22px;
+
+    border-radius:20px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.node-details h4{
+
+    margin-bottom:12px;
+
+    color:var(--text);
+
+    font-size:1rem;
+
+}
+
+.node-details p{
+
+    line-height:1.7;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================
+   GRAPH LEGEND
+========================== */
+
+.graph-legend{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+    margin-top:24px;
+
+}
+
+.legend-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:var(--text-muted);
+
+    font-size:.82rem;
+
+}
+
+.legend-color{
+
+    width:14px;
+
+    height:14px;
+
+    border-radius:50%;
+
+}
+
+.legend-document{
+
+    background:#2563eb;
+
+}
+
+.legend-topic{
+
+    background:#10b981;
+
+}
+
+.legend-reference{
+
+    background:#f59e0b;
+
+}
+
+.legend-ai{
+
+    background:#8b5cf6;
+
+}
+
+/* ==========================
+   GRAPH LOADING
+========================== */
+
+.graph-loading{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:420px;
+
+}
+
+.graph-loading::after{
+
+    content:"";
+
+    width:52px;
+
+    height:52px;
+
+    border:4px solid var(--border);
+
+    border-top-color:var(--primary);
+
+    border-radius:50%;
+
+    animation:knowledgeGraphSpin .8s linear infinite;
+
+}
+
+@keyframes knowledgeGraphSpin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* ==========================
+   END PART 8
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   13-knowledge.css
+   PART 9
+   Responsive + Accessibility + Final Responsive Polish
+========================================================== */
+
+/* ==========================
+   LARGE TABLET
+========================== */
+
+@media (max-width:1200px){
+
+    .knowledge-dashboard,
+
+    .knowledge-grid,
+
+    .knowledge-transfer,
+
+    .knowledge-analytics{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width:992px){
+
+    .knowledge-page{
+
+        padding:20px;
+
+    }
+
+    .knowledge-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .knowledge-actions{
+
+        width:100%;
+
+        justify-content:flex-end;
+
+    }
+
+    .knowledge-dashboard,
+
+    .knowledge-grid,
+
+    .knowledge-transfer,
+
+    .knowledge-analytics,
+
+    .semantic-chunks{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .knowledge-page{
+
+        padding:16px;
+
+        gap:18px;
+
+    }
+
+    .knowledge-header{
+
+        padding:18px;
+
+        border-radius:20px;
+
+    }
+
+    .knowledge-header-left{
+
+        gap:14px;
+
+    }
+
+    .knowledge-header-icon{
+
+        width:54px;
+
+        height:54px;
+
+    }
+
+    .knowledge-title{
+
+        font-size:1.25rem;
+
+    }
+
+    .knowledge-section{
+
+        padding:18px;
+
+    }
+
+    .document-card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .viewer-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:12px;
+
+    }
+
+    .viewer-actions{
+
+        width:100%;
+
+        flex-wrap:wrap;
+
+    }
+
+    .viewer-actions button{
+
+        flex:1;
+
+    }
+
+    .graph-toolbar{
+
+        flex-wrap:wrap;
+
+    }
+
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width:480px){
+
+    .knowledge-page{
+
+        padding:12px;
+
+    }
+
+    .knowledge-header{
+
+        padding:16px;
+
+    }
+
+    .knowledge-actions{
+
+        width:100%;
+
+        flex-wrap:wrap;
+
+    }
+
+    .knowledge-actions button{
+
+        flex:1;
+
+    }
+
+    .knowledge-stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .knowledge-actions-row{
+
+        flex-direction:column;
+
+    }
+
+    .graph-tool{
+
+        flex:1;
+
+        text-align:center;
+
+    }
+
+}
+
+/* ==========================
+   ACCESSIBILITY
+========================== */
+
+.knowledge-card:focus-visible,
+
+.document-card:focus-visible,
+
+.search-filter:focus-visible,
+
+.graph-tool:focus-visible,
+
+.transfer-card:focus-visible,
+
+.result-snippet:focus-visible{
+
+    outline:2px solid var(--primary);
+
+    outline-offset:3px;
+
+}
+
+/* ==========================
+   REDUCED MOTION
+========================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    .knowledge-page *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}
+
+/* ==========================
+   HIGH CONTRAST
+========================== */
+
+@media (prefers-contrast:more){
+
+    .knowledge-card,
+
+    .document-card,
+
+    .knowledge-section,
+
+    .viewer-content{
+
+        border-width:2px;
+
+    }
+
+}
+
+/* ==========================
+   GLASS EFFECT
+========================== */
+
+.knowledge-card,
+
+.document-card,
+
+.knowledge-section,
+
+.viewer-content,
+
+.transfer-card,
+
+.knowledge-analytics-card{
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+}
+
+/* ==========================
+   PREMIUM HOVER
+========================== */
+
+.knowledge-card:hover,
+
+.document-card:hover,
+
+.transfer-card:hover{
+
+    box-shadow:
+
+        0 22px 50px rgba(99,102,241,.16);
+
+}
+
+/* ==========================
+   GPU OPTIMIZATION
+========================== */
+
+.knowledge-card,
+
+.document-card,
+
+.knowledge-node,
+
+.transfer-card,
+
+.knowledge-analytics-card{
+
+    transform:translateZ(0);
+
+    will-change:transform;
+
+    backface-visibility:hidden;
+
+}
+
+/* ==========================
+   PERFORMANCE
+========================== */
+
+.knowledge-page{
+
+    contain:layout style paint;
+
+}
+
+/* ==========================
+   END PART 9
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   13-knowledge.css
+   PART 10 (FINAL)
+   Premium Glass UI + Final Polish + Performance
+========================================================== */
+
+/* ==========================
+   PREMIUM GLASS
+========================== */
+
+.knowledge-section,
+.knowledge-card,
+.document-card,
+.viewer-content,
+.transfer-card,
+.knowledge-analytics-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(24px);
+
+    -webkit-backdrop-filter:blur(24px);
+
+}
+
+/* ==========================
+   PREMIUM BORDER
+========================== */
+
+.knowledge-card::before,
+.document-card::before,
+.knowledge-analytics-card::before,
+.transfer-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    padding:1px;
+
+    pointer-events:none;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(255,255,255,.10),
+
+        transparent,
+
+        rgba(99,102,241,.15)
+
+    );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+            mask-composite:exclude;
+
+}
+
+/* ==========================
+   FLOAT EFFECT
+========================== */
+
+.knowledge-card{
+
+    animation:knowledgeFloat 6s ease-in-out infinite;
+
+}
+
+@keyframes knowledgeFloat{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+}
+
+/* ==========================
+   NODE GLOW
+========================== */
+
+.knowledge-node{
+
+    animation:knowledgePulse 4s ease-in-out infinite;
+
+}
+
+@keyframes knowledgePulse{
+
+    0%,100%{
+
+        box-shadow:
+
+            0 10px 24px rgba(99,102,241,.22);
+
+    }
+
+    50%{
+
+        box-shadow:
+
+            0 20px 46px rgba(99,102,241,.40);
+
+    }
+
+}
+
+/* ==========================
+   SCORE ROTATION
+========================== */
+
+.knowledge-score{
+
+    animation:knowledgeRotate 12s linear infinite;
+
+}
+
+@keyframes knowledgeRotate{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+.knowledge-score strong,
+
+.knowledge-score span{
+
+    transform:rotate(calc(-1 * var(--rotation,0deg)));
+
+}
+
+/* ==========================
+   BUTTON EFFECT
+========================== */
+
+.knowledge-actions button,
+
+.knowledge-actions-row button,
+
+.viewer-actions button{
+
+    transition:
+
+        transform .25s ease,
+
+        box-shadow .25s ease;
+
+}
+
+.knowledge-actions button:hover,
+
+.knowledge-actions-row button:hover,
+
+.viewer-actions button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.knowledge-actions button:active,
+
+.knowledge-actions-row button:active,
+
+.viewer-actions button:active{
+
+    transform:scale(.96);
+
+}
+
+/* ==========================
+   GPU OPTIMIZATION
+========================== */
+
+.knowledge-card,
+
+.document-card,
+
+.knowledge-node,
+
+.transfer-card,
+
+.knowledge-analytics-card{
+
+    transform:translateZ(0);
+
+    will-change:transform;
+
+    backface-visibility:hidden;
+
+}
+
+/* ==========================
+   PERFORMANCE
+========================== */
+
+.knowledge-page{
+
+    contain:layout style paint;
+
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+
+html.dark .knowledge-card,
+
+html.dark .document-card,
+
+html.dark .knowledge-analytics-card,
+
+html.dark .transfer-card{
+
+    border-color:rgba(255,255,255,.06);
+
+}
+
+/* ==========================
+   LIGHT MODE
+========================== */
+
+html:not(.dark) .knowledge-card,
+
+html:not(.dark) .document-card,
+
+html:not(.dark) .knowledge-analytics-card,
+
+html:not(.dark) .transfer-card{
+
+    background:rgba(255,255,255,.96);
+
+}
+
+/* ==========================
+   PRINT
+========================== */
+
+@media print{
+
+    .knowledge-actions,
+
+    .viewer-actions,
+
+    .graph-toolbar,
+
+    .search-filters{
+
+        display:none !important;
+
+    }
+
+}
+
+/* ==========================
+   MOBILE POLISH
+========================== */
+
+@media (max-width:768px){
+
+    .knowledge-card:hover,
+
+    .document-card:hover,
+
+    .transfer-card:hover{
+
+        transform:none;
+
+    }
+
+    .knowledge-node{
+
+        animation:none;
+
+    }
+
+}
+
+/* ==========================
+   CUSTOM SCROLLBAR
+========================== */
+
+.knowledge-page::-webkit-scrollbar,
+
+.viewer-content::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.knowledge-page::-webkit-scrollbar-thumb,
+
+.viewer-content::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    border-radius:999px;
+
+}
+
+.knowledge-page::-webkit-scrollbar-track,
+
+.viewer-content::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* ==========================
+   END OF 13-knowledge.css
+   DeepSINKY AI Knowledge Engine
+========================================================== */
