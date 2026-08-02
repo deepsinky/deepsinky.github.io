@@ -217,3 +217,901 @@
 /* ==========================
    END PART 1
 ========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   header.css
+   PART 2
+   Header Center + Model Selector + Right Actions
+========================================================== */
+
+/* ==========================
+   HEADER CENTER
+========================== */
+
+.header-center{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex:1;
+
+    padding:0 20px;
+
+}
+
+/* ==========================
+   MODEL SELECTOR
+========================== */
+
+#modelSelector{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    min-width:240px;
+
+    height:48px;
+
+    padding:0 20px;
+
+    border:1px solid var(--border);
+
+    border-radius:999px;
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    box-shadow:var(--shadow-xs);
+
+    transition:all .25s ease;
+
+}
+
+#modelSelector:hover{
+
+    background:var(--surface-hover);
+
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+#modelSelector span{
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+}
+
+#modelSelector i{
+
+    width:20px;
+
+    height:20px;
+
+}
+
+/* ==========================
+   HEADER RIGHT
+========================== */
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:10px;
+
+    flex:1;
+
+}
+
+/* ==========================
+   HEADER ACTION BUTTON
+========================== */
+
+.header-right .icon-btn{
+
+    position:relative;
+
+}
+
+/* ==========================
+   NOTIFICATION BADGE
+========================== */
+
+.notification-badge{
+
+    position:absolute;
+
+    top:6px;
+
+    right:6px;
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:var(--danger);
+
+    border:2px solid var(--surface);
+
+}
+
+/* ==========================
+   PROFILE BUTTON
+========================== */
+
+.profile-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:2px solid transparent;
+
+    transition:all .25s ease;
+
+}
+
+.profile-btn:hover{
+
+    border-color:var(--primary);
+
+    transform:scale(1.05);
+
+}
+
+.profile-btn .avatar{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+/* ==========================
+   HEADER DIVIDER
+========================== */
+
+.header-divider{
+
+    width:1px;
+
+    height:28px;
+
+    background:var(--border);
+
+    margin:0 6px;
+
+}
+
+/* ==========================
+   HEADER LOADING
+========================== */
+
+.header.loading{
+
+    pointer-events:none;
+
+    opacity:.75;
+
+}
+
+/* ==========================
+   END PART 2
+========================================================== */
+/* ==========================================================
+   DeepSINKY AI
+   header.css
+   PART 3
+   Header States + Search + Theme + Responsive
+========================================================== */
+
+/* ==========================
+   SEARCH BUTTON
+========================== */
+
+#searchBtn{
+
+    position:relative;
+
+}
+
+#searchBtn.active{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/* ==========================
+   NOTIFICATION BUTTON
+========================== */
+
+#notificationBtn{
+
+    position:relative;
+
+}
+
+#notificationBtn.active{
+
+    background:var(--primary-soft);
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   THEME BUTTON
+========================== */
+
+#themeBtn{
+
+    transition:all .30s ease;
+
+}
+
+#themeBtn:hover{
+
+    transform:rotate(20deg);
+
+}
+
+html.dark #themeBtn{
+
+    color:#ffd54f;
+
+}
+
+/* ==========================
+   ICON BUTTON ACTIVE
+========================== */
+
+.icon-btn:active{
+
+    transform:scale(.95);
+
+}
+
+/* ==========================
+   HEADER SHADOW
+========================== */
+
+.header.scrolled{
+
+    box-shadow:var(--shadow-lg);
+
+    border-bottom-color:transparent;
+
+}
+
+/* ==========================
+   HEADER BLUR
+========================== */
+
+.header.glass{
+
+    background:rgba(20,28,43,.78);
+
+    backdrop-filter:blur(24px);
+
+    -webkit-backdrop-filter:blur(24px);
+
+}
+
+html:not(.dark) .header.glass{
+
+    background:rgba(255,255,255,.82);
+
+}
+
+/* ==========================
+   ONLINE STATUS
+========================== */
+
+.profile-btn::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:3px;
+
+    bottom:3px;
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:var(--success);
+
+    border:2px solid var(--surface);
+
+}
+
+/* ==========================
+   LOGO ANIMATION
+========================== */
+
+.header-logo .logo{
+
+    transition:.35s ease;
+
+}
+
+.header-logo:hover .logo{
+
+    transform:rotate(-8deg) scale(1.08);
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width:992px){
+
+    .header{
+
+        left:0;
+
+        padding:0 18px;
+
+    }
+
+    .header-center{
+
+        display:none;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .header{
+
+        height:64px;
+
+    }
+
+    .header-logo h1{
+
+        font-size:1rem;
+
+    }
+
+    .header-logo span{
+
+        font-size:.72rem;
+
+    }
+
+    .header-right{
+
+        gap:6px;
+
+    }
+
+    .icon-btn{
+
+        width:40px;
+
+        height:40px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .header{
+
+        padding:0 12px;
+
+    }
+
+    .header-logo span{
+
+        display:none;
+
+    }
+
+    .header-logo .logo{
+
+        width:40px;
+
+        height:40px;
+
+    }
+
+}
+
+/* ==========================
+   END PART 3
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   header.css
+   PART 4
+   Header Animations + Premium Effects + Accessibility
+========================================================== */
+
+/* ==========================
+   HEADER ANIMATION
+========================== */
+
+.header{
+
+    animation:headerFade .35s ease;
+
+}
+
+@keyframes headerFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   ICON RIPPLE
+========================== */
+
+.icon-btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.icon-btn::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:0;
+
+    height:0;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.20);
+
+    transform:translate(-50%,-50%);
+
+    left:50%;
+
+    top:50%;
+
+    transition:width .45s ease,
+               height .45s ease;
+
+}
+
+.icon-btn:active::after{
+
+    width:120px;
+
+    height:120px;
+
+}
+
+/* ==========================
+   MODEL SELECTOR SHINE
+========================== */
+
+#modelSelector{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+#modelSelector::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.15),
+        transparent
+    );
+
+    transform:translateX(-100%);
+
+}
+
+#modelSelector:hover::before{
+
+    animation:modelShine .9s linear;
+
+}
+
+@keyframes modelShine{
+
+    from{
+
+        transform:translateX(-100%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   PROFILE IMAGE
+========================== */
+
+.profile-btn{
+
+    overflow:hidden;
+
+}
+
+.profile-btn img{
+
+    transition:transform .35s ease;
+
+}
+
+.profile-btn:hover img{
+
+    transform:scale(1.12);
+
+}
+
+/* ==========================
+   HEADER TITLE
+========================== */
+
+.header-logo h1{
+
+    transition:color .25s ease;
+
+}
+
+.header-logo:hover h1{
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   HEADER BUTTON GLOW
+========================== */
+
+.header-right .icon-btn:hover{
+
+    box-shadow:0 0 18px rgba(79,70,229,.25);
+
+}
+
+/* ==========================
+   KEYBOARD FOCUS
+========================== */
+
+.header button:focus-visible{
+
+    outline:2px solid var(--primary);
+
+    outline-offset:2px;
+
+}
+
+/* ==========================
+   LOADING STATE
+========================== */
+
+.header.loading{
+
+    pointer-events:none;
+
+    opacity:.65;
+
+}
+
+/* ==========================
+   REDUCED MOTION
+========================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    .header,
+    .header *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+    }
+
+}
+
+/* ==========================
+   END PART 4
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   header.css
+   PART 5 (FINAL)
+   Final Responsive + Sticky + Theme Polish
+========================================================== */
+
+/* ==========================
+   HEADER STICKY
+========================== */
+
+.header{
+
+    position:sticky;
+
+    top:0;
+
+    width:auto;
+
+}
+
+/* ==========================
+   HEADER COMPACT
+========================== */
+
+.header.compact{
+
+    height:60px;
+
+}
+
+.header.compact .logo{
+
+    width:40px;
+
+    height:40px;
+
+}
+
+.header.compact h1{
+
+    font-size:1rem;
+
+}
+
+/* ==========================
+   HEADER TRANSPARENT
+========================== */
+
+.header.transparent{
+
+    background:transparent;
+
+    border-bottom-color:transparent;
+
+    box-shadow:none;
+
+}
+
+.header.transparent.scrolled{
+
+    background:var(--surface);
+
+    border-bottom:1px solid var(--border);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/* ==========================
+   HEADER HIDE
+========================== */
+
+.header.hide{
+
+    transform:translateY(-100%);
+
+}
+
+.header.show{
+
+    transform:translateY(0);
+
+}
+
+/* ==========================
+   HEADER TRANSITIONS
+========================== */
+
+.header{
+
+    transition:
+
+        transform .35s ease,
+
+        background .30s ease,
+
+        border-color .30s ease,
+
+        box-shadow .30s ease,
+
+        left .30s ease;
+
+}
+
+/* ==========================
+   MOBILE HEADER
+========================== */
+
+@media (max-width:992px){
+
+    .header{
+
+        left:0;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .header{
+
+        padding:0 14px;
+
+    }
+
+    .header-left{
+
+        gap:10px;
+
+    }
+
+    .header-right{
+
+        gap:6px;
+
+    }
+
+    .profile-btn{
+
+        width:42px;
+
+        height:42px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .header{
+
+        height:60px;
+
+    }
+
+    .header-logo h1{
+
+        font-size:.95rem;
+
+    }
+
+    .header-logo{
+
+        gap:10px;
+
+    }
+
+    .icon-btn{
+
+        width:38px;
+
+        height:38px;
+
+    }
+
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+
+html.dark .header{
+
+    border-bottom-color:rgba(255,255,255,.05);
+
+}
+
+/* ==========================
+   LIGHT MODE
+========================== */
+
+html:not(.dark) .header{
+
+    border-bottom-color:rgba(0,0,0,.08);
+
+}
+
+/* ==========================
+   HIGH CONTRAST
+========================== */
+
+@media (prefers-contrast:more){
+
+    .header{
+
+        border-bottom-width:2px;
+
+    }
+
+}
+
+/* ==========================
+   END OF header.css
+========================================================== */
+
+
