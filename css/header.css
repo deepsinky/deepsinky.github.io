@@ -1,0 +1,219 @@
+/* ==========================================================
+   DeepSINKY AI
+   header.css
+   PART 1
+   Header Foundation + Left Section
+========================================================== */
+
+/* ==========================
+   HEADER
+========================== */
+
+.header{
+
+    position:fixed;
+
+    top:0;
+
+    left:var(--sidebar-width);
+
+    right:0;
+
+    height:var(--header-height);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 24px;
+
+    background:var(--surface);
+
+    border-bottom:1px solid var(--border);
+
+    backdrop-filter:blur(20px);
+
+    -webkit-backdrop-filter:blur(20px);
+
+    box-shadow:var(--shadow-sm);
+
+    z-index:5000;
+
+    transition:
+        left .30s ease,
+        background .30s ease,
+        border-color .30s ease;
+
+}
+
+/* ==========================
+   HEADER SECTIONS
+========================== */
+
+.header-left,
+.header-center,
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.header-left{
+
+    gap:16px;
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+.header-center{
+
+    justify-content:center;
+
+    flex:1;
+
+}
+
+.header-right{
+
+    justify-content:flex-end;
+
+    gap:10px;
+
+    flex:1;
+
+}
+
+/* ==========================
+   MENU BUTTON
+========================== */
+
+#menuBtn{
+
+    flex-shrink:0;
+
+}
+
+/* ==========================
+   HEADER LOGO
+========================== */
+
+.header-logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    min-width:0;
+
+}
+
+/* ==========================
+   LOGO IMAGE
+========================== */
+
+.header-logo .logo{
+
+    width:46px;
+
+    height:46px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    flex-shrink:0;
+
+}
+
+/* ==========================
+   LOGO TEXT
+========================== */
+
+.header-logo h1{
+
+    font-size:1.15rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    line-height:1.2;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+.header-logo span{
+
+    display:block;
+
+    margin-top:3px;
+
+    font-size:.78rem;
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+/* ==========================
+   ICON BUTTON
+========================== */
+
+.icon-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:44px;
+
+    height:44px;
+
+    border-radius:50%;
+
+    background:transparent;
+
+    color:var(--text-secondary);
+
+    transition:all .25s ease;
+
+}
+
+.icon-btn:hover{
+
+    background:var(--surface-hover);
+
+    color:var(--text);
+
+    transform:translateY(-2px);
+
+}
+
+.icon-btn i{
+
+    width:20px;
+
+    height:20px;
+
+}
+
+/* ==========================
+   END PART 1
+========================================================== */
