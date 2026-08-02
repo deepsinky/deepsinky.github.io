@@ -1,0 +1,3472 @@
+/* ==========================================================
+   DeepSINKY AI
+   12-agents.css
+   PART 1
+   Agents Dashboard + Layout Foundation
+========================================================== */
+
+/* ==========================
+   AGENTS PAGE
+========================== */
+
+.agents-page{
+
+    width:100%;
+
+    min-height:100vh;
+
+    padding:28px;
+
+    background:var(--bg);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/* ==========================
+   AGENTS CONTAINER
+========================== */
+
+.agents-container{
+
+    width:100%;
+
+    max-width:1700px;
+
+    margin:0 auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/* ==========================
+   AGENTS HEADER
+========================== */
+
+.agents-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:24px 28px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/* ==========================
+   HEADER LEFT
+========================== */
+
+.agents-header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.agents-header-icon{
+
+    width:60px;
+
+    height:60px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+}
+
+.agents-header-icon i{
+
+    width:30px;
+
+    height:30px;
+
+}
+
+/* ==========================
+   HEADER TEXT
+========================== */
+
+.agents-title{
+
+    font-size:1.5rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.agents-subtitle{
+
+    margin-top:6px;
+
+    font-size:.90rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   HEADER ACTIONS
+========================== */
+
+.agents-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+/* ==========================
+   DASHBOARD GRID
+========================== */
+
+.agents-dashboard{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(auto-fit,minmax(350px,1fr));
+
+    gap:22px;
+
+}
+
+/* ==========================
+   AGENT SECTION
+========================== */
+
+.agent-section{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.agent-section:hover{
+
+    border-color:var(--primary);
+
+    transform:translateY(-3px);
+
+    box-shadow:0 16px 40px rgba(99,102,241,.14);
+
+}
+
+/* ==========================
+   SECTION TITLE
+========================== */
+
+.agent-section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:1.05rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.agent-section-title i{
+
+    width:22px;
+
+    height:22px;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   SECTION CONTENT
+========================== */
+
+.agent-section-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ==========================
+   EMPTY STATE
+========================== */
+
+.agent-empty{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:220px;
+
+    text-align:center;
+
+    gap:14px;
+
+    color:var(--text-muted);
+
+}
+
+.agent-empty i{
+
+    width:56px;
+
+    height:56px;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+.agents-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:14px;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--border);
+
+}
+
+/* ==========================
+   PAGE ANIMATION
+========================== */
+
+.agents-page{
+
+    animation:agentsFade .35s ease;
+
+}
+
+@keyframes agentsFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(18px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   END PART 1
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   12-agents.css
+   PART 2
+   Agent Cards + Agent Statistics + Agent Controls
+========================================================== */
+
+/* ==========================
+   AGENT GRID
+========================== */
+
+.agent-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:22px;
+
+}
+
+/* ==========================
+   AGENT CARD
+========================== */
+
+.agent-card{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    overflow:hidden;
+
+    transition:all .30s ease;
+
+}
+
+.agent-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 18px 45px rgba(99,102,241,.15);
+
+}
+
+/* ==========================
+   CARD HEADER
+========================== */
+
+.agent-card-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+}
+
+/* ==========================
+   AGENT INFO
+========================== */
+
+.agent-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.agent-avatar{
+
+    width:64px;
+
+    height:64px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+    flex-shrink:0;
+
+}
+
+.agent-avatar i{
+
+    width:30px;
+
+    height:30px;
+
+}
+
+.agent-name{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.agent-role{
+
+    margin-top:5px;
+
+    font-size:.82rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   AGENT BADGE
+========================== */
+
+.agent-badge{
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(99,102,241,.12);
+
+    color:var(--primary);
+
+    font-size:.72rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   DESCRIPTION
+========================== */
+
+.agent-description{
+
+    font-size:.90rem;
+
+    line-height:1.75;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================
+   AGENT STATS
+========================== */
+
+.agent-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+
+}
+
+.agent-stat{
+
+    text-align:center;
+
+    padding:14px;
+
+    border-radius:16px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.agent-stat strong{
+
+    display:block;
+
+    font-size:1.25rem;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+.agent-stat span{
+
+    margin-top:6px;
+
+    display:block;
+
+    font-size:.76rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   ACTIONS
+========================== */
+
+.agent-actions{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:6px;
+
+}
+
+.agent-actions button{
+
+    flex:1;
+
+}
+
+/* ==========================
+   SHINE EFFECT
+========================== */
+
+.agent-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.agent-card:hover::before{
+
+    animation:agentCardShine .9s linear;
+
+}
+
+@keyframes agentCardShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 2
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   12-agents.css
+   PART 3
+   Agent Profile + Skills + Capabilities
+========================================================== */
+
+/* ==========================
+   AGENT PROFILE
+========================== */
+
+.agent-profile{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   PROFILE HEADER
+========================== */
+
+.agent-profile-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.agent-profile-avatar{
+
+    width:90px;
+
+    height:90px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:24px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+    flex-shrink:0;
+
+}
+
+.agent-profile-avatar i{
+
+    width:42px;
+
+    height:42px;
+
+}
+
+/* ==========================
+   PROFILE INFO
+========================== */
+
+.agent-profile-info{
+
+    flex:1;
+
+}
+
+.agent-profile-info h2{
+
+    font-size:1.4rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.agent-profile-info p{
+
+    margin-top:8px;
+
+    color:var(--text-muted);
+
+    line-height:1.7;
+
+}
+
+/* ==========================
+   AGENT CAPABILITIES
+========================== */
+
+.agent-capabilities{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.capability-chip{
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:rgba(99,102,241,.12);
+
+    color:var(--primary);
+
+    font-size:.78rem;
+
+    font-weight:700;
+
+    transition:.30s ease;
+
+}
+
+.capability-chip:hover{
+
+    transform:translateY(-2px);
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/* ==========================
+   SKILL LIST
+========================== */
+
+.agent-skills{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.agent-skill{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.agent-skill-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.agent-skill-name{
+
+    font-size:.90rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.agent-skill-value{
+
+    font-size:.82rem;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   SKILL BAR
+========================== */
+
+.agent-skill-bar{
+
+    width:100%;
+
+    height:10px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:var(--surface-hover);
+
+}
+
+.agent-skill-fill{
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    transition:width .4s ease;
+
+}
+
+/* ==========================
+   PROFILE FOOTER
+========================== */
+
+.agent-profile-footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding-top:18px;
+
+    border-top:1px solid var(--border);
+
+}
+
+/* ==========================
+   LAST ACTIVE
+========================== */
+
+.agent-last-active{
+
+    font-size:.82rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   VERIFIED
+========================== */
+
+.agent-verified{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   PREMIUM PROFILE EFFECT
+========================== */
+
+.agent-profile{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.agent-profile::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.agent-profile:hover::after{
+
+    animation:profileShine .9s linear;
+
+}
+
+@keyframes profileShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 3
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   12-agents.css
+   PART 4
+   Agent Status + Live Activity + Performance Monitor
+========================================================== */
+
+/* ==========================
+   STATUS PANEL
+========================== */
+
+.agent-status-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   STATUS ITEM
+========================== */
+
+.agent-status-item{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+    padding:16px 18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.agent-status-item:hover{
+
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   STATUS INFO
+========================== */
+
+.agent-status-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.agent-status-icon{
+
+    width:48px;
+
+    height:48px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:16px;
+
+    background:rgba(99,102,241,.12);
+
+    color:var(--primary);
+
+}
+
+.agent-status-icon i{
+
+    width:22px;
+
+    height:22px;
+
+}
+
+.agent-status-title{
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.agent-status-subtitle{
+
+    margin-top:4px;
+
+    font-size:.78rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   STATUS BADGES
+========================== */
+
+.agent-online{
+
+    color:#22c55e;
+
+}
+
+.agent-busy{
+
+    color:#f59e0b;
+
+}
+
+.agent-offline{
+
+    color:#ef4444;
+
+}
+
+.agent-status-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:currentColor;
+
+    box-shadow:0 0 10px currentColor;
+
+}
+
+/* ==========================
+   LIVE ACTIVITY
+========================== */
+
+.agent-live-feed{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+.agent-live-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:14px;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.agent-live-item i{
+
+    width:22px;
+
+    height:22px;
+
+    color:var(--primary);
+
+    flex-shrink:0;
+
+}
+
+.agent-live-content{
+
+    flex:1;
+
+}
+
+.agent-live-title{
+
+    font-size:.90rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.agent-live-time{
+
+    margin-top:5px;
+
+    font-size:.75rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   PERFORMANCE
+========================== */
+
+.agent-performance{
+
+    margin-top:24px;
+
+}
+
+.performance-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+    font-size:.82rem;
+
+    color:var(--text-muted);
+
+}
+
+.performance-bar{
+
+    width:100%;
+
+    height:10px;
+
+    overflow:hidden;
+
+    border-radius:999px;
+
+    background:var(--surface-hover);
+
+}
+
+.performance-fill{
+
+    width:92%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        #22c55e,
+
+        #10b981
+
+    );
+
+}
+
+/* ==========================
+   REALTIME PULSE
+========================== */
+
+.agent-status-dot{
+
+    animation:agentPulse 2s infinite;
+
+}
+
+@keyframes agentPulse{
+
+    0%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        transform:scale(1.4);
+
+        opacity:.6;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   END PART 4
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   12-agents.css
+   PART 5
+   AI Team + Multi-Agent Collaboration + Task Workspace
+========================================================== */
+
+/* ==========================
+   AI TEAM
+========================== */
+
+.ai-team{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   TEAM HEADER
+========================== */
+
+.team-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+}
+
+.team-title{
+
+    font-size:1.2rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.team-members{
+
+    display:flex;
+
+    align-items:center;
+
+    margin-left:auto;
+
+}
+
+.team-member{
+
+    width:54px;
+
+    height:54px;
+
+    margin-left:-14px;
+
+    border-radius:50%;
+
+    border:3px solid var(--surface);
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#fff;
+
+    font-weight:700;
+
+    transition:.30s ease;
+
+}
+
+.team-member:hover{
+
+    transform:translateY(-5px) scale(1.08);
+
+    z-index:5;
+
+}
+
+/* ==========================
+   TEAM GRID
+========================== */
+
+.team-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:20px;
+
+}
+
+/* ==========================
+   TEAM CARD
+========================== */
+
+.team-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.team-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 14px 35px rgba(99,102,241,.14);
+
+}
+
+/* ==========================
+   TEAM ROLE
+========================== */
+
+.team-role{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+.team-role i{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+/* ==========================
+   WORKSPACE
+========================== */
+
+.agent-workspace{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    margin-top:26px;
+
+}
+
+.workspace-task{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    transition:.30s ease;
+
+}
+
+.workspace-task:hover{
+
+    border-color:var(--primary);
+
+}
+
+.workspace-task-title{
+
+    font-size:.92rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.workspace-task-status{
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+    font-size:.74rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   COLLABORATION FLOW
+========================== */
+
+.collaboration-flow{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-top:24px;
+
+}
+
+.flow-node{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.flow-icon{
+
+    width:56px;
+
+    height:56px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+}
+
+.flow-icon i{
+
+    width:26px;
+
+    height:26px;
+
+}
+
+.flow-line{
+
+    flex:1;
+
+    height:3px;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    opacity:.45;
+
+}
+
+/* ==========================
+   TEAM HEALTH
+========================== */
+
+.team-health{
+
+    margin-top:24px;
+
+}
+
+.team-health-track{
+
+    width:100%;
+
+    height:10px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:var(--surface-hover);
+
+}
+
+.team-health-fill{
+
+    width:95%;
+
+    height:100%;
+
+    background:linear-gradient(
+
+        90deg,
+
+        #22c55e,
+
+        #10b981
+
+    );
+
+}
+
+/* ==========================
+   END PART 5
+========================================================== */
+
+
+
+/* ==========================================================
+   DeepSINKY AI
+   12-agents.css
+   PART 6
+   Running Tasks + Queue + Progress + Agent Logs
+========================================================== */
+
+/* ==========================
+   RUNNING TASKS
+========================== */
+
+.running-tasks{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ==========================
+   TASK CARD
+========================== */
+
+.task-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.task-card:hover{
+
+    transform:translateY(-3px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 14px 36px rgba(99,102,241,.14);
+
+}
+
+/* ==========================
+   TASK HEADER
+========================== */
+
+.task-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+}
+
+.task-title{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.task-priority{
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(245,158,11,.14);
+
+    color:#f59e0b;
+
+    font-size:.74rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   TASK INFO
+========================== */
+
+.task-description{
+
+    color:var(--text-secondary);
+
+    line-height:1.7;
+
+    font-size:.90rem;
+
+}
+
+/* ==========================
+   TASK PROGRESS
+========================== */
+
+.task-progress{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.task-progress-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:.82rem;
+
+    color:var(--text-muted);
+
+}
+
+.task-progress-track{
+
+    width:100%;
+
+    height:10px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:var(--surface-hover);
+
+}
+
+.task-progress-fill{
+
+    width:72%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    transition:width .35s ease;
+
+}
+
+/* ==========================
+   TASK QUEUE
+========================== */
+
+.task-queue{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    margin-top:24px;
+
+}
+
+.queue-item{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+    padding:16px 18px;
+
+    border-radius:16px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.queue-position{
+
+    width:34px;
+
+    height:34px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   AGENT LOGS
+========================== */
+
+.agent-logs{
+
+    margin-top:26px;
+
+    max-height:260px;
+
+    overflow:auto;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    font-family:Consolas,monospace;
+
+    font-size:.82rem;
+
+    line-height:1.7;
+
+}
+
+.agent-log{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:12px;
+
+}
+
+.agent-log:last-child{
+
+    margin-bottom:0;
+
+}
+
+.log-time{
+
+    color:var(--primary);
+
+    white-space:nowrap;
+
+}
+
+.log-message{
+
+    color:var(--text-secondary);
+
+    flex:1;
+
+}
+
+/* ==========================
+   EXECUTION STATUS
+========================== */
+
+.execution-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+}
+
+.execution-status::before{
+
+    content:"";
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+    animation:executionPulse 1.8s infinite;
+
+}
+
+@keyframes executionPulse{
+
+    0%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        opacity:.5;
+
+        transform:scale(1.5);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================
+   END PART 6
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   12-agents.css
+   PART 7
+   Agent Marketplace + Search + Categories
+========================================================== */
+
+/* ==========================
+   MARKETPLACE
+========================== */
+
+.agent-marketplace{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/* ==========================
+   SEARCH BAR
+========================== */
+
+.agent-search{
+
+    position:relative;
+
+}
+
+.agent-search input{
+
+    width:100%;
+
+    padding:16px 18px 16px 52px;
+
+    border-radius:18px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    font-size:.95rem;
+
+    outline:none;
+
+    transition:all .30s ease;
+
+}
+
+.agent-search input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(99,102,241,.12);
+
+}
+
+.agent-search i{
+
+    position:absolute;
+
+    top:50%;
+
+    left:18px;
+
+    transform:translateY(-50%);
+
+    width:22px;
+
+    height:22px;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   CATEGORY FILTER
+========================== */
+
+.agent-categories{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.agent-category{
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    color:var(--text-secondary);
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:all .30s ease;
+
+}
+
+.agent-category:hover{
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+}
+
+.agent-category.active{
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+    border-color:transparent;
+
+}
+
+/* ==========================
+   MARKET GRID
+========================== */
+
+.market-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:22px;
+
+}
+
+/* ==========================
+   MARKET CARD
+========================== */
+
+.market-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.market-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 20px 45px rgba(99,102,241,.15);
+
+}
+
+/* ==========================
+   MARKET HEADER
+========================== */
+
+.market-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+
+}
+
+.market-rating{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    color:#f59e0b;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+}
+
+.market-rating i{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+/* ==========================
+   INSTALL BUTTON
+========================== */
+
+.install-agent-btn{
+
+    width:100%;
+
+    margin-top:20px;
+
+}
+
+/* ==========================
+   VERIFIED AGENT
+========================== */
+
+.market-verified{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+    font-size:.72rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   PREMIUM AGENT
+========================== */
+
+.market-premium{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        #f59e0b,
+
+        #fbbf24
+
+    );
+
+    color:#fff;
+
+    font-size:.72rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   CARD SHINE
+========================== */
+
+.market-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.market-card:hover::after{
+
+    animation:marketShine .9s linear;
+
+}
+
+@keyframes marketShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 7
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   12-agents.css
+   PART 8
+   Responsive + Accessibility + Final Polish
+========================================================== */
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width:992px){
+
+    .agents-page{
+
+        padding:20px;
+
+    }
+
+    .agents-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .agents-actions{
+
+        width:100%;
+
+        justify-content:flex-end;
+
+    }
+
+    .agent-grid,
+
+    .team-grid,
+
+    .market-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .agents-page{
+
+        padding:16px;
+
+        gap:18px;
+
+    }
+
+    .agents-header{
+
+        padding:18px;
+
+    }
+
+    .agents-dashboard,
+
+    .agent-grid,
+
+    .team-grid,
+
+    .market-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .agent-profile-header{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .agent-profile-footer{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .collaboration-flow{
+
+        flex-direction:column;
+
+    }
+
+    .flow-line{
+
+        width:3px;
+
+        height:36px;
+
+    }
+
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width:480px){
+
+    .agents-header-actions,
+
+    .agents-actions{
+
+        flex-wrap:wrap;
+
+        width:100%;
+
+    }
+
+    .agents-actions button,
+
+    .agent-actions button{
+
+        flex:1;
+
+    }
+
+    .agent-stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .team-members{
+
+        justify-content:center;
+
+    }
+
+}
+
+/* ==========================
+   FOCUS
+========================== */
+
+.agent-card:focus-visible,
+
+.team-card:focus-visible,
+
+.market-card:focus-visible,
+
+.agent-category:focus-visible,
+
+.graph-btn:focus-visible,
+
+.install-agent-btn:focus-visible{
+
+    outline:2px solid var(--primary);
+
+    outline-offset:3px;
+
+}
+
+/* ==========================
+   REDUCED MOTION
+========================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    .agents-page *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+    }
+
+}
+
+/* ==========================
+   HIGH CONTRAST
+========================== */
+
+@media (prefers-contrast:more){
+
+    .agent-card,
+
+    .team-card,
+
+    .market-card,
+
+    .agent-profile{
+
+        border-width:2px;
+
+    }
+
+}
+
+/* ==========================
+   GLASS EFFECT
+========================== */
+
+.agent-card,
+
+.agent-profile,
+
+.team-card,
+
+.market-card,
+
+.agent-section{
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+}
+
+/* ==========================
+   PREMIUM HOVER
+========================== */
+
+.agent-card:hover,
+
+.team-card:hover,
+
+.market-card:hover{
+
+    box-shadow:
+
+        0 22px 50px rgba(99,102,241,.16);
+
+}
+
+/* ==========================
+   GPU OPTIMIZATION
+========================== */
+
+.agent-card,
+
+.team-card,
+
+.market-card,
+
+.agent-profile,
+
+.agent-section{
+
+    transform:translateZ(0);
+
+    will-change:transform;
+
+    backface-visibility:hidden;
+
+}
+
+/* ==========================
+   PERFORMANCE
+========================== */
+
+.agents-page{
+
+    contain:layout style paint;
+
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+
+html.dark .agent-card,
+
+html.dark .market-card,
+
+html.dark .team-card,
+
+html.dark .agent-profile{
+
+    border-color:rgba(255,255,255,.06);
+
+}
+
+/* ==========================
+   LIGHT MODE
+========================== */
+
+html:not(.dark) .agent-card,
+
+html:not(.dark) .market-card,
+
+html:not(.dark) .team-card,
+
+html:not(.dark) .agent-profile{
+
+    background:#ffffff;
+
+}
+
+/* ==========================
+   CUSTOM SCROLLBAR
+========================== */
+
+.agent-logs::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.agent-logs::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    border-radius:999px;
+
+}
+
+/* ==========================
+   END PART 8
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   12-agents.css
+   PART 9
+   AI Agent Analytics + Metrics + Monitoring Dashboard
+========================================================== */
+
+/* ==========================
+   ANALYTICS DASHBOARD
+========================== */
+
+.agent-analytics{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:22px;
+
+    margin-top:24px;
+
+}
+
+/* ==========================
+   ANALYTICS CARD
+========================== */
+
+.analytics-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.analytics-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 18px 42px rgba(99,102,241,.16);
+
+}
+
+/* ==========================
+   CARD HEADER
+========================== */
+
+.analytics-card-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.analytics-card-title{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.analytics-card-icon{
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:rgba(99,102,241,.12);
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   MAIN VALUE
+========================== */
+
+.analytics-value{
+
+    font-size:2.4rem;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+.analytics-label{
+
+    margin-top:6px;
+
+    color:var(--text-muted);
+
+    font-size:.82rem;
+
+}
+
+/* ==========================
+   TREND
+========================== */
+
+.analytics-trend{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:18px;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+}
+
+.analytics-trend.positive{
+
+    color:#22c55e;
+
+}
+
+.analytics-trend.negative{
+
+    color:#ef4444;
+
+}
+
+/* ==========================
+   RESOURCE MONITOR
+========================== */
+
+.resource-monitor{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    margin-top:26px;
+
+}
+
+.resource-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.resource-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:.84rem;
+
+    color:var(--text-secondary);
+
+}
+
+.resource-bar{
+
+    width:100%;
+
+    height:10px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:var(--surface-hover);
+
+}
+
+.resource-fill{
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+}
+
+/* ==========================
+   AI HEALTH SCORE
+========================== */
+
+.ai-health-score{
+
+    width:180px;
+
+    height:180px;
+
+    margin:32px auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:conic-gradient(
+
+        #22c55e 0 320deg,
+
+        rgba(255,255,255,.08) 320deg
+
+    );
+
+    box-shadow:0 18px 45px rgba(34,197,94,.18);
+
+}
+
+.ai-health-score strong{
+
+    font-size:2rem;
+
+    color:#fff;
+
+}
+
+.ai-health-score span{
+
+    margin-top:8px;
+
+    color:#fff;
+
+    font-size:.82rem;
+
+}
+
+/* ==========================
+   ACTIVITY GRAPH
+========================== */
+
+.activity-graph{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:8px;
+
+    height:180px;
+
+    margin-top:24px;
+
+}
+
+.activity-bar{
+
+    flex:1;
+
+    border-radius:10px 10px 0 0;
+
+    background:linear-gradient(
+
+        to top,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    transition:.30s ease;
+
+}
+
+.activity-bar:hover{
+
+    opacity:.85;
+
+    transform:scaleY(1.05);
+
+}
+
+/* ==========================
+   SHINE
+========================== */
+
+.analytics-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.analytics-card:hover::after{
+
+    animation:analyticsGlow .9s linear;
+
+}
+
+@keyframes analyticsGlow{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 9
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   12-agents.css
+   PART 10 (FINAL)
+   Premium Glass UI + Final Polish + Performance
+========================================================== */
+
+/* ==========================
+   PREMIUM GLASS EFFECT
+========================== */
+
+.agent-card,
+.agent-profile,
+.team-card,
+.market-card,
+.analytics-card,
+.agent-section{
+
+    position:relative;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(24px);
+
+    -webkit-backdrop-filter:blur(24px);
+
+}
+
+/* ==========================
+   PREMIUM BORDER
+========================== */
+
+.agent-card::before,
+.team-card::before,
+.market-card::before,
+.analytics-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    padding:1px;
+
+    pointer-events:none;
+
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.10),
+        transparent,
+        rgba(99,102,241,.15)
+    );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+            mask-composite:exclude;
+
+}
+
+/* ==========================
+   FLOAT ANIMATION
+========================== */
+
+.agent-card{
+
+    animation:agentFloat 6s ease-in-out infinite;
+
+}
+
+@keyframes agentFloat{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+}
+
+/* ==========================
+   AVATAR GLOW
+========================== */
+
+.agent-avatar,
+.agent-profile-avatar,
+.team-member{
+
+    transition:.30s ease;
+
+}
+
+.agent-avatar:hover,
+.agent-profile-avatar:hover,
+.team-member:hover{
+
+    box-shadow:
+
+        0 0 35px rgba(99,102,241,.35);
+
+}
+
+/* ==========================
+   LIVE STATUS
+========================== */
+
+.agent-online .agent-status-dot{
+
+    animation:livePulse 1.6s infinite;
+
+}
+
+@keyframes livePulse{
+
+    0%{
+
+        box-shadow:0 0 0 0 rgba(34,197,94,.45);
+
+    }
+
+    70%{
+
+        box-shadow:0 0 0 14px rgba(34,197,94,0);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 0 0 rgba(34,197,94,0);
+
+    }
+
+}
+
+/* ==========================
+   PREMIUM BUTTONS
+========================== */
+
+.agent-actions button,
+.install-agent-btn{
+
+    transition:
+
+        transform .25s ease,
+
+        box-shadow .25s ease;
+
+}
+
+.agent-actions button:hover,
+.install-agent-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.agent-actions button:active,
+.install-agent-btn:active{
+
+    transform:scale(.96);
+
+}
+
+/* ==========================
+   GPU OPTIMIZATION
+========================== */
+
+.agent-card,
+.team-card,
+.market-card,
+.analytics-card,
+.agent-profile{
+
+    transform:translateZ(0);
+
+    will-change:transform;
+
+    backface-visibility:hidden;
+
+}
+
+/* ==========================
+   PERFORMANCE
+========================== */
+
+.agents-page{
+
+    contain:layout style paint;
+
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+
+html.dark .agent-card,
+html.dark .market-card,
+html.dark .analytics-card{
+
+    border-color:rgba(255,255,255,.06);
+
+}
+
+/* ==========================
+   LIGHT MODE
+========================== */
+
+html:not(.dark) .agent-card,
+html:not(.dark) .market-card,
+html:not(.dark) .analytics-card{
+
+    background:rgba(255,255,255,.96);
+
+}
+
+/* ==========================
+   PRINT
+========================== */
+
+@media print{
+
+    .agents-actions,
+    .agent-actions,
+    .install-agent-btn{
+
+        display:none !important;
+
+    }
+
+}
+
+/* ==========================
+   MOBILE POLISH
+========================== */
+
+@media (max-width:768px){
+
+    .agent-card:hover,
+    .team-card:hover,
+    .market-card:hover{
+
+        transform:none;
+
+    }
+
+    .agent-card{
+
+        animation:none;
+
+    }
+
+}
+
+/* ==========================
+   CUSTOM SCROLLBAR
+========================== */
+
+.agent-logs::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.agent-logs::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+        var(--primary),
+        #8b5cf6
+    );
+
+    border-radius:999px;
+
+}
+
+.agent-logs::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* ==========================
+   END OF 12-agents.css
+   DeepSINKY AI Agent Engine
+========================================================== */
