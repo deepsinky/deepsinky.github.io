@@ -1,0 +1,3913 @@
+/* ==========================================================
+   DeepSINKY AI
+   15-admin.css
+   PART 1
+   Admin Dashboard + Layout Foundation
+========================================================== */
+
+/* ==========================
+   ADMIN PAGE
+========================== */
+
+.admin-page{
+
+    width:100%;
+
+    min-height:100vh;
+
+    padding:28px;
+
+    background:var(--bg);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/* ==========================
+   ADMIN CONTAINER
+========================== */
+
+.admin-container{
+
+    width:100%;
+
+    max-width:1800px;
+
+    margin:0 auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/* ==========================
+   ADMIN HEADER
+========================== */
+
+.admin-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:24px 28px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/* ==========================
+   HEADER LEFT
+========================== */
+
+.admin-header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.admin-logo{
+
+    width:68px;
+
+    height:68px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+}
+
+.admin-logo i{
+
+    width:34px;
+
+    height:34px;
+
+}
+
+/* ==========================
+   HEADER TEXT
+========================== */
+
+.admin-title{
+
+    font-size:1.65rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.admin-subtitle{
+
+    margin-top:6px;
+
+    font-size:.90rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   HEADER ACTIONS
+========================== */
+
+.admin-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+/* ==========================
+   ADMIN GRID
+========================== */
+
+.admin-dashboard{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(auto-fit,minmax(340px,1fr));
+
+    gap:22px;
+
+}
+
+/* ==========================
+   ADMIN PANEL
+========================== */
+
+.admin-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.admin-panel:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 18px 45px rgba(99,102,241,.14);
+
+}
+
+/* ==========================
+   PANEL TITLE
+========================== */
+
+.admin-panel-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:1.05rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.admin-panel-title i{
+
+    width:22px;
+
+    height:22px;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   PANEL CONTENT
+========================== */
+
+.admin-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ==========================
+   QUICK STATS
+========================== */
+
+.admin-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:16px;
+
+}
+
+.admin-stat{
+
+    padding:18px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.admin-stat strong{
+
+    display:block;
+
+    font-size:1.7rem;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+.admin-stat span{
+
+    display:block;
+
+    margin-top:6px;
+
+    font-size:.78rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   ADMIN FOOTER
+========================== */
+
+.admin-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:14px;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--border);
+
+}
+
+/* ==========================
+   PAGE ANIMATION
+========================== */
+
+.admin-page{
+
+    animation:adminFade .35s ease;
+
+}
+
+@keyframes adminFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(18px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   END PART 1
+========================================================== */
+
+  /* ==========================================================
+   DeepSINKY AI
+   15-admin.css
+   PART 2
+   User Management + Roles + Permissions
+========================================================== */
+
+/* ==========================
+   USER TABLE
+========================== */
+
+.user-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:var(--surface);
+
+}
+
+.user-table thead{
+
+    background:rgba(99,102,241,.08);
+
+}
+
+.user-table th{
+
+    padding:18px;
+
+    text-align:left;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.user-table td{
+
+    padding:18px;
+
+    border-bottom:1px solid var(--border);
+
+    color:var(--text-secondary);
+
+    transition:.30s ease;
+
+}
+
+.user-table tbody tr:hover{
+
+    background:rgba(99,102,241,.05);
+
+}
+
+/* ==========================
+   USER INFO
+========================== */
+
+.user-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.user-avatar{
+
+    width:48px;
+
+    height:48px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+    font-weight:700;
+
+}
+
+.user-avatar img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:inherit;
+
+}
+
+.user-name{
+
+    font-size:.92rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.user-email{
+
+    margin-top:4px;
+
+    font-size:.78rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   ROLE BADGES
+========================== */
+
+.role-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    font-size:.74rem;
+
+    font-weight:700;
+
+}
+
+.role-admin{
+
+    background:rgba(239,68,68,.12);
+
+    color:#ef4444;
+
+}
+
+.role-moderator{
+
+    background:rgba(245,158,11,.12);
+
+    color:#f59e0b;
+
+}
+
+.role-premium{
+
+    background:rgba(99,102,241,.12);
+
+    color:var(--primary);
+
+}
+
+.role-user{
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+}
+
+/* ==========================
+   USER STATUS
+========================== */
+
+.user-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:.78rem;
+
+    font-weight:700;
+
+}
+
+.user-status::before{
+
+    content:"";
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+}
+
+.user-status.online{
+
+    color:#22c55e;
+
+}
+
+.user-status.online::before{
+
+    background:#22c55e;
+
+}
+
+.user-status.away{
+
+    color:#f59e0b;
+
+}
+
+.user-status.away::before{
+
+    background:#f59e0b;
+
+}
+
+.user-status.offline{
+
+    color:#94a3b8;
+
+}
+
+.user-status.offline::before{
+
+    background:#94a3b8;
+
+}
+
+/* ==========================
+   USER ACTIONS
+========================== */
+
+.user-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.user-action{
+
+    width:38px;
+
+    height:38px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    transition:.30s ease;
+
+}
+
+.user-action:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    border-color:var(--primary);
+
+}
+
+/* ==========================
+   PERMISSION PANEL
+========================== */
+
+.permission-panel{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:18px;
+
+    margin-top:24px;
+
+}
+
+.permission-card{
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.permission-title{
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.permission-description{
+
+    margin-top:8px;
+
+    font-size:.82rem;
+
+    color:var(--text-muted);
+
+    line-height:1.7;
+
+}
+
+/* ==========================
+   USER SEARCH
+========================== */
+
+.user-search{
+
+    position:relative;
+
+    margin-bottom:20px;
+
+}
+
+.user-search input{
+
+    width:100%;
+
+    padding:14px 18px 14px 48px;
+
+    border-radius:16px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    outline:none;
+
+}
+
+.user-search input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(99,102,241,.12);
+
+}
+
+.user-search i{
+
+    position:absolute;
+
+    top:50%;
+
+    left:16px;
+
+    transform:translateY(-50%);
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   END PART 2
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   15-admin.css
+   PART 3
+   Analytics + Statistics + KPI Dashboard
+========================================================== */
+
+/* ==========================
+   ANALYTICS GRID
+========================== */
+
+.admin-analytics{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:22px;
+
+}
+
+/* ==========================
+   ANALYTICS CARD
+========================== */
+
+.analytics-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.analytics-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 18px 42px rgba(99,102,241,.15);
+
+}
+
+/* ==========================
+   CARD HEADER
+========================== */
+
+.analytics-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+
+}
+
+.analytics-title{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.analytics-icon{
+
+    width:46px;
+
+    height:46px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:rgba(99,102,241,.12);
+
+    color:var(--primary);
+
+}
+
+.analytics-icon i{
+
+    width:24px;
+
+    height:24px;
+
+}
+
+/* ==========================
+   KPI VALUE
+========================== */
+
+.analytics-value{
+
+    font-size:2.3rem;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+.analytics-label{
+
+    margin-top:6px;
+
+    color:var(--text-muted);
+
+    font-size:.82rem;
+
+}
+
+/* ==========================
+   TREND
+========================== */
+
+.analytics-trend{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:16px;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+}
+
+.analytics-trend.up{
+
+    color:#22c55e;
+
+}
+
+.analytics-trend.down{
+
+    color:#ef4444;
+
+}
+
+/* ==========================
+   CHART
+========================== */
+
+.admin-chart{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:10px;
+
+    height:200px;
+
+    margin-top:28px;
+
+}
+
+.chart-column{
+
+    flex:1;
+
+    min-height:24px;
+
+    border-radius:12px 12px 0 0;
+
+    background:linear-gradient(
+
+        to top,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    transition:.30s ease;
+
+}
+
+.chart-column:hover{
+
+    opacity:.85;
+
+    transform:scaleY(1.08);
+
+}
+
+/* ==========================
+   PERFORMANCE PANEL
+========================== */
+
+.performance-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    margin-top:28px;
+
+}
+
+.performance-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.performance-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:.82rem;
+
+    color:var(--text-secondary);
+
+}
+
+.performance-track{
+
+    width:100%;
+
+    height:10px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:var(--surface-hover);
+
+}
+
+.performance-fill{
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        #22c55e,
+
+        #10b981
+
+    );
+
+}
+
+/* ==========================
+   SHINE EFFECT
+========================== */
+
+.analytics-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.analytics-card:hover::after{
+
+    animation:adminAnalyticsShine .9s linear;
+
+}
+
+@keyframes adminAnalyticsShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 3
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   15-admin.css
+   PART 4
+   AI Models Management + Model Hub + Inference Control
+========================================================== */
+
+/* ==========================
+   MODEL GRID
+========================== */
+
+.model-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:22px;
+
+}
+
+/* ==========================
+   MODEL CARD
+========================== */
+
+.model-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.model-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 18px 45px rgba(99,102,241,.15);
+
+}
+
+/* ==========================
+   MODEL HEADER
+========================== */
+
+.model-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+}
+
+.model-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.model-icon{
+
+    width:60px;
+
+    height:60px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+}
+
+.model-icon i{
+
+    width:30px;
+
+    height:30px;
+
+}
+
+.model-name{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.model-version{
+
+    margin-top:5px;
+
+    font-size:.80rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   MODEL STATUS
+========================== */
+
+.model-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+    font-size:.74rem;
+
+    font-weight:700;
+
+}
+
+.model-status::before{
+
+    content:"";
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+}
+
+/* ==========================
+   MODEL DETAILS
+========================== */
+
+.model-description{
+
+    font-size:.88rem;
+
+    line-height:1.7;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================
+   MODEL METRICS
+========================== */
+
+.model-metrics{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+
+}
+
+.model-metric{
+
+    padding:14px;
+
+    text-align:center;
+
+    border-radius:16px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.model-metric strong{
+
+    display:block;
+
+    font-size:1.2rem;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+.model-metric span{
+
+    display:block;
+
+    margin-top:6px;
+
+    font-size:.75rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   MODEL ACTIONS
+========================== */
+
+.model-actions{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:6px;
+
+}
+
+.model-actions button{
+
+    flex:1;
+
+}
+
+/* ==========================
+   INFERENCE USAGE
+========================== */
+
+.inference-usage{
+
+    margin-top:18px;
+
+}
+
+.inference-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:8px;
+
+    font-size:.82rem;
+
+    color:var(--text-secondary);
+
+}
+
+.inference-track{
+
+    width:100%;
+
+    height:10px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:var(--surface-hover);
+
+}
+
+.inference-fill{
+
+    width:78%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+}
+
+/* ==========================
+   MODEL SHINE
+========================== */
+
+.model-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.model-card:hover::after{
+
+    animation:modelShine .9s linear;
+
+}
+
+@keyframes modelShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 4
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   15-admin.css
+   PART 5
+   Server Monitoring + System Health + Infrastructure
+========================================================== */
+
+/* ==========================
+   SERVER DASHBOARD
+========================== */
+
+.server-dashboard{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:22px;
+
+}
+
+/* ==========================
+   SERVER CARD
+========================== */
+
+.server-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.server-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 18px 44px rgba(99,102,241,.15);
+
+}
+
+/* ==========================
+   SERVER HEADER
+========================== */
+
+.server-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.server-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.server-icon{
+
+    width:58px;
+
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+}
+
+.server-icon i{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+.server-name{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.server-location{
+
+    margin-top:5px;
+
+    font-size:.80rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   SERVER STATUS
+========================== */
+
+.server-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    font-size:.74rem;
+
+    font-weight:700;
+
+}
+
+.server-status.online{
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+}
+
+.server-status.warning{
+
+    background:rgba(245,158,11,.12);
+
+    color:#f59e0b;
+
+}
+
+.server-status.offline{
+
+    background:rgba(239,68,68,.12);
+
+    color:#ef4444;
+
+}
+
+.server-status::before{
+
+    content:"";
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:currentColor;
+
+}
+
+/* ==========================
+   RESOURCE USAGE
+========================== */
+
+.resource-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+.resource-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.resource-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:.82rem;
+
+    color:var(--text-secondary);
+
+}
+
+.resource-track{
+
+    width:100%;
+
+    height:10px;
+
+    overflow:hidden;
+
+    border-radius:999px;
+
+    background:var(--surface-hover);
+
+}
+
+.resource-fill{
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        #22c55e,
+
+        #10b981
+
+    );
+
+}
+
+.resource-fill.cpu{
+
+    width:62%;
+
+}
+
+.resource-fill.memory{
+
+    width:74%;
+
+}
+
+.resource-fill.storage{
+
+    width:58%;
+
+}
+
+.resource-fill.network{
+
+    width:81%;
+
+}
+
+/* ==========================
+   LIVE LOGS
+========================== */
+
+.server-logs{
+
+    max-height:240px;
+
+    overflow:auto;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:#0b1220;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    font-family:Consolas,monospace;
+
+    font-size:.82rem;
+
+}
+
+.server-log{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:10px;
+
+}
+
+.server-log-time{
+
+    color:#38bdf8;
+
+    white-space:nowrap;
+
+}
+
+.server-log-message{
+
+    color:#22c55e;
+
+    flex:1;
+
+}
+
+/* ==========================
+   UPTIME CARD
+========================== */
+
+.server-uptime{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.uptime-value{
+
+    font-size:1.8rem;
+
+    font-weight:800;
+
+    color:#22c55e;
+
+}
+
+.uptime-label{
+
+    margin-top:6px;
+
+    font-size:.80rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   SHINE EFFECT
+========================== */
+
+.server-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.server-card:hover::after{
+
+    animation:serverShine .9s linear;
+
+}
+
+@keyframes serverShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 5
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   15-admin.css
+   PART 6
+   Logs + Audit Trail + Activity Monitor
+========================================================== */
+
+/* ==========================
+   LOGS PANEL
+========================== */
+
+.logs-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   PANEL HEADER
+========================== */
+
+.logs-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+}
+
+.logs-title{
+
+    font-size:1.15rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.logs-subtitle{
+
+    margin-top:6px;
+
+    font-size:.86rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   FILTER BAR
+========================== */
+
+.log-filters{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.log-filter{
+
+    padding:10px 16px;
+
+    border-radius:999px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    transition:.30s ease;
+
+}
+
+.log-filter:hover,
+
+.log-filter.active{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    border-color:var(--primary);
+
+}
+
+/* ==========================
+   LOG LIST
+========================== */
+
+.log-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+/* ==========================
+   LOG ITEM
+========================== */
+
+.log-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:16px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    transition:.30s ease;
+
+}
+
+.log-item:hover{
+
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   LOG LEVEL
+========================== */
+
+.log-level{
+
+    width:14px;
+
+    height:14px;
+
+    margin-top:4px;
+
+    border-radius:50%;
+
+    flex-shrink:0;
+
+}
+
+.log-level.info{
+
+    background:#3b82f6;
+
+}
+
+.log-level.success{
+
+    background:#22c55e;
+
+}
+
+.log-level.warning{
+
+    background:#f59e0b;
+
+}
+
+.log-level.error{
+
+    background:#ef4444;
+
+}
+
+/* ==========================
+   LOG CONTENT
+========================== */
+
+.log-content{
+
+    flex:1;
+
+}
+
+.log-message{
+
+    font-size:.90rem;
+
+    color:var(--text);
+
+    line-height:1.7;
+
+}
+
+.log-meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:14px;
+
+    margin-top:8px;
+
+    font-size:.76rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   AUDIT TABLE
+========================== */
+
+.audit-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.audit-table th{
+
+    padding:16px;
+
+    text-align:left;
+
+    background:rgba(99,102,241,.08);
+
+    border-bottom:1px solid var(--border);
+
+    color:var(--text);
+
+}
+
+.audit-table td{
+
+    padding:16px;
+
+    border-bottom:1px solid var(--border);
+
+    color:var(--text-secondary);
+
+}
+
+.audit-table tbody tr:hover{
+
+    background:rgba(99,102,241,.05);
+
+}
+
+/* ==========================
+   LIVE MONITOR
+========================== */
+
+.activity-monitor{
+
+    margin-top:24px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:#0b1220;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    font-family:Consolas,monospace;
+
+    color:#22c55e;
+
+    max-height:280px;
+
+    overflow:auto;
+
+}
+
+.activity-line{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:10px;
+
+}
+
+.activity-time{
+
+    color:#38bdf8;
+
+    white-space:nowrap;
+
+}
+
+.activity-text{
+
+    flex:1;
+
+}
+
+/* ==========================
+   EXPORT BAR
+========================== */
+
+.logs-actions{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+    margin-top:22px;
+
+}
+
+/* ==========================
+   SHINE EFFECT
+========================== */
+
+.logs-panel{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.logs-panel::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.logs-panel:hover::after{
+
+    animation:logsShine .9s linear;
+
+}
+
+@keyframes logsShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 6
+========================================================== */
+
+
+
+/* ==========================================================
+   DeepSINKY AI
+   15-admin.css
+   PART 7
+   Billing + Subscription + Revenue Dashboard
+========================================================== */
+
+/* ==========================
+   BILLING PANEL
+========================== */
+
+.billing-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.billing-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+}
+
+.billing-title{
+
+    font-size:1.15rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.billing-subtitle{
+
+    margin-top:6px;
+
+    font-size:.86rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   REVENUE CARDS
+========================== */
+
+.revenue-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+
+}
+
+.revenue-card{
+
+    padding:22px;
+
+    border-radius:20px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    transition:.30s ease;
+
+}
+
+.revenue-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+}
+
+.revenue-value{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+.revenue-label{
+
+    margin-top:8px;
+
+    color:var(--text-muted);
+
+    font-size:.82rem;
+
+}
+
+.revenue-change{
+
+    margin-top:10px;
+
+    font-size:.78rem;
+
+    font-weight:700;
+
+    color:#22c55e;
+
+}
+
+/* ==========================
+   SUBSCRIPTIONS
+========================== */
+
+.subscription-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.subscription-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.subscription-name{
+
+    font-size:.92rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.subscription-plan{
+
+    margin-top:4px;
+
+    font-size:.78rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   PLAN BADGES
+========================== */
+
+.plan-badge{
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    font-size:.74rem;
+
+    font-weight:700;
+
+}
+
+.plan-free{
+
+    background:rgba(148,163,184,.12);
+
+    color:#94a3b8;
+
+}
+
+.plan-pro{
+
+    background:rgba(99,102,241,.12);
+
+    color:var(--primary);
+
+}
+
+.plan-enterprise{
+
+    background:rgba(245,158,11,.12);
+
+    color:#f59e0b;
+
+}
+
+/* ==========================
+   PAYMENT TABLE
+========================== */
+
+.payment-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.payment-table th{
+
+    padding:16px;
+
+    text-align:left;
+
+    color:var(--text);
+
+    background:rgba(99,102,241,.08);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.payment-table td{
+
+    padding:16px;
+
+    color:var(--text-secondary);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.payment-table tbody tr:hover{
+
+    background:rgba(99,102,241,.05);
+
+}
+
+/* ==========================
+   PAYMENT STATUS
+========================== */
+
+.payment-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    font-size:.74rem;
+
+    font-weight:700;
+
+}
+
+.payment-success{
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+}
+
+.payment-pending{
+
+    background:rgba(245,158,11,.12);
+
+    color:#f59e0b;
+
+}
+
+.payment-failed{
+
+    background:rgba(239,68,68,.12);
+
+    color:#ef4444;
+
+}
+
+/* ==========================
+   REVENUE CHART
+========================== */
+
+.revenue-chart{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:10px;
+
+    height:220px;
+
+    margin-top:26px;
+
+}
+
+.revenue-bar{
+
+    flex:1;
+
+    min-height:24px;
+
+    border-radius:12px 12px 0 0;
+
+    background:linear-gradient(
+
+        to top,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    transition:.30s ease;
+
+}
+
+.revenue-bar:hover{
+
+    opacity:.85;
+
+    transform:scaleY(1.08);
+
+}
+
+/* ==========================
+   SHINE EFFECT
+========================== */
+
+.billing-panel{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.billing-panel::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.billing-panel:hover::after{
+
+    animation:billingShine .9s linear;
+
+}
+
+@keyframes billingShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 7
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   15-admin.css
+   PART 8
+   System Controls + Maintenance + Backup + Automation
+========================================================== */
+
+/* ==========================
+   SYSTEM PANEL
+========================== */
+
+.system-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   PANEL HEADER
+========================== */
+
+.system-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+}
+
+.system-title{
+
+    font-size:1.15rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.system-subtitle{
+
+    margin-top:6px;
+
+    font-size:.86rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   SYSTEM ACTIONS
+========================== */
+
+.system-actions{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:18px;
+
+}
+
+.system-action{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    cursor:pointer;
+
+    transition:all .30s ease;
+
+}
+
+.system-action:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 16px 40px rgba(99,102,241,.14);
+
+}
+
+.system-action-icon{
+
+    width:58px;
+
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+}
+
+.system-action-icon i{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+.system-action-title{
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.system-action-desc{
+
+    margin-top:6px;
+
+    font-size:.80rem;
+
+    line-height:1.6;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   MAINTENANCE MODE
+========================== */
+
+.maintenance-card{
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(245,158,11,.10),
+
+        rgba(234,179,8,.05)
+
+    );
+
+    border:1px solid rgba(245,158,11,.22);
+
+}
+
+.maintenance-title{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.maintenance-text{
+
+    margin-top:8px;
+
+    line-height:1.7;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================
+   BACKUP STATUS
+========================== */
+
+.system-backup{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+.system-backup-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.system-backup-name{
+
+    font-size:.90rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.system-backup-date{
+
+    margin-top:5px;
+
+    font-size:.78rem;
+
+    color:var(--text-muted);
+
+}
+
+.system-backup-status{
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+    font-size:.74rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   AUTOMATION
+========================== */
+
+.system-automation{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    margin-top:24px;
+
+}
+
+.automation-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.automation-title{
+
+    font-size:.90rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.automation-desc{
+
+    margin-top:5px;
+
+    font-size:.78rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   DANGER ZONE
+========================== */
+
+.danger-zone{
+
+    margin-top:28px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    border:1px solid rgba(239,68,68,.24);
+
+    background:rgba(239,68,68,.06);
+
+}
+
+.danger-title{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:#ef4444;
+
+}
+
+.danger-description{
+
+    margin-top:8px;
+
+    line-height:1.7;
+
+    color:var(--text-secondary);
+
+}
+
+.danger-actions{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:20px;
+
+}
+
+/* ==========================
+   SHINE EFFECT
+========================== */
+
+.system-panel{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.system-panel::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.system-panel:hover::after{
+
+    animation:systemShine .9s linear;
+
+}
+
+@keyframes systemShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 8
+========================================================== */
+/* ==========================================================
+   DeepSINKY AI
+   15-admin.css
+   PART 9
+   Responsive + Accessibility + Mobile Optimization
+========================================================== */
+
+/* ==========================
+   LARGE TABLET
+========================== */
+
+@media (max-width:1200px){
+
+    .admin-dashboard{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .model-grid,
+
+    .server-dashboard,
+
+    .revenue-grid,
+
+    .system-actions{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width:992px){
+
+    .admin-page{
+
+        padding:20px;
+
+    }
+
+    .admin-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .admin-actions{
+
+        width:100%;
+
+        justify-content:flex-end;
+
+    }
+
+    .admin-dashboard,
+
+    .model-grid,
+
+    .server-dashboard,
+
+    .revenue-grid,
+
+    .permission-panel,
+
+    .system-actions{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .admin-stats{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .admin-page{
+
+        padding:16px;
+
+        gap:18px;
+
+    }
+
+    .admin-header{
+
+        padding:18px;
+
+        border-radius:20px;
+
+    }
+
+    .admin-title{
+
+        font-size:1.35rem;
+
+    }
+
+    .admin-stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .user-table{
+
+        display:block;
+
+        overflow-x:auto;
+
+        white-space:nowrap;
+
+    }
+
+    .user-info,
+
+    .server-header,
+
+    .model-header,
+
+    .subscription-item,
+
+    .system-backup-item,
+
+    .automation-item{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .model-actions,
+
+    .danger-actions,
+
+    .logs-actions{
+
+        flex-direction:column;
+
+    }
+
+    .model-actions button,
+
+    .danger-actions button,
+
+    .logs-actions button{
+
+        width:100%;
+
+    }
+
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width:480px){
+
+    .admin-page{
+
+        padding:12px;
+
+    }
+
+    .admin-header{
+
+        padding:16px;
+
+    }
+
+    .admin-actions{
+
+        width:100%;
+
+        flex-wrap:wrap;
+
+    }
+
+    .admin-actions button{
+
+        width:100%;
+
+    }
+
+    .analytics-value,
+
+    .revenue-value,
+
+    .uptime-value{
+
+        font-size:1.6rem;
+
+    }
+
+}
+
+/* ==========================
+   ACCESSIBILITY
+========================== */
+
+.admin-panel:focus-visible,
+
+.analytics-card:focus-visible,
+
+.model-card:focus-visible,
+
+.server-card:focus-visible,
+
+.system-action:focus-visible,
+
+.user-action:focus-visible,
+
+.log-item:focus-visible{
+
+    outline:2px solid var(--primary);
+
+    outline-offset:3px;
+
+}
+
+/* ==========================
+   REDUCED MOTION
+========================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    .admin-page *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}
+
+/* ==========================
+   HIGH CONTRAST
+========================== */
+
+@media (prefers-contrast:more){
+
+    .admin-panel,
+
+    .analytics-card,
+
+    .model-card,
+
+    .server-card,
+
+    .billing-panel,
+
+    .system-panel{
+
+        border-width:2px;
+
+    }
+
+}
+
+/* ==========================
+   GLASS EFFECT
+========================== */
+
+.admin-panel,
+
+.analytics-card,
+
+.model-card,
+
+.server-card,
+
+.logs-panel,
+
+.billing-panel,
+
+.system-panel{
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+}
+
+/* ==========================
+   PREMIUM HOVER
+========================== */
+
+.admin-panel:hover,
+
+.analytics-card:hover,
+
+.model-card:hover,
+
+.server-card:hover{
+
+    box-shadow:
+
+        0 22px 52px rgba(99,102,241,.16);
+
+}
+
+/* ==========================
+   GPU OPTIMIZATION
+========================== */
+
+.admin-panel,
+
+.analytics-card,
+
+.model-card,
+
+.server-card,
+
+.system-panel{
+
+    transform:translateZ(0);
+
+    will-change:transform;
+
+    backface-visibility:hidden;
+
+}
+
+/* ==========================
+   PERFORMANCE
+========================== */
+
+.admin-page{
+
+    contain:layout style paint;
+
+}
+
+/* ==========================
+   END PART 9
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   15-admin.css
+   PART 10 (FINAL)
+   Premium Glass UI + Final Polish + Performance
+========================================================== */
+
+/* ==========================
+   PREMIUM GLASS
+========================== */
+
+.admin-panel,
+.analytics-card,
+.model-card,
+.server-card,
+.logs-panel,
+.billing-panel,
+.system-panel{
+
+    position:relative;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(24px);
+
+    -webkit-backdrop-filter:blur(24px);
+
+}
+
+/* ==========================
+   PREMIUM BORDER
+========================== */
+
+.admin-panel::before,
+.analytics-card::before,
+.model-card::before,
+.server-card::before,
+.logs-panel::before,
+.billing-panel::before,
+.system-panel::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    padding:1px;
+
+    pointer-events:none;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(255,255,255,.12),
+
+        transparent,
+
+        rgba(99,102,241,.18)
+
+    );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+            mask-composite:exclude;
+
+}
+
+/* ==========================
+   FLOAT ANIMATION
+========================== */
+
+.admin-panel{
+
+    animation:adminFloat 6s ease-in-out infinite;
+
+}
+
+@keyframes adminFloat{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-5px);
+
+    }
+
+}
+
+/* ==========================
+   ICON GLOW
+========================== */
+
+.admin-logo,
+.model-icon,
+.server-icon,
+.system-action-icon{
+
+    transition:.30s ease;
+
+}
+
+.admin-logo:hover,
+.model-icon:hover,
+.server-icon:hover,
+.system-action-icon:hover{
+
+    box-shadow:
+
+        0 0 34px rgba(99,102,241,.34);
+
+}
+
+/* ==========================
+   STATUS PULSE
+========================== */
+
+.server-status.online::before,
+.model-status::before{
+
+    animation:statusPulse 1.8s infinite;
+
+}
+
+@keyframes statusPulse{
+
+    0%{
+
+        transform:scale(.8);
+
+        opacity:.8;
+
+    }
+
+    50%{
+
+        transform:scale(1.35);
+
+        opacity:.35;
+
+    }
+
+    100%{
+
+        transform:scale(.8);
+
+        opacity:.8;
+
+    }
+
+}
+
+/* ==========================
+   BUTTON EFFECTS
+========================== */
+
+.admin-actions button,
+.model-actions button,
+.logs-actions button,
+.danger-actions button{
+
+    transition:
+
+        transform .25s ease,
+
+        box-shadow .25s ease;
+
+}
+
+.admin-actions button:hover,
+.model-actions button:hover,
+.logs-actions button:hover,
+.danger-actions button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.admin-actions button:active,
+.model-actions button:active,
+.logs-actions button:active,
+.danger-actions button:active{
+
+    transform:scale(.96);
+
+}
+
+/* ==========================
+   GPU OPTIMIZATION
+========================== */
+
+.admin-panel,
+.analytics-card,
+.model-card,
+.server-card,
+.logs-panel,
+.billing-panel,
+.system-panel{
+
+    transform:translateZ(0);
+
+    will-change:transform;
+
+    backface-visibility:hidden;
+
+}
+
+/* ==========================
+   PERFORMANCE
+========================== */
+
+.admin-page{
+
+    contain:layout style paint;
+
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+
+html.dark .admin-panel,
+html.dark .analytics-card,
+html.dark .model-card,
+html.dark .server-card,
+html.dark .logs-panel,
+html.dark .billing-panel,
+html.dark .system-panel{
+
+    border-color:rgba(255,255,255,.06);
+
+}
+
+/* ==========================
+   LIGHT MODE
+========================== */
+
+html:not(.dark) .admin-panel,
+html:not(.dark) .analytics-card,
+html:not(.dark) .model-card,
+html:not(.dark) .server-card,
+html:not(.dark) .logs-panel,
+html:not(.dark) .billing-panel,
+html:not(.dark) .system-panel{
+
+    background:rgba(255,255,255,.96);
+
+}
+
+/* ==========================
+   CUSTOM SCROLLBAR
+========================== */
+
+.admin-page::-webkit-scrollbar,
+.server-logs::-webkit-scrollbar,
+.activity-monitor::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.admin-page::-webkit-scrollbar-thumb,
+.server-logs::-webkit-scrollbar-thumb,
+.activity-monitor::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    border-radius:999px;
+
+}
+
+.admin-page::-webkit-scrollbar-track,
+.server-logs::-webkit-scrollbar-track,
+.activity-monitor::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* ==========================
+   PRINT MODE
+========================== */
+
+@media print{
+
+    .admin-actions,
+    .logs-actions,
+    .danger-actions{
+
+        display:none !important;
+
+    }
+
+}
+
+/* ==========================
+   MOBILE POLISH
+========================== */
+
+@media (max-width:768px){
+
+    .admin-panel:hover,
+    .analytics-card:hover,
+    .model-card:hover,
+    .server-card:hover{
+
+        transform:none;
+
+    }
+
+    .admin-panel{
+
+        animation:none;
+
+    }
+
+}
+
+/* ==========================
+   END OF 15-admin.css
+   DeepSINKY AI Admin Engine
+========================================================== */
+
+
+
+
+
+
