@@ -1,1 +1,4396 @@
 
+/* ==========================================================
+   DeepSINKY AI
+   16-animations.css
+   PART 1
+   Page Transitions + Fade + Slide + Scale
+========================================================== */
+
+/* ==========================
+   ROOT ANIMATION VARIABLES
+========================== */
+
+:root{
+
+    --ease-standard:cubic-bezier(.4,0,.2,1);
+
+    --ease-smooth:cubic-bezier(.22,1,.36,1);
+
+    --ease-bounce:cubic-bezier(.34,1.56,.64,1);
+
+    --animation-fast:.18s;
+
+    --animation-normal:.32s;
+
+    --animation-slow:.55s;
+
+}
+
+/* ==========================
+   PAGE FADE
+========================== */
+
+.page-enter{
+
+    animation:
+
+        pageFadeIn
+
+        .45s
+
+        var(--ease-smooth)
+
+        both;
+
+}
+
+@keyframes pageFadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(18px)
+
+            scale(.985);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0)
+
+            scale(1);
+
+    }
+
+}
+
+/* ==========================
+   PAGE EXIT
+========================== */
+
+.page-exit{
+
+    animation:
+
+        pageFadeOut
+
+        .28s
+
+        ease
+
+        forwards;
+
+}
+
+@keyframes pageFadeOut{
+
+    to{
+
+        opacity:0;
+
+        transform:
+
+            translateY(-12px);
+
+    }
+
+}
+
+/* ==========================
+   FADE
+========================== */
+
+.fade-in{
+
+    animation:
+
+        fadeIn
+
+        .35s
+
+        ease
+
+        both;
+
+}
+
+.fade-out{
+
+    animation:
+
+        fadeOut
+
+        .25s
+
+        ease
+
+        both;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes fadeOut{
+
+    to{
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==========================
+   SLIDE
+========================== */
+
+.slide-up{
+
+    animation:
+
+        slideUp
+
+        .45s
+
+        var(--ease-smooth)
+
+        both;
+
+}
+
+.slide-down{
+
+    animation:
+
+        slideDown
+
+        .40s
+
+        var(--ease-smooth)
+
+        both;
+
+}
+
+.slide-left{
+
+    animation:
+
+        slideLeft
+
+        .40s
+
+        var(--ease-smooth)
+
+        both;
+
+}
+
+.slide-right{
+
+    animation:
+
+        slideRight
+
+        .40s
+
+        var(--ease-smooth)
+
+        both;
+
+}
+
+@keyframes slideUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}
+
+@keyframes slideDown{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(-30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}
+
+@keyframes slideLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateX(35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateX(0);
+
+    }
+
+}
+
+@keyframes slideRight{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateX(-35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateX(0);
+
+    }
+
+}
+
+/* ==========================
+   SCALE
+========================== */
+
+.scale-in{
+
+    animation:
+
+        scaleIn
+
+        .35s
+
+        var(--ease-bounce)
+
+        both;
+
+}
+
+@keyframes scaleIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            scale(.90);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            scale(1);
+
+    }
+
+}
+
+/* ==========================
+   POP
+========================== */
+
+.pop{
+
+    animation:
+
+        pop
+
+        .38s
+
+        var(--ease-bounce);
+
+}
+
+@keyframes pop{
+
+    0%{
+
+        transform:scale(.82);
+
+    }
+
+    70%{
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================
+   ZOOM
+========================== */
+
+.zoom-in{
+
+    animation:
+
+        zoomIn
+
+        .45s
+
+        ease
+
+        both;
+
+}
+
+@keyframes zoomIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            scale(.8);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            scale(1);
+
+    }
+
+}
+
+/* ==========================
+   SMOOTH TRANSITIONS
+========================== */
+
+button,
+
+input,
+
+textarea,
+
+select,
+
+.card,
+
+.panel,
+
+.sidebar,
+
+.chat-message{
+
+    transition:
+
+        background
+
+        .25s,
+
+        color
+
+        .25s,
+
+        border-color
+
+        .25s,
+
+        box-shadow
+
+        .25s,
+
+        transform
+
+        .25s;
+
+}
+
+/* ==========================
+   GPU ACCELERATION
+========================== */
+
+.page-enter,
+
+.slide-up,
+
+.slide-left,
+
+.slide-right,
+
+.scale-in{
+
+    transform:
+
+        translateZ(0);
+
+    backface-visibility:hidden;
+
+    will-change:
+
+        transform,
+
+        opacity;
+
+}
+
+/* ==========================
+   END PART 1
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   16-animations.css
+   PART 2
+   Chat Bubble + ChatGPT Style Message Animation
+========================================================== */
+
+/* ==========================
+   CHAT CONTAINER
+========================== */
+
+.chat-message{
+
+    position:relative;
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    animation:
+
+        chatMessageIn
+
+        .45s
+
+        cubic-bezier(.22,1,.36,1)
+
+        forwards;
+
+    transform-origin:bottom;
+
+}
+
+/* ==========================
+   MESSAGE IN
+========================== */
+
+@keyframes chatMessageIn{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+
+            translateY(20px)
+
+            scale(.98);
+
+    }
+
+    60%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0)
+
+            scale(1);
+
+    }
+
+}
+
+/* ==========================
+   USER MESSAGE
+========================== */
+
+.chat-message.user{
+
+    animation:
+
+        userMessageIn
+
+        .35s
+
+        cubic-bezier(.22,1,.36,1)
+
+        forwards;
+
+}
+
+@keyframes userMessageIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateX(24px)
+
+            scale(.98);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateX(0)
+
+            scale(1);
+
+    }
+
+}
+
+/* ==========================
+   AI MESSAGE
+========================== */
+
+.chat-message.assistant{
+
+    animation:
+
+        aiMessageIn
+
+        .42s
+
+        cubic-bezier(.22,1,.36,1)
+
+        forwards;
+
+}
+
+@keyframes aiMessageIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(14px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   MESSAGE HOVER
+========================== */
+
+.chat-message{
+
+    transition:
+
+        transform .25s ease,
+
+        box-shadow .25s ease,
+
+        background .25s ease;
+
+}
+
+.chat-message:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   AVATAR
+========================== */
+
+.chat-avatar{
+
+    animation:
+
+        avatarAppear
+
+        .45s
+
+        ease-out;
+
+}
+
+@keyframes avatarAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            scale(.75)
+
+            rotate(-8deg);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            scale(1)
+
+            rotate(0);
+
+    }
+
+}
+
+/* ==========================
+   CHAT BUBBLE
+========================== */
+
+.chat-bubble{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.chat-bubble::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.05),
+
+        transparent
+
+    );
+
+    transform:translateX(-140%);
+
+}
+
+.chat-message.assistant
+
+.chat-bubble::before{
+
+    animation:
+
+        bubbleGlow
+
+        1.2s
+
+        ease;
+
+}
+
+@keyframes bubbleGlow{
+
+    from{
+
+        transform:translateX(-140%);
+
+    }
+
+    to{
+
+        transform:translateX(140%);
+
+    }
+
+}
+
+/* ==========================
+   NEW MESSAGE BADGE
+========================== */
+
+.new-message{
+
+    animation:
+
+        newMessage
+
+        .55s
+
+        cubic-bezier(.34,1.56,.64,1);
+
+}
+
+@keyframes newMessage{
+
+    0%{
+
+        transform:scale(.85);
+
+    }
+
+    60%{
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================
+   AUTO SCROLL FEEL
+========================== */
+
+.chat-container{
+
+    scroll-behavior:smooth;
+
+}
+
+/* ==========================
+   MESSAGE SELECT
+========================== */
+
+.chat-message::selection,
+
+.chat-message *::selection{
+
+    background:
+
+        rgba(99,102,241,.25);
+
+}
+
+/* ==========================
+   MESSAGE REMOVE
+========================== */
+
+.chat-message.removing{
+
+    animation:
+
+        removeMessage
+
+        .25s
+
+        forwards;
+
+}
+
+@keyframes removeMessage{
+
+    to{
+
+        opacity:0;
+
+        transform:
+
+            translateX(-30px);
+
+    }
+
+}
+
+/* ==========================
+   GPU
+========================== */
+
+.chat-message,
+
+.chat-avatar,
+
+.chat-bubble{
+
+    transform:translateZ(0);
+
+    will-change:
+
+        transform,
+
+        opacity;
+
+    backface-visibility:hidden;
+
+}
+
+/* ==========================
+   END PART 2
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   16-animations.css
+   PART 3
+   AI Typing + Streaming + ChatGPT Style Cursor
+========================================================== */
+
+/* ==========================
+   AI RESPONSE
+========================== */
+
+.ai-response{
+
+    position:relative;
+
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+    overflow-wrap:anywhere;
+
+}
+
+/* ==========================
+   STREAMING
+========================== */
+
+.ai-response.streaming{
+
+    opacity:1;
+
+}
+
+.ai-response.streaming *{
+
+    animation:
+
+        streamFade
+
+        .18s
+
+        ease;
+
+}
+
+@keyframes streamFade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   TYPE CURSOR
+========================== */
+
+.ai-cursor{
+
+    display:inline-block;
+
+    width:2px;
+
+    height:1.1em;
+
+    margin-left:2px;
+
+    vertical-align:middle;
+
+    border-radius:2px;
+
+    background:var(--primary);
+
+    animation:
+
+        cursorBlink
+
+        .9s
+
+        infinite;
+
+}
+
+@keyframes cursorBlink{
+
+    0%,45%{
+
+        opacity:1;
+
+    }
+
+    50%,100%{
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==========================
+   RESPONSE PARAGRAPH
+========================== */
+
+.ai-response p{
+
+    animation:
+
+        paragraphAppear
+
+        .28s
+
+        ease;
+
+}
+
+@keyframes paragraphAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(4px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   MARKDOWN HEADINGS
+========================== */
+
+.ai-response h1,
+
+.ai-response h2,
+
+.ai-response h3,
+
+.ai-response h4{
+
+    animation:
+
+        headingAppear
+
+        .30s
+
+        ease;
+
+}
+
+@keyframes headingAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateX(-8px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateX(0);
+
+    }
+
+}
+
+/* ==========================
+   LISTS
+========================== */
+
+.ai-response li{
+
+    animation:
+
+        listAppear
+
+        .22s
+
+        ease;
+
+}
+
+@keyframes listAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateX(8px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateX(0);
+
+    }
+
+}
+
+/* ==========================
+   INLINE CODE
+========================== */
+
+.ai-response code{
+
+    animation:
+
+        codeFlash
+
+        .35s
+
+        ease;
+
+}
+
+@keyframes codeFlash{
+
+    from{
+
+        opacity:.4;
+
+        background:rgba(99,102,241,.20);
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   CODE BLOCK
+========================== */
+
+.ai-response pre{
+
+    overflow:hidden;
+
+    animation:
+
+        codeBlockAppear
+
+        .45s
+
+        ease;
+
+}
+
+@keyframes codeBlockAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            scale(.98);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            scale(1);
+
+    }
+
+}
+
+/* ==========================
+   TABLES
+========================== */
+
+.ai-response table{
+
+    animation:
+
+        tableAppear
+
+        .40s
+
+        ease;
+
+}
+
+@keyframes tableAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   IMAGE
+========================== */
+
+.ai-response img{
+
+    animation:
+
+        imageFade
+
+        .45s
+
+        ease;
+
+}
+
+@keyframes imageFade{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            scale(.95);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            scale(1);
+
+    }
+
+}
+
+/* ==========================
+   LINK
+========================== */
+
+.ai-response a{
+
+    transition:
+
+        color .25s ease,
+
+        text-decoration-color .25s ease;
+
+}
+
+.ai-response a:hover{
+
+    text-decoration-color:
+
+        currentColor;
+
+}
+
+/* ==========================
+   STREAM FINISHED
+========================== */
+
+.ai-response.complete
+
+.ai-cursor{
+
+    display:none;
+
+}
+
+/* ==========================
+   GPU
+========================== */
+
+.ai-response,
+
+.ai-response p,
+
+.ai-response pre,
+
+.ai-response img{
+
+    transform:translateZ(0);
+
+    backface-visibility:hidden;
+
+    will-change:
+
+        opacity,
+
+        transform;
+
+}
+
+/* ==========================
+   END PART 3
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   16-animations.css
+   PART 4
+   ChatGPT Style Thinking Animation + AI Loader
+========================================================== */
+
+/* ==========================
+   THINKING CONTAINER
+========================== */
+
+.ai-thinking{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:14px 18px;
+
+    width:max-content;
+
+    min-height:48px;
+
+    border-radius:18px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    animation:
+
+        thinkingAppear
+
+        .30s
+
+        ease-out;
+
+}
+
+@keyframes thinkingAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   THINKING DOTS
+========================== */
+
+.thinking-dots{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+}
+
+.thinking-dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    animation:
+
+        thinkingDot
+
+        1.2s
+
+        infinite
+
+        ease-in-out;
+
+}
+
+.thinking-dot:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+.thinking-dot:nth-child(3){
+
+    animation-delay:.4s;
+
+}
+
+@keyframes thinkingDot{
+
+    0%{
+
+        transform:translateY(0);
+
+        opacity:.4;
+
+    }
+
+    25%{
+
+        transform:translateY(-6px);
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        transform:translateY(0);
+
+        opacity:.7;
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+        opacity:.4;
+
+    }
+
+}
+
+/* ==========================
+   THINKING TEXT
+========================== */
+
+.ai-thinking-text{
+
+    color:var(--text-muted);
+
+    font-size:.90rem;
+
+    animation:
+
+        thinkingText
+
+        2s
+
+        infinite;
+
+}
+
+@keyframes thinkingText{
+
+    0%,100%{
+
+        opacity:.6;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   AI LOGO
+========================== */
+
+.ai-thinking-logo{
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+    animation:
+
+        logoRotate
+
+        2.5s
+
+        linear
+
+        infinite;
+
+}
+
+@keyframes logoRotate{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* ==========================
+   AI WAVE
+========================== */
+
+.ai-wave{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:4px;
+
+    height:20px;
+
+}
+
+.ai-wave span{
+
+    width:4px;
+
+    border-radius:999px;
+
+    background:var(--primary);
+
+    animation:
+
+        aiWave
+
+        1s
+
+        infinite;
+
+}
+
+.ai-wave span:nth-child(1){
+
+    height:6px;
+
+}
+
+.ai-wave span:nth-child(2){
+
+    height:12px;
+
+    animation-delay:.15s;
+
+}
+
+.ai-wave span:nth-child(3){
+
+    height:18px;
+
+    animation-delay:.3s;
+
+}
+
+.ai-wave span:nth-child(4){
+
+    height:10px;
+
+    animation-delay:.45s;
+
+}
+
+@keyframes aiWave{
+
+    0%,100%{
+
+        transform:scaleY(.5);
+
+    }
+
+    50%{
+
+        transform:scaleY(1.4);
+
+    }
+
+}
+
+/* ==========================
+   SHIMMER
+========================== */
+
+.ai-thinking::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+    animation:
+
+        thinkingShimmer
+
+        2s
+
+        linear
+
+        infinite;
+
+}
+
+@keyframes thinkingShimmer{
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   RESPONSE READY
+========================== */
+
+.ai-thinking.finish{
+
+    animation:
+
+        thinkingFinish
+
+        .25s
+
+        forwards;
+
+}
+
+@keyframes thinkingFinish{
+
+    to{
+
+        opacity:0;
+
+        transform:
+
+            scale(.95);
+
+    }
+
+}
+
+/* ==========================
+   GPU
+========================== */
+
+.ai-thinking,
+
+.thinking-dot,
+
+.ai-thinking-logo,
+
+.ai-wave{
+
+    transform:translateZ(0);
+
+    will-change:
+
+        transform,
+
+        opacity;
+
+}
+
+/* ==========================
+   END PART 4
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   16-animations.css
+   PART 5
+   Skeleton Loading + Shimmer + ChatGPT Style Placeholder
+========================================================== */
+
+/* ==========================
+   SKELETON
+========================== */
+
+.skeleton{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+
+        rgba(255,255,255,.05);
+
+    border-radius:12px;
+
+}
+
+/* ==========================
+   SHIMMER
+========================== */
+
+.skeleton::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.10),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+    animation:
+
+        skeletonShimmer
+
+        1.4s
+
+        linear
+
+        infinite;
+
+}
+
+@keyframes skeletonShimmer{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   MESSAGE PLACEHOLDER
+========================== */
+
+.skeleton-message{
+
+    display:flex;
+
+    gap:16px;
+
+    padding:18px;
+
+    animation:
+
+        skeletonFade
+
+        .35s
+
+        ease;
+
+}
+
+@keyframes skeletonFade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   AVATAR
+========================== */
+
+.skeleton-avatar{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.06);
+
+    flex-shrink:0;
+
+}
+
+/* ==========================
+   CONTENT
+========================== */
+
+.skeleton-content{
+
+    flex:1;
+
+}
+
+/* ==========================
+   LINES
+========================== */
+
+.skeleton-line{
+
+    height:14px;
+
+    margin-bottom:12px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.06);
+
+}
+
+.skeleton-line:last-child{
+
+    margin-bottom:0;
+
+}
+
+.skeleton-line.short{
+
+    width:35%;
+
+}
+
+.skeleton-line.medium{
+
+    width:60%;
+
+}
+
+.skeleton-line.long{
+
+    width:100%;
+
+}
+
+/* ==========================
+   CODE PLACEHOLDER
+========================== */
+
+.skeleton-code{
+
+    margin-top:18px;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.04);
+
+}
+
+.skeleton-code-line{
+
+    height:12px;
+
+    margin-bottom:10px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.06);
+
+}
+
+.skeleton-code-line:nth-child(1){
+
+    width:94%;
+
+}
+
+.skeleton-code-line:nth-child(2){
+
+    width:72%;
+
+}
+
+.skeleton-code-line:nth-child(3){
+
+    width:88%;
+
+}
+
+.skeleton-code-line:nth-child(4){
+
+    width:50%;
+
+}
+
+/* ==========================
+   IMAGE PLACEHOLDER
+========================== */
+
+.skeleton-image{
+
+    width:100%;
+
+    height:220px;
+
+    margin-top:18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.05);
+
+}
+
+/* ==========================
+   TABLE PLACEHOLDER
+========================== */
+
+.skeleton-table{
+
+    margin-top:18px;
+
+}
+
+.skeleton-row{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-bottom:10px;
+
+}
+
+.skeleton-cell{
+
+    flex:1;
+
+    height:14px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.06);
+
+}
+
+/* ==========================
+   CHATGPT STYLE
+========================== */
+
+.chat-loading{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:16px;
+
+    padding:18px;
+
+}
+
+.chat-loading .skeleton-avatar{
+
+    animation:
+
+        avatarPulse
+
+        1.5s
+
+        infinite;
+
+}
+
+@keyframes avatarPulse{
+
+    0%,100%{
+
+        opacity:.55;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   PULSE
+========================== */
+
+.skeleton{
+
+    animation:
+
+        skeletonPulse
+
+        2s
+
+        ease-in-out
+
+        infinite;
+
+}
+
+@keyframes skeletonPulse{
+
+    0%{
+
+        opacity:.75;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:.75;
+
+    }
+
+}
+
+/* ==========================
+   REMOVE
+========================== */
+
+.skeleton-hide{
+
+    animation:
+
+        skeletonHide
+
+        .22s
+
+        forwards;
+
+}
+
+@keyframes skeletonHide{
+
+    to{
+
+        opacity:0;
+
+        transform:
+
+            translateY(-6px);
+
+    }
+
+}
+
+/* ==========================
+   GPU
+========================== */
+
+.skeleton,
+
+.skeleton-avatar,
+
+.skeleton-line{
+
+    transform:translateZ(0);
+
+    will-change:
+
+        transform,
+
+        opacity;
+
+}
+
+/* ==========================
+   END PART 5
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   16-animations.css
+   PART 6
+   Premium Buttons + Ripple + Hover + Micro Interactions
+========================================================== */
+
+/* ==========================
+   BUTTON
+========================== */
+
+.btn,
+
+button{
+
+    position:relative;
+
+    overflow:hidden;
+
+    isolation:isolate;
+
+    cursor:pointer;
+
+    transition:
+
+        transform .22s ease,
+
+        box-shadow .22s ease,
+
+        background .22s ease,
+
+        border-color .22s ease,
+
+        color .22s ease;
+
+}
+
+/* ==========================
+   HOVER
+========================== */
+
+.btn:hover,
+
+button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+        0 14px 30px
+
+        rgba(99,102,241,.20);
+
+}
+
+/* ==========================
+   ACTIVE
+========================== */
+
+.btn:active,
+
+button:active{
+
+    transform:
+
+        scale(.97);
+
+}
+
+/* ==========================
+   RIPPLE
+========================== */
+
+.btn::before,
+
+button::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    width:0;
+
+    height:0;
+
+    border-radius:50%;
+
+    background:
+
+        rgba(255,255,255,.25);
+
+    transform:
+
+        translate(-50%,-50%);
+
+    transition:
+
+        width .55s ease,
+
+        height .55s ease,
+
+        opacity .55s ease;
+
+    opacity:0;
+
+    z-index:-1;
+
+}
+
+.btn:active::before,
+
+button:active::before{
+
+    width:260px;
+
+    height:260px;
+
+    opacity:1;
+
+}
+
+/* ==========================
+   SHINE
+========================== */
+
+.btn::after,
+
+button::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        100deg,
+
+        transparent,
+
+        rgba(255,255,255,.16),
+
+        transparent
+
+    );
+
+    transform:translateX(-140%);
+
+}
+
+.btn:hover::after,
+
+button:hover::after{
+
+    animation:
+
+        buttonShine
+
+        .75s
+
+        linear;
+
+}
+
+@keyframes buttonShine{
+
+    from{
+
+        transform:translateX(-140%);
+
+    }
+
+    to{
+
+        transform:translateX(140%);
+
+    }
+
+}
+
+/* ==========================
+   ICON BUTTON
+========================== */
+
+.icon-btn{
+
+    transition:
+
+        transform .22s ease,
+
+        rotate .22s ease;
+
+}
+
+.icon-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.icon-btn:active{
+
+    transform:scale(.92);
+
+}
+
+/* ==========================
+   COPY BUTTON
+========================== */
+
+.copy-success{
+
+    animation:
+
+        copySuccess
+
+        .35s
+
+        ease;
+
+}
+
+@keyframes copySuccess{
+
+    0%{
+
+        transform:scale(.9);
+
+    }
+
+    50%{
+
+        transform:scale(1.1);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================
+   SEND BUTTON
+========================== */
+
+.send-button{
+
+    transition:
+
+        transform .25s ease;
+
+}
+
+.send-button:hover{
+
+    transform:
+
+        translateX(2px);
+
+}
+
+.send-button:active{
+
+    transform:
+
+        scale(.94);
+
+}
+
+/* ==========================
+   INPUT FOCUS
+========================== */
+
+.chat-input{
+
+    transition:
+
+        border-color .25s ease,
+
+        box-shadow .25s ease;
+
+}
+
+.chat-input:focus{
+
+    animation:
+
+        inputFocus
+
+        .25s
+
+        ease;
+
+}
+
+@keyframes inputFocus{
+
+    from{
+
+        transform:scale(.995);
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================
+   CARD
+========================== */
+
+.card{
+
+    transition:
+
+        transform .25s ease,
+
+        box-shadow .25s ease;
+
+}
+
+.card:hover{
+
+    transform:
+
+        translateY(-4px);
+
+}
+
+/* ==========================
+   MENU ITEM
+========================== */
+
+.menu-item{
+
+    transition:
+
+        background .22s ease,
+
+        padding-left .22s ease;
+
+}
+
+.menu-item:hover{
+
+    padding-left:18px;
+
+}
+
+/* ==========================
+   CLICK FLASH
+========================== */
+
+.click-flash{
+
+    animation:
+
+        clickFlash
+
+        .28s;
+
+}
+
+@keyframes clickFlash{
+
+    0%{
+
+        filter:brightness(1);
+
+    }
+
+    50%{
+
+        filter:brightness(1.18);
+
+    }
+
+    100%{
+
+        filter:brightness(1);
+
+    }
+
+}
+
+/* ==========================
+   FLOAT ICON
+========================== */
+
+.float-icon{
+
+    animation:
+
+        floatIcon
+
+        3s
+
+        ease-in-out
+
+        infinite;
+
+}
+
+@keyframes floatIcon{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-5px);
+
+    }
+
+}
+
+/* ==========================
+   GPU
+========================== */
+
+.btn,
+
+button,
+
+.card,
+
+.icon-btn,
+
+.send-button{
+
+    transform:translateZ(0);
+
+    backface-visibility:hidden;
+
+    will-change:
+
+        transform,
+
+        opacity;
+
+}
+
+/* ==========================
+   END PART 6
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   16-animations.css
+   PART 7
+   Sidebar + Modal + Drawer + Menu + ChatGPT Style UI
+========================================================== */
+
+/* ==========================
+   SIDEBAR OPEN
+========================== */
+
+.sidebar{
+
+    transition:
+
+        transform .35s cubic-bezier(.22,1,.36,1),
+
+        width .35s ease,
+
+        opacity .30s ease;
+
+}
+
+.sidebar.open{
+
+    animation:
+
+        sidebarOpen
+
+        .35s
+
+        cubic-bezier(.22,1,.36,1);
+
+}
+
+@keyframes sidebarOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/* ==========================
+   SIDEBAR CLOSE
+========================== */
+
+.sidebar.closing{
+
+    animation:
+
+        sidebarClose
+
+        .28s
+
+        forwards;
+
+}
+
+@keyframes sidebarClose{
+
+    to{
+
+        opacity:0;
+
+        transform:translateX(-30px);
+
+    }
+
+}
+
+/* ==========================
+   SIDEBAR ITEMS
+========================== */
+
+.sidebar-item{
+
+    transition:
+
+        background .22s ease,
+
+        transform .22s ease,
+
+        padding-left .22s ease;
+
+}
+
+.sidebar-item:hover{
+
+    transform:translateX(6px);
+
+}
+
+.sidebar-item.active{
+
+    animation:
+
+        activeMenu
+
+        .30s
+
+        ease;
+
+}
+
+@keyframes activeMenu{
+
+    from{
+
+        transform:scale(.97);
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================
+   DRAWER
+========================== */
+
+.drawer{
+
+    transition:
+
+        transform .35s cubic-bezier(.22,1,.36,1);
+
+}
+
+.drawer.open{
+
+    transform:translateX(0);
+
+}
+
+.drawer.close{
+
+    transform:translateX(100%);
+
+}
+
+/* ==========================
+   MODAL
+========================== */
+
+.modal{
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:
+
+        opacity .25s ease;
+
+}
+
+.modal.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+.modal-content{
+
+    transform:scale(.94);
+
+    transition:
+
+        transform .30s cubic-bezier(.22,1,.36,1);
+
+}
+
+.modal.show .modal-content{
+
+    transform:scale(1);
+
+}
+
+/* ==========================
+   BACKDROP
+========================== */
+
+.modal-backdrop{
+
+    backdrop-filter:blur(0px);
+
+    transition:
+
+        backdrop-filter .30s ease,
+
+        opacity .30s ease;
+
+}
+
+.modal.show .modal-backdrop{
+
+    backdrop-filter:blur(10px);
+
+}
+
+/* ==========================
+   DROPDOWN
+========================== */
+
+.dropdown-menu{
+
+    opacity:0;
+
+    transform:
+
+        translateY(10px)
+
+        scale(.98);
+
+    pointer-events:none;
+
+    transition:
+
+        opacity .22s ease,
+
+        transform .22s ease;
+
+}
+
+.dropdown-menu.show{
+
+    opacity:1;
+
+    transform:
+
+        translateY(0)
+
+        scale(1);
+
+    pointer-events:auto;
+
+}
+
+/* ==========================
+   TOOLTIP
+========================== */
+
+.tooltip{
+
+    opacity:0;
+
+    transform:
+
+        translateY(6px);
+
+    transition:
+
+        opacity .20s ease,
+
+        transform .20s ease;
+
+}
+
+.tooltip.show{
+
+    opacity:1;
+
+    transform:
+
+        translateY(0);
+
+}
+
+/* ==========================
+   CHAT HISTORY
+========================== */
+
+.chat-history-item{
+
+    animation:
+
+        historyAppear
+
+        .30s
+
+        ease;
+
+}
+
+@keyframes historyAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/* ==========================
+   SEARCH BAR
+========================== */
+
+.search-box{
+
+    transition:
+
+        width .25s ease,
+
+        box-shadow .25s ease;
+
+}
+
+.search-box:focus-within{
+
+    box-shadow:
+
+        0 0 0 4px
+
+        rgba(99,102,241,.12);
+
+}
+
+/* ==========================
+   MOBILE MENU
+========================== */
+
+.mobile-menu{
+
+    animation:
+
+        mobileMenu
+
+        .35s
+
+        ease;
+
+}
+
+@keyframes mobileMenu{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   PAGE OVERLAY
+========================== */
+
+.page-overlay{
+
+    animation:
+
+        overlayFade
+
+        .25s
+
+        ease;
+
+}
+
+@keyframes overlayFade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   GPU
+========================== */
+
+.sidebar,
+
+.drawer,
+
+.modal,
+
+.dropdown-menu,
+
+.tooltip{
+
+    transform:translateZ(0);
+
+    will-change:
+
+        transform,
+
+        opacity;
+
+}
+
+/* ==========================
+   END PART 7
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   16-animations.css
+   PART 8
+   Premium Glass + Glow + Floating + AI Effects
+========================================================== */
+
+/* ==========================
+   GLASS CARDS
+========================== */
+
+.glass-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(22px);
+
+    -webkit-backdrop-filter:blur(22px);
+
+    transition:
+
+        transform .35s ease,
+
+        box-shadow .35s ease,
+
+        border-color .35s ease;
+
+}
+
+.glass-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+
+        0 24px 60px rgba(99,102,241,.18);
+
+}
+
+/* ==========================
+   GLASS SHINE
+========================== */
+
+.glass-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        110deg,
+
+        transparent,
+
+        rgba(255,255,255,.10),
+
+        transparent
+
+    );
+
+    transform:translateX(-140%);
+
+}
+
+.glass-card:hover::before{
+
+    animation:
+
+        glassShine
+
+        1s
+
+        linear;
+
+}
+
+@keyframes glassShine{
+
+    from{
+
+        transform:translateX(-140%);
+
+    }
+
+    to{
+
+        transform:translateX(140%);
+
+    }
+
+}
+
+/* ==========================
+   AI GLOW
+========================== */
+
+.ai-glow{
+
+    animation:
+
+        aiGlow
+
+        3s
+
+        ease-in-out
+
+        infinite;
+
+}
+
+@keyframes aiGlow{
+
+    0%,100%{
+
+        box-shadow:
+
+            0 0 18px rgba(99,102,241,.20);
+
+    }
+
+    50%{
+
+        box-shadow:
+
+            0 0 36px rgba(99,102,241,.45);
+
+    }
+
+}
+
+/* ==========================
+   FLOATING
+========================== */
+
+.float{
+
+    animation:
+
+        floating
+
+        5s
+
+        ease-in-out
+
+        infinite;
+
+}
+
+@keyframes floating{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+}
+
+/* ==========================
+   ROTATE
+========================== */
+
+.rotate-slow{
+
+    animation:
+
+        rotateSlow
+
+        12s
+
+        linear
+
+        infinite;
+
+}
+
+@keyframes rotateSlow{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* ==========================
+   AI ORB
+========================== */
+
+.ai-orb{
+
+    position:relative;
+
+    border-radius:50%;
+
+    animation:
+
+        orbPulse
+
+        2.8s
+
+        ease-in-out
+
+        infinite;
+
+}
+
+@keyframes orbPulse{
+
+    0%,100%{
+
+        transform:scale(1);
+
+        filter:brightness(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+        filter:brightness(1.2);
+
+    }
+
+}
+
+/* ==========================
+   BORDER GLOW
+========================== */
+
+.glow-border{
+
+    transition:
+
+        border-color .30s ease,
+
+        box-shadow .30s ease;
+
+}
+
+.glow-border:hover{
+
+    border-color:var(--primary);
+
+    box-shadow:
+
+        0 0 0 2px rgba(99,102,241,.18),
+
+        0 0 30px rgba(99,102,241,.18);
+
+}
+
+/* ==========================
+   IMAGE ZOOM
+========================== */
+
+.image-hover{
+
+    overflow:hidden;
+
+}
+
+.image-hover img{
+
+    transition:
+
+        transform .45s ease;
+
+}
+
+.image-hover:hover img{
+
+    transform:scale(1.08);
+
+}
+
+/* ==========================
+   ICON BOUNCE
+========================== */
+
+.icon-hover{
+
+    transition:
+
+        transform .25s ease;
+
+}
+
+.icon-hover:hover{
+
+    animation:
+
+        iconBounce
+
+        .45s;
+
+}
+
+@keyframes iconBounce{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    35%{
+
+        transform:scale(1.25);
+
+    }
+
+    70%{
+
+        transform:scale(.92);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================
+   SUCCESS
+========================== */
+
+.success-animation{
+
+    animation:
+
+        successPop
+
+        .55s
+
+        cubic-bezier(.34,1.56,.64,1);
+
+}
+
+@keyframes successPop{
+
+    0%{
+
+        transform:scale(.75);
+
+        opacity:0;
+
+    }
+
+    70%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================
+   ERROR SHAKE
+========================== */
+
+.error-shake{
+
+    animation:
+
+        errorShake
+
+        .45s;
+
+}
+
+@keyframes errorShake{
+
+    0%,100%{
+
+        transform:translateX(0);
+
+    }
+
+    20%{
+
+        transform:translateX(-6px);
+
+    }
+
+    40%{
+
+        transform:translateX(6px);
+
+    }
+
+    60%{
+
+        transform:translateX(-4px);
+
+    }
+
+    80%{
+
+        transform:translateX(4px);
+
+    }
+
+}
+
+/* ==========================
+   GPU
+========================== */
+
+.glass-card,
+
+.float,
+
+.ai-orb,
+
+.image-hover img{
+
+    transform:translateZ(0);
+
+    backface-visibility:hidden;
+
+    will-change:
+
+        transform,
+
+        opacity;
+
+}
+
+/* ==========================
+   END PART 8
+========================================================== */
+
+
+
+/* ==========================================================
+   DeepSINKY AI
+   16-animations.css
+   PART 9
+   Responsive + Accessibility + Performance Optimization
+========================================================== */
+
+/* ==========================
+   LARGE SCREEN
+========================== */
+
+@media (max-width:1400px){
+
+    .chat-container{
+
+        padding:22px;
+
+    }
+
+    .glass-card{
+
+        border-radius:22px;
+
+    }
+
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width:1024px){
+
+    .sidebar{
+
+        transition:
+
+            transform .35s cubic-bezier(.22,1,.36,1);
+
+    }
+
+    .chat-message{
+
+        max-width:96%;
+
+    }
+
+    .modal-content{
+
+        width:92%;
+
+    }
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .chat-message{
+
+        animation-duration:.28s;
+
+    }
+
+    .glass-card:hover,
+
+    .card:hover{
+
+        transform:none;
+
+    }
+
+    .sidebar-item:hover{
+
+        transform:none;
+
+    }
+
+    .btn:hover,
+
+    button:hover{
+
+        transform:none;
+
+    }
+
+    .float,
+
+    .rotate-slow{
+
+        animation:none;
+
+    }
+
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width:480px){
+
+    .chat-container{
+
+        padding:12px;
+
+    }
+
+    .chat-message{
+
+        max-width:100%;
+
+        border-radius:18px;
+
+    }
+
+    .modal-content{
+
+        width:96%;
+
+        border-radius:18px;
+
+    }
+
+    .dropdown-menu{
+
+        width:100%;
+
+    }
+
+}
+
+/* ==========================
+   REDUCED MOTION
+========================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}
+
+/* ==========================
+   HIGH CONTRAST
+========================== */
+
+@media (prefers-contrast:more){
+
+    .glass-card,
+
+    .chat-message,
+
+    .btn,
+
+    button{
+
+        border-width:2px;
+
+    }
+
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+
+html.dark .glass-card{
+
+    background:
+
+        rgba(20,20,25,.88);
+
+}
+
+html.dark .chat-message{
+
+    border-color:
+
+        rgba(255,255,255,.08);
+
+}
+
+/* ==========================
+   LIGHT MODE
+========================== */
+
+html:not(.dark) .glass-card{
+
+    background:
+
+        rgba(255,255,255,.92);
+
+}
+
+/* ==========================
+   SMOOTH SCROLL
+========================== */
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+    height:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* ==========================
+   TEXT SELECTION
+========================== */
+
+::selection{
+
+    background:
+
+        rgba(99,102,241,.25);
+
+}
+
+/* ==========================
+   GPU
+========================== */
+
+.chat-message,
+
+.glass-card,
+
+.modal,
+
+.sidebar,
+
+.dropdown-menu{
+
+    transform:translateZ(0);
+
+    will-change:
+
+        transform,
+
+        opacity;
+
+    backface-visibility:hidden;
+
+}
+
+/* ==========================
+   PRINT
+========================== */
+
+@media print{
+
+    .sidebar,
+
+    .modal,
+
+    .dropdown-menu,
+
+    .tooltip{
+
+        display:none !important;
+
+    }
+
+}
+
+/* ==========================
+   END PART 9
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   16-animations.css
+   PART 10 (FINAL)
+   Premium Animation Engine + ChatGPT Style Polish
+========================================================== */
+
+/* ==========================
+   GLOBAL VARIABLES
+========================== */
+
+:root{
+
+    --motion-fast:.15s;
+    --motion-normal:.30s;
+    --motion-slow:.60s;
+
+}
+
+/* ==========================
+   GLOBAL TRANSITIONS
+========================== */
+
+*{
+
+    transition:
+
+        background-color var(--motion-fast) ease,
+
+        border-color var(--motion-fast) ease,
+
+        color var(--motion-fast) ease,
+
+        opacity var(--motion-fast) ease;
+
+}
+
+/* ==========================
+   APP LOADER
+========================== */
+
+.app-loader{
+
+    animation:
+
+        loaderFade .45s ease;
+
+}
+
+@keyframes loaderFade{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.96);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================
+   PAGE READY
+========================== */
+
+.page-ready{
+
+    animation:
+
+        pageReady .45s ease;
+
+}
+
+@keyframes pageReady{
+
+    from{
+
+        opacity:0;
+
+        filter:blur(8px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        filter:blur(0);
+
+    }
+
+}
+
+/* ==========================
+   CHATGPT STYLE RESPONSE
+========================== */
+
+.chat-message.assistant{
+
+    animation:
+
+        assistantMessage .30s ease;
+
+}
+
+@keyframes assistantMessage{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   THINKING → RESPONSE
+========================== */
+
+.ai-thinking.finish{
+
+    animation:
+
+        thinkingOut .22s ease forwards;
+
+}
+
+@keyframes thinkingOut{
+
+    to{
+
+        opacity:0;
+
+        transform:translateY(-8px);
+
+    }
+
+}
+
+/* ==========================
+   RESPONSE GLOW
+========================== */
+
+.response-ready{
+
+    animation:
+
+        responseGlow .45s ease;
+
+}
+
+@keyframes responseGlow{
+
+    0%{
+
+        filter:brightness(1.18);
+
+    }
+
+    100%{
+
+        filter:brightness(1);
+
+    }
+
+}
+
+/* ==========================
+   AUTO SCROLL
+========================== */
+
+.chat-container{
+
+    scroll-behavior:smooth;
+
+    overscroll-behavior:contain;
+
+}
+
+/* ==========================
+   IMAGE
+========================== */
+
+.chat-message img{
+
+    transition:
+
+        transform .35s ease,
+
+        box-shadow .35s ease;
+
+}
+
+.chat-message img:hover{
+
+    transform:scale(1.02);
+
+    box-shadow:
+
+        0 16px 40px rgba(0,0,0,.25);
+
+}
+
+/* ==========================
+   CODE BLOCK
+========================== */
+
+pre{
+
+    transition:
+
+        transform .25s ease,
+
+        box-shadow .25s ease;
+
+}
+
+pre:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   COPY SUCCESS
+========================== */
+
+.copy-done{
+
+    animation:
+
+        copied .35s ease;
+
+}
+
+@keyframes copied{
+
+    0%{
+
+        transform:scale(.9);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================
+   NEW CHAT
+========================== */
+
+.chat-created{
+
+    animation:
+
+        newChat .45s ease;
+
+}
+
+@keyframes newChat{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateX(-20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateX(0);
+
+    }
+
+}
+
+/* ==========================
+   RIPPLE HELPER
+========================== */
+
+.ripple{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    transform:scale(0);
+
+    animation:
+
+        ripple .6s linear;
+
+    background:
+
+        rgba(255,255,255,.28);
+
+}
+
+@keyframes ripple{
+
+    to{
+
+        transform:scale(4);
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==========================
+   FADE UTILITIES
+========================== */
+
+.fade-enter{
+
+    animation:
+
+        fadeEnter .25s ease;
+
+}
+
+.fade-leave{
+
+    animation:
+
+        fadeLeave .20s ease forwards;
+
+}
+
+@keyframes fadeEnter{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes fadeLeave{
+
+    to{
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==========================
+   SCALE UTILITIES
+========================== */
+
+.scale-enter{
+
+    animation:
+
+        scaleEnter .30s ease;
+
+}
+
+@keyframes scaleEnter{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.96);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================
+   PERFORMANCE
+========================== */
+
+.chat-message,
+
+.sidebar,
+
+.modal,
+
+.dropdown-menu,
+
+.glass-card,
+
+button,
+
+.card{
+
+    transform:translateZ(0);
+
+    backface-visibility:hidden;
+
+    will-change:
+
+        transform,
+
+        opacity;
+
+}
+
+/* ==========================
+   REDUCED MOTION
+========================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+    }
+
+}
+
+/* ==========================================================
+   DeepSINKY AI
+   16-animations.css
+   COMPLETE
+========================================================== */
+
