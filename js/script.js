@@ -4,6 +4,7 @@
    script.js - PART 1
    Core Engine + DOM Cache + Loader
 ========================================== */
+alert("script.js loaded");
 
 "use strict";
 
