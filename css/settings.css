@@ -1,0 +1,342 @@
+/* ==========================================================
+   DeepSINKY AI
+   14-settings.css
+   PART 1
+   Settings Dashboard + Layout Foundation
+========================================================== */
+
+/* ==========================
+   SETTINGS PAGE
+========================== */
+
+.settings-page{
+
+    width:100%;
+
+    min-height:100vh;
+
+    padding:28px;
+
+    background:var(--bg);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/* ==========================
+   SETTINGS CONTAINER
+========================== */
+
+.settings-container{
+
+    width:100%;
+
+    max-width:1700px;
+
+    margin:0 auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/* ==========================
+   SETTINGS HEADER
+========================== */
+
+.settings-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:24px 28px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/* ==========================
+   HEADER LEFT
+========================== */
+
+.settings-header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.settings-header-icon{
+
+    width:64px;
+
+    height:64px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+}
+
+.settings-header-icon i{
+
+    width:32px;
+
+    height:32px;
+
+}
+
+/* ==========================
+   HEADER TEXT
+========================== */
+
+.settings-title{
+
+    font-size:1.6rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.settings-subtitle{
+
+    margin-top:6px;
+
+    font-size:.90rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   HEADER ACTIONS
+========================== */
+
+.settings-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+/* ==========================
+   SETTINGS DASHBOARD
+========================== */
+
+.settings-dashboard{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(auto-fit,minmax(340px,1fr));
+
+    gap:22px;
+
+}
+
+/* ==========================
+   SETTINGS PANEL
+========================== */
+
+.settings-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.settings-panel:hover{
+
+    transform:translateY(-3px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 16px 40px rgba(99,102,241,.14);
+
+}
+
+/* ==========================
+   PANEL TITLE
+========================== */
+
+.settings-panel-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:1.05rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.settings-panel-title i{
+
+    width:22px;
+
+    height:22px;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   PANEL CONTENT
+========================== */
+
+.settings-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ==========================
+   EMPTY STATE
+========================== */
+
+.settings-empty{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:220px;
+
+    gap:14px;
+
+    text-align:center;
+
+    color:var(--text-muted);
+
+}
+
+.settings-empty i{
+
+    width:56px;
+
+    height:56px;
+
+    color:var(--primary);
+
+}
+
+/* ==========================
+   SETTINGS FOOTER
+========================== */
+
+.settings-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:14px;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--border);
+
+}
+
+/* ==========================
+   PAGE ANIMATION
+========================== */
+
+.settings-page{
+
+    animation:settingsFade .35s ease;
+
+}
+
+@keyframes settingsFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(18px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   END PART 1
+========================================================== */
