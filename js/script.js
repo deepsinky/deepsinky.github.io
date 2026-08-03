@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     =========================== */
 
     const app = document.getElementById("app");
-    const loader = document.getElementById("app-loader");
+    const loader = document.getElementById("appLoader");
 
     const sidebar = document.getElementById("sidebar");
     const chatContainer = document.getElementById("chat-container");
