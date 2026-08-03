@@ -340,3 +340,3506 @@
 /* ==========================
    END PART 1
 ========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   14-settings.css
+   PART 2
+   Account + Profile Settings
+========================================================== */
+
+/* ==========================
+   PROFILE CARD
+========================== */
+
+.profile-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:22px;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.profile-card:hover{
+
+    border-color:var(--primary);
+
+    box-shadow:0 18px 40px rgba(99,102,241,.14);
+
+}
+
+/* ==========================
+   PROFILE AVATAR
+========================== */
+
+.profile-avatar{
+
+    width:90px;
+
+    height:90px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:24px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+    flex-shrink:0;
+
+}
+
+.profile-avatar img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:inherit;
+
+}
+
+.profile-avatar i{
+
+    width:40px;
+
+    height:40px;
+
+}
+
+/* ==========================
+   PROFILE INFO
+========================== */
+
+.profile-info{
+
+    flex:1;
+
+}
+
+.profile-name{
+
+    font-size:1.35rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.profile-email{
+
+    margin-top:6px;
+
+    color:var(--text-muted);
+
+    font-size:.90rem;
+
+}
+
+.profile-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:14px;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    background:rgba(99,102,241,.12);
+
+    color:var(--primary);
+
+    font-size:.78rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   SETTINGS FORM
+========================== */
+
+.settings-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.form-group label{
+
+    font-size:.88rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.form-group input,
+
+.form-group textarea,
+
+.form-group select{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border-radius:16px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    outline:none;
+
+    transition:.30s ease;
+
+}
+
+.form-group textarea{
+
+    resize:vertical;
+
+    min-height:120px;
+
+}
+
+.form-group input:focus,
+
+.form-group textarea:focus,
+
+.form-group select:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(99,102,241,.12);
+
+}
+
+/* ==========================
+   PROFILE ACTIONS
+========================== */
+
+.profile-actions{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:20px;
+
+}
+
+.profile-actions button{
+
+    flex:1;
+
+}
+
+/* ==========================
+   ACCOUNT STATUS
+========================== */
+
+.account-status{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.status-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.status-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+    box-shadow:0 0 10px #22c55e;
+
+}
+
+.status-text{
+
+    font-size:.88rem;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+/* ==========================
+   PROFILE SHINE
+========================== */
+
+.profile-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.profile-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.profile-card:hover::after{
+
+    animation:profileCardShine .9s linear;
+
+}
+
+@keyframes profileCardShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+
+/* ==========================
+   END PART 2
+========================================================== */
+
+/* ==========================================================
+   DeepSINKY AI
+   14-settings.css
+   PART 3
+   Appearance + Themes + UI Preferences
+========================================================== */
+
+/* ==========================
+   APPEARANCE PANEL
+========================== */
+
+.appearance-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   SECTION TITLE
+========================== */
+
+.appearance-title{
+
+    font-size:1.15rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.appearance-subtitle{
+
+    margin-top:6px;
+
+    font-size:.88rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   THEME GRID
+========================== */
+
+.theme-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+/* ==========================
+   THEME CARD
+========================== */
+
+.theme-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:var(--surface);
+
+    border:2px solid var(--border);
+
+    cursor:pointer;
+
+    transition:all .30s ease;
+
+}
+
+.theme-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 18px 40px rgba(99,102,241,.15);
+
+}
+
+.theme-card.active{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(99,102,241,.14);
+
+}
+
+/* ==========================
+   THEME PREVIEW
+========================== */
+
+.theme-preview{
+
+    width:100%;
+
+    height:120px;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    margin-bottom:16px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.theme-preview.dark{
+
+    background:#0b1220;
+
+}
+
+.theme-preview.light{
+
+    background:#f8fafc;
+
+}
+
+.theme-preview.system{
+
+    background:linear-gradient(
+
+        90deg,
+
+        #0b1220 50%,
+
+        #f8fafc 50%
+
+    );
+
+}
+
+/* ==========================
+   THEME INFO
+========================== */
+
+.theme-name{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.theme-description{
+
+    margin-top:6px;
+
+    font-size:.82rem;
+
+    color:var(--text-muted);
+
+    line-height:1.6;
+
+}
+
+/* ==========================
+   COLOR OPTIONS
+========================== */
+
+.color-palette{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:14px;
+
+}
+
+.color-option{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    border:3px solid transparent;
+
+    transition:all .30s ease;
+
+}
+
+.color-option:hover{
+
+    transform:scale(1.1);
+
+}
+
+.color-option.active{
+
+    border-color:#fff;
+
+    box-shadow:0 0 0 3px var(--primary);
+
+}
+
+/* ==========================
+   UI SETTINGS
+========================== */
+
+.ui-settings{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.ui-setting{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.ui-setting-title{
+
+    font-size:.92rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.ui-setting-description{
+
+    margin-top:4px;
+
+    font-size:.80rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   TOGGLE SWITCH
+========================== */
+
+.toggle-switch{
+
+    position:relative;
+
+    width:54px;
+
+    height:30px;
+
+    border-radius:999px;
+
+    background:#64748b;
+
+    cursor:pointer;
+
+    transition:.30s ease;
+
+}
+
+.toggle-switch.active{
+
+    background:var(--primary);
+
+}
+
+.toggle-switch::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:3px;
+
+    left:3px;
+
+    width:24px;
+
+    height:24px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    transition:.30s ease;
+
+}
+
+.toggle-switch.active::after{
+
+    left:27px;
+
+}
+
+/* ==========================
+   SHINE EFFECT
+========================== */
+
+.theme-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.theme-card:hover::after{
+
+    animation:themeShine .9s linear;
+
+}
+
+@keyframes themeShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 3
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   14-settings.css
+   PART 4
+   Notifications + Sounds + Alerts
+========================================================== */
+
+/* ==========================
+   NOTIFICATION PANEL
+========================== */
+
+.notifications-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   PANEL HEADER
+========================== */
+
+.notifications-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+}
+
+.notifications-title{
+
+    font-size:1.15rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.notifications-subtitle{
+
+    margin-top:6px;
+
+    font-size:.85rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   SETTING ITEM
+========================== */
+
+.notification-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    transition:.30s ease;
+
+}
+
+.notification-item:hover{
+
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   INFO
+========================== */
+
+.notification-info{
+
+    flex:1;
+
+}
+
+.notification-name{
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.notification-desc{
+
+    margin-top:5px;
+
+    font-size:.82rem;
+
+    color:var(--text-muted);
+
+    line-height:1.6;
+
+}
+
+/* ==========================
+   TOGGLE
+========================== */
+
+.notification-toggle{
+
+    position:relative;
+
+    width:56px;
+
+    height:30px;
+
+    border-radius:999px;
+
+    background:#64748b;
+
+    cursor:pointer;
+
+    transition:.30s ease;
+
+}
+
+.notification-toggle.active{
+
+    background:var(--primary);
+
+}
+
+.notification-toggle::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:3px;
+
+    left:3px;
+
+    width:24px;
+
+    height:24px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    transition:.30s ease;
+
+}
+
+.notification-toggle.active::after{
+
+    left:29px;
+
+}
+
+/* ==========================
+   SOUND SETTINGS
+========================== */
+
+.sound-settings{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    margin-top:12px;
+
+}
+
+.sound-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.sound-label{
+
+    font-size:.90rem;
+
+    color:var(--text);
+
+    font-weight:600;
+
+}
+
+.sound-slider{
+
+    width:220px;
+
+    accent-color:var(--primary);
+
+}
+
+/* ==========================
+   DO NOT DISTURB
+========================== */
+
+.dnd-card{
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(99,102,241,.08),
+
+        rgba(139,92,246,.05)
+
+    );
+
+    border:1px solid rgba(99,102,241,.18);
+
+}
+
+.dnd-title{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.dnd-description{
+
+    margin-top:8px;
+
+    color:var(--text-muted);
+
+    line-height:1.7;
+
+}
+
+/* ==========================
+   QUIET HOURS
+========================== */
+
+.quiet-hours{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+
+    margin-top:18px;
+
+}
+
+.quiet-hours input{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    outline:none;
+
+}
+
+.quiet-hours input:focus{
+
+    border-color:var(--primary);
+
+}
+
+/* ==========================
+   TEST NOTIFICATION
+========================== */
+
+.test-notification{
+
+    margin-top:24px;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+}
+
+/* ==========================
+   SHINE EFFECT
+========================== */
+
+.notifications-panel{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.notifications-panel::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.notifications-panel:hover::after{
+
+    animation:notificationShine .9s linear;
+
+}
+
+@keyframes notificationShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 4
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   14-settings.css
+   PART 5
+   Privacy + Security + Authentication
+========================================================== */
+
+/* ==========================
+   SECURITY PANEL
+========================== */
+
+.security-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   PANEL HEADER
+========================== */
+
+.security-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+}
+
+.security-title{
+
+    font-size:1.15rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.security-subtitle{
+
+    margin-top:6px;
+
+    font-size:.86rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   SECURITY ITEM
+========================== */
+
+.security-item{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    transition:all .30s ease;
+
+}
+
+.security-item:hover{
+
+    transform:translateY(-2px);
+
+    border-color:var(--primary);
+
+}
+
+/* ==========================
+   SECURITY INFO
+========================== */
+
+.security-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.security-icon{
+
+    width:52px;
+
+    height:52px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:16px;
+
+    background:rgba(99,102,241,.12);
+
+    color:var(--primary);
+
+}
+
+.security-icon i{
+
+    width:24px;
+
+    height:24px;
+
+}
+
+.security-name{
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.security-description{
+
+    margin-top:5px;
+
+    font-size:.82rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   STATUS BADGE
+========================== */
+
+.security-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    font-size:.74rem;
+
+    font-weight:700;
+
+}
+
+.security-status.enabled{
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+}
+
+.security-status.warning{
+
+    background:rgba(245,158,11,.14);
+
+    color:#f59e0b;
+
+}
+
+.security-status.disabled{
+
+    background:rgba(239,68,68,.12);
+
+    color:#ef4444;
+
+}
+
+/* ==========================
+   LOGIN HISTORY
+========================== */
+
+.login-history{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.login-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:16px 18px;
+
+    border-radius:16px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.login-device{
+
+    font-size:.90rem;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+.login-location{
+
+    margin-top:5px;
+
+    font-size:.78rem;
+
+    color:var(--text-muted);
+
+}
+
+.login-time{
+
+    font-size:.78rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   PASSWORD STRENGTH
+========================== */
+
+.password-strength{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-top:18px;
+
+}
+
+.password-bar{
+
+    width:100%;
+
+    height:10px;
+
+    overflow:hidden;
+
+    border-radius:999px;
+
+    background:var(--surface-hover);
+
+}
+
+.password-fill{
+
+    width:88%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        #22c55e,
+
+        #10b981
+
+    );
+
+}
+
+.password-text{
+
+    font-size:.82rem;
+
+    color:#22c55e;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   TWO FACTOR
+========================== */
+
+.two-factor-box{
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(99,102,241,.08),
+
+        rgba(139,92,246,.05)
+
+    );
+
+    border:1px solid rgba(99,102,241,.18);
+
+}
+
+/* ==========================
+   SHINE EFFECT
+========================== */
+
+.security-panel{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.security-panel::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.security-panel:hover::after{
+
+    animation:securityShine .9s linear;
+
+}
+
+@keyframes securityShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 5
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   14-settings.css
+   PART 6
+   API Keys + Connected Apps + Integrations
+========================================================== */
+
+/* ==========================
+   API PANEL
+========================== */
+
+.api-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   PANEL HEADER
+========================== */
+
+.api-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+}
+
+.api-title{
+
+    font-size:1.15rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.api-subtitle{
+
+    margin-top:6px;
+
+    font-size:.86rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   API KEY CARD
+========================== */
+
+.api-key-card{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    transition:.30s ease;
+
+}
+
+.api-key-card:hover{
+
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   KEY INFO
+========================== */
+
+.api-key-info{
+
+    flex:1;
+
+}
+
+.api-key-name{
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.api-key-value{
+
+    margin-top:8px;
+
+    font-family:Consolas,monospace;
+
+    font-size:.82rem;
+
+    color:var(--text-muted);
+
+    word-break:break-all;
+
+}
+
+/* ==========================
+   KEY ACTIONS
+========================== */
+
+.api-key-actions{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+/* ==========================
+   CONNECTION STATUS
+========================== */
+
+.connection-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+    font-size:.74rem;
+
+    font-weight:700;
+
+}
+
+.connection-status::before{
+
+    content:"";
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+}
+
+/* ==========================
+   CONNECTED APPS
+========================== */
+
+.connected-apps{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:20px;
+
+}
+
+.connected-app{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:.30s ease;
+
+}
+
+.connected-app:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 16px 36px rgba(99,102,241,.14);
+
+}
+
+.connected-app-icon{
+
+    width:58px;
+
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    color:#fff;
+
+}
+
+.connected-app-icon i{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+.connected-app-info{
+
+    flex:1;
+
+}
+
+.connected-app-name{
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.connected-app-desc{
+
+    margin-top:5px;
+
+    font-size:.80rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   API USAGE
+========================== */
+
+.api-usage{
+
+    margin-top:26px;
+
+}
+
+.api-usage-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+    font-size:.82rem;
+
+    color:var(--text-muted);
+
+}
+
+.api-usage-track{
+
+    width:100%;
+
+    height:10px;
+
+    overflow:hidden;
+
+    border-radius:999px;
+
+    background:var(--surface-hover);
+
+}
+
+.api-usage-fill{
+
+    width:62%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+}
+
+/* ==========================
+   WEBHOOK BOX
+========================== */
+
+.webhook-box{
+
+    margin-top:24px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(99,102,241,.08),
+
+        rgba(139,92,246,.05)
+
+    );
+
+    border:1px solid rgba(99,102,241,.18);
+
+}
+
+/* ==========================
+   SHINE EFFECT
+========================== */
+
+.api-panel{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.api-panel::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.api-panel:hover::after{
+
+    animation:apiPanelShine .9s linear;
+
+}
+
+@keyframes apiPanelShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 6
+========================================================== */
+
+
+
+/* ==========================================================
+   DeepSINKY AI
+   14-settings.css
+   PART 7
+   Backup + Sync + Storage + Data Management
+========================================================== */
+
+/* ==========================
+   BACKUP PANEL
+========================== */
+
+.backup-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   PANEL HEADER
+========================== */
+
+.backup-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+}
+
+.backup-title{
+
+    font-size:1.15rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.backup-subtitle{
+
+    margin-top:6px;
+
+    font-size:.86rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   CLOUD STATUS
+========================== */
+
+.cloud-status{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(99,102,241,.08),
+
+        rgba(139,92,246,.05)
+
+    );
+
+    border:1px solid rgba(99,102,241,.18);
+
+}
+
+.cloud-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.cloud-icon{
+
+    width:54px;
+
+    height:54px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:16px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.cloud-icon i{
+
+    width:26px;
+
+    height:26px;
+
+}
+
+.cloud-status-text{
+
+    font-size:.90rem;
+
+    color:var(--text);
+
+    font-weight:700;
+
+}
+
+.cloud-last-sync{
+
+    margin-top:5px;
+
+    font-size:.80rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   STORAGE
+========================== */
+
+.storage-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.storage-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.storage-title{
+
+    font-size:.92rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.storage-value{
+
+    color:var(--primary);
+
+    font-weight:700;
+
+}
+
+.storage-bar{
+
+    width:100%;
+
+    height:10px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:var(--surface-hover);
+
+}
+
+.storage-fill{
+
+    width:68%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+}
+
+/* ==========================
+   BACKUP HISTORY
+========================== */
+
+.backup-history{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.backup-history-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:16px 18px;
+
+    border-radius:16px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+.backup-file{
+
+    font-size:.90rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.backup-date{
+
+    margin-top:5px;
+
+    font-size:.78rem;
+
+    color:var(--text-muted);
+
+}
+
+.backup-success{
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(34,197,94,.12);
+
+    color:#22c55e;
+
+    font-size:.74rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   AUTO SYNC
+========================== */
+
+.auto-sync{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   DATA ACTIONS
+========================== */
+
+.data-actions{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:20px;
+
+}
+
+.data-actions button{
+
+    flex:1;
+
+    min-width:170px;
+
+}
+
+/* ==========================
+   SHINE EFFECT
+========================== */
+
+.backup-panel{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.backup-panel::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.backup-panel:hover::after{
+
+    animation:backupShine .9s linear;
+
+}
+
+@keyframes backupShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 7
+========================================================== */
+
+
+
+/* ==========================================================
+   DeepSINKY AI
+   14-settings.css
+   PART 8
+   Developer Options + Advanced Settings + Debug Tools
+========================================================== */
+
+/* ==========================
+   DEVELOPER PANEL
+========================== */
+
+.developer-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+}
+
+/* ==========================
+   PANEL HEADER
+========================== */
+
+.developer-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+}
+
+.developer-title{
+
+    font-size:1.15rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.developer-subtitle{
+
+    margin-top:6px;
+
+    font-size:.86rem;
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   DEVELOPER ITEM
+========================== */
+
+.developer-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--border);
+
+    transition:.30s ease;
+
+}
+
+.developer-item:hover{
+
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   INFO
+========================== */
+
+.developer-info{
+
+    flex:1;
+
+}
+
+.developer-name{
+
+    font-size:.94rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.developer-description{
+
+    margin-top:5px;
+
+    font-size:.82rem;
+
+    color:var(--text-muted);
+
+    line-height:1.6;
+
+}
+
+/* ==========================
+   DEBUG CONSOLE
+========================== */
+
+.debug-console{
+
+    margin-top:24px;
+
+    padding:18px;
+
+    min-height:240px;
+
+    max-height:340px;
+
+    overflow:auto;
+
+    border-radius:18px;
+
+    background:#0b1220;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    font-family:Consolas,monospace;
+
+    color:#22c55e;
+
+    line-height:1.7;
+
+    font-size:.82rem;
+
+}
+
+/* ==========================
+   LOG ITEMS
+========================== */
+
+.debug-log{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:10px;
+
+}
+
+.debug-time{
+
+    color:#38bdf8;
+
+    white-space:nowrap;
+
+}
+
+.debug-message{
+
+    flex:1;
+
+}
+
+.debug-error{
+
+    color:#ef4444;
+
+}
+
+.debug-warning{
+
+    color:#f59e0b;
+
+}
+
+.debug-success{
+
+    color:#22c55e;
+
+}
+
+/* ==========================
+   PERFORMANCE
+========================== */
+
+.performance-monitor{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    margin-top:24px;
+
+}
+
+.performance-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.performance-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:.82rem;
+
+    color:var(--text-secondary);
+
+}
+
+.performance-track{
+
+    width:100%;
+
+    height:10px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:var(--surface-hover);
+
+}
+
+.performance-fill{
+
+    width:81%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        #22c55e,
+
+        #10b981
+
+    );
+
+}
+
+/* ==========================
+   EXPERIMENTAL FEATURES
+========================== */
+
+.experimental-features{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    margin-top:24px;
+
+}
+
+.experimental-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:rgba(245,158,11,.08);
+
+    border:1px solid rgba(245,158,11,.20);
+
+}
+
+/* ==========================
+   RESET PANEL
+========================== */
+
+.reset-panel{
+
+    margin-top:26px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(239,68,68,.25);
+
+    background:rgba(239,68,68,.06);
+
+}
+
+.reset-title{
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:#ef4444;
+
+}
+
+.reset-description{
+
+    margin-top:8px;
+
+    line-height:1.7;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================
+   SHINE EFFECT
+========================== */
+
+.developer-panel{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.developer-panel::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:translateX(-120%);
+
+}
+
+.developer-panel:hover::after{
+
+    animation:developerShine .9s linear;
+
+}
+
+@keyframes developerShine{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* ==========================
+   END PART 8
+========================================================== */
+
+
+
+
+/* ==========================================================
+   DeepSINKY AI
+   14-settings.css
+   PART 9
+   Responsive + Accessibility + Mobile Optimization
+========================================================== */
+
+/* ==========================
+   LARGE TABLET
+========================== */
+
+@media (max-width:1200px){
+
+    .settings-dashboard{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .connected-apps{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width:992px){
+
+    .settings-page{
+
+        padding:20px;
+
+    }
+
+    .settings-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .settings-actions{
+
+        width:100%;
+
+        justify-content:flex-end;
+
+    }
+
+    .settings-dashboard,
+
+    .connected-apps,
+
+    .theme-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .settings-page{
+
+        padding:16px;
+
+        gap:18px;
+
+    }
+
+    .settings-header{
+
+        padding:18px;
+
+        border-radius:20px;
+
+    }
+
+    .profile-card{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .profile-actions{
+
+        flex-direction:column;
+
+    }
+
+    .data-actions{
+
+        flex-direction:column;
+
+    }
+
+    .notification-item,
+
+    .security-item,
+
+    .developer-item,
+
+    .api-key-card,
+
+    .backup-history-item{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .quiet-hours{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width:480px){
+
+    .settings-page{
+
+        padding:12px;
+
+    }
+
+    .settings-header{
+
+        padding:16px;
+
+    }
+
+    .settings-actions{
+
+        width:100%;
+
+        flex-wrap:wrap;
+
+    }
+
+    .settings-actions button,
+
+    .profile-actions button,
+
+    .data-actions button{
+
+        width:100%;
+
+    }
+
+    .theme-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .sound-slider{
+
+        width:100%;
+
+    }
+
+}
+
+/* ==========================
+   ACCESSIBILITY
+========================== */
+
+.settings-panel:focus-visible,
+
+.profile-card:focus-visible,
+
+.theme-card:focus-visible,
+
+.notification-item:focus-visible,
+
+.security-item:focus-visible,
+
+.connected-app:focus-visible,
+
+.transfer-card:focus-visible,
+
+.developer-item:focus-visible{
+
+    outline:2px solid var(--primary);
+
+    outline-offset:3px;
+
+}
+
+/* ==========================
+   REDUCED MOTION
+========================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    .settings-page *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}
+
+/* ==========================
+   HIGH CONTRAST
+========================== */
+
+@media (prefers-contrast:more){
+
+    .settings-panel,
+
+    .profile-card,
+
+    .theme-card,
+
+    .notification-item,
+
+    .security-item,
+
+    .connected-app{
+
+        border-width:2px;
+
+    }
+
+}
+
+/* ==========================
+   GLASS EFFECT
+========================== */
+
+.settings-panel,
+
+.profile-card,
+
+.theme-card,
+
+.notification-item,
+
+.security-item,
+
+.connected-app,
+
+.api-key-card,
+
+.backup-panel,
+
+.developer-panel{
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+}
+
+/* ==========================
+   PREMIUM HOVER
+========================== */
+
+.settings-panel:hover,
+
+.profile-card:hover,
+
+.theme-card:hover,
+
+.connected-app:hover{
+
+    box-shadow:
+
+        0 22px 50px rgba(99,102,241,.16);
+
+}
+
+/* ==========================
+   GPU OPTIMIZATION
+========================== */
+
+.settings-panel,
+
+.profile-card,
+
+.theme-card,
+
+.connected-app,
+
+.developer-panel{
+
+    transform:translateZ(0);
+
+    will-change:transform;
+
+    backface-visibility:hidden;
+
+}
+
+/* ==========================
+   PERFORMANCE
+========================== */
+
+.settings-page{
+
+    contain:layout style paint;
+
+}
+
+/* ==========================
+   END PART 9
+========================================================== */
+
+
+/* ==========================================================
+   DeepSINKY AI
+   14-settings.css
+   PART 10 (FINAL)
+   Premium Glass UI + Final Polish + Performance
+========================================================== */
+
+/* ==========================
+   PREMIUM GLASS
+========================== */
+
+.settings-panel,
+.profile-card,
+.theme-card,
+.notification-item,
+.security-item,
+.api-key-card,
+.connected-app,
+.backup-panel,
+.developer-panel{
+
+    position:relative;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(24px);
+
+    -webkit-backdrop-filter:blur(24px);
+
+}
+
+/* ==========================
+   PREMIUM BORDER
+========================== */
+
+.settings-panel::before,
+.profile-card::before,
+.theme-card::before,
+.connected-app::before,
+.developer-panel::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    padding:1px;
+
+    pointer-events:none;
+
+    background:linear-gradient(
+
+        135deg,
+
+        rgba(255,255,255,.12),
+
+        transparent,
+
+        rgba(99,102,241,.18)
+
+    );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+            mask-composite:exclude;
+
+}
+
+/* ==========================
+   FLOAT EFFECT
+========================== */
+
+.settings-panel{
+
+    animation:settingsFloat 6s ease-in-out infinite;
+
+}
+
+@keyframes settingsFloat{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-5px);
+
+    }
+
+}
+
+/* ==========================
+   ICON GLOW
+========================== */
+
+.settings-header-icon,
+.profile-avatar,
+.connected-app-icon,
+.security-icon,
+.cloud-icon{
+
+    transition:.30s ease;
+
+}
+
+.settings-header-icon:hover,
+.profile-avatar:hover,
+.connected-app-icon:hover,
+.security-icon:hover,
+.cloud-icon:hover{
+
+    box-shadow:
+
+        0 0 34px rgba(99,102,241,.34);
+
+}
+
+/* ==========================
+   ACTIVE STATUS
+========================== */
+
+.status-dot{
+
+    animation:statusPulse 1.8s infinite;
+
+}
+
+@keyframes statusPulse{
+
+    0%{
+
+        box-shadow:0 0 0 0 rgba(34,197,94,.45);
+
+    }
+
+    70%{
+
+        box-shadow:0 0 0 14px rgba(34,197,94,0);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 0 0 rgba(34,197,94,0);
+
+    }
+
+}
+
+/* ==========================
+   BUTTON EFFECT
+========================== */
+
+.settings-actions button,
+.profile-actions button,
+.data-actions button,
+.api-key-actions button{
+
+    transition:
+
+        transform .25s ease,
+
+        box-shadow .25s ease;
+
+}
+
+.settings-actions button:hover,
+.profile-actions button:hover,
+.data-actions button:hover,
+.api-key-actions button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.settings-actions button:active,
+.profile-actions button:active,
+.data-actions button:active,
+.api-key-actions button:active{
+
+    transform:scale(.96);
+
+}
+
+/* ==========================
+   GPU OPTIMIZATION
+========================== */
+
+.settings-panel,
+.profile-card,
+.theme-card,
+.connected-app,
+.developer-panel{
+
+    transform:translateZ(0);
+
+    will-change:transform;
+
+    backface-visibility:hidden;
+
+}
+
+/* ==========================
+   PERFORMANCE
+========================== */
+
+.settings-page{
+
+    contain:layout style paint;
+
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+
+html.dark .settings-panel,
+html.dark .profile-card,
+html.dark .theme-card,
+html.dark .connected-app,
+html.dark .developer-panel{
+
+    border-color:rgba(255,255,255,.06);
+
+}
+
+/* ==========================
+   LIGHT MODE
+========================== */
+
+html:not(.dark) .settings-panel,
+html:not(.dark) .profile-card,
+html:not(.dark) .theme-card,
+html:not(.dark) .connected-app,
+html:not(.dark) .developer-panel{
+
+    background:rgba(255,255,255,.96);
+
+}
+
+/* ==========================
+   PRINT
+========================== */
+
+@media print{
+
+    .settings-actions,
+    .profile-actions,
+    .data-actions,
+    .api-key-actions{
+
+        display:none !important;
+
+    }
+
+}
+
+/* ==========================
+   MOBILE POLISH
+========================== */
+
+@media (max-width:768px){
+
+    .settings-panel:hover,
+    .theme-card:hover,
+    .connected-app:hover{
+
+        transform:none;
+
+    }
+
+    .settings-panel{
+
+        animation:none;
+
+    }
+
+}
+
+/* ==========================
+   CUSTOM SCROLLBAR
+========================== */
+
+.settings-page::-webkit-scrollbar,
+.debug-console::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.settings-page::-webkit-scrollbar-thumb,
+.debug-console::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+
+        var(--primary),
+
+        #8b5cf6
+
+    );
+
+    border-radius:999px;
+
+}
+
+.settings-page::-webkit-scrollbar-track,
+.debug-console::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* ==========================
+   END OF 14-settings.css
+   DeepSINKY AI Settings Engine
+========================================================== */
+
+
+
+
