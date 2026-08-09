@@ -424,26 +424,29 @@ document.addEventListener("DOMContentLoaded", () => {
        SEND MESSAGE
     =========================== */
 
-    function sendMessage() {
+    async function sendMessage() {
 
-        if (!chatInput) return;
+    if (!chatInput) return;
 
-        const text = chatInput.value.trim();
+    const text = chatInput.value.trim();
 
-        if (text === "") return;
+    if (text === "") return;
 
-        addMessage("user", text);
+    addMessage("user", text);
 
-        chatInput.value = "";
+    chatInput.value = "";
 
-        disableInput();
+    disableInput();
 
-        startThinking();
+    startThinking();
 
-       if (window.DeepSINKY_API) {
-        window.DeepSINKY_API.send(text);
+    if (window.DeepSINKY_API) {
+        await window.DeepSINKY_API.send(text);
+    } else {
+        stopThinking();
+        enableInput();
     }
-    }
+}
 
 
 
