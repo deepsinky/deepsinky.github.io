@@ -1127,54 +1127,90 @@
 ========================================================== */
 
 /* ==========================
-   VOICE BUTTON
+   VOICE BUTTON — FINAL
 ========================== */
 
 #voiceBtn{
-
     position:relative;
 
+    width:46px;
+    height:46px;
+
+    flex:0 0 46px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:0;
+    outline:none;
+    border-radius:50%;
+
+    background:transparent;
+    color:var(--text-secondary);
+
+    cursor:pointer;
     overflow:hidden;
 
+    transition:
+        transform .18s cubic-bezier(.2,.8,.2,1),
+        background .18s ease,
+        color .18s ease,
+        box-shadow .18s ease;
+
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
+}
+
+#voiceBtn:hover{
+    background:var(--surface-hover);
+    color:var(--primary);
+    transform:scale(1.06);
+}
+
+#voiceBtn:active{
+    transform:scale(.90);
+}
+
+#voiceBtn i{
+    width:21px;
+    height:21px;
+    transition:transform .18s ease;
+}
+
+#voiceBtn:hover i{
+    transform:scale(1.08);
 }
 
 #voiceBtn.recording{
-
     background:#ef4444;
-
     color:#fff;
 
     animation:voiceRecording 1.2s infinite;
 
+    box-shadow:
+        0 0 0 0 rgba(239,68,68,.40);
 }
 
-@keyframes voiceRecording{
-
-    0%{
-
-        transform:scale(1);
-
-        box-shadow:0 0 0 0 rgba(239,68,68,.45);
-
-    }
-
-    70%{
-
-        transform:scale(1.05);
-
-        box-shadow:0 0 0 14px rgba(239,68,68,0);
-
-    }
-
-    100%{
-
-        transform:scale(1);
-
-        box-shadow:0 0 0 0 rgba(239,68,68,0);
-
-    }
-
+#voiceBtn.recording i{
+    transform:scale(1.08);
 }
+
+@media (max-width:768px){
+
+    #voiceBtn{
+        width:42px;
+        height:42px;
+        flex-basis:42px;
+    }
+
+    #voiceBtn i{
+        width:20px;
+        height:20px;
+    }
+}
+
+
 
 /* ==========================
    CAMERA BUTTON
