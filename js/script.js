@@ -440,7 +440,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         startThinking();
 
+       if (window.DeepSINKY_API) {
+        window.DeepSINKY_API.send(text);
     }
+    }
+
+
 
     /* ===========================
        FORM SUBMIT
