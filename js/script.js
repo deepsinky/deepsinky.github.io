@@ -116,18 +116,19 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ===========================
        DOM ELEMENTS
     =========================== */
+const sidebar = document.getElementById("sidebar");
 
-    const sidebar = document.getElementById("sidebar");
-    const sidebarToggle = document.getElementById("sidebar-toggle");
-    const sidebarClose = document.getElementById("sidebar-close");
+const sidebarToggle = document.getElementById("menuBtn");
 
-    const overlay = document.getElementById("sidebar-overlay");
+const sidebarClose = document.getElementById("closeSidebarBtn");
 
-    const navigationItems = document.querySelectorAll(".sidebar-item");
+const overlay = document.getElementById("overlay");
 
-    const searchInput = document.getElementById("search-input");
+const navigationItems = document.querySelectorAll(".nav-item");
 
-    const themeToggle = document.getElementById("theme-toggle");
+const searchInput = document.getElementById("search-input");
+
+const themeToggle = document.getElementById("theme-toggle");
 
     /* ===========================
        SIDEBAR
