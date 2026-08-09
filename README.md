@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="assets/imgages/logo.png" width="180" alt="DeepSINKY Logo">
+<img src="assets/images/logo.png" width="180" alt="DeepSINKY Logo">
 
 # DeepSINKY AI
 
