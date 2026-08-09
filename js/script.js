@@ -17,17 +17,19 @@ document.addEventListener("DOMContentLoaded", () => {
     =========================== */
 
     const app = document.getElementById("app");
-    const loader = document.getElementById("appLoader");
+const loader = document.getElementById("appLoader");
 
-    const sidebar = document.getElementById("sidebar");
-    const chatContainer = document.getElementById("chat-container");
-    const chatForm = document.getElementById("chat-form");
-    const chatInput = document.getElementById("chat-input");
-    const sendButton = document.getElementById("send-button");
+const sidebar = document.getElementById("sidebar");
 
-    const themeToggle = document.getElementById("theme-toggle");
-    const newChatButton = document.getElementById("new-chat");
+const chatContainer = document.getElementById("chatContainer");
+const promptInput = document.getElementById("promptInput");
+const sendBtn = document.getElementById("sendBtn");
 
+const themeBtn = document.getElementById("themeBtn");
+const newChatBtn = document.getElementById("newChatBtn");
+
+const chatSearch = document.getElementById("chatSearch");
+const toastContainer = document.getElementById("toastContainer");
     /* ===========================
        GLOBAL STATE
     =========================== */
