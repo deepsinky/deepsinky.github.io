@@ -786,8 +786,8 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ===========================
        CONFIGURATION
     =========================== */
-
-    const API_URL = "https://YOUR_SERVER_URL/chat";
+const API_URL = "https://deepsinky-server-1.onrender.com/chat";
+    
 
     /* ===========================
        DOM CACHE
