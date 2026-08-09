@@ -462,6 +462,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
+   /* ===========================
+   SEND BUTTON CLICK
+=========================== */
+
+if (sendButton) {
+
+    sendButton.addEventListener("click", event => {
+
+        event.preventDefault();
+
+        sendMessage();
+
+    });
+
+                                  }
 
     /* ===========================
        ENTER KEY
