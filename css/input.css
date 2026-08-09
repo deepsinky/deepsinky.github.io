@@ -36,10 +36,9 @@
     transition:all .30s ease;
 
 }
-
-/* ==========================
-   INPUT WRAPPER
-========================== */
+/* ==========================================================
+   ULTRA COMPACT INPUT CONTAINER
+========================================================== */
 
 .input-wrapper{
 
@@ -47,45 +46,37 @@
 
     display:flex;
 
-    align-items:flex-end;
+    align-items:center;
 
-    gap:14px;
+    gap:10px;
 
     width:100%;
 
     max-width:980px;
 
+    min-height:64px;
+
     margin:0 auto;
 
-    padding:14px;
+    padding:8px 10px;
 
-    background:var(--surface);
+    box-sizing:border-box;
 
-    border:1px solid var(--border);
+    background:#202020;
 
-    border-radius:28px;
+    border:1px solid rgba(255,255,255,.16);
 
-    box-shadow:var(--shadow-lg);
-
-    transition:all .30s ease;
-
-}
-
-.input-wrapper:focus-within{
-
-    border-color:var(--primary);
+    border-radius:32px;
 
     box-shadow:
+        0 4px 18px rgba(0,0,0,.25);
 
-        0 0 0 4px rgba(99,102,241,.12),
-
-        var(--shadow-lg);
+    overflow:hidden;
 
 }
 
-/* ==========================
-   LEFT
-========================== */
+
+/* LEFT SIDE */
 
 .input-left{
 
@@ -93,31 +84,29 @@
 
     align-items:center;
 
-    gap:8px;
+    justify-content:center;
 
     flex-shrink:0;
 
 }
 
-/* ==========================
-   CENTER
-========================== */
+
+/* CENTER INPUT */
 
 .input-center{
 
     flex:1;
 
+    min-width:0;
+
     display:flex;
 
-    align-items:flex-end;
-
-    min-width:0;
+    align-items:center;
 
 }
 
-/* ==========================
-   RIGHT
-========================== */
+
+/* RIGHT SIDE */
 
 .input-right{
 
@@ -125,93 +114,205 @@
 
     align-items:center;
 
-    gap:8px;
+    justify-content:center;
+
+    gap:4px;
 
     flex-shrink:0;
 
 }
 
-/* ==========================
-   INPUT SHADOW
-========================== */
 
-.input-wrapper::before{
+/* ALL ICON BUTTONS */
 
-    content:"";
+.input-wrapper .icon-btn{
 
-    position:absolute;
+    width:44px;
 
-    inset:0;
+    height:44px;
 
-    border-radius:inherit;
+    min-width:44px;
 
-    pointer-events:none;
+    min-height:44px;
 
-    opacity:0;
+    padding:0;
 
-    transition:.30s ease;
+    border:0;
 
-    background:linear-gradient(
+    border-radius:50%;
 
-        135deg,
+    display:flex;
 
-        rgba(99,102,241,.08),
+    align-items:center;
 
-        rgba(139,92,246,.05)
+    justify-content:center;
 
-    );
+    background:transparent;
+
+    color:#f5f5f5;
+
+    cursor:pointer;
 
 }
 
-.input-wrapper:focus-within::before{
+
+/* SVG SIZE */
+
+.input-wrapper .icon-btn svg,
+.input-wrapper .icon-btn i{
+
+    width:22px;
+
+    height:22px;
+
+}
+
+
+/* TEXT INPUT */
+
+#promptInput{
+
+    width:100%;
+
+    height:44px;
+
+    min-height:44px;
+
+    max-height:44px;
+
+    padding:0 4px;
+
+    border:0;
+
+    outline:0;
+
+    background:transparent;
+
+    color:#fff;
+
+    font-size:18px;
+
+    line-height:44px;
+
+    box-sizing:border-box;
+
+}
+
+
+/* PLACEHOLDER */
+
+#promptInput::placeholder{
+
+    color:#9a9a9a;
 
     opacity:1;
 
 }
 
-/* ==========================
-   DISABLED
-========================== */
 
-.input-wrapper.disabled{
+/* SEND BUTTON */
 
-    opacity:.6;
+.input-wrapper .send-btn{
 
-    pointer-events:none;
+    width:52px;
+
+    height:52px;
+
+    min-width:52px;
+
+    min-height:52px;
+
+    padding:0;
+
+    border:0;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:linear-gradient(
+        135deg,
+        #4285f4,
+        #2878f0
+    );
+
+    color:#fff;
+
+}
+
+
+/* SEND SVG */
+
+.input-wrapper .send-btn svg,
+.input-wrapper .send-btn i{
+
+    width:24px;
+
+    height:24px;
 
 }
 
-/* ==========================
-   LOADING
-========================== */
 
-.input-wrapper.loading{
+/* MOBILE */
 
-    cursor:progress;
+@media (max-width:768px){
+
+    .input-wrapper{
+
+        min-height:60px;
+
+        padding:6px 8px;
+
+        gap:6px;
+
+        border-radius:30px;
+
+    }
+
+    .input-wrapper .icon-btn{
+
+        width:42px;
+
+        height:42px;
+
+        min-width:42px;
+
+        min-height:42px;
+
+    }
+
+    #promptInput{
+
+        height:42px;
+
+        min-height:42px;
+
+        max-height:42px;
+
+        font-size:16px;
+
+        line-height:42px;
+
+    }
+
+    .input-wrapper .send-btn{
+
+        width:48px;
+
+        height:48px;
+
+        min-width:48px;
+
+        min-height:48px;
+
+    }
 
 }
 
-/* ==========================
-   STICKY MODE
-========================== */
-
-.input-section.sticky{
-
-    position:sticky;
-
-    bottom:0;
-
-}
-
-/* ==========================
-   FLOATING MODE
-========================== */
-
-.input-section.floating{
-
-    padding-bottom:36px;
-
-}
 
 /* ==========================
    END PART 1
