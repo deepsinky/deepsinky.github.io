@@ -1695,10 +1695,9 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ===========================
        DOM CACHE
     =========================== */
-
-    const loader = document.getElementById("app-loader");
-
-    const toastContainer = document.getElementById("toast-container");
+const loader = document.getElementById("appLoader");
+const toastContainer = document.getElementById("toastContainer");
+    
 
     /* ===========================
        LOADER
