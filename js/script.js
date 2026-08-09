@@ -582,13 +582,10 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ===========================
        DOM CACHE
     =========================== */
-
-    const chatContainer = document.getElementById("chat-container");
-
-    const chatInput = document.getElementById("chat-input");
-
-    const sendButton = document.getElementById("send-button");
-
+const chatContainer = document.getElementById("chatContainer");
+const chatInput = document.getElementById("promptInput");
+const sendButton = document.getElementById("sendBtn");
+    
     /* ===========================
        STREAM STATE
     =========================== */
@@ -795,8 +792,8 @@ document.addEventListener("DOMContentLoaded", () => {
        DOM CACHE
     =========================== */
 
-    const chatInput = document.getElementById("chat-input");
-    const sendButton = document.getElementById("send-button");
+    const chatInput = document.getElementById("promptInput");
+const sendButton = document.getElementById("sendBtn");
 
     /* ===========================
        REQUEST STATE
