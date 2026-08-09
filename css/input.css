@@ -4,38 +4,6 @@
    PART 1
    Input Foundation + Input Wrapper
 ========================================================== */
-
-/* ==========================
-   INPUT SECTION
-========================== */
-
-.input-section{
-
-    position:fixed;
-
-    left:var(--sidebar-width);
-
-    right:0;
-
-    bottom:0;
-
-    z-index:4000;
-
-    padding:18px 24px 24px;
-
-    background:linear-gradient(
-        to top,
-        var(--bg) 78%,
-        transparent
-    );
-
-    backdrop-filter:blur(18px);
-
-    -webkit-backdrop-filter:blur(18px);
-
-    transition:all .30s ease;
-
-}
 /* ==========================================================
    ULTRA COMPACT INPUT CONTAINER
 ========================================================== */
