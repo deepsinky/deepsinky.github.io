@@ -5,30 +5,53 @@
    Input Foundation + Input Wrapper
 ========================================================== */
 /* ==========================================================
-   ULTRA COMPACT INPUT CONTAINER
+   
+/* ==========================================================
+   FINAL INPUT CONTAINER FIX
+   Target: .input-area + .input-container
 ========================================================== */
 
-.input-wrapper{
+.input-area{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    z-index:9999;
 
-    position:relative;
+    padding:10px 12px 12px;
 
-    display:flex;
+    box-sizing:border-box;
 
-    align-items:center;
+    background:linear-gradient(
+        to top,
+        var(--bg) 75%,
+        transparent
+    );
+}
 
-    gap:10px;
+
+/* MAIN CONTAINER */
+
+.input-container{
 
     width:100%;
-
     max-width:980px;
 
     min-height:64px;
+    height:64px;
 
     margin:0 auto;
 
-    padding:8px 10px;
+    padding:6px 8px;
 
     box-sizing:border-box;
+
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+
+    gap:8px;
 
     background:#202020;
 
@@ -37,70 +60,27 @@
     border-radius:32px;
 
     box-shadow:
-        0 4px 18px rgba(0,0,0,.25);
+        0 4px 20px rgba(0,0,0,.35);
 
     overflow:hidden;
-
 }
 
 
-/* LEFT SIDE */
+/* ALL DIRECT CHILDREN STAY HORIZONTAL */
 
-.input-left{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
+.input-container > *{
     flex-shrink:0;
-
 }
 
 
-/* CENTER INPUT */
+/* PLUS / LEFT BUTTON */
 
-.input-center{
-
-    flex:1;
-
-    min-width:0;
-
-    display:flex;
-
-    align-items:center;
-
-}
-
-
-/* RIGHT SIDE */
-
-.input-right{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:4px;
-
-    flex-shrink:0;
-
-}
-
-
-/* ALL ICON BUTTONS */
-
-.input-wrapper .icon-btn{
+.input-container .icon-btn{
 
     width:44px;
-
     height:44px;
 
     min-width:44px;
-
     min-height:44px;
 
     padding:0;
@@ -109,78 +89,63 @@
 
     border-radius:50%;
 
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:transparent;
-
-    color:#f5f5f5;
-
-    cursor:pointer;
-
-}
-
-
-/* SVG SIZE */
-
-.input-wrapper .icon-btn svg,
-.input-wrapper .icon-btn i{
-
-    width:22px;
-
-    height:22px;
-
-}
-
-
-/* TEXT INPUT */
-
-#promptInput{
-
-    width:100%;
-
-    height:44px;
-
-    min-height:44px;
-
-    max-height:44px;
-
-    padding:0 4px;
-
-    border:0;
-
-    outline:0;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
 
     background:transparent;
 
     color:#fff;
 
-    font-size:18px;
+    flex-shrink:0;
+}
 
-    line-height:44px;
+
+/* INPUT */
+
+.input-container #input,
+.input-container #promptInput{
+
+    flex:1 !important;
+
+    width:auto !important;
+
+    min-width:0 !important;
+
+    height:44px;
+
+    min-height:44px;
+
+    padding:0 6px;
+
+    border:0;
+
+    outline:none;
+
+    background:transparent;
+
+    color:#fff;
+
+    font-size:16px;
 
     box-sizing:border-box;
-
 }
 
 
 /* PLACEHOLDER */
 
-#promptInput::placeholder{
+.input-container input::placeholder,
+.input-container textarea::placeholder{
 
-    color:#9a9a9a;
+    color:#999;
 
     opacity:1;
-
 }
 
 
 /* SEND BUTTON */
 
-.input-wrapper .send-btn{
+.input-container #sendBtn{
 
     width:52px;
 
@@ -192,36 +157,38 @@
 
     padding:0;
 
+    margin:0;
+
     border:0;
 
     border-radius:50%;
 
-    display:flex;
+    display:flex !important;
 
-    align-items:center;
+    align-items:center !important;
 
-    justify-content:center;
+    justify-content:center !important;
+
+    flex-shrink:0;
 
     background:linear-gradient(
         135deg,
         #4285f4,
-        #2878f0
+        #7c5cff
     );
 
     color:#fff;
-
 }
 
 
-/* SEND SVG */
+/* SVG / ICON SIZE */
 
-.input-wrapper .send-btn svg,
-.input-wrapper .send-btn i{
+.input-container svg{
 
-    width:24px;
+    width:22px;
+    height:22px;
 
-    height:24px;
-
+    flex-shrink:0;
 }
 
 
@@ -229,58 +196,57 @@
 
 @media (max-width:768px){
 
-    .input-wrapper{
+    .input-area{
 
-        min-height:60px;
-
-        padding:6px 8px;
-
-        gap:6px;
-
-        border-radius:30px;
+        padding:8px 10px
+            calc(8px + env(safe-area-inset-bottom));
 
     }
 
-    .input-wrapper .icon-btn{
+    .input-container{
+
+        height:60px;
+        min-height:60px;
+
+        padding:5px 7px;
+
+        gap:5px;
+
+        border-radius:30px;
+    }
+
+    .input-container .icon-btn{
 
         width:42px;
-
         height:42px;
 
         min-width:42px;
-
         min-height:42px;
-
     }
 
-    #promptInput{
-
-        height:42px;
-
-        min-height:42px;
-
-        max-height:42px;
-
-        font-size:16px;
-
-        line-height:42px;
-
-    }
-
-    .input-wrapper .send-btn{
+    .input-container #sendBtn{
 
         width:48px;
-
         height:48px;
 
         min-width:48px;
-
         min-height:48px;
+    }
 
+    .input-container #input,
+    .input-container #promptInput{
+
+        height:42px;
+        min-height:42px;
+
+        font-size:16px;
     }
 
 }
 
+    
+
+    
 
 /* ==========================
    END PART 1
