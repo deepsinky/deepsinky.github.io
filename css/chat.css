@@ -4899,3 +4899,42 @@ html:not(.dark) .assistant-message .message-content{
    END OF chat.css
    DeepSINKY AI Chat System
 ========================================================== */
+
+
+/* =========================================================
+   CHAT VIEWPORT FIX — MOBILE + DESKTOP
+   ========================================================= */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    min-height: 100dvh;
+}
+
+#app {
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.chat-container {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    height: auto;
+    max-height: none;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    scroll-behavior: smooth;
+}
