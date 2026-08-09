@@ -625,130 +625,558 @@
 </main>
 
   <!-- ====================================================== -->
-<!--          PART 07 : ULTRA AI INPUT CONTAINER            -->
 <!-- ====================================================== -->
+
+<!-- ==========================================================
+     PART 07 : ULTRA INPUT CONTAINER
+========================================================== -->
 
 <section id="inputSection" class="input-section">
 
-    <!-- File Preview -->
 
-    <div id="previewContainer"
-         class="preview-container">
-    </div>
+    <!-- ======================================================
+         INPUT CONTAINER
+    ======================================================= -->
 
-    <!-- Main Input Box -->
+    <div class="input-area">
 
-    <div class="input-wrapper">
+        <div class="input-container">
 
-        <!-- Left Tools -->
 
-        <div class="input-left">
+            <!-- ==================================================
+                 PLUS BUTTON
+            =================================================== -->
 
             <button
                 id="plusBtn"
                 class="icon-btn"
-                aria-label="More">
+                type="button"
+                aria-label="More options">
 
-                <i data-lucide="plus"></i>
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none">
+
+                    <line
+                        x1="12"
+                        y1="5"
+                        x2="12"
+                        y2="19"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"/>
+
+                    <line
+                        x1="5"
+                        y1="12"
+                        x2="19"
+                        y2="12"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"/>
+
+                </svg>
 
             </button>
+
+
+            <!-- ==================================================
+                 MESSAGE INPUT
+            =================================================== -->
+
+            <input
+                id="promptInput"
+                type="text"
+                placeholder="Ask DeepSINKY"
+                autocomplete="off"
+                spellcheck="true"
+                aria-label="Message DeepSINKY">
+
+
+            <!-- ==================================================
+                 ATTACH BUTTON
+            =================================================== -->
 
             <button
                 id="attachBtn"
                 class="icon-btn"
-                aria-label="Attach">
+                type="button"
+                aria-label="Attach file">
 
-                <i data-lucide="paperclip"></i>
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none">
+
+                    <path
+                        d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+
+                </svg>
 
             </button>
 
-        </div>
 
-        <!-- Prompt Input -->
-
-        <div class="input-center">
-
-            <textarea
-                id="promptInput"
-                rows="1"
-                spellcheck="true"
-                autocomplete="off"
-                placeholder="Message DeepSINKY...">
-            </textarea>
-
-        </div>
-
-        <!-- Right Tools -->
-
-        <div class="input-right">
+            <!-- ==================================================
+                 CAMERA BUTTON
+            =================================================== -->
 
             <button
                 id="cameraBtn"
                 class="icon-btn"
+                type="button"
                 aria-label="Camera">
 
-                <i data-lucide="camera"></i>
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none">
+
+                    <path
+                        d="M4 7h3l2-2h6l2 2h3v12H4V7z"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+
+                    <circle
+                        cx="12"
+                        cy="13"
+                        r="3"
+                        stroke="currentColor"
+                        stroke-width="2"/>
+
+                </svg>
 
             </button>
+
+
+            <!-- ==================================================
+                 GALLERY BUTTON
+            =================================================== -->
 
             <button
                 id="galleryBtn"
                 class="icon-btn"
+                type="button"
                 aria-label="Gallery">
 
-                <i data-lucide="image"></i>
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none">
+
+                    <rect
+                        x="3"
+                        y="4"
+                        width="18"
+                        height="16"
+                        rx="2"
+                        stroke="currentColor"
+                        stroke-width="2"/>
+
+                    <circle
+                        cx="8"
+                        cy="9"
+                        r="1.5"
+                        fill="currentColor"/>
+
+                    <path
+                        d="M3 16l5-5 4 4 3-3 6 6"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+
+                </svg>
 
             </button>
+
+
+            <!-- ==================================================
+                 MICROPHONE BUTTON
+            =================================================== -->
 
             <button
                 id="voiceBtn"
                 class="icon-btn"
-                aria-label="Voice">
+                type="button"
+                aria-label="Voice input">
 
-                <i data-lucide="mic"></i>
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none">
+
+                    <path
+                        d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3z"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+
+                    <path
+                        d="M19 11a7 7 0 0 1-14 0"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"/>
+
+                    <line
+                        x1="12"
+                        y1="18"
+                        x2="12"
+                        y2="22"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"/>
+
+                </svg>
 
             </button>
+
+
+            <!-- ==================================================
+                 SEND BUTTON
+            =================================================== -->
 
             <button
                 id="sendBtn"
                 class="send-btn"
-                aria-label="Send">
+                type="button"
+                aria-label="Send message">
 
-                <i data-lucide="arrow-up"></i>
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none">
+
+                    <path
+                        d="M12 19V5"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"/>
+
+                    <path
+                        d="M6 11l6-6 6 6"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+
+                </svg>
 
             </button>
 
+
         </div>
+
+
+        <!-- ======================================================
+             PLUS MENU
+        ======================================================= -->
+
+        <div
+            id="plusMenu"
+            class="plus-menu">
+
+            <div class="menu-grid">
+
+
+                <!-- FILE -->
+
+                <button
+                    class="menu-item"
+                    id="menuFileBtn"
+                    type="button">
+
+                    <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none">
+
+                        <path
+                            d="M4 4h10l6 6v10H4V4z"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linejoin="round"/>
+
+                        <path
+                            d="M14 4v6h6"
+                            stroke="currentColor"
+                            stroke-width="2"/>
+
+                    </svg>
+
+                    <span>File</span>
+
+                </button>
+
+
+                <!-- IMAGE -->
+
+                <button
+                    class="menu-item"
+                    id="menuImageBtn"
+                    type="button">
+
+                    <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none">
+
+                        <rect
+                            x="3"
+                            y="4"
+                            width="18"
+                            height="16"
+                            rx="2"
+                            stroke="currentColor"
+                            stroke-width="2"/>
+
+                        <circle
+                            cx="8"
+                            cy="9"
+                            r="1.5"
+                            fill="currentColor"/>
+
+                        <path
+                            d="M3 16l5-5 4 4 3-3 6 6"
+                            stroke="currentColor"
+                            stroke-width="2"/>
+
+                    </svg>
+
+                    <span>Image</span>
+
+                </button>
+
+
+                <!-- CAMERA -->
+
+                <button
+                    class="menu-item"
+                    id="menuCameraBtn"
+                    type="button">
+
+                    <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none">
+
+                        <path
+                            d="M4 7h3l2-2h6l2 2h3v12H4V7z"
+                            stroke="currentColor"
+                            stroke-width="2"/>
+
+                        <circle
+                            cx="12"
+                            cy="13"
+                            r="3"
+                            stroke="currentColor"
+                            stroke-width="2"/>
+
+                    </svg>
+
+                    <span>Camera</span>
+
+                </button>
+
+
+                <!-- VOICE -->
+
+                <button
+                    class="menu-item"
+                    id="menuVoiceBtn"
+                    type="button">
+
+                    <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none">
+
+                        <path
+                            d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3z"
+                            stroke="currentColor"
+                            stroke-width="2"/>
+
+                        <path
+                            d="M19 11a7 7 0 0 1-14 0"
+                            stroke="currentColor"
+                            stroke-width="2"/>
+
+                    </svg>
+
+                    <span>Voice</span>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
 
     </div>
 
-    <!-- Bottom Feature Bar -->
+
+    <!-- ======================================================
+         BOTTOM FEATURE BUTTONS
+    ======================================================= -->
 
     <div class="feature-bar">
 
-        <button id="reasoningBtn" class="feature-btn">
-            <i data-lucide="brain"></i>
+
+        <button
+            id="reasoningBtn"
+            class="feature-btn"
+            type="button">
+
+            <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none">
+
+                <path
+                    d="M9 18h6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+
+                <path
+                    d="M10 22h4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+
+                <path
+                    d="M8 14a7 7 0 1 1 8 0c-.7.5-1 1-1 2H9c0-1-.3-1.5-1-2z"
+                    stroke="currentColor"
+                    stroke-width="2"/>
+
+            </svg>
+
             <span>Reasoning</span>
+
         </button>
 
-        <button id="webSearchBtn" class="feature-btn">
-            <i data-lucide="globe"></i>
+
+        <button
+            id="webSearchBtn"
+            class="feature-btn"
+            type="button">
+
+            <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none">
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                    stroke="currentColor"
+                    stroke-width="2"/>
+
+                <path
+                    d="M3 12h18"
+                    stroke="currentColor"
+                    stroke-width="2"/>
+
+                <path
+                    d="M12 3c3 3 3 15 0 18"
+                    stroke="currentColor"
+                    stroke-width="2"/>
+
+            </svg>
+
             <span>Web Search</span>
+
         </button>
 
-        <button id="researchBtn" class="feature-btn">
-            <i data-lucide="search-code"></i>
+
+        <button
+            id="deepResearchBtn"
+            class="feature-btn"
+            type="button">
+
+            <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none">
+
+                <circle
+                    cx="11"
+                    cy="11"
+                    r="7"
+                    stroke="currentColor"
+                    stroke-width="2"/>
+
+                <path
+                    d="M16 16l5 5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"/>
+
+            </svg>
+
             <span>Deep Research</span>
+
         </button>
 
-        <button id="imageBtn" class="feature-btn">
-            <i data-lucide="sparkles"></i>
+
+        <button
+            id="createImageBtn"
+            class="feature-btn"
+            type="button">
+
+            <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none">
+
+                <path
+                    d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"/>
+
+                <path
+                    d="M19 17l.7 2.3L22 20l-2.3.7L19 23l-.7-2.3L16 20l2.3-.7L19 17z"
+                    stroke="currentColor"
+                    stroke-width="1.5"/>
+
+            </svg>
+
             <span>Create Image</span>
+
         </button>
+
 
     </div>
 
+
 </section>
+
+    
+
 <!-- ====================================================== -->
 <!--             PART 08 : AI TOOLS PANEL                   -->
 <!-- ====================================================== -->
