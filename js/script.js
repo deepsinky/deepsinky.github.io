@@ -126,9 +126,9 @@ const overlay = document.getElementById("overlay");
 
 const navigationItems = document.querySelectorAll(".nav-item");
 
-const searchInput = document.getElementById("search-input");
+const searchInput = document.getElementById("chatSearch");
 
-const themeToggle = document.getElementById("theme-toggle");
+const themeToggle = document.getElementById("themeBtn");
 
     /* ===========================
        SIDEBAR
