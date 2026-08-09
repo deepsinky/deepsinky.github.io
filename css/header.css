@@ -1150,4 +1150,116 @@ html:not(.dark) .header{
    END OF header.css
 ========================================================== */
 
+/* ==========================================================
+   DEEPSINKY — MENU BUTTON
+   Mobile / Desktop
+========================================================== */
+
+#menuBtn.menu-button{
+    position:relative;
+
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+
+    width:44px !important;
+    height:44px !important;
+
+    min-width:44px;
+    min-height:44px;
+
+    padding:0 !important;
+    margin:0;
+
+    flex:0 0 44px;
+
+    background:rgba(255,255,255,.02) !important;
+    border:1px solid rgba(255,255,255,.08) !important;
+    border-radius:13px;
+
+    color:#fff !important;
+
+    cursor:pointer;
+
+    visibility:visible !important;
+    opacity:1 !important;
+
+    z-index:9999;
+
+    transition:
+        background .22s ease,
+        border-color .22s ease,
+        transform .16s ease,
+        box-shadow .22s ease;
+}
+
+/* MENU LINES */
+
+#menuBtn .menu-line{
+    position:absolute;
+
+    display:block;
+
+    width:22px;
+    height:3px;
+
+    background:#fff;
+
+    border-radius:999px;
+
+    pointer-events:none;
+
+    transform-origin:center;
+
+    box-shadow:0 0 7px rgba(255,255,255,.18);
+
+    transition:
+        transform .22s ease,
+        opacity .18s ease,
+        width .22s ease;
+}
+
+#menuBtn .menu-line-top{
+    transform:translateY(-5px);
+}
+
+#menuBtn .menu-line-bottom{
+    transform:translateY(5px);
+}
+
+/* TOUCH / HOVER */
+
+#menuBtn.menu-button:hover{
+    background:rgba(255,255,255,.07) !important;
+    border-color:rgba(255,255,255,.16) !important;
+
+    box-shadow:
+        0 6px 20px rgba(0,0,0,.20);
+
+    transform:translateY(-1px);
+}
+
+#menuBtn.menu-button:active{
+    transform:scale(.92);
+}
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+    #menuBtn.menu-button{
+        width:44px !important;
+        height:44px !important;
+
+        min-width:44px;
+        min-height:44px;
+
+        border-radius:13px;
+    }
+
+    #menuBtn .menu-line{
+        width:21px;
+        height:3px;
+    }
+}
 
