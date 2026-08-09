@@ -1981,57 +1981,44 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ===========================
        KEYBOARD SHORTCUTS
     =========================== */
+document.addEventListener("keydown", event => {
 
-    document.addEventListener("keydown", event => {
+    if (
+        event.ctrlKey &&
+        event.key.toLowerCase() === "k"
+    ) {
+
+        event.preventDefault();
+
+        const search = document.getElementById(
+            "chatSearch"
+        );
+
+        if (search) {
+            search.focus();
+        }
+
+    }
+
+    if (
+        event.ctrlKey &&
+        event.key.toLowerCase() === "n"
+    ) {
+
+        event.preventDefault();
 
         if (
-
-            event.ctrlKey &&
-
-            event.key.toLowerCase() === "k"
-
+            window.DeepSINKY_MEMORY
         ) {
 
-            event.preventDefault();
-
-            const search = document.getElementById(
-
-                "search-input"
-
-            );
-
-            if (search) {
-
-                search.focus();
-
-            }
+            window.DeepSINKY_MEMORY.createChat();
 
         }
 
-        if (
+    }
 
-            event.ctrlKey &&
-
-            event.key.toLowerCase() === "n"
-
-        ) {
-
-            event.preventDefault();
-
-            if (
-
-                window.DeepSINKY_MEMORY
-
-            ) {
-
-                window.DeepSINKY_MEMORY.createChat();
-
-            }
-
-        }
-
-    });
-
+});
+    
     /* ===========================
        COPY
     =========================== */
