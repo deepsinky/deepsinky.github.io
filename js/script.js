@@ -323,13 +323,13 @@ document.addEventListener("DOMContentLoaded", () => {
        DOM CACHE
     =========================== */
 
-    const chatContainer = document.getElementById("chat-container");
+    const chatContainer = document.getElementById("chatContainer");
 
     const chatForm = document.getElementById("chat-form");
 
-    const chatInput = document.getElementById("chat-input");
+    const chatInput = document.getElementById("promptInput");
 
-    const sendButton = document.getElementById("send-button");
+    const sendButton = document.getElementById("sendBtn");
 
     /* ===========================
        CHAT STATE
