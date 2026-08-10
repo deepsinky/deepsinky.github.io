@@ -429,6 +429,7 @@ document.addEventListener("DOMContentLoaded", () => {
    SEND MESSAGE
 =========================== */
 
+
 async function sendMessage() {
 
     if (!chatInput) return;
@@ -447,15 +448,11 @@ async function sendMessage() {
 
     try {
 
-        if (window.DeepSINKY_API) {
-
-            await window.DeepSINKY_API.send(text);
-
-        } else {
-
+        if (!window.DeepSINKY_API) {
             throw new Error("DeepSINKY API not available");
-
         }
+
+        await window.DeepSINKY_API.send(text);
 
     } catch (error) {
 
