@@ -420,15 +420,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    /* ===========================
-       SEND MESSAGE
-    =========================== */
-
     
 /* ===========================
    SEND MESSAGE
 =========================== */
 
+/* =========================
+   SEND MESSAGE
+========================= */
 
 async function sendMessage() {
 
@@ -436,22 +435,27 @@ async function sendMessage() {
 
     const text = chatInput.value.trim();
 
-    if (text === "") return;
+    if (!text) return;
 
+    // Display user message
     addMessage("user", text);
 
+    // Clear input
     chatInput.value = "";
 
-    disableInput();
-
+    // Start thinking state
     startThinking();
 
     try {
 
-        if (!window.DeepSINKY_API) {
+        if (
+            !window.DeepSINKY_API ||
+            typeof window.DeepSINKY_API.send !== "function"
+        ) {
             throw new Error("DeepSINKY API not available");
         }
 
+        // Send request to API
         await window.DeepSINKY_API.send(text);
 
     } catch (error) {
@@ -460,36 +464,32 @@ async function sendMessage() {
 
         stopThinking();
 
+        // Display error message
+        addMessage(
+            "assistant",
+            "Server error. Please try again."
+        );
+
     } finally {
 
+        // Restore input and send button
+        stopThinking();
         enableInput();
 
+        if (chatInput) {
+            chatInput.focus();
+        }
     }
 }
 
 
-    /* ===========================
-       FORM SUBMIT
-    =========================== */
+/* =========================
+   FORM SUBMIT
+========================= */
 
-    if (chatForm) {
+if (chatForm) {
 
-        chatForm.addEventListener("submit", event => {
-
-            event.preventDefault();
-
-            sendMessage();
-
-        });
-
-    }
-   /* ===========================
-   SEND BUTTON CLICK
-=========================== */
-
-if (sendButton) {
-
-    sendButton.addEventListener("click", event => {
+    chatForm.addEventListener("submit", function(event) {
 
         event.preventDefault();
 
@@ -497,34 +497,47 @@ if (sendButton) {
 
     });
 
-                                  }
+}
 
-    /* ===========================
-       ENTER KEY
-    =========================== */
 
-    if (chatInput) {
+/* =========================
+   SEND BUTTON CLICK
+========================= */
 
-        chatInput.addEventListener("keydown", event => {
+if (sendButton) {
 
-            if (
+    sendButton.addEventListener("click", function(event) {
 
-                event.key === "Enter" &&
+        event.preventDefault();
 
-                !event.shiftKey
+        sendMessage();
 
-            ) {
+    });
 
-                event.preventDefault();
+}
 
-                sendMessage();
 
-            }
+/* =========================
+   ENTER KEY
+========================= */
 
-        });
+if (chatInput) {
 
-    }
+    chatInput.addEventListener("keydown", function(event) {
 
+        if (event.key === "Enter" && !event.shiftKey) {
+
+            event.preventDefault();
+
+            sendMessage();
+
+        }
+
+    });
+
+}
+
+    
     /* ===========================
        INPUT CONTROL
     =========================== */
