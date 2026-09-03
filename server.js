@@ -535,70 +535,49 @@ app.use((req, res) => {
 
 });
 
-
-// ==================================================
-// GLOBAL ERROR HANDLER
-// ==================================================
+// ================= GLOBAL ERROR HANDLER =================
 
 app.use((err, req, res, next) => {
+  console.error("Global Error:", err);
 
-    console.error(
-        "Global Error:",
-        err
-    );
+  if (res.headersSent) {
+    return next(err);
+  }
 
-
-    if (res.headersSent) {
-
-        return next(err);
-
-    }
-
-
-    res.status(500).json({
-
-        reply: "Internal server error"
-
-    });
-
+  res.status(500).json({
+    reply: "Internal server error"
+  });
 });
 
 
-// ==================================================
-// START SERVER
-// ==================================================
+// ================= START SERVER =================
 
-app.listen(
-    PORT,
-    "0.0.0.0",
-    () => {
+app.listen(PORT, "0.0.0.0", () => {
+  console.log("");
+  console.log("================================");
+  console.log("DEEPSINKY SERVER STARTED");
+  console.log("================================");
+  console.log(`Port: ${PORT}`);
+  console.log(`Model: ${GROQ_MODEL}`);
 
-        console.log("");
-        console.log("=================================");
-        console.log("DEEPSINKY SERVER STARTED");
-        console.log("=================================");
-        console.log(
-            `Port: ${PORT}`
-        );
-        console.log(
-            `Model: ${GROQ_MODEL}`
-        );
-        console.log(
-            `API Key: ${
-                process.env.API_KEY
-                    ? "Configured"
-                    : "MISSING"
-            }`
-        );
-        console.log(
-            `Serper Key: ${
-                process.env.SERPER_KEY
-                    ? "Configured"
-                    : "Not configured"
-            }`
-        );
-        console.log("=================================");
-        console.log("");
+  console.log(
+    `API Key: ${
+      process.env.API_KEY
+        ? "Configured"
+        : "MISSING"
+    }`
+  );
 
-    }
-);
+  console.log(
+    `Serper Key: ${
+      process.env.SERPER_KEY
+        ? "Configured"
+        : "Not configured"
+    }`
+  );
+
+  console.log("================================");
+  console.log("");
+});
+
+            
