@@ -533,9 +533,7 @@ app.use((req, res) => {
 
     });
 
-});
-
-// ================= GLOBAL ERROR HANDLER =================
+});// ================= GLOBAL ERROR HANDLER =================
 
 app.use((err, req, res, next) => {
   console.error("Global Error:", err);
@@ -579,3 +577,4 @@ app.listen(PORT, "0.0.0.0", () => {
   console.log("================================");
   console.log("");
 });
+
