@@ -93,12 +93,28 @@ router.post("/login", limited, async (req, res) => {
   res.json({ token: sign(u), user: publicUser(u) });
 });
 
+/* Verifies a Google sign-in. Accepts either an ID token (`credential`) or an access token from the
+   popup flow (`access_token`). Both are checked against Google and must belong to OUR client id. */
+async function googleProfile(body) {
+  if (body.access_token) {
+    const at = String(body.access_token);
+    const ti = await (await fetch("https://oauth2.googleapis.com/tokeninfo?access_token=" + encodeURIComponent(at))).json();
+    if (ti.error || ti.error_description || (ti.aud !== GOOGLE_CLIENT_ID && ti.azp !== GOOGLE_CLIENT_ID)) throw new Error("bad token");
+    const r = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", { headers: { Authorization: "Bearer " + at } });
+    if (!r.ok) throw new Error("userinfo failed");
+    const u = await r.json();
+    return { email: u.email, verified: u.email_verified === true || u.email_verified === "true", name: u.name, picture: u.picture, sub: u.sub };
+  }
+  const ticket = await google.verifyIdToken({ idToken: String(body.credential || ""), audience: GOOGLE_CLIENT_ID });
+  const p = ticket.getPayload();
+  return { email: p.email, verified: !!p.email_verified, name: p.name, picture: p.picture, sub: p.sub };
+}
+
 router.post("/google", limited, async (req, res) => {
   if (!google) return res.status(503).json({ error: "Google sign-in isn't configured on the server." });
   try {
-    const ticket = await google.verifyIdToken({ idToken: String(req.body.credential || ""), audience: GOOGLE_CLIENT_ID });
-    const p = ticket.getPayload();
-    if (!p || !p.email || !p.email_verified) return res.status(401).json({ error: "Google account email isn't verified." });
+    const p = await googleProfile(req.body || {});
+    if (!p || !p.email || !p.verified) return res.status(401).json({ error: "Google account email isn't verified." });
     const email = normEmail(p.email);
     let u = byEmail(email);
     if (!u) {
